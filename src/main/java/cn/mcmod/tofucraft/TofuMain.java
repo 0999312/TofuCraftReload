@@ -1,10 +1,13 @@
 package cn.mcmod.tofucraft;
 
 import net.minecraft.init.Blocks;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -21,8 +24,15 @@ public class TofuMain
     public static TofuMain instance;
     
 	@SidedProxy(clientSide = "cn.mcmod.tofucraft.ClientProxy",serverSide = "cn.mcmod.tofucraft.CommonProxy")
-	public static CommonProxy proxy; 
-	   
+	public static CommonProxy proxy;
+
+	@EventHandler
+	public void construct(FMLConstructionEvent event) {
+		MinecraftForge.EVENT_BUS.register(this);
+
+		FluidRegistry.enableUniversalBucket();
+	}
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
