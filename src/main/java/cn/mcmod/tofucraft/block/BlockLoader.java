@@ -47,11 +47,11 @@ public class BlockLoader {
 	private static void register(Block block, Item itemBlock, String string) {
 		block.setRegistryName(string);
 		block.setUnlocalizedName(TofuMain.MODID+"."+string);
-		itemBlock.setRegistryName(string);
-		itemBlock.setUnlocalizedName(TofuMain.MODID+"."+string);
 
 		ForgeRegistries.BLOCKS.register(block);
 		if (itemBlock != null) {
+			itemBlock.setRegistryName(string);
+			itemBlock.setUnlocalizedName(TofuMain.MODID+"."+string);
 			ForgeRegistries.ITEMS.register(itemBlock);
 		}
 		GameData.getBlockItemMap().put(block, itemBlock);

@@ -3,12 +3,14 @@ package cn.mcmod.tofucraft.block;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.material.TofuMaterial;
+import cn.mcmod.tofucraft.util.TofuBlockUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -92,14 +94,15 @@ public class BlockTofu extends BlockTofuBase {
     /**
      * Block's chance to react to an entity falling on it.
      */
-   /* @Override
-    public void onFallenUpon(World par1World, int par2, int par3, int par4, Entity par5Entity, float par6)
-    {
-        if (isFragile)
-        {
-            TofuBlockUtils.onFallenUponFragileTofu(par1World, par5Entity, this, par6);
-        }
-    }*/
+    @Override
+    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+    	 if (isFragile)
+         {
+             TofuBlockUtils.onFallenUponFragileTofu(worldIn, entityIn, this, fallDistance);
+         }
+    	super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
+    }
+
     protected PropertyInteger getDryProperty() {
         return DRY;
     }
