@@ -4,13 +4,13 @@
 
 itemGroup.tofucraft=TofuCraft
 
-tile.tofucraft.blockSoybeans.name=Soybean
-tile.tofucraft.blockSoybeansHell.name=Hell Soybean
-tile.tofucraft.blockTofuTerrain.name=Tofu Block
-tile.tofucraft.blockTofuKinu.name=Kinugoshi Tofu Block
-tile.tofucraft.blockTofuMomen.name=Momen Tofu Block
-tile.tofucraft.blockTofuIshi.name=Solid Tofu Block
-tile.tofucraft.blockTofuMetal.name=Metal Tofu Block
+tile.tofucraft.blocksoybeans.name=Soybean
+tile.tofucraft.blocksoybeanshell.name=Hell Soybean
+tile.tofucraft.blocktofuterrain.name=Tofu Block
+tile.tofucraft.blocktofukinu.name=Kinugoshi Tofu Block
+tile.tofucraft.blocktofumomen.name=Momen Tofu Block
+tile.tofucraft.blocktofuishi.name=Solid Tofu Block
+tile.tofucraft.blocktofumetal.name=Metal Tofu Block
 tile.tofucraft.blockTofuGrilled.name=Grilled Tofu Block
 tile.tofucraft.blockTofuDried.name=Koya-Tofu Block
 tile.tofucraft.blockTofuFriedPouch.name=Fried Tofu Pouch Block

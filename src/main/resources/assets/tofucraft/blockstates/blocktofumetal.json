@@ -1,0 +1,53 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "tofucraft:blocks/blocktofumetal"
+    }
+  },
+  "variants": {
+    "dry=0": [
+      {
+        "model": "cube_all"
+      }
+    ],
+    "dry=1": [
+      {
+        "model": "cube_all"
+      }
+    ],
+    "dry=2": [
+      {
+        "model": "cube_all"
+      }
+    ],
+    "dry=3": [
+      {
+        "model": "cube_all"
+      }
+    ],
+    "dry=4": [
+      {
+        "model": "cube_all"
+      }
+    ],
+    "dry=5": [
+      {
+        "model": "cube_all"
+      }
+    ],
+    "dry=6": [
+      {
+        "model": "cube_all"
+      }
+    ],
+    "dry=7": [
+      {
+        "model": "cube_all"
+      }
+    ],
+    "inventory": {
+      "model": "cube_all"
+    }
+  }
+}

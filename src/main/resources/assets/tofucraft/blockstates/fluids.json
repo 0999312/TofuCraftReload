@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "soymilk": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "soymilk"
+      }
+    }
+  }
+}
