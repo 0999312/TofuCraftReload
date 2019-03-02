@@ -17,46 +17,21 @@ public class BlockUtils {
         int i1 = MathHelper.floor(entity.getEntityBoundingBox().maxY - 0.001D);
         int j1 = MathHelper.floor(entity.getEntityBoundingBox().maxZ - 0.001D);
 
-
-
-        if (entity.world.chunk)
-
-        {
-
             for (int k1 = i; k1 <= l; ++k1)
-
             {
-
                 for (int l1 = j; l1 <= i1; ++l1)
-
                 {
-
                     for (int i2 = k; i2 <= j1; ++i2)
-
                     {
-
                         int bx = k1;
-
                         int by = l1 - 1;
-
                         int bz = i2;
-
-                        if (world.getBlock(bx, by, bz) == block)
-
-                        {
-
-                            handler.apply(world, entity, block, bx, by, bz);
-
-                        }
-
+                        if (world.getBlockState(new BlockPos(bx, by, bz)).getBlock() == block)
+                        	handler.apply(world, entity, block, bx, by, bz);
+                        
                     }
-
                 }
-
             }
-
-        }
-
     }
 
 

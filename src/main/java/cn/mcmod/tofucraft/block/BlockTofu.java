@@ -12,9 +12,12 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import java.util.List;
 import java.util.Random;
 
 public class BlockTofu extends BlockTofuBase {
@@ -77,6 +80,7 @@ public class BlockTofu extends BlockTofuBase {
         return setTofuItem();
     }
 
+    
     public ItemStack setTofuItem() {
         //This is not complete yet
         if (BlockLoader.KINUTOFU == this) {
@@ -98,9 +102,8 @@ public class BlockTofu extends BlockTofuBase {
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
     	 if (isFragile)
          {
-             TofuBlockUtils.onFallenUponFragileTofu(worldIn, entityIn, this, fallDistance);
+             TofuBlockUtils.onFallenUponFragileTofu(worldIn, entityIn, worldIn.getBlockState(pos).getBlock(), fallDistance);
          }
-    	super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
     }
 
     protected PropertyInteger getDryProperty() {

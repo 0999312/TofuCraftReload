@@ -24,7 +24,7 @@ public class BlockLoader {
 	public static Block SOYMILK;
 	public static Fluid SOYMILK_FLUID;
 
-	public static Block KINUTOFU = new BlockTofu();
+	public static Block KINUTOFU = new BlockTofu().setFragile();
 	public static Block MOMENTOFU = new BlockTofu();
 	public static Block ISHITOFU = new BlockTofu(Material.ROCK).setHardness(1.8F).setResistance(9.0F);
 	public static Block METALTOFU = new BlockTofu(Material.IRON).setHardness(5.0F).setResistance(11.0F);
