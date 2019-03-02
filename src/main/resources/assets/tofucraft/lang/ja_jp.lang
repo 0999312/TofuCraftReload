@@ -4,13 +4,13 @@
 
 itemGroup.tofucraft=豆腐Craft
 
-tile.tofucraft.blockSoybeans.name=大豆
-tile.tofucraft.blockSoybeansHell.name=地獄大豆
-tile.tofucraft.blockTofuTerrain.name=豆腐ブロック
-tile.tofucraft.blockTofuKinu.name=絹ごし豆腐ブロック
-tile.tofucraft.blockTofuMomen.name=木綿豆腐ブロック
-tile.tofucraft.blockTofuIshi.name=石豆腐ブロック
-tile.tofucraft.blockTofuMetal.name=鋼豆腐ブロック
+tile.tofucraft.blocksoybeans.name=大豆
+tile.tofucraft.blocksoybeanshell.name=地獄大豆
+tile.tofucraft.blocktofuterrain.name=豆腐ブロック
+tile.tofucraft.blocktofukinu.name=絹ごし豆腐ブロック
+tile.tofucraft.blocktofumomen.name=木綿豆腐ブロック
+tile.tofucraft.blocktofuishi.name=石豆腐ブロック
+tile.tofucraft.blocktofumetal.name=鋼豆腐ブロック
 tile.tofucraft.blockTofuGrilled.name=焼き豆腐ブロック
 tile.tofucraft.blockTofuDried.name=高野豆腐ブロック
 tile.tofucraft.blockTofuFriedPouch.name=揚げ豆腐ブロック
