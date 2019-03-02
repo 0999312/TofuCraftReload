@@ -31,89 +31,163 @@ public class ItemLoader {
 			  new int[]{2   ,2   ,3   ,3   ,4   ,4   ,4   ,4   ,4   ,4   ,3   ,5   ,2},
 			new float[]{0.1F,0.1F,0.4F,0.2F,0.2F,0.2f,0.2f,0.2f,0.2f,0.2f,0.2f,0.8F,0.2F},
 			new String[]{
-					TofuMain.MODID+"."+"tofuKinu",
-					TofuMain.MODID+"."+"tofuMomen",
-					TofuMain.MODID+"."+"tofuIshi",
-					TofuMain.MODID+"."+"tofuGrilled",
-					TofuMain.MODID+"."+"tofuPouchFried",
-					TofuMain.MODID+"."+"tofuFried",
-					TofuMain.MODID+"."+"tofuEgg",
-					TofuMain.MODID+"."+"tofuAnnin",
-					TofuMain.MODID+"."+"tofuSesame",
-					TofuMain.MODID+"."+"tofuZunda",
-					TofuMain.MODID+"."+"tofuStrawberry",
-					TofuMain.MODID+"."+"tofuMiso",
-					TofuMain.MODID+"."+"tofuGlow"
+					TofuMain.MODID+"."+"tofukinu",
+					TofuMain.MODID+"."+"tofumomen",
+					TofuMain.MODID+"."+"tofuishi",
+					TofuMain.MODID+"."+"tofugrilled",
+					TofuMain.MODID+"."+"tofufriedpouch",
+					TofuMain.MODID+"."+"tofufried",
+					TofuMain.MODID+"."+"tofuegg",
+					TofuMain.MODID+"."+"tofuannin",
+					TofuMain.MODID+"."+"tofusesame",
+					TofuMain.MODID+"."+"tofuzunda",
+					TofuMain.MODID+"."+"tofustrawberry",
+					TofuMain.MODID+"."+"tofumiso",
+					TofuMain.MODID+"."+"tofuglow"
 			}
 	);
 	public static ItemFood tofu_hell = (ItemFood)new ItemFood(2, 0.2f, false)
 			.setPotionEffect(new PotionEffect(Potion.getPotionById(12), 30, 0), 1.0F)
-			.setUnlocalizedName(TofuMain.MODID+"."+"tofuHell");
+			.setUnlocalizedName(TofuMain.MODID+"."+"tofuhell");
 	public static ItemBase tofu_material = new ItemBase("tofu_material", 64, new String[]{
-			TofuMain.MODID+"."+"tofuMetal",
-			TofuMain.MODID+"."+"tofuDiamond",
-			TofuMain.MODID+"."+"tofuDried"
+			TofuMain.MODID+"."+"tofumetal",
+			TofuMain.MODID+"."+"tofudiamond",
+			TofuMain.MODID+"."+"tofudried"
 	});
 	public static ItemFoodBasic foodset = new ItemFoodBasic("foodset", 64,
 			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,6   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4   ,6   ,16  ,20,2   ,8   ,7},
 			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.6f},
 			new String[]{
-					TofuMain.MODID+"."+"tofuChikuwa",
+					TofuMain.MODID+"."+"tofuchikuwa",
 					TofuMain.MODID+"."+"oage",
 					TofuMain.MODID+"."+"onigiri",
-					TofuMain.MODID+"."+"onigiriSalt",
-					TofuMain.MODID+"."+"yakionigiriMiso",
-					TofuMain.MODID+"."+"yakionigiriShoyu",
+					TofuMain.MODID+"."+"onigirisalt",
+					TofuMain.MODID+"."+"yakionigirimiso",
+					TofuMain.MODID+"."+"yakionigirishoyu",
 					TofuMain.MODID+"."+"sprouts",
 					TofuMain.MODID+"."+"hiyayakko",
-					TofuMain.MODID+"."+"riceTofu",
-					TofuMain.MODID+"."+"tofuHamburg",
-					TofuMain.MODID+"."+"tofuCookie",
+					TofuMain.MODID+"."+"ricetofu",
+					TofuMain.MODID+"."+"tofuhamburg",
+					TofuMain.MODID+"."+"tofucookie",
 					TofuMain.MODID+"."+"inari",
-					TofuMain.MODID+"."+"tofufishRaw",
-					TofuMain.MODID+"."+"tofufishCooked",
-					TofuMain.MODID+"."+"kinakoMochi",
+					TofuMain.MODID+"."+"tofufishraw",
+					TofuMain.MODID+"."+"tofufishcooked",
+					TofuMain.MODID+"."+"kinakomochi",
 					TofuMain.MODID+"."+"chikuwa",
-					TofuMain.MODID+"."+"tofuSteak",
-					TofuMain.MODID+"."+"tofuHamburgT",
-					TofuMain.MODID+"."+"tofuHamburgTA",
-					TofuMain.MODID+"."+"tofuMinced",
-					TofuMain.MODID+"."+"riceSoboroTofu",
-					TofuMain.MODID+"."+"soboroTofuSaute"
+					TofuMain.MODID+"."+"tofusteak",
+					TofuMain.MODID+"."+"tofuhamburgt",
+					TofuMain.MODID+"."+"tofuhamburgta",
+					TofuMain.MODID+"."+"tofuminced",
+					TofuMain.MODID+"."+"ricesoborotofu",
+					TofuMain.MODID+"."+"soborotofusaute"
+			}
+	);
+	public static ItemBase material = new ItemBase("material", 64, new String[]{
+			TofuMain.MODID+"."+"salt",
+			TofuMain.MODID+"."+"kouji",
+			TofuMain.MODID+"."+"miso",
+			TofuMain.MODID+"."+"edamame",
+			TofuMain.MODID+"."+"zunda",
+			TofuMain.MODID+"."+"barrelempty",
+			TofuMain.MODID+"."+"soybeansparched",
+			TofuMain.MODID+"."+"kinako",
+			TofuMain.MODID+"."+"natto",
+			TofuMain.MODID+"."+"apricotseed",
+			TofuMain.MODID+"."+"filtercloth",
+			TofuMain.MODID+"."+"okara",
+			TofuMain.MODID+"."+"mincedpotato",
+			TofuMain.MODID+"."+"starchraw",
+			TofuMain.MODID+"."+"starch",
+			TofuMain.MODID+"."+"kyoninso",
+			TofuMain.MODID+"."+"leek",
+			TofuMain.MODID+"."+"zundama",
+			TofuMain.MODID+"."+"tofugem",
+			TofuMain.MODID+"."+"tofudiamondnugget",
+			TofuMain.MODID+"."+"tofuhamburgraw",
+			TofuMain.MODID+"."+"tfcapacitor",
+			TofuMain.MODID+"."+"tfcircuit",
+			TofuMain.MODID+"."+"tfcoil",
+			TofuMain.MODID+"."+"tfoscillator",
+			TofuMain.MODID+"."+"advtofugem",
+			TofuMain.MODID+"."+"activatedtofugem",
+			TofuMain.MODID+"."+"activatedhelltofu",
+			TofuMain.MODID+"."+"tofusomen",
+			TofuMain.MODID+"."+"glassbowl",
+			TofuMain.MODID+"."+"rollingpin"
+	});
+	public static ItemFood zundaMochi = (ItemFood)new ItemFood(3, 0.8f, false)
+			.setPotionEffect(new PotionEffect(Potion.getPotionById(10), 20, 2), 1.0F)
+			.setUnlocalizedName(TofuMain.MODID+"."+"zundamochi");
+	public static ItemFoodBasic tsuyuBowl = new ItemFoodContain("tsuyuBowl_glass", 1,
+			  new int[]{2   },
+			new float[]{0.1f},
+			new String[]{
+					TofuMain.MODID+"."+"tsuyubowl_glass"},
+			new ItemStack[]{
+					new ItemStack(material,1,29),	
+			}
+	);
+	public static ItemFoodBasic foodsetContain = new ItemFoodContain("foodsetContain", 1,
+			  new int[]{16  ,8   ,5   ,6   ,8   ,3   ,20,20,3   ,5   ,10  ,6   ,8   ,3   },
+			new float[]{0.5f,0.4f,0.3f,0.5f,0.8f,0.3f,1F,1f,0.3f,0.6f,0.7f,0.6f,0.8f,0.3f},
+			new String[]{
+					TofuMain.MODID+"."+"mabodofu",
+					TofuMain.MODID+"."+"moyashiitame",
+					TofuMain.MODID+"."+"moyashiohitashi",
+					TofuMain.MODID+"."+"hiyayakko_glass",
+					TofuMain.MODID+"."+"nattohiyayakko_glass",
+					TofuMain.MODID+"."+"tofusomenbowl_glass",
+					TofuMain.MODID+"."+"tastystew",
+					TofuMain.MODID+"."+"tastybeefstew",
+					TofuMain.MODID+"."+"yudofu",
+					TofuMain.MODID+"."+"misosoup",
+					TofuMain.MODID+"."+"misodengaku",
+					TofuMain.MODID+"."+"nikujaga",
+					TofuMain.MODID+"."+"agedashitofu",
+					TofuMain.MODID+"."+"koyadofustew",
+					TofuMain.MODID+"."+"apricot"
+			},
+			new ItemStack[]{
+					
+					new ItemStack(Items.BOWL),	
+					new ItemStack(Items.BOWL),	
+					new ItemStack(Items.BOWL),	
+					new ItemStack(material,1,29),	
+					new ItemStack(material,1,29),	
+					new ItemStack(tsuyuBowl),	
+					new ItemStack(Items.BOWL),	
+					new ItemStack(Items.BOWL),	
+					new ItemStack(Items.BOWL),	
+					new ItemStack(Items.BOWL),	
+					new ItemStack(Items.STICK),	
+					new ItemStack(Items.BOWL),	
+					new ItemStack(Items.BOWL),	
+					new ItemStack(Items.BOWL),	
+					new ItemStack(material,1,9)
 			}
 	);
 	
-	public static ItemFood zundaMochi = (ItemFood)new ItemFood(3, 0.8f, false)
-			.setPotionEffect(new PotionEffect(Potion.getPotionById(10), 20, 2), 1.0F)
-			.setUnlocalizedName(TofuMain.MODID+"."+"zundaMochi");
-//	public static ItemFoodBasic foodsetContain = new ItemFoodContain("foodsetContain", 1,
-//			  new int[]{16  ,8   ,5   ,5   ,6   ,6   ,2   ,6   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4   ,6   ,16  ,20,2   ,8   ,7},
-//			new float[]{0.5f,0.4f,0.3f,0.6f,0.8f,0.8f,0.5f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.6f},
-//			new String[]{
-//					TofuMain.MODID+"."+"mabodofu",
-//					TofuMain.MODID+"."+"moyashiitame",
-//					TofuMain.MODID+"."+"moyashiohitashi",
-//			},
-//			new ItemStack[]{
-//						
-//			}
-//	);
-	
 	public ItemLoader(FMLPreInitializationEvent event) {
+		register(material);
 		register(tofu_food);
 		register(tofu_hell);
 		register(tofu_material);
 		register(foodset);
 		register(zundaMochi);
+		register(tsuyuBowl);
+		register(foodsetContain);
 	}
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
     {
-		registerRender(tofu_food,true);
-		registerRender(tofu_hell,"tofuHell");
-		registerRender(zundaMochi,"zundaMochi");
-		registerRender(tofu_material,true);
-		registerRender(foodset,true);
+		registerRender(material);
+		registerRender(tofu_food);
+		registerRender(tofu_hell);
+		registerRender(zundaMochi);
+		registerRender(tofu_material);
+		registerRender(foodset);
+		registerRender(tsuyuBowl);
+		registerRender(foodsetContain);
     }
 	private static void register(Item item)
     {
