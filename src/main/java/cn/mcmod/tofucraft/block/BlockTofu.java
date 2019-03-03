@@ -3,19 +3,26 @@ package cn.mcmod.tofucraft.block;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.material.TofuMaterial;
+import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.TofuBlockUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Random;
@@ -26,23 +33,27 @@ public class BlockTofu extends BlockTofuBase {
     private boolean canDrain = false;
     private boolean canFreeze = false;
     private int drainRate;
+    private TofuType tofuType;
 
-    public BlockTofu() {
+    public BlockTofu(TofuType tofuType) {
         super(TofuMaterial.tofu);
         this.setCreativeTab(CommonProxy.tab);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(this.getDryProperty(), Integer.valueOf(0)));
         this.setHardness(0.3F);
         this.setResistance(0.9F);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(DRY, Integer.valueOf(0)));
+
         this.setSoundType(SoundType.CLOTH);
+        this.tofuType = tofuType;
     }
 
-    public BlockTofu(Material material) {
+    public BlockTofu(TofuType tofuType, Material material) {
         super(material);
         this.setCreativeTab(CommonProxy.tab);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(this.getDryProperty(), Integer.valueOf(0)));
         this.setHardness(0.3F);
         this.setResistance(0.9F);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(DRY, Integer.valueOf(0)));
 
+        this.tofuType = tofuType;
         if (material == Material.IRON) {
             this.setSoundType(SoundType.METAL);
         }
@@ -76,54 +87,63 @@ public class BlockTofu extends BlockTofuBase {
         return drainRate;
     }
 
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        return setTofuItem();
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random par2Random, int par3) {
+        return tofuType.getItem();
     }
 
-    
-    public ItemStack setTofuItem() {
-        //This is not complete yet
-        if (BlockLoader.KINUTOFU == this) {
-            return new ItemStack(ItemLoader.tofu_food);
-        } else if (BlockLoader.MOMENTOFU == this) {
-            return new ItemStack(ItemLoader.tofu_food, 1, 1);
-        } else if (BlockLoader.ISHITOFU == this) {
-            return new ItemStack(ItemLoader.tofu_food, 1, 2);
-        } else if (BlockLoader.METALTOFU == this) {
-            return new ItemStack(ItemLoader.tofu_material);
-        }
-        return null;
-    }
 
     /**
      * Block's chance to react to an entity falling on it.
      */
     @Override
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-    	 if (isFragile)
-         {
-             TofuBlockUtils.onFallenUponFragileTofu(worldIn, entityIn, worldIn.getBlockState(pos).getBlock(), fallDistance);
-         }
+        if (isFragile) {
+            TofuBlockUtils.onFallenUponFragileTofu(worldIn, entityIn, worldIn.getBlockState(pos).getBlock(), fallDistance);
+        }
     }
 
-    protected PropertyInteger getDryProperty() {
-        return DRY;
-    }
 
     public int getMaxDry() {
         return 7;
     }
 
     protected int getDry(IBlockState state) {
-        return state.getValue(this.getDryProperty()).intValue();
+        return state.getValue(this.DRY).intValue();
     }
 
     public IBlockState withDry(int age) {
-        return this.getDefaultState().withProperty(this.getDryProperty(), Integer.valueOf(age));
+        return this.getDefaultState().withProperty(DRY, Integer.valueOf(age));
     }
 
-    public boolean isMaxDry(IBlockState state) {
-        return state.getValue(this.getDryProperty()).intValue() >= this.getMaxDry();
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        if (isUnderWeight(worldIn, pos)) {
+            if (canDrain) {
+                if (this != BlockLoader.ISHITOFU) {
+                    if (rand.nextInt(4)==0) {
+                        double d4 = rand.nextBoolean() ? 0.8 : -0.8;
+                        double d0 = ((float) pos.getX() + 0.5 + (rand.nextFloat() * d4));
+                        double d1 = (double) ((float) pos.getY() + rand.nextFloat());
+                        double d2 = ((float) pos.getZ() + 0.5 + rand.nextFloat()* d4);
+
+                        worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                    }
+                }else {
+                    if (rand.nextInt(10)==0) {
+                        double d4 = rand.nextBoolean() ? 0.8 : -0.8;
+                        double d0 = ((float) pos.getX() + 0.5 + (rand.nextFloat() * d4));
+                        double d1 = (double) ((float) pos.getY() + rand.nextFloat());
+                        double d2 = ((float) pos.getZ() + 0.5 + rand.nextFloat()* d4);
+
+                        worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -131,10 +151,10 @@ public class BlockTofu extends BlockTofuBase {
      */
     @Override
     public void updateTick(World par1World, BlockPos pos, IBlockState state, Random par5Random) {
-        super.updateTick(par1World, pos, state, par5Random);
 
+        super.updateTick(par1World, pos, state, par5Random);
         if (isFragile || canDrain) {
-            if (isUnderWeight(par1World, pos.getX(), pos.getY(), pos.getZ())) {
+            if (isUnderWeight(par1World, pos)) {
                 if (isFragile) {
                     dropBlockAsItemWithChance(par1World, pos, state, 0.4f, 0);
                     par1World.setBlockToAir(pos);
@@ -159,39 +179,42 @@ public class BlockTofu extends BlockTofuBase {
                 }
             }*/
         }
+
     }
 
-    public boolean isUnderWeight(World world, int x, int y, int z) {
-        BlockPos weightBlock = new BlockPos(x, y + 1, z);
-        BlockPos baseBlock = new BlockPos(x, y - 1, z);
+    public boolean isUnderWeight(World world, BlockPos pos) {
+        IBlockState weightBlock = world.getBlockState(pos.up());
+        IBlockState baseBlock = world.getBlockState(pos.down());
 
         boolean isWeightValid = weightBlock != null
-                && (world.getBlockState(weightBlock).getMaterial() == Material.ROCK || world.getBlockState(weightBlock).getMaterial() == Material.IRON);
+                && (weightBlock.getMaterial() == Material.ROCK || weightBlock.getMaterial() == Material.IRON);
 
-        float baseHardness = world.getBlockState(baseBlock).getBlockHardness(world, baseBlock);
-        boolean isBaseValid = world.getBlockState(baseBlock).isNormalCube() &&
-                (world.getBlockState(baseBlock).getMaterial() == Material.ROCK || world.getBlockState(baseBlock).getMaterial() == Material.IRON || baseHardness >= 1.0F || baseHardness < 0.0F);
+        float baseHardness = baseBlock.getBlockHardness(world, pos.down());
+        boolean isBaseValid = baseBlock.isNormalCube() &&
+                (baseBlock.getMaterial() == Material.ROCK || baseBlock.getMaterial() == Material.IRON || baseHardness >= 1.0F || baseHardness < 0.0F);
 
         return isWeightValid && isBaseValid;
     }
 
     public void drainOneStep(World par1World, BlockPos pos, Random par5Random, IBlockState state) {
-        int drainStep = getDry(state);
+        IBlockState state2 = par1World.getBlockState(pos);
+        int drainStep = state2.getValue(DRY);
 
-        if (drainStep < 7 && par5Random.nextInt(drainRate) == 0) {
+        if (drainStep < 7&&par5Random.nextInt(drainRate) == 0) {
             ++drainStep;
-            setDrain(drainRate);
+
+            par1World.setBlockState(pos, this.withDry(drainStep), 2);
         } else if (drainStep == 7 && par5Random.nextInt(2 * drainRate) == 0) {
-            Block newBlock;
+            IBlockState newBlock;
             if (this == BlockLoader.MOMENTOFU) {
-                newBlock = BlockLoader.ISHITOFU;
+                newBlock = BlockLoader.ISHITOFU.getDefaultState();
             } else if (this == BlockLoader.ISHITOFU) {
-                newBlock = BlockLoader.METALTOFU;
+                newBlock = BlockLoader.METALTOFU.getDefaultState();
             } else {
-                newBlock = this;
+                newBlock = this.getDefaultState();
             }
 
-            par1World.setBlockState(pos, newBlock.getDefaultState());
+            par1World.setBlockState(pos, newBlock);
         }
 
     }
@@ -217,17 +240,20 @@ public class BlockTofu extends BlockTofuBase {
                 && world.isAirBlock(pos.up());
     }
 
+    @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.withDry(meta);
+        return this.getDefaultState().withProperty(DRY, Integer.valueOf(MathHelper.clamp(meta, 0, 7)));
     }
 
     /**
      * Convert the BlockState into the correct metadata value
      */
+    @Override
     public int getMetaFromState(IBlockState state) {
         return this.getDry(state);
     }
 
+    @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, DRY);
     }

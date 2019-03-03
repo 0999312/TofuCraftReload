@@ -1,6 +1,8 @@
 package cn.mcmod.tofucraft.material;
 
 import cn.mcmod.tofucraft.block.BlockTofuBase;
+import cn.mcmod.tofucraft.item.ItemLoader;
+import net.minecraft.item.Item;
 
 public enum TofuType {
     kinu,
@@ -33,10 +35,10 @@ public enum TofuType {
         return TcBlocks.tofuInfoMap.get(this);
     }*/
 
- /*   public Item getItem()
+    public Item getItem()
     {
-        return ItemLoader.tofu_material.getContainerItem(this);
-    }*/
+        return ItemLoader.tofuItems.get(this);
+    }
 
     public static TofuType get(int id) {
         return values()[id];
