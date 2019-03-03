@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.item;
 
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
+import cn.mcmod.tofucraft.material.TofuToolMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import com.google.common.collect.Maps;
@@ -9,11 +10,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.PotionTypes;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBucketMilk;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemSeeds;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionHelper;
@@ -172,6 +169,10 @@ public class ItemLoader {
 					new ItemStack(material,1,9)
 			}
 	);
+	public static ItemSwordBasic kinuTofuSword = new ItemSwordBasic(TofuToolMaterial.KINU,"swordkinu");
+	public static ItemSwordBasic momenTofuSword = new ItemSwordBasic(TofuToolMaterial.MOMEN,"swordmomen");
+	public static ItemSwordBasic ishiTofuSword = new ItemSwordBasic(TofuToolMaterial.SOLID,"swordsolid");
+	public static ItemSwordBasic metalTofuSword = new ItemSwordBasic(TofuToolMaterial.METAL,"swordmetal");
 	
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
@@ -182,6 +183,11 @@ public class ItemLoader {
 		register(zundaMochi);
 		register(tsuyuBowl);
 		register(foodsetContain);
+
+		register(kinuTofuSword);
+		register(momenTofuSword);
+		register(ishiTofuSword);
+		register(metalTofuSword);
 
 		tofuItemRegister(TofuType.kinu,new ItemStack(tofu_food));
 		tofuItemRegister(TofuType.momen,new ItemStack(tofu_food,1,1));
@@ -200,6 +206,11 @@ public class ItemLoader {
 		registerRender(foodset);
 		registerRender(tsuyuBowl);
 		registerRender(foodsetContain);
+
+		registerRender(kinuTofuSword);
+		registerRender(momenTofuSword);
+		registerRender(ishiTofuSword);
+		registerRender(metalTofuSword);
     }
 
 	private static void register(Item item)
