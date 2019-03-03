@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.block;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.fluid.BlockSoyMilk;
 import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
+import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
@@ -24,10 +25,10 @@ public class BlockLoader {
 	public static Block SOYMILK;
 	public static Fluid SOYMILK_FLUID;
 
-	public static Block KINUTOFU = new BlockTofu().setFragile();
-	public static Block MOMENTOFU = new BlockTofu();
-	public static Block ISHITOFU = new BlockTofu(Material.ROCK).setHardness(1.8F).setResistance(9.0F);
-	public static Block METALTOFU = new BlockTofu(Material.IRON).setHardness(5.0F).setResistance(11.0F);
+	public static Block KINUTOFU = new BlockTofu(TofuType.kinu).setFragile();
+	public static Block MOMENTOFU = new BlockTofu(TofuType.momen).setDrain(3);
+	public static Block ISHITOFU = new BlockTofu(TofuType.ishi,Material.ROCK).setDrain(5).setHardness(1.8F).setResistance(9.0F);
+	public static Block METALTOFU = new BlockTofu(TofuType.metal,Material.IRON).setHardness(5.0F).setResistance(11.0F);
 
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
