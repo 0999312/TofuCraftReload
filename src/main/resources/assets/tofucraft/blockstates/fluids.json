@@ -6,6 +6,11 @@
       "custom": {
         "fluid": "soymilk"
       }
+    },"nigari": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "nigari"
+      }
     }
   }
 }

@@ -38,8 +38,8 @@ public class BlockTofu extends BlockTofuBase {
     public BlockTofu(TofuType tofuType) {
         super(TofuMaterial.tofu);
         this.setCreativeTab(CommonProxy.tab);
-        this.setHardness(0.3F);
-        this.setResistance(0.9F);
+        this.setHardness(0.35F);
+        this.setResistance(1.0F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(DRY, Integer.valueOf(0)));
 
         this.setSoundType(SoundType.CLOTH);
@@ -90,9 +90,14 @@ public class BlockTofu extends BlockTofuBase {
 
     @Override
     public Item getItemDropped(IBlockState state, Random par2Random, int par3) {
-        return tofuType.getItem();
+        return tofuType.getItemStack().getItem();
     }
 
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return tofuType.getItemStack().getMetadata();
+    }
 
     /**
      * Block's chance to react to an entity falling on it.

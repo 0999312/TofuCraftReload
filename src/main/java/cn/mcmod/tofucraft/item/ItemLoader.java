@@ -2,6 +2,8 @@ package cn.mcmod.tofucraft.item;
 
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
+import cn.mcmod.tofucraft.block.BlockLoader;
+import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
@@ -18,17 +20,23 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.ForgeRegistry;
 
 import java.util.EnumMap;
+import java.util.Objects;
 
 public class ItemLoader {
-	public static EnumMap<TofuType, Item> tofuItems = Maps.newEnumMap(TofuType.class);
+	public static EnumMap<TofuType, ItemStack> tofuItems = Maps.newEnumMap(TofuType.class);
 
 	public static ItemFoodBasic tofu_food = new ItemFoodBasic("tofu_food", 64,
 			  new int[]{2   ,2   ,3   ,3   ,4   ,4   ,4   ,4   ,4   ,4   ,3   ,5   ,2},
@@ -173,6 +181,15 @@ public class ItemLoader {
 	public static ItemSwordBasic momenTofuSword = new ItemSwordBasic(TofuToolMaterial.MOMEN,"swordmomen");
 	public static ItemSwordBasic ishiTofuSword = new ItemSwordBasic(TofuToolMaterial.SOLID,"swordsolid");
 	public static ItemSwordBasic metalTofuSword = new ItemSwordBasic(TofuToolMaterial.METAL,"swordmetal");
+
+	public static ItemPickaxeBasic kinuTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.KINU,"toolkinupickaxe");
+	public static ItemPickaxeBasic momenTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.MOMEN,"toolmomenpickaxe");
+	public static ItemPickaxeBasic ishiTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.SOLID,"toolsolidpickaxe");
+	public static ItemPickaxeBasic metalTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.METAL,"toolmetalpickaxe");
+
+	public static ItemSoybeans soybeans = new ItemSoybeans();
+
+	public static Item nigari = new ItemNigari();
 	
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
@@ -183,17 +200,35 @@ public class ItemLoader {
 		register(zundaMochi);
 		register(tsuyuBowl);
 		register(foodsetContain);
+		register(nigari);
+		register(soybeans);
+
+		MinecraftForge.addGrassSeed(new ItemStack(soybeans), 2);
 
 		register(kinuTofuSword);
 		register(momenTofuSword);
 		register(ishiTofuSword);
 		register(metalTofuSword);
 
+		register(kinuTofuPickaxe);
+		register(momenTofuPickaxe);
+		register(ishiTofuPickaxe);
+		register(metalTofuPickaxe);
+
 		tofuItemRegister(TofuType.kinu,new ItemStack(tofu_food));
 		tofuItemRegister(TofuType.momen,new ItemStack(tofu_food,1,1));
 		tofuItemRegister(TofuType.ishi,new ItemStack(tofu_food,1,2));
+		tofuItemRegister(TofuType.grilled,new ItemStack(tofu_food,1,3));
+		tofuItemRegister(TofuType.friedPouch,new ItemStack(tofu_food,1,4));
+		tofuItemRegister(TofuType.fried,new ItemStack(tofu_food,1,5));
+		tofuItemRegister(TofuType.egg,new ItemStack(tofu_food,1,6));
 		tofuItemRegister(TofuType.metal,new ItemStack(tofu_material));
 		tofuItemRegister(TofuType.diamond,new ItemStack(tofu_material,1,1));
+
+		GameRegistry.addSmelting(tofu_food, new ItemStack(tofu_food,1,3), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(tofu_food,1,1), new ItemStack(tofu_food,1,3), 0.2f);
+		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.8f);
+		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.8f);
 	}
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
@@ -206,11 +241,18 @@ public class ItemLoader {
 		registerRender(foodset);
 		registerRender(tsuyuBowl);
 		registerRender(foodsetContain);
+		registerRender(nigari);
+		registerRender(soybeans);
 
 		registerRender(kinuTofuSword);
 		registerRender(momenTofuSword);
 		registerRender(ishiTofuSword);
 		registerRender(metalTofuSword);
+
+		registerRender(kinuTofuPickaxe);
+		registerRender(momenTofuPickaxe);
+		registerRender(ishiTofuPickaxe);
+		registerRender(metalTofuPickaxe);
     }
 
 	private static void register(Item item)
@@ -221,7 +263,7 @@ public class ItemLoader {
     }
 
 	private static void tofuItemRegister(TofuType type,ItemStack item){
-		ItemLoader.tofuItems.put(type, item.getItem());
+		ItemLoader.tofuItems.put(type, item);
 
 	}
 
