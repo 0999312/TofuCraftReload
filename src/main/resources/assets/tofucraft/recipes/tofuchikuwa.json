@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tofucraft:tofu_food",
+      "data": 1
+    },
+    {
+      "item": "minecraft:fish",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 0
+  }
+}

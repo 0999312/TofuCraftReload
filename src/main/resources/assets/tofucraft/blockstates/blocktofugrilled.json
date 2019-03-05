@@ -2,7 +2,7 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "tofucraft:blocks/blocktofuishi"
+      "all": "tofucraft:blocks/blocktofugrilled"
     }
   },
   "variants": {

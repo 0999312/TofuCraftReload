@@ -9,8 +9,9 @@
     "#": {
       "item": "minecraft:stick"
     },
-    "F": {
-      "item": "tofucraft:tofu_material"
+    "T": {
+      "item": "tofucraft:tofu_food",
+      "data": 1
     }
   },
   "result": {

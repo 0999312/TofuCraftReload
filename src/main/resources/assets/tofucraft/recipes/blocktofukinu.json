@@ -1,20 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "T",
-    "T",
-    "#"
+    "##",
+    "##"
   ],
   "key": {
     "#": {
-      "item": "minecraft:stick"
-    },
-    "F": {
       "item": "tofucraft:tofu_food",
-      "data": 1
+      "data": 0
     }
   },
   "result": {
-    "item": "tofucraft:swordmomen"
+    "item": "tofucraft:blocktofukinu"
   }
 }

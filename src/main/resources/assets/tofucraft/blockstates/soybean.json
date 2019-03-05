@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "age=0": { "model": "tofucraft:soybeans_0" },
+    "age=1": { "model": "tofucraft:soybeans_1" },
+    "age=2": { "model": "tofucraft:soybeans_1" },
+    "age=3": { "model": "tofucraft:soybeans_2" },
+    "age=4": { "model": "tofucraft:soybeans_2" },
+    "age=5": { "model": "tofucraft:soybeans_3" },
+    "age=6": { "model": "tofucraft:soybeans_3" },
+    "age=7": { "model": "tofucraft:soybeans_4" }
+  }
+}
