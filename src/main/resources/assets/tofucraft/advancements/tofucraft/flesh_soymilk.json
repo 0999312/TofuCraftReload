@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:bucket"
+    },
+    "title": {
+      "translate": "advancements.tofucraft.flesh_soymilk.title"
+    },
+    "description": {
+      "translate": "advancements.tofucraft.flesh_soymilk.description"
+    }
+  },
+  "parent": "tofucraft:tofucraft/root",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

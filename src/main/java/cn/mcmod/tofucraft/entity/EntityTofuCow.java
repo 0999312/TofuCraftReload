@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft.entity;
 
+import cn.mcmod.tofucraft.advancements.TofuAdvancements;
 import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
 import cn.mcmod.tofucraft.util.TofuLootTables;
 import net.minecraft.entity.EntityAgeable;
@@ -39,6 +40,7 @@ public class EntityTofuCow extends EntityCow {
             player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
             itemstack.shrink(1);
 
+            TofuAdvancements.grantAdvancement(player,"flesh_soymilk");
             if (itemstack.isEmpty()) {
 
                 player.setHeldItem(hand, FluidUtil.getFilledBucket(fluidStack));

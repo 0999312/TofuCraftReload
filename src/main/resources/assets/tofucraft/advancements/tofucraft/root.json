@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "tofucraft:seeds_soybeans"
+    },
+    "title": {
+      "translate": "advancements.tofucraft.root.title"
+    },
+    "description": {
+      "translate": "advancements.tofucraft.root.description"
+    },
+    "background": "tofucraft:textures/blocks/blocktofuishi.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "japariman": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tofucraft:seeds_soybeans"
+          }
+        ]
+      }
+    }
+  }
+}
