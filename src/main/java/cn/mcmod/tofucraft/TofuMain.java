@@ -1,8 +1,13 @@
 package cn.mcmod.tofucraft;
 
+import cn.mcmod.tofucraft.world.biome.TofuBiomes;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
-import net.minecraft.init.Blocks;
+import cn.mcmod.tofucraft.world.WorldProviderTofu;
+import net.minecraft.world.DimensionType;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -12,8 +17,9 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import org.apache.logging.log4j.Logger;
+import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION)
 public class TofuMain
@@ -28,6 +34,8 @@ public class TofuMain
 	@SidedProxy(clientSide = "cn.mcmod.tofucraft.ClientProxy",serverSide = "cn.mcmod.tofucraft.CommonProxy")
 	public static CommonProxy proxy;
 
+	public static DimensionType TOFU_DIMENSION;
+
 	@EventHandler
 	public void construct(FMLConstructionEvent event) {
 		MinecraftForge.EVENT_BUS.register(this);
@@ -35,11 +43,22 @@ public class TofuMain
 		FluidRegistry.enableUniversalBucket();
 	}
 
+	@SubscribeEvent
+	public void registerBiomes(RegistryEvent.Register<Biome> event) {
+		IForgeRegistry<Biome> registry = event.getRegistry();
+
+		TofuBiomes.register(registry);
+
+	}
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 	    proxy.preInit(event);
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new TofuGuiHandler());
+
+		TOFU_DIMENSION = DimensionType.register("Tofu World", "_tofu", DimensionManager.getNextFreeDimId(), WorldProviderTofu.class, false);
+		DimensionManager.registerDimension(TOFU_DIMENSION.getId(), TOFU_DIMENSION);
 	}
 	
 	@EventHandler

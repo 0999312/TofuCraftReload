@@ -9,6 +9,7 @@ import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -38,8 +39,11 @@ public class BlockLoader {
 	public static Block ANNINTOFU = new BlockTofu(TofuType.annin);
 	public static Block EGGTOFU = new BlockTofu(TofuType.egg);
 	public static Block GRILD = new BlockTofu(TofuType.grilled);
-	public static Block LEEK = new BlockLeek();
-	public static Block SOYBEAN = new BlockSoybean();
+	public static BlockLeek LEEK = new BlockLeek();
+	public static BlockSoybean SOYBEAN = new BlockSoybean();
+	public static Block tofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
+	public static BlockTofuSapling TOFU_SAPLING = new BlockTofuSapling();
+	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
 
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
@@ -64,6 +68,9 @@ public class BlockLoader {
 
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
 		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
+		register(tofuTerrain, new ItemBlock(tofuTerrain), "tofu_terrain");
+		register(TOFU_SAPLING, new ItemBlock(TOFU_SAPLING), "sapling_tofu");
+		register(TOFU_LEAVE, new ItemBlock(TOFU_LEAVE), "leaves_tofu");
 	}
 
 	private static void register(Block block, Item itemBlock, String string) {
@@ -91,6 +98,9 @@ public class BlockLoader {
 		registerRender(EGGTOFU);
 		registerRender(GRILD);
 		registerRender(LEEK);
+		registerRender(TOFU_SAPLING);
+		registerRender(tofuTerrain);
+		registerRender(TOFU_LEAVE);
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {

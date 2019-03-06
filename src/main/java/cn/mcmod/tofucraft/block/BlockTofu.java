@@ -262,4 +262,14 @@ public class BlockTofu extends BlockTofuBase {
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, DRY);
     }
+
+    @Override
+    public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos)
+    {
+        if(this == BlockLoader.ISHITOFU) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
