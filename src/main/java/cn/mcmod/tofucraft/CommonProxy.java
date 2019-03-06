@@ -26,6 +26,8 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent event) {
         TileEntityRegistry.init();
+        NetworkRegistry.INSTANCE.registerGuiHandler(TofuMain.instance, new TofuGuiHandler());
+
     }
 
     public void postInit(FMLPostInitializationEvent event) {

@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft.block;
 
+import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.fluid.BlockNigari;
 import cn.mcmod.tofucraft.block.fluid.BlockSoyMilk;
@@ -28,7 +29,7 @@ public class BlockLoader {
 	public static Block NIGARI;
 	public static Fluid NIGARI_FLUID;
 
-	public static Block SALTFURNACE = new BlockSaltFurnace(false);
+	public static Block SALTFURNACE = new BlockSaltFurnace(false).setCreativeTab(CommonProxy.tab);
 	public static Block SALTFURNACE_LIT = new BlockSaltFurnace(true);
 	public static Block KINUTOFU = new BlockTofu(TofuType.kinu).setFragile().setHardness(0.2F).setResistance(0.2F);
 	public static Block MOMENTOFU = new BlockTofu(TofuType.momen).setDrain(3);

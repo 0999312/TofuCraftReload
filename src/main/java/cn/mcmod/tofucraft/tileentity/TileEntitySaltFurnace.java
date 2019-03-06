@@ -117,7 +117,7 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
             if (wasBurning != this.furnaceBurnTime > 0)
             {
                 isDirty = true;
-                BlockSaltFurnace.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.world, this.pos);
+                BlockSaltFurnace.setState(this.furnaceBurnTime > 0, this.world, this.pos);
             }
 
             if (this.isBurning()) {

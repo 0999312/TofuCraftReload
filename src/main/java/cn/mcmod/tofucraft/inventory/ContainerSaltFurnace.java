@@ -27,15 +27,15 @@ public class ContainerSaltFurnace extends Container {
         this.addSlotToContainer(new SlotSaltFurnace(playerInventory.player, furnaceInventory, 3, 134, 52));
 
 
-        for (int var3 = 0; var3 < 3; ++var3)
+        for (int var3 = 0; var3 < 3; var3++)
         {
-            for (int var4 = 0; var4 < 9; ++var4)
+            for (int var4 = 0; var4 < 9; var4++)
             {
                 this.addSlotToContainer(new Slot(playerInventory, var4 + var3 * 9 + 9, 8 + var4 * 18, 84 + var3 * 18));
             }
         }
 
-        for (int var3 = 0; var3 < 9; ++var3)
+        for (int var3 = 0; var3 < 9; var3++)
         {
             this.addSlotToContainer(new Slot(playerInventory, var3, 8 + var3 * 18, 142));
         }

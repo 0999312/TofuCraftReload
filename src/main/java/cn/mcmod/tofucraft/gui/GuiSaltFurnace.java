@@ -42,6 +42,7 @@ public class GuiSaltFurnace extends GuiContainer {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+    	 this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
 
         if (this.isPointInRegion(114, 29, 6, 35, mouseX, mouseY))
