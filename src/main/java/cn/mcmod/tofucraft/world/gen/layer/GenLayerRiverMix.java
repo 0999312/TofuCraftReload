@@ -9,8 +9,6 @@ public class GenLayerRiverMix extends GenLayerTofu {
 
     private GenLayer biomePatternGeneratorChain;
     private GenLayer riverPatternGeneratorChain;
-    @SuppressWarnings("unused")
-	private static final String __OBFID = "CL_00000567";
 
     public GenLayerRiverMix(long par1, GenLayer par3GenLayer, GenLayer par4GenLayer)
     {

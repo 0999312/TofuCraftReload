@@ -4,8 +4,6 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerEdge extends GenLayerTofu {
     private final Mode field_151627_c;
-    @SuppressWarnings("unused")
-	private static final String __OBFID = "CL_00000547";
 
     public GenLayerEdge(long p_i45474_1_, GenLayerTofu p_i45474_3_, Mode p_i45474_4_)
     {
@@ -134,9 +132,6 @@ public class GenLayerEdge extends GenLayerTofu {
     static final class SwitchMode
     {
         static final int[] field_151642_a = new int[Mode.values().length];
-        @SuppressWarnings("unused")
-		private static final String __OBFID = "CL_00000548";
-
         static
         {
             try
@@ -173,8 +168,5 @@ public class GenLayerEdge extends GenLayerTofu {
         COOL_WARM,
         HEAT_ICE,
         SPECIAL;
-
-        @SuppressWarnings("unused")
-		private static final String __OBFID = "CL_00000549";
     }
 }

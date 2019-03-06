@@ -59,6 +59,8 @@ public class BlockTofu extends BlockTofuBase {
         }
     }
 
+    
+    
     public BlockTofu setFragile() {
         isFragile = true;
         this.setTickRandomly(true);

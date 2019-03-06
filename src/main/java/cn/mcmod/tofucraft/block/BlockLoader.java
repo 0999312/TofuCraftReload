@@ -9,6 +9,7 @@ import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCake;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -44,6 +45,7 @@ public class BlockLoader {
 	public static Block tofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
 	public static BlockTofuSapling TOFU_SAPLING = new BlockTofuSapling();
 	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
+	public static BlockCake tofu_Cake = new BlockTofuCake();
 
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
@@ -71,6 +73,8 @@ public class BlockLoader {
 		register(tofuTerrain, new ItemBlock(tofuTerrain), "tofu_terrain");
 		register(TOFU_SAPLING, new ItemBlock(TOFU_SAPLING), "sapling_tofu");
 		register(TOFU_LEAVE, new ItemBlock(TOFU_LEAVE), "leaves_tofu");
+		
+		register(tofu_Cake, new ItemBlock(tofu_Cake), "tofucake");
 	}
 
 	private static void register(Block block, Item itemBlock, String string) {
@@ -88,6 +92,7 @@ public class BlockLoader {
 
 	@SideOnly(Side.CLIENT)
 	public static void registerRenders() {
+		registerRender(tofu_Cake);
 		registerRender(SALTFURNACE);
 		registerRender(SALTFURNACE_LIT);
 		registerRender(KINUTOFU);
@@ -125,14 +130,14 @@ public class BlockLoader {
 
 	@SideOnly(Side.CLIENT)
 	public static void registerCakeRender(Block block, String name) {
-		JSON_Creator.genCake(block.getRegistryName().toString().substring(6 + TofuMain.MODID.length()), name, "json_create");
+		JSON_Creator.genCake(block.getRegistryName().toString().substring(1 + TofuMain.MODID.length()), name, "json_create");
 		ModelResourceLocation model = new ModelResourceLocation(block.getRegistryName(), "inventory");
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, model);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public static void registerRender(Block block, String name) {
-		JSON_Creator.genBlock(block.getRegistryName().toString().substring(6 + TofuMain.MODID.length()), name, "json_create");
+		JSON_Creator.genBlock(block.getRegistryName().toString().substring(1 + TofuMain.MODID.length()), name, "json_create");
 		ModelResourceLocation model = new ModelResourceLocation(block.getRegistryName(), "inventory");
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, model);
 	}

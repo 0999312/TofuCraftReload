@@ -6,9 +6,6 @@ import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerRiver extends GenLayerTofu {
-    @SuppressWarnings("unused")
-	private static final String __OBFID = "CL_00000566";
-
     public GenLayerRiver(long par1, GenLayer par3GenLayer)
     {
         super(par1);
