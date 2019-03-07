@@ -50,7 +50,7 @@ public class BlockLoader {
 	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
 	public static BlockCake tofu_Cake = new BlockTofuCake();
 	public static BlockTofuPortal tofu_PORTAL = new BlockTofuPortal();
-	public static Block TOFUISHI_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F);
+	public static Block TOFUISHI_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F).setCreativeTab(CommonProxy.tab);
 
 	public static BlockTofuTorch TOFUKINU_TORCH = new BlockTofuTorch();
 	public static BlockTofuTorch TOFUMOMEN_TORCH = new BlockTofuTorch();
