@@ -22,12 +22,20 @@ public class BlockTofuTerrain extends BlockTofuBase {
     {
         super();
         this.setSoundType(sound);
+        this.setHardness(0.35F);
+        this.setResistance(1.0F);
     }
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return new ItemStack(ItemLoader.tofu_food,1,1).getItem();
+        return ItemLoader.tofu_food;
+    }
+
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 1;
     }
 
     @Override

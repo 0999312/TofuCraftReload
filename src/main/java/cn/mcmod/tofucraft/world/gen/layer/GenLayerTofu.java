@@ -7,7 +7,6 @@ import net.minecraft.util.ReportedException;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
-import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
@@ -17,7 +16,7 @@ public abstract class GenLayerTofu extends GenLayer {
      * the first array item is a linked list of the bioms, the second is the zoom function, the third is the same as the
      * first.
      */
-    public static GenLayer initializeAllBiomeGeneratorsTofu(long seed, WorldType worldType)
+    public static GenLayer[] initializeAllBiomeGeneratorsTofu(long seed, WorldType worldType)
     {
         byte biomeSize = getModdedBiomeSize(worldType, (byte) (worldType == WorldType.LARGE_BIOMES ? 7 : 5));
 
@@ -68,8 +67,14 @@ public abstract class GenLayerTofu extends GenLayer {
         GenLayerSmooth genlayersmooth1 = new GenLayerSmooth(1000L, (GenLayerTofu)object);
         GenLayerRiverMix genlayerrivermix = new GenLayerRiverMix(100L, genlayersmooth1, genlayersmooth);
 
+
+        GenLayerTofu layerVoronoi = new GenLayerTofuVoronoiZoom(10L, genlayerrivermix);
+
         genlayerrivermix.initWorldGenSeed(seed);
-        return genlayerrivermix;
+
+        layerVoronoi.initWorldGenSeed(seed);
+
+        return new GenLayer[] {genlayerrivermix, layerVoronoi};
     }
 
     public static GenLayerTofu getBiomeLayer(long worldSeed, GenLayerTofu parentLayer, WorldType worldType)
@@ -106,32 +111,6 @@ public abstract class GenLayerTofu extends GenLayer {
                 throw new ReportedException(crashreport);
             }
         }
-    }
-
-    /**
-     * returns true if the biomeId is one of the various ocean biomes.
-     */
-    protected static boolean isBiomeOceanic(int p_151618_0_)
-    {
-        return false;
-    }
-
-    /**
-     * selects a random integer from a set of provided integers
-     */
-    @Override
-    protected int selectRandom(int... par1)
-    {
-        return par1[this.nextInt(par1.length)];
-    }
-
-    /**
-     * returns the most frequently occurring number of the set, or a random number from those provided
-     */
-    @Override
-    protected int selectModeOrRandom(int p_151617_1_, int p_151617_2_, int p_151617_3_, int p_151617_4_)
-    {
-        return p_151617_2_ == p_151617_3_ && p_151617_3_ == p_151617_4_ ? p_151617_2_ : (p_151617_1_ == p_151617_2_ && p_151617_1_ == p_151617_3_ ? p_151617_1_ : (p_151617_1_ == p_151617_2_ && p_151617_1_ == p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_3_ && p_151617_1_ == p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_2_ && p_151617_3_ != p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_3_ && p_151617_2_ != p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_4_ && p_151617_2_ != p_151617_3_ ? p_151617_1_ : (p_151617_2_ == p_151617_3_ && p_151617_1_ != p_151617_4_ ? p_151617_2_ : (p_151617_2_ == p_151617_4_ && p_151617_1_ != p_151617_3_ ? p_151617_2_ : (p_151617_3_ == p_151617_4_ && p_151617_1_ != p_151617_2_ ? p_151617_3_ : this.selectRandom(new int[] {p_151617_1_, p_151617_2_, p_151617_3_, p_151617_4_}))))))))));
     }
 
     public static byte getModdedBiomeSize(WorldType worldType, byte original) {

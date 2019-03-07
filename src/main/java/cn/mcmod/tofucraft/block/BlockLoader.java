@@ -6,6 +6,7 @@ import cn.mcmod.tofucraft.block.fluid.BlockNigari;
 import cn.mcmod.tofucraft.block.fluid.BlockSoyMilk;
 import cn.mcmod.tofucraft.block.fluid.NigariFluid;
 import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
+import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import net.minecraft.block.Block;
@@ -40,14 +41,21 @@ public class BlockLoader {
 	public static Block ANNINTOFU = new BlockTofu(TofuType.annin);
 	public static Block EGGTOFU = new BlockTofu(TofuType.egg);
 	public static Block GRILD = new BlockTofu(TofuType.grilled);
+
 	public static BlockLeek LEEK = new BlockLeek();
 	public static BlockSoybean SOYBEAN = new BlockSoybean();
 	public static Block tofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
+	public static Block zundatofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
 	public static BlockTofuSapling TOFU_SAPLING = new BlockTofuSapling();
 	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
 	public static BlockCake tofu_Cake = new BlockTofuCake();
 	public static BlockTofuPortal tofu_PORTAL = new BlockTofuPortal();
 	public static Block TOFUISHI_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F);
+
+	public static BlockTofuTorch TOFUKINU_TORCH = new BlockTofuTorch();
+	public static BlockTofuTorch TOFUMOMEN_TORCH = new BlockTofuTorch();
+	public static BlockTofuTorch TOFUISHI_TORCH = new BlockTofuTorch(SoundType.STONE);
+	public static BlockTofuTorch TOFUMETAL_TORCH = new BlockTofuTorch(SoundType.METAL);
 
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
@@ -74,11 +82,17 @@ public class BlockLoader {
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
 		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
 		register(tofuTerrain, new ItemBlock(tofuTerrain), "tofu_terrain");
+		register(zundatofuTerrain, new ItemBlock(zundatofuTerrain), "zundatofu_terrain");
 		register(TOFU_SAPLING, new ItemBlock(TOFU_SAPLING), "sapling_tofu");
 		register(TOFU_LEAVE, new ItemBlock(TOFU_LEAVE), "leaves_tofu");
 		
 		register(tofu_Cake, new ItemBlock(tofu_Cake), "tofucake");
 		register(tofu_PORTAL, new ItemBlock(tofu_PORTAL), "tofuportal");
+
+		register(TOFUKINU_TORCH, new ItemBlock(TOFUKINU_TORCH), "tofutorch_kinu");
+		register(TOFUMOMEN_TORCH, new ItemBlock(TOFUMOMEN_TORCH), "tofutorch_momen");
+		register(TOFUISHI_TORCH, new ItemBlock(TOFUISHI_TORCH), "tofutorch_ishi");
+		register(TOFUMETAL_TORCH, new ItemBlock(TOFUMETAL_TORCH), "tofutorch_metal");
 	}
 
 	private static void register(Block block, Item itemBlock, String string) {
@@ -109,9 +123,15 @@ public class BlockLoader {
 		registerRender(LEEK);
 		registerRender(TOFU_SAPLING);
 		registerRender(tofuTerrain);
+		registerRender(zundatofuTerrain);
 		registerRender(TOFU_LEAVE);
 		registerRender(tofu_PORTAL);
 		registerRender(TOFUISHI_BRICK);
+
+		registerRender(TOFUKINU_TORCH);
+		registerRender(TOFUMOMEN_TORCH);
+		registerRender(TOFUISHI_TORCH);
+		registerRender(TOFUMETAL_TORCH);
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {

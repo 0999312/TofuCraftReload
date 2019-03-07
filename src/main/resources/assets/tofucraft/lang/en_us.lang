@@ -109,10 +109,14 @@ tile.tofucraft.tofuSlab.glow.name=Glow Tofu Slab
 tile.tofucraft.tofuDoor.name=%s Door
 tile.tofucraft.tofuFenceGate.name=%s Fence Gate
 tile.tofucraft.tofuLadder.name=%s Ladder
-tile.tofucraft.tofuTorch.name=%s Torch
+tile.tofucraft.tofutorch_kinu.name=TofuKinu Torch
+tile.tofucraft.tofutorch_momen.name=TofuMomen Torch
+tile.tofucraft.tofutorch_ishi.name=TofuIshi Torch
+tile.tofucraft.tofutorch_metal.name=TofuMetal Torch
 tile.tofucraft.tofuTrapdoor.name=%s Trapdoor
 tile.tofucraft.tofuWall.name=%s Wall
 tile.tofucraft.tofuishi_brick.name=TofuIshi Brick
+tile.tofucraft.zundatofu_terrain.name=ZundaGrass
 
 item.tofucraft.seeds_soybeans.name=Soybeans
 item.tofucraft.seeds_soybeansHell.name=Hell Soybeans
