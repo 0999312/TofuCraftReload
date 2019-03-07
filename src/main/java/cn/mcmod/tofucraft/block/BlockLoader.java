@@ -47,6 +47,7 @@ public class BlockLoader {
 	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
 	public static BlockCake tofu_Cake = new BlockTofuCake();
 	public static BlockTofuPortal tofu_PORTAL = new BlockTofuPortal();
+	public static Block TOFUISHI_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F);
 
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
@@ -68,6 +69,7 @@ public class BlockLoader {
 		register(ANNINTOFU, new ItemBlock(ANNINTOFU), "blocktofuannin");
 		register(EGGTOFU, new ItemBlock(EGGTOFU), "blocktofuegg");
 		register(GRILD, new ItemBlock(GRILD), "blocktofugrilled");
+		register(TOFUISHI_BRICK, new ItemBlock(TOFUISHI_BRICK), "tofuishi_brick");
 
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
 		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
@@ -109,6 +111,7 @@ public class BlockLoader {
 		registerRender(tofuTerrain);
 		registerRender(TOFU_LEAVE);
 		registerRender(tofu_PORTAL);
+		registerRender(TOFUISHI_BRICK);
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {

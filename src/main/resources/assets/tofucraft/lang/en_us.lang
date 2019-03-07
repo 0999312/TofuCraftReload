@@ -112,6 +112,7 @@ tile.tofucraft.tofuLadder.name=%s Ladder
 tile.tofucraft.tofuTorch.name=%s Torch
 tile.tofucraft.tofuTrapdoor.name=%s Trapdoor
 tile.tofucraft.tofuWall.name=%s Wall
+tile.tofucraft.tofuishi_brick.name=TofuIshi Brick
 
 item.tofucraft.seeds_soybeans.name=Soybeans
 item.tofucraft.seeds_soybeansHell.name=Hell Soybeans

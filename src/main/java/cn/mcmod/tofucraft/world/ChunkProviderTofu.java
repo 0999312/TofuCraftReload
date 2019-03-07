@@ -269,7 +269,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
                                 if ((d15 += d16) > 0.0D) {
 
-                                    primer.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + k3, BlockLoader.ISHITOFU.getDefaultState());
+                                    primer.setBlockState(k * 4 + i3, k2 * 8 + l2, j1 * 4 + k3, BlockLoader.tofuTerrain.getDefaultState());
 
                                 } else if (k2 * 8 + l2 < seaLevel) {
 
