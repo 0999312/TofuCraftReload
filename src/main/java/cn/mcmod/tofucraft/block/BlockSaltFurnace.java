@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.block;
 
 import java.util.Random;
 
+import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.tileentity.TileEntitySaltFurnace;
 import cn.mcmod.tofucraft.TofuMain;
@@ -54,8 +55,11 @@ public class BlockSaltFurnace extends BlockContainer {
         super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.isBurning = isBurning;
+        this.setHardness(3.5F);
         if(isBurning){
             this.setLightLevel(0.85F);
+        }else {
+            this.setCreativeTab(CommonProxy.tab);
         }
     }
 

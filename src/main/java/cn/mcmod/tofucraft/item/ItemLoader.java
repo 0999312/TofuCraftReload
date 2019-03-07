@@ -190,6 +190,7 @@ public class ItemLoader {
 	public static ItemSoybeans soybeans = new ItemSoybeans();
 
 	public static Item nigari = new ItemNigari();
+	public static Item tofustick = new ItemTofuStick();
 	
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
@@ -202,6 +203,7 @@ public class ItemLoader {
 		register(foodsetContain);
 		register(nigari);
 		register(soybeans);
+		register(tofustick);
 
 		MinecraftForge.addGrassSeed(new ItemStack(soybeans), 2);
 
@@ -243,6 +245,7 @@ public class ItemLoader {
 		registerRender(foodsetContain);
 		registerRender(nigari);
 		registerRender(soybeans);
+		registerRender(tofustick);
 
 		registerRender(kinuTofuSword);
 		registerRender(momenTofuSword);

@@ -4,6 +4,10 @@ import cn.mcmod.tofucraft.world.biome.BiomeTofu;
 import cn.mcmod.tofucraft.world.biome.TofuBiomes;
 import cn.mcmod.tofucraft.world.gen.layer.GenLayerTofu;
 import com.google.common.collect.Lists;
+import net.minecraft.crash.CrashReport;
+import net.minecraft.crash.CrashReportCategory;
+import net.minecraft.init.Biomes;
+import net.minecraft.util.ReportedException;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
@@ -12,6 +16,8 @@ import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraft.world.storage.WorldInfo;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -20,6 +26,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BiomeProviderTofu extends BiomeProvider {
+    //RemiliaMarine氏のbiome
 
     public static ArrayList<Biome> allowedBiomes = new ArrayList<Biome>(Arrays.asList(
             TofuBiomes.TOFU_PLAINS,
@@ -72,19 +79,28 @@ public class BiomeProviderTofu extends BiomeProvider {
     {
         IntCache.resetIntCache();
 
-        if (biomes == null || biomes.length < width * height)
-        {
+        if (biomes == null || biomes.length < width * height) {
             biomes = new Biome[width * height];
         }
 
         int[] aint = this.genBiomes.getInts(x, z, width, height);
 
-        for (int i1 = 0; i1 < width * height; ++i1)
-        {
-            biomes[i1] = BiomeTofu.REGISTRY.getObjectById(aint[i1]);
-        }
+        try {
+            for (int i = 0; i < width * height; ++i) {
+                biomes[i] = Biome.getBiome(aint[i], Biomes.DEFAULT);
+            }
 
-        return biomes;
+            return biomes;
+        } catch (Throwable throwable) {
+            CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Invalid Biome id");
+            CrashReportCategory crashreportcategory = crashreport.makeCategory("RawBiomeBlock");
+            crashreportcategory.addCrashSection("biomes[] size", Integer.valueOf(biomes.length));
+            crashreportcategory.addCrashSection("x", Integer.valueOf(x));
+            crashreportcategory.addCrashSection("z", Integer.valueOf(z));
+            crashreportcategory.addCrashSection("w", Integer.valueOf(width));
+            crashreportcategory.addCrashSection("h", Integer.valueOf(height));
+            throw new ReportedException(crashreport);
+        }
     }
 
     /**
@@ -95,24 +111,19 @@ public class BiomeProviderTofu extends BiomeProvider {
     {
         IntCache.resetIntCache();
 
-        if (listToReuse == null || listToReuse.length < width * length)
-        {
+        if (listToReuse == null || listToReuse.length < width * length) {
             listToReuse = new Biome[width * length];
         }
 
-        if (cacheFlag && width == 16 && length == 16 && (x & 15) == 0 && (z & 15) == 0)
-        {
+        if (cacheFlag && width == 16 && length == 16 && (x & 15) == 0 && (z & 15) == 0) {
             Biome[] abiome = this.biomeCache.getCachedBiomes(x, z);
             System.arraycopy(abiome, 0, listToReuse, 0, width * length);
             return listToReuse;
-        }
-        else
-        {
+        } else {
             int[] aint = this.genBiomes.getInts(x, z, width, length);
 
-            for (int i = 0; i < width * length; ++i)
-            {
-                listToReuse[i] = BiomeTofu.REGISTRY.getObjectById(aint[i]);
+            for (int i = 0; i < width * length; ++i) {
+                listToReuse[i] = Biome.getBiome(aint[i], Biomes.DEFAULT);
             }
 
             return listToReuse;
@@ -136,7 +147,7 @@ public class BiomeProviderTofu extends BiomeProvider {
 
         for (int j2 = 0; j2 < l1 * i2; ++j2)
         {
-            Biome biomeGenTofuBase = BiomeTofu.REGISTRY.getObjectById(aint[j2]);
+            Biome biomeGenTofuBase = Biome.getBiome(aint[j2], Biomes.DEFAULT);
 
             if (!allowed.contains(biomeGenTofuBase))
             {
@@ -166,7 +177,7 @@ public class BiomeProviderTofu extends BiomeProvider {
         {
             int i2 = i + l1 % i1 << 2;
             int j2 = j + l1 / i1 << 2;
-            Biome biome = Biome.REGISTRY.getObjectById(aint[l1]);
+            Biome biome = Biome.getBiome(aint[k1]);
 
             if (biomes.contains(biome) && (blockpos == null || random.nextInt(k1 + 1) == 0))
             {
@@ -189,6 +200,10 @@ public class BiomeProviderTofu extends BiomeProvider {
     @Override
     public GenLayer[] getModdedBiomeGenerators(WorldType worldType, long seed, GenLayer[] original)
     {
-        return original;
+        WorldTypeEvent.InitBiomeGens event = new WorldTypeEvent.InitBiomeGens(worldType, seed, original);
+
+        MinecraftForge.TERRAIN_GEN_BUS.post(event);
+
+        return event.getNewBiomeGens();
     }
 }

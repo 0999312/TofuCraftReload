@@ -46,6 +46,7 @@ public class BlockLoader {
 	public static BlockTofuSapling TOFU_SAPLING = new BlockTofuSapling();
 	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
 	public static BlockCake tofu_Cake = new BlockTofuCake();
+	public static BlockTofuPortal tofu_PORTAL = new BlockTofuPortal();
 
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
@@ -75,6 +76,7 @@ public class BlockLoader {
 		register(TOFU_LEAVE, new ItemBlock(TOFU_LEAVE), "leaves_tofu");
 		
 		register(tofu_Cake, new ItemBlock(tofu_Cake), "tofucake");
+		register(tofu_PORTAL, new ItemBlock(tofu_PORTAL), "tofuportal");
 	}
 
 	private static void register(Block block, Item itemBlock, String string) {
@@ -106,6 +108,7 @@ public class BlockLoader {
 		registerRender(TOFU_SAPLING);
 		registerRender(tofuTerrain);
 		registerRender(TOFU_LEAVE);
+		registerRender(tofu_PORTAL);
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {

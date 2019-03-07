@@ -74,6 +74,8 @@ public class TofuBiomes {
         registry.register(TOFU_PLAIN_HILLS.setRegistryName("tofuplain_hills"));
         registry.register(TOFU_RIVER.setRegistryName("tofuriver"));
 
+        decorationBiomes = new BiomeTofu[]{
+                TOFU_PLAINS, TOFU_LEEK_PLAINS, TOFU_PLAINS, TOFU_FOREST, TOFU_BUILDINGS, TOFU_EXTREME_HILLS};
     }
 
 

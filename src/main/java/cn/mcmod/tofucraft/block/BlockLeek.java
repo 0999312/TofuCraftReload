@@ -29,7 +29,7 @@ public class BlockLeek extends BlockBush {
     protected boolean canSustainBush(IBlockState state) {
 
         Block block = state.getBlock();
-        return block == BlockLoader.MOMENTOFU || block == BlockLoader.KINUTOFU;
+        return block == BlockLoader.MOMENTOFU || block == BlockLoader.KINUTOFU|| block == BlockLoader.tofuTerrain;
     }
 
     @Override

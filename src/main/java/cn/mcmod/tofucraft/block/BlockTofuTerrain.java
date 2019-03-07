@@ -22,7 +22,6 @@ public class BlockTofuTerrain extends BlockTofuBase {
     {
         super();
         this.setSoundType(sound);
-        this.setCreativeTab(CommonProxy.tab);
     }
 
     @Override

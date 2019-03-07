@@ -122,7 +122,7 @@ public class BiomeTofu extends Biome {
         }
 
         i = this.tofuPerChunk;
-        if (rand.nextInt(50) == 0)
+        if (rand.nextInt(70) == 0)
         {
             ++i;
         }

@@ -138,10 +138,10 @@ public class ChunkProviderTofu implements IChunkGenerator {
                 int k = 1;
                 int l = -1;
 
-                Biome biome = biomesForGeneration[j + i * 16];
+                Biome biome = this.biomesForGeneration[j + i * 16];
 
                 IBlockState iblockstate2 = primer.getBlockState(i, 1, j);
-                if (iblockstate2.getBlock() == BlockLoader.ISHITOFU) {
+                if (iblockstate2.getBlock() == BlockLoader.tofuTerrain) {
                     primer.setBlockState(i, 0, j, BEDROCK);
                     primer.setBlockState(i, 1, j, BEDROCK);
                 }
@@ -158,10 +158,10 @@ public class ChunkProviderTofu implements IChunkGenerator {
                 int k = 1;
                 int l = -1;
 
-                Biome biome = biomesForGeneration[j + i * 16];
+                Biome biome = this.biomesForGeneration[j + i * 16];
                 IBlockState iblockstate = biome.topBlock;
                 IBlockState iblockstate1 = biome.fillerBlock;
-                IBlockState desertstone = BlockLoader.ISHITOFU.getDefaultState();
+                IBlockState desertstone = BlockLoader.tofuTerrain.getDefaultState();
 
                 for (int i1 = 127; i1 >= 0; --i1) {
 
@@ -170,7 +170,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
                     if (iblockstate2.getMaterial() == Material.AIR) {
                         l = -3;
 
-                    } else if (iblockstate2.getBlock() == BlockLoader.ISHITOFU) {
+                    } else if (iblockstate2.getBlock() == BlockLoader.tofuTerrain) {
                         if (l <= -1) {
                             if (l == -3) {
 

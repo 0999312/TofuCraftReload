@@ -194,7 +194,7 @@ public class BlockTofu extends BlockTofuBase {
         IBlockState baseBlock = world.getBlockState(pos.down());
 
         boolean isWeightValid = weightBlock != null
-                && (weightBlock.getMaterial() == Material.ROCK || weightBlock.getMaterial() == Material.IRON);
+                && (weightBlock.getMaterial() == Material.ROCK || weightBlock.getMaterial() == Material.IRON) && weightBlock != BlockLoader.ISHITOFU.getDefaultState();
 
         float baseHardness = baseBlock.getBlockHardness(world, pos.down());
         boolean isBaseValid = baseBlock.isNormalCube() &&
