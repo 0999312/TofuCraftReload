@@ -171,20 +171,20 @@ public class BlockTofu extends BlockTofuBase {
             }
         }
         if (canFreeze) {
-            /*if (isValidPlaceForDriedTofu(par1World, pos.getX(), pos.getY(),pos.getZ()))
+            if (isValidPlaceForDriedTofu(par1World, pos))
             {
-                int freezeStep = par1World.get(pos.getX(), pos.getY(),pos.getZ());
+                int freezeStep = getDry(state);
                 if (freezeStep < 7 && par5Random.nextInt((drainRate)) == 0)
                 {
                     ++freezeStep;
-                    par1World.setBlockMetadataWithNotify(par2, par3, par4, freezeStep, 2);
+                    par1World.setBlockState(pos, this.withDry(freezeStep), 2);
                 }
                 else if (freezeStep == 7)
                 {
-                    Block newBlock = TcBlocks.tofuDried;
-                    par1World.setBlock(par2, par3, par4, newBlock, 0, 2);
+                    Block newBlock = BlockLoader.TOFUDRIED;
+                    par1World.setBlockState(pos, newBlock.getDefaultState());
                 }
-            }*/
+            }
         }
 
     }
@@ -239,11 +239,10 @@ public class BlockTofu extends BlockTofuBase {
 //        }
 //    }
 
-    public static boolean isValidPlaceForDriedTofu(World world, int x, int y, int z) {
-        BlockPos pos = new BlockPos(x, y, z);
+    public static boolean isValidPlaceForDriedTofu(World world, BlockPos pos) {
 
         return world.getBiomeForCoordsBody(pos).getTemperature(pos) < 0.15F
-                && world.getHeight(x, z) - 10 < y
+                && world.getHeight(pos.getX(), pos.getZ()) - 10 < pos.getY()
                 && world.isAirBlock(pos.up());
     }
 

@@ -37,13 +37,14 @@ public class BlockLoader {
 
 	public static Block SALTFURNACE = new BlockSaltFurnace(false).setCreativeTab(CommonProxy.tab);
 	public static Block SALTFURNACE_LIT = new BlockSaltFurnace(true);
-	public static Block KINUTOFU = new BlockTofu(TofuType.kinu).setFragile().setHardness(0.2F).setResistance(0.2F);
+	public static Block KINUTOFU = new BlockTofu(TofuType.kinu).setFragile().setFreeze(3).setHardness(0.2F).setResistance(0.2F);
 	public static Block MOMENTOFU = new BlockTofu(TofuType.momen).setDrain(3);
 	public static Block ISHITOFU = new BlockTofu(TofuType.ishi,Material.ROCK).setDrain(5).setHardness(1.8F).setResistance(9.0F);
 	public static Block METALTOFU = new BlockTofu(TofuType.metal,Material.IRON).setHardness(5.0F).setResistance(11.0F);
 	public static Block ANNINTOFU = new BlockTofu(TofuType.annin);
 	public static Block EGGTOFU = new BlockTofu(TofuType.egg);
 	public static Block GRILD = new BlockTofu(TofuType.grilled);
+	public static Block TOFUDRIED = new BlockTofu(TofuType.dried);
 
 	public static BlockLeek LEEK = new BlockLeek();
 	public static BlockSoybean SOYBEAN = new BlockSoybean();
@@ -85,6 +86,7 @@ public class BlockLoader {
 		register(ANNINTOFU, new ItemBlock(ANNINTOFU), "blocktofuannin");
 		register(EGGTOFU, new ItemBlock(EGGTOFU), "blocktofuegg");
 		register(GRILD, new ItemBlock(GRILD), "blocktofugrilled");
+		register(TOFUDRIED, new ItemBlock(TOFUDRIED), "blocktofudried");
 		register(TOFUISHI_BRICK, new ItemBlock(TOFUISHI_BRICK), "tofuishi_brick");
 
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
@@ -131,6 +133,7 @@ public class BlockLoader {
 	@SideOnly(Side.CLIENT)
 	public static void registerRenders() {
 		registerRender(tofu_Cake);
+		registerRender(TOFUDRIED);
 		registerRender(SALTFURNACE);
 		registerRender(SALTFURNACE_LIT);
 		registerRender(KINUTOFU);
