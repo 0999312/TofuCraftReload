@@ -3,11 +3,12 @@ package cn.mcmod.tofucraft.world.gen.layer;
 import cn.mcmod.tofucraft.world.biome.BiomeTofu;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.crash.ICrashReportDetail;
 import net.minecraft.util.ReportedException;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
 public abstract class GenLayerTofu extends GenLayer {
 
@@ -15,8 +16,11 @@ public abstract class GenLayerTofu extends GenLayer {
      * the first array item is a linked list of the bioms, the second is the zoom function, the third is the same as the
      * first.
      */
-    public static GenLayer initializeAllBiomeGeneratorsTofu(long par0, WorldType par2WorldType)
+    public static GenLayer[] initializeAllBiomeGeneratorsTofu(long seed, WorldType worldType)
     {
+        byte biomeSize = getModdedBiomeSize(worldType, (byte) (worldType == WorldType.LARGE_BIOMES ? 7 : 5));
+
+
         GenLayerIsland genlayerisland = new GenLayerIsland(1L);
         GenLayerFuzzyZoom genlayerfuzzyzoom = new GenLayerFuzzyZoom(2000L, genlayerisland);
         GenLayerAddIsland genlayeraddisland = new GenLayerAddIsland(1L, genlayerfuzzyzoom);
@@ -34,27 +38,19 @@ public abstract class GenLayerTofu extends GenLayer {
         genlayeraddisland = new GenLayerAddIsland(4L, genlayerzoom);
 
         GenLayerTofu genlayer3 = GenLayerZoom.magnify(1000L, genlayeraddisland, 0);
-
-        byte b0 = 3;
-
-        if (par2WorldType == WorldType.LARGE_BIOMES)
-        {
-            b0 = 6;
-        }
-
         GenLayerTofu genlayer = GenLayerZoom.magnify(1000L, genlayer3, 0);
         GenLayerRiverInit genlayerriverinit = new GenLayerRiverInit(100L, genlayer);
-        Object object = GenLayerTofu.getBiomeLayer(par0, genlayer3, par2WorldType);
+        Object object = GenLayerTofu.getBiomeLayer(seed, genlayer3, worldType);
 
         GenLayerTofu genlayer1 = GenLayerZoom.magnify(1000L, genlayerriverinit, 2);
         GenLayerHills genlayerhills = new GenLayerHills(1000L, (GenLayerTofu)object, genlayer1);
         genlayer = GenLayerZoom.magnify(1000L, genlayerriverinit, 2);
-        genlayer = GenLayerZoom.magnify(1000L, genlayer, b0);
+        genlayer = GenLayerZoom.magnify(1000L, genlayer, biomeSize);
         GenLayerRiver genlayerriver = new GenLayerRiver(1L, genlayer);
         GenLayerSmooth genlayersmooth = new GenLayerSmooth(1000L, genlayerriver);
         object = GenLayerZoom.magnify(1000L, genlayerhills, 2);
 
-        for (int j = 0; j < b0; ++j)
+        for (int j = 0; j < biomeSize; ++j)
         {
             object = new GenLayerZoom((long)(1000 + j), (GenLayerTofu)object);
 
@@ -71,8 +67,14 @@ public abstract class GenLayerTofu extends GenLayer {
         GenLayerSmooth genlayersmooth1 = new GenLayerSmooth(1000L, (GenLayerTofu)object);
         GenLayerRiverMix genlayerrivermix = new GenLayerRiverMix(100L, genlayersmooth1, genlayersmooth);
 
-        genlayerrivermix.initWorldGenSeed(par0);
-        return genlayerrivermix;
+
+        GenLayerTofu layerVoronoi = new GenLayerTofuVoronoiZoom(10L, genlayerrivermix);
+
+        genlayerrivermix.initWorldGenSeed(seed);
+
+        layerVoronoi.initWorldGenSeed(seed);
+
+        return new GenLayer[] {genlayerrivermix, layerVoronoi};
     }
 
     public static GenLayerTofu getBiomeLayer(long worldSeed, GenLayerTofu parentLayer, WorldType worldType)
@@ -111,30 +113,14 @@ public abstract class GenLayerTofu extends GenLayer {
         }
     }
 
-    /**
-     * returns true if the biomeId is one of the various ocean biomes.
-     */
-    protected static boolean isBiomeOceanic(int p_151618_0_)
-    {
-        return false;
-    }
+    public static byte getModdedBiomeSize(WorldType worldType, byte original) {
 
-    /**
-     * selects a random integer from a set of provided integers
-     */
-    @Override
-    protected int selectRandom(int... par1)
-    {
-        return par1[this.nextInt(par1.length)];
-    }
+        WorldTypeEvent.BiomeSize event = new WorldTypeEvent.BiomeSize(worldType, original);
 
-    /**
-     * returns the most frequently occurring number of the set, or a random number from those provided
-     */
-    @Override
-    protected int selectModeOrRandom(int p_151617_1_, int p_151617_2_, int p_151617_3_, int p_151617_4_)
-    {
-        return p_151617_2_ == p_151617_3_ && p_151617_3_ == p_151617_4_ ? p_151617_2_ : (p_151617_1_ == p_151617_2_ && p_151617_1_ == p_151617_3_ ? p_151617_1_ : (p_151617_1_ == p_151617_2_ && p_151617_1_ == p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_3_ && p_151617_1_ == p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_2_ && p_151617_3_ != p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_3_ && p_151617_2_ != p_151617_4_ ? p_151617_1_ : (p_151617_1_ == p_151617_4_ && p_151617_2_ != p_151617_3_ ? p_151617_1_ : (p_151617_2_ == p_151617_3_ && p_151617_1_ != p_151617_4_ ? p_151617_2_ : (p_151617_2_ == p_151617_4_ && p_151617_1_ != p_151617_3_ ? p_151617_2_ : (p_151617_3_ == p_151617_4_ && p_151617_1_ != p_151617_2_ ? p_151617_3_ : this.selectRandom(new int[] {p_151617_1_, p_151617_2_, p_151617_3_, p_151617_4_}))))))))));
+        MinecraftForge.TERRAIN_GEN_BUS.post(event);
+
+        return (byte) event.getNewSize();
+
     }
 
     /**

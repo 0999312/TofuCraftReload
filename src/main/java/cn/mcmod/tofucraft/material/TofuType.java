@@ -27,9 +27,9 @@ public enum TofuType {
     TofuType() {
     }
 
-    public BlockTofuBase getBlock() {
+   /* public BlockTofuBase getBlock() {
         return this.getBlock();
-    }
+    }*/
 
   /*  public TofuInfo getBlockInfo()
     {

@@ -10,18 +10,15 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 public class WorldProviderTofu extends WorldProvider {
 
+    @Override
     public void init(){
         super.biomeProvider = new BiomeProviderTofu(this.world.getWorldInfo());
+        this.hasSkyLight = true;
     }
 
     @Override
     public DimensionType getDimensionType() {
         return TofuMain.TOFU_DIMENSION;
-    }
-
-    protected void createBiomeProvider()
-    {
-        this.biomeProvider = new BiomeProviderTofu(this.world.getWorldInfo());
     }
 
     /**

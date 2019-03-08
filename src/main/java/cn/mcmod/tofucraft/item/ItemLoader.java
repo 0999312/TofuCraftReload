@@ -3,37 +3,28 @@ package cn.mcmod.tofucraft.item;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
-import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import com.google.common.collect.Maps;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.init.PotionTypes;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemDoor;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionHelper;
-import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.registries.ForgeRegistry;
 
 import java.util.EnumMap;
-import java.util.Objects;
 
 public class ItemLoader {
 	public static EnumMap<TofuType, ItemStack> tofuItems = Maps.newEnumMap(TofuType.class);
@@ -190,6 +181,12 @@ public class ItemLoader {
 	public static ItemSoybeans soybeans = new ItemSoybeans();
 
 	public static Item nigari = new ItemNigari();
+	public static Item tofustick = new ItemTofuStick();
+
+	public static ItemDoor TOFUKINU_DOOR = new ItemDoor(BlockLoader.TOFUKINU_DOOR);
+	public static ItemDoor TOFUMOMEN_DOOR = new ItemDoor(BlockLoader.TOFUMOMEN_DOOR);
+	public static ItemDoor TOFUISHI_DOOR = new ItemDoor(BlockLoader.TOFUISHI_DOOR);
+	public static ItemDoor TOFUMETAL_DOOR = new ItemDoor(BlockLoader.TOFUMETAL_DOOR);
 	
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
@@ -202,6 +199,7 @@ public class ItemLoader {
 		register(foodsetContain);
 		register(nigari);
 		register(soybeans);
+		register(tofustick);
 
 		MinecraftForge.addGrassSeed(new ItemStack(soybeans), 2);
 
@@ -214,6 +212,11 @@ public class ItemLoader {
 		register(momenTofuPickaxe);
 		register(ishiTofuPickaxe);
 		register(metalTofuPickaxe);
+
+		register(TOFUKINU_DOOR.setUnlocalizedName(TofuMain.MODID+"."+"tofudoor_kinu"));
+		register(TOFUMOMEN_DOOR.setUnlocalizedName(TofuMain.MODID+"."+"tofudoor_momen"));
+		register(TOFUISHI_DOOR.setUnlocalizedName(TofuMain.MODID+"."+"tofudoor_ishi"));
+		register(TOFUMETAL_DOOR.setUnlocalizedName(TofuMain.MODID+"."+"tofudoor_metal"));
 
 		tofuItemRegister(TofuType.kinu,new ItemStack(tofu_food));
 		tofuItemRegister(TofuType.momen,new ItemStack(tofu_food,1,1));
@@ -243,6 +246,7 @@ public class ItemLoader {
 		registerRender(foodsetContain);
 		registerRender(nigari);
 		registerRender(soybeans);
+		registerRender(tofustick);
 
 		registerRender(kinuTofuSword);
 		registerRender(momenTofuSword);
@@ -253,6 +257,11 @@ public class ItemLoader {
 		registerRender(momenTofuPickaxe);
 		registerRender(ishiTofuPickaxe);
 		registerRender(metalTofuPickaxe);
+
+		registerRender(TOFUKINU_DOOR);
+		registerRender(TOFUMOMEN_DOOR);
+		registerRender(TOFUISHI_DOOR);
+		registerRender(TOFUMETAL_DOOR);
     }
 
 	private static void register(Item item)

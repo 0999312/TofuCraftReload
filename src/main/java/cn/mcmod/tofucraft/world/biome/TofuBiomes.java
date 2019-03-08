@@ -12,6 +12,12 @@ public class TofuBiomes {
             .setWaterColor(9286496)
             .setTemperature(0.422f)
             .setRainfall(0.917f));
+    public static BiomeTofu ZUNDATOFU_PLAINS =new BiomeZundaTofuPlains(new Biome.BiomeProperties("ZundaTofuPlains")
+            .setBaseHeight(BiomeTofu.height_Tofu_Base)
+            .setHeightVariation(BiomeTofu.height_Tofu_Variation)
+            .setWaterColor(9286496)
+            .setTemperature(0.422f)
+            .setRainfall(0.917f));
     public static BiomeTofu TOFU_FOREST = new BiomeTofuForest(new Biome.BiomeProperties("TofuForest")
                 .setBaseHeight(BiomeTofu.height_Tofu_Base)
                 .setHeightVariation(BiomeTofu.height_Tofu_Variation)
@@ -66,6 +72,7 @@ public class TofuBiomes {
 
     public static void register(IForgeRegistry<Biome> registry) {
 
+        registry.register(ZUNDATOFU_PLAINS.setRegistryName("zunda_tofuplain"));
         registry.register(TOFU_PLAINS.setRegistryName("tofuplain"));
         registry.register(TOFU_BUILDINGS.setRegistryName("tofubuilding"));
         registry.register(TOFU_FOREST.setRegistryName("tofuforest"));
@@ -74,6 +81,8 @@ public class TofuBiomes {
         registry.register(TOFU_PLAIN_HILLS.setRegistryName("tofuplain_hills"));
         registry.register(TOFU_RIVER.setRegistryName("tofuriver"));
 
+        decorationBiomes = new BiomeTofu[]{
+                TOFU_PLAINS, TOFU_LEEK_PLAINS, TOFU_PLAINS, TOFU_FOREST, TOFU_BUILDINGS, TOFU_EXTREME_HILLS,ZUNDATOFU_PLAINS};
     }
 
 

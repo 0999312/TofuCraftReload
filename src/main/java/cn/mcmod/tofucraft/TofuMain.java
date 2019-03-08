@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft;
 
+import cn.mcmod.tofucraft.entity.TofuEntityRegister;
 import cn.mcmod.tofucraft.world.biome.TofuBiomes;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.world.WorldProviderTofu;
@@ -55,6 +56,9 @@ public class TofuMain
 	public void preInit(FMLPreInitializationEvent event)
 	{
 	    proxy.preInit(event);
+
+		TofuEntityRegister.entitySpawn();
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new TofuGuiHandler());
 
 		TOFU_DIMENSION = DimensionType.register("Tofu World", "_tofu", DimensionManager.getNextFreeDimId(), WorldProviderTofu.class, false);

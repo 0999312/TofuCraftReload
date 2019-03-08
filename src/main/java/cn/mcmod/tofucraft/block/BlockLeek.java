@@ -2,10 +2,12 @@ package cn.mcmod.tofucraft.block;
 
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
+import cn.mcmod.tofucraft.item.ItemLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -29,7 +31,7 @@ public class BlockLeek extends BlockBush {
     protected boolean canSustainBush(IBlockState state) {
 
         Block block = state.getBlock();
-        return block == BlockLoader.MOMENTOFU || block == BlockLoader.KINUTOFU;
+        return block == BlockLoader.MOMENTOFU || block == BlockLoader.KINUTOFU|| block == BlockLoader.tofuTerrain|| block == BlockLoader.zundatofuTerrain;
     }
 
     @Override
@@ -50,6 +52,18 @@ public class BlockLeek extends BlockBush {
     @Override
     public net.minecraftforge.common.EnumPlantType getPlantType(net.minecraft.world.IBlockAccess world, BlockPos pos) {
         return EnumPlantType.Plains;
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return ItemLoader.material;
+    }
+
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 16;
     }
 
 }
