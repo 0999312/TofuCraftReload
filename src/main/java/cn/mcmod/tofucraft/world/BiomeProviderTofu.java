@@ -31,6 +31,7 @@ public class BiomeProviderTofu extends BiomeProvider {
     public static ArrayList<Biome> allowedBiomes = new ArrayList<Biome>(Arrays.asList(
             TofuBiomes.TOFU_PLAINS,
             TofuBiomes.TOFU_FOREST,
+            TofuBiomes.ZUNDATOFU_PLAINS,
             TofuBiomes.TOFU_BUILDINGS,
             TofuBiomes.TOFU_FOREST_HILLS));
 

@@ -2,11 +2,13 @@ package cn.mcmod.tofucraft.block;
 
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
+import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
 import cn.mcmod.tofucraft.block.fluid.BlockNigari;
 import cn.mcmod.tofucraft.block.fluid.BlockSoyMilk;
 import cn.mcmod.tofucraft.block.fluid.NigariFluid;
 import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
 import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
+import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import net.minecraft.block.Block;
@@ -16,6 +18,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemDoor;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.Fluid;
@@ -57,6 +60,11 @@ public class BlockLoader {
 	public static BlockTofuTorch TOFUISHI_TORCH = new BlockTofuTorch(SoundType.STONE);
 	public static BlockTofuTorch TOFUMETAL_TORCH = new BlockTofuTorch(SoundType.METAL);
 
+	public static BlockTofuDoor TOFUKINU_DOOR = new BlockTofuDoor(TofuMaterial.tofu,TofuType.kinu);
+	public static BlockTofuDoor TOFUMOMEN_DOOR = new BlockTofuDoor(TofuMaterial.tofu,TofuType.momen);
+	public static BlockTofuDoor TOFUISHI_DOOR = new BlockTofuDoor(Material.ROCK,TofuType.ishi);
+	public static BlockTofuDoor TOFUMETAL_DOOR = new BlockTofuDoor(Material.IRON,TofuType.metal);
+
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
 		FluidRegistry.addBucketForFluid(SOYMILK_FLUID);
@@ -93,6 +101,11 @@ public class BlockLoader {
 		register(TOFUMOMEN_TORCH, new ItemBlock(TOFUMOMEN_TORCH), "tofutorch_momen");
 		register(TOFUISHI_TORCH, new ItemBlock(TOFUISHI_TORCH), "tofutorch_ishi");
 		register(TOFUMETAL_TORCH, new ItemBlock(TOFUMETAL_TORCH), "tofutorch_metal");
+
+		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
+		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
+		registerNoItem(TOFUISHI_DOOR, "tofudoor_ishi");
+		registerNoItem(TOFUMETAL_DOOR, "tofudoor_metal");
 	}
 
 	private static void register(Block block, Item itemBlock, String string) {
@@ -106,6 +119,13 @@ public class BlockLoader {
 			ForgeRegistries.ITEMS.register(itemBlock);
 		}
 		GameData.getBlockItemMap().put(block, itemBlock);
+	}
+
+	private static void registerNoItem(Block block, String string) {
+		block.setRegistryName(string);
+		block.setUnlocalizedName(TofuMain.MODID+"."+string);
+
+		ForgeRegistries.BLOCKS.register(block);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -132,6 +152,11 @@ public class BlockLoader {
 		registerRender(TOFUMOMEN_TORCH);
 		registerRender(TOFUISHI_TORCH);
 		registerRender(TOFUMETAL_TORCH);
+
+		registerRender(TOFUKINU_DOOR);
+		registerRender(TOFUMOMEN_DOOR);
+		registerRender(TOFUISHI_DOOR);
+		registerRender(TOFUMETAL_DOOR);
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {
