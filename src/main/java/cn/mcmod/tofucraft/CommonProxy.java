@@ -6,9 +6,12 @@ import cn.mcmod.tofucraft.entity.TofuEntityRegister;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntityRegistry;
+import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
+import cn.mcmod.tofucraft.world.gen.structure.tofuvillage.StructureTofuVillagePieces;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,14 +25,11 @@ public class CommonProxy {
         new BlockLoader(event);
         new ItemLoader(event);
         TofuEntityRegister.entityRegister();
-
-
     }
 
     public void init(FMLInitializationEvent event) {
         TileEntityRegistry.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(TofuMain.instance, new TofuGuiHandler());
-
     }
 
     public void postInit(FMLPostInitializationEvent event) {

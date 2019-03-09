@@ -24,6 +24,7 @@ public class BlockTofuTerrain extends BlockTofuBase {
         this.setSoundType(sound);
         this.setHardness(0.35F);
         this.setResistance(1.0F);
+        this.setHarvestLevel("shovel", 0);
     }
 
     @Override

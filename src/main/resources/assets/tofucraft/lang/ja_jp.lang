@@ -69,8 +69,10 @@ tile.tofucraft.log.apricot.name=杏の原木
 tile.tofucraft.sapling_apricot.name=杏の苗木
 tile.tofucraft.sapling_tofu.name=豆腐の苗木
 
-tile.tofucraft.stairsTofuKinu.name=絹ごし豆腐の階段
-tile.tofucraft.stairsTofuMomen.name=木綿豆腐の階段
+
+tile.tofucraft.tofustair_kinu.name=絹ごし豆腐の階段
+tile.tofucraft.tofustair_momen.name=木綿豆腐の階段
+tile.tofucraft.tofustair_ishibrick.name=石豆腐レンガの階段
 tile.tofucraft.stairsTofuIshi.name=石豆腐の階段
 tile.tofucraft.stairsTofuMetal.name=鋼豆腐の階段
 tile.tofucraft.stairsTofuGrilled.name=焼き豆腐の階段
@@ -375,3 +377,7 @@ tofucraft.update.link=§nこちらからダウンロード§r
 tofucraft.wrongPotionId1=[TofuCraft] §c＊警告＊§r ポーションIDがサーバと異なります。
 tofucraft.wrongPotionId2=このままだとクラッシュするので設定ファイルを次の通り変更してください。
 tofucraft.wrongPotionId3=I.glowing=%s   I.filling=%s
+
+entity.Tofunian.tofucrafter=豆腐加工のトウフニアン
+entity.Tofunian.fisherman=漁業のトウフニアン
+entity.Tofunian.guard=護衛のトウフニアン

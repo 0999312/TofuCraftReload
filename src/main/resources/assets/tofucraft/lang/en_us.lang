@@ -69,8 +69,9 @@ tile.tofucraft.log.apricot.name=Apricot Wood
 tile.tofucraft.sapling_apricot.name=Apricot Sapling
 tile.tofucraft.sapling_tofu.name=Tofu Sapling
 
-tile.tofucraft.stairsTofuKinu.name=Kinugoshi Tofu Stairs
-tile.tofucraft.stairsTofuMomen.name=Momen Tofu Stairs
+tile.tofucraft.tofustair_kinu.name=Kinugoshi Tofu Stairs
+tile.tofucraft.tofustair_momen.name=Momen Tofu Stairs
+tile.tofucraft.tofustair_ishibrick.name=IshiTofu BrickStairs
 tile.tofucraft.stairsTofuIshi.name=Solid Tofu Stairs
 tile.tofucraft.stairsTofuMetal.name=Metal Tofu Stairs
 tile.tofucraft.stairsTofuGrilled.name=Grilled Tofu Stairs
@@ -260,7 +261,10 @@ item.tofucraft.kinakomochi.name=Kinako Mochi
 item.tofucraft.chikuwa.name=Chikuwa
 item.tofucraft.tofusteak.name=Tofu Steak
 item.tofucraft.tofuhoe.name=Tofunian's Hoe
-item.tofucraft.tofudoor.name=%s Door
+item.tofucraft.tofudoor_kinu.name=KinuTofu Door
+item.tofucraft.tofudoor_momen.name=MomenTofu Door
+item.tofucraft.tofudoor_ishi.name=IshiTofu Door
+item.tofucraft.tofudoor_metal.name=MetalTofu Door
 item.tofucraft.tofuhamburgt.name=Tempura of Tofu Hamburg
 item.tofucraft.tofuhamburgta.name=Tempura of Tofu Hamburg w/ Sauce
 item.tofucraft.ricesoborotofu.name=Minced Tofu on Rice
@@ -379,3 +383,7 @@ tofucraft.update.link=§nDownload here§r
 tofucraft.wrongPotionId1=[TofuCraft] §c*WARNING*§r Different potion IDs with server.
 tofucraft.wrongPotionId2=Please change them in the setting file as follows, or the game will CRASH.
 tofucraft.wrongPotionId3=I.glowing=%s   I.filling=%s
+
+entity.Tofunian.tofucrafter=Tofu Craftsman
+entity.Tofunian.fisherman=Fisher Tofunian
+entity.Tofunian.guard=Guard Tofunian

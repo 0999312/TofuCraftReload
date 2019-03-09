@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.entity;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.client.RenderTofuCow;
 import cn.mcmod.tofucraft.client.RenderTofuSlime;
+import cn.mcmod.tofucraft.client.render.RenderTofunian;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
@@ -19,8 +20,9 @@ public class TofuEntityRegister {
 
 
     public static void entityRegister() {
-        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofucow"), EntityTofuCow.class, prefix("TofuCow"), 1, TofuMain.instance, 70, 3, false, 0xEBE8E8, 0xABA9A9);
-        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofuslime"), EntityTofuSlime.class, prefix("TofuSlime"), 2, TofuMain.instance, 80, 3, false, 0xEBE8E8, 0xABA9A9);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofucow"), EntityTofuCow.class, prefix("TofuCow"), 1, TofuMain.instance, 70, 3, false, 0xEBE8E8, 0xA3A3A3);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofuslime"), EntityTofuSlime.class, prefix("TofuSlime"), 2, TofuMain.instance, 80, 3, false, 0xEBE8E8, 0x2E2E2E);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofunian"), EntityTofunian.class, prefix("Tofunian"), 3, TofuMain.instance, 80, 3, false, 0xEBE8E8, 0xCACFA1);
     }
 
     private static String prefix(String path) {
@@ -33,6 +35,7 @@ public class TofuEntityRegister {
     public static void entityRender() {
         RenderingRegistry.registerEntityRenderingHandler(EntityTofuCow.class, RenderTofuCow::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTofuSlime.class, RenderTofuSlime::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTofunian.class, RenderTofunian::new);
     }
     public static void entitySpawn() {
 

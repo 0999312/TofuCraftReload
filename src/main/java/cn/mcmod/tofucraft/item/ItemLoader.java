@@ -183,6 +183,8 @@ public class ItemLoader {
 	public static Item nigari = new ItemNigari();
 	public static Item tofustick = new ItemTofuStick();
 
+	public static Item zundaruby = new Item();
+
 	public static ItemDoor TOFUKINU_DOOR = new ItemDoor(BlockLoader.TOFUKINU_DOOR);
 	public static ItemDoor TOFUMOMEN_DOOR = new ItemDoor(BlockLoader.TOFUMOMEN_DOOR);
 	public static ItemDoor TOFUISHI_DOOR = new ItemDoor(BlockLoader.TOFUISHI_DOOR);
@@ -207,6 +209,8 @@ public class ItemLoader {
 		register(momenTofuSword);
 		register(ishiTofuSword);
 		register(metalTofuSword);
+
+		register(zundaruby.setUnlocalizedName(TofuMain.MODID+"."+"zundaruby"));
 
 		register(kinuTofuPickaxe);
 		register(momenTofuPickaxe);
@@ -247,6 +251,8 @@ public class ItemLoader {
 		registerRender(nigari);
 		registerRender(soybeans);
 		registerRender(tofustick);
+
+		registerRender(zundaruby);
 
 		registerRender(kinuTofuSword);
 		registerRender(momenTofuSword);
