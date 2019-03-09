@@ -1,11 +1,15 @@
 package cn.mcmod.tofucraft;
 
 import cn.mcmod.tofucraft.entity.TofuEntityRegister;
-import cn.mcmod.tofucraft.world.biome.TofuBiomes;
+import cn.mcmod.tofucraft.entity.TofuVillages;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.world.WorldProviderTofu;
+import cn.mcmod.tofucraft.world.biome.TofuBiomes;
+import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
+import cn.mcmod.tofucraft.world.gen.structure.tofuvillage.StructureTofuVillagePieces;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -23,58 +27,59 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION)
-public class TofuMain
-{
+public class TofuMain {
     public static final String MODID = "tofucraft";
     public static final String NAME = "TofuCraftReload";
     public static final String VERSION = "@version@";
 
-	@Instance(TofuMain.MODID)
+    @Instance(TofuMain.MODID)
     public static TofuMain instance;
-    
-	@SidedProxy(clientSide = "cn.mcmod.tofucraft.ClientProxy",serverSide = "cn.mcmod.tofucraft.CommonProxy")
-	public static CommonProxy proxy;
 
-	public static DimensionType TOFU_DIMENSION;
+    @SidedProxy(clientSide = "cn.mcmod.tofucraft.ClientProxy", serverSide = "cn.mcmod.tofucraft.CommonProxy")
+    public static CommonProxy proxy;
 
-	@EventHandler
-	public void construct(FMLConstructionEvent event) {
-		MinecraftForge.EVENT_BUS.register(this);
+    public static DimensionType TOFU_DIMENSION;
 
-		FluidRegistry.enableUniversalBucket();
-	}
+    @EventHandler
+    public void construct(FMLConstructionEvent event) {
+        MinecraftForge.EVENT_BUS.register(this);
 
-	@SubscribeEvent
-	public void registerBiomes(RegistryEvent.Register<Biome> event) {
-		IForgeRegistry<Biome> registry = event.getRegistry();
+        FluidRegistry.enableUniversalBucket();
+    }
 
-		TofuBiomes.register(registry);
+    @SubscribeEvent
+    public void registerBiomes(RegistryEvent.Register<Biome> event) {
+        IForgeRegistry<Biome> registry = event.getRegistry();
 
-	}
+        TofuBiomes.register(registry);
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-	    proxy.preInit(event);
+    }
 
-		TofuEntityRegister.entitySpawn();
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
+        proxy.preInit(event);
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new TofuGuiHandler());
+        TofuEntityRegister.entitySpawn();
 
-		TOFU_DIMENSION = DimensionType.register("Tofu World", "_tofu", DimensionManager.getNextFreeDimId(), WorldProviderTofu.class, false);
-		DimensionManager.registerDimension(TOFU_DIMENSION.getId(), TOFU_DIMENSION);
-	}
-	
-	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-	    proxy.init(event);
-	
-	}
-	
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
-	    proxy.postInit(event);
-	}
+        MapGenStructureIO.registerStructure(MapGenTofuVillage.Start.class,"TofuVillage");
+        StructureTofuVillagePieces.registerVillagePieces();
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new TofuGuiHandler());
+
+
+        TOFU_DIMENSION = DimensionType.register("Tofu World", "_tofu", DimensionManager.getNextFreeDimId(), WorldProviderTofu.class, false);
+        DimensionManager.registerDimension(TOFU_DIMENSION.getId(), TOFU_DIMENSION);
+
+        TofuVillages.register();
+    }
+
+    @EventHandler
+    public void init(FMLInitializationEvent event) {
+        proxy.init(event);
+    }
+
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
+        proxy.postInit(event);
+    }
 }

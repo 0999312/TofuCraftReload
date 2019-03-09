@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.world;
 
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.world.gen.MapGenTofuCaves;
+import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -61,6 +62,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
     private int chunkZ = 0;
 
     private MapGenBase caveGenerator = new MapGenTofuCaves();
+    private MapGenTofuVillage villageGenerator = new MapGenTofuVillage();
     public ChunkProviderTofu(World worldIn, long seed) {
         {
             caveGenerator = net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(caveGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE);
@@ -117,6 +119,8 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
 
         if (this.mapFeaturesEnabled) {
+            this.villageGenerator.generate(this.world, x, z, chunkprimer);
+
         }
 
         Chunk chunk = new Chunk(this.world, chunkprimer, x, z);
@@ -469,9 +473,10 @@ public class ChunkProviderTofu implements IChunkGenerator {
         int j = z * 16;
         int i2, genX, genY, genZ;
 
-        ForgeEventFactory.onChunkPopulate(true, this, world, rand, chunkX, chunkZ, false);
+        ChunkPos chunkpos = new ChunkPos(x, z);
 
         if (mapFeaturesEnabled) {
+            this.villageGenerator.generateStructure(this.world, this.rand, chunkpos);
         }
 
         biome.decorate(world, rand, blockpos);
@@ -501,6 +506,9 @@ public class ChunkProviderTofu implements IChunkGenerator {
     public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos) {
         if (!this.mapFeaturesEnabled) {
             return false;
+        } else if ("TofuVillage".equals(structureName) && this.villageGenerator != null)
+        {
+            return this.villageGenerator.isInsideStructure(pos);
         } else {
             return false;
         }
@@ -511,6 +519,9 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
         if (!this.mapFeaturesEnabled) {
             return null;
+        } else if ("TofuVillage".equals(structureName) && this.villageGenerator != null)
+        {
+            return this.villageGenerator.getNearestStructurePos(worldIn, position, findUnexplored);
         } else {
             return null;
         }
@@ -521,6 +532,8 @@ public class ChunkProviderTofu implements IChunkGenerator {
     @Override
     public void recreateStructures(Chunk chunk, int x, int z) {
         if (this.mapFeaturesEnabled) {
+            this.villageGenerator.generate(this.world, x, z, null);
+
         }
     }
 }

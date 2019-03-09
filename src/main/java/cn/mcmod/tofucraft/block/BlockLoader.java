@@ -61,10 +61,14 @@ public class BlockLoader {
 	public static BlockTofuTorch TOFUISHI_TORCH = new BlockTofuTorch(SoundType.STONE);
 	public static BlockTofuTorch TOFUMETAL_TORCH = new BlockTofuTorch(SoundType.METAL);
 
-	public static BlockTofuDoor TOFUKINU_DOOR = new BlockTofuDoor(TofuMaterial.tofu,TofuType.kinu);
-	public static BlockTofuDoor TOFUMOMEN_DOOR = new BlockTofuDoor(TofuMaterial.tofu,TofuType.momen);
+	public static BlockTofuDoor TOFUKINU_DOOR = new BlockTofuDoor(TofuMaterial.WOOD,TofuType.kinu);
+	public static BlockTofuDoor TOFUMOMEN_DOOR = new BlockTofuDoor(TofuMaterial.WOOD,TofuType.momen);
 	public static BlockTofuDoor TOFUISHI_DOOR = new BlockTofuDoor(Material.ROCK,TofuType.ishi);
 	public static BlockTofuDoor TOFUMETAL_DOOR = new BlockTofuDoor(Material.IRON,TofuType.metal);
+
+	public static BlockTofuStairs TOFUKINU_STAIRS = new BlockTofuStairs(KINUTOFU.getDefaultState());
+	public static BlockTofuStairs TOFUMOMEN_STAIRS = new BlockTofuStairs(MOMENTOFU.getDefaultState());
+	public static BlockTofuStairs TOFUISHI_BRICK_STAIRS = new BlockTofuStairs(TOFUISHI_BRICK.getDefaultState());
 
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
@@ -98,6 +102,10 @@ public class BlockLoader {
 		
 		register(tofu_Cake, new ItemBlock(tofu_Cake), "tofucake");
 		register(tofu_PORTAL, new ItemBlock(tofu_PORTAL), "tofuportal");
+
+		register(TOFUKINU_STAIRS, new ItemBlock(TOFUKINU_STAIRS), "tofustair_kinu");
+		register(TOFUMOMEN_STAIRS, new ItemBlock(TOFUMOMEN_STAIRS), "tofustair_momen");
+		register(TOFUISHI_BRICK_STAIRS, new ItemBlock(TOFUISHI_BRICK_STAIRS), "tofustair_ishibrick");
 
 		register(TOFUKINU_TORCH, new ItemBlock(TOFUKINU_TORCH), "tofutorch_kinu");
 		register(TOFUMOMEN_TORCH, new ItemBlock(TOFUMOMEN_TORCH), "tofutorch_momen");
@@ -160,6 +168,10 @@ public class BlockLoader {
 		registerRender(TOFUMOMEN_DOOR);
 		registerRender(TOFUISHI_DOOR);
 		registerRender(TOFUMETAL_DOOR);
+
+		registerRender(TOFUKINU_STAIRS);
+		registerRender(TOFUISHI_BRICK_STAIRS);
+		registerRender(TOFUMOMEN_STAIRS);
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {

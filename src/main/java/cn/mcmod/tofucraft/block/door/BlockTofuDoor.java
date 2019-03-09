@@ -38,10 +38,10 @@ public class BlockTofuDoor extends BlockDoor {
         super(material);
         this.tofuType = tofuType;
         this.setCreativeTab(CommonProxy.tab);
-        if(material== TofuMaterial.tofu) {
+        if(material== Material.WOOD) {
             this.setSoundType(SoundType.CLOTH);
-            this.setHardness(0.3F);
-            this.setResistance(0.9F);
+            this.setHardness(0.4F);
+            this.setResistance(1.0F);
         }else {
             if(material== Material.IRON){
                 this.setSoundType(SoundType.METAL);
@@ -62,7 +62,7 @@ public class BlockTofuDoor extends BlockDoor {
     {
         if (this.tofuType == TofuType.kinu)
         {
-            TofuBlockUtils.onFallenUponFragileTofu(par1World, par5Entity, this, par6, tofuWeightingHandler);
+           /* TofuBlockUtils.onFallenUponFragileTofu(par1World, par5Entity, this, par6, tofuWeightingHandler);*/
         }
     }
 

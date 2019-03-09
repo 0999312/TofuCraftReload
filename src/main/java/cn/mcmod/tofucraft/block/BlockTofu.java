@@ -43,6 +43,7 @@ public class BlockTofu extends BlockTofuBase {
         this.setDefaultState(this.blockState.getBaseState().withProperty(DRY, Integer.valueOf(0)));
 
         this.setSoundType(SoundType.CLOTH);
+        this.setHarvestLevel("shovel", 0);
         this.tofuType = tofuType;
     }
 
@@ -56,6 +57,7 @@ public class BlockTofu extends BlockTofuBase {
         this.tofuType = tofuType;
         if (material == Material.IRON) {
             this.setSoundType(SoundType.METAL);
+            this.setHarvestLevel("pickaxe", 1);
         }
     }
 
