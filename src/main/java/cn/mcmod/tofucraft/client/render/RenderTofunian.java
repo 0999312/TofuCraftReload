@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.client.render;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.client.model.ModelTofunian;
 import cn.mcmod.tofucraft.entity.EntityTofunian;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
@@ -14,12 +15,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderTofunian extends RenderBiped<EntityTofunian> {
     private static final ResourceLocation GUARDTEXTURES = new ResourceLocation(TofuMain.MODID, "textures/mob/hunter_tofunian.png");
+    private static final ResourceLocation COOKTEXTURES = new ResourceLocation(TofuMain.MODID, "textures/mob/cook_tofunian.png");
     private static final ResourceLocation TEXTURES = new ResourceLocation(TofuMain.MODID, "textures/mob/tofunian.png");
 
     public RenderTofunian(RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelTofunian(), 0.5F);
         //this.field_82434_o = this.modelBipedMain;
-        this.addLayer(new LayerHeldItem(this));
         this.addLayer(new LayerBipedArmor(this)        {
             protected void initArmor()
             {
@@ -35,9 +36,14 @@ public class RenderTofunian extends RenderBiped<EntityTofunian> {
         if(entity.getTofuProfession()== EntityTofunian.TofuProfession.GUARD){
             return GUARDTEXTURES;
         }else if(entity.getTofuProfession()== EntityTofunian.TofuProfession.TOFUCOOK){
-            return GUARDTEXTURES;
+            return COOKTEXTURES;
         }else{
             return TEXTURES;
         }
+    }
+
+    public void transformHeldFull3DItemLayer()
+    {
+        GlStateManager.translate(0.0F, 0.1875F, 0.0F);
     }
 }
