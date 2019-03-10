@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Z",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:wheat"
+    },"Z": {
+      "item": "tofucraft:material",
+      "data": 4
+    }
+  },
+  "result": {
+    "item": "tofucraft:zundamochi"
+  }
+}

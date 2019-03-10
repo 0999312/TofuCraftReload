@@ -1,4 +1,4 @@
-package cn.mcmod.tofucraft.client;
+package cn.mcmod.tofucraft.client.render;
 
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.entity.EntityTofuCow;

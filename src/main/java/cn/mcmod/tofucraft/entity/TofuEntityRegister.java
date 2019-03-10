@@ -1,13 +1,15 @@
 package cn.mcmod.tofucraft.entity;
 
 import cn.mcmod.tofucraft.TofuMain;
-import cn.mcmod.tofucraft.client.RenderTofuCow;
-import cn.mcmod.tofucraft.client.RenderTofuSlime;
+import cn.mcmod.tofucraft.client.render.RenderTofuCow;
+import cn.mcmod.tofucraft.client.render.RenderTofuSlime;
 import cn.mcmod.tofucraft.client.render.RenderTofunian;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeManager;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TofuEntityRegister {
+
+    public static EnumCreatureAttribute tofunian = EnumHelper.addCreatureAttribute("tofunian");
 
 
     public static void entityRegister() {
