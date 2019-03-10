@@ -1,6 +1,6 @@
 package cn.mcmod.tofucraft.client.render.layer;
 
-import cn.mcmod.tofucraft.client.RenderTofuSlime;
+import cn.mcmod.tofucraft.client.render.RenderTofuSlime;
 import cn.mcmod.tofucraft.entity.EntityTofuSlime;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelSlime;

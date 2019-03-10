@@ -3,16 +3,15 @@ package cn.mcmod.tofucraft.item;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
+import cn.mcmod.tofucraft.material.TofuArmorMaterial;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import com.google.common.collect.Maps;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemDoor;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
@@ -115,7 +114,9 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"activatedhelltofu",
 			TofuMain.MODID+"."+"tofusomen",
 			TofuMain.MODID+"."+"glassbowl",
-			TofuMain.MODID+"."+"rollingpin"
+			TofuMain.MODID+"."+"rollingpin",
+			TofuMain.MODID+"."+"edamameboiled",
+			TofuMain.MODID+"."+"soybeansparched"
 	});
 	public static ItemFood zundaMochi = (ItemFood)new ItemFood(3, 0.8f, false)
 			.setPotionEffect(new PotionEffect(Potion.getPotionById(10), 20, 2), 1.0F)
@@ -178,6 +179,26 @@ public class ItemLoader {
 	public static ItemPickaxeBasic ishiTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.SOLID,"toolsolidpickaxe");
 	public static ItemPickaxeBasic metalTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.METAL,"toolmetalpickaxe");
 
+	public static ItemArmorBase kinuhelmet = new ItemArmorBase(TofuArmorMaterial.KINU, EntityEquipmentSlot.HEAD,"armorkinuhelmet").setArmorTexture("tofucraft:textures/armor/armor_kinu_1.png");
+	public static ItemArmorBase kinuchestplate = new ItemArmorBase(TofuArmorMaterial.KINU, EntityEquipmentSlot.CHEST,"armorkinuchestplate").setArmorTexture("tofucraft:textures/armor/armor_kinu_1.png");
+	public static ItemArmorBase kinuleggins = new ItemArmorBase(TofuArmorMaterial.KINU, EntityEquipmentSlot.LEGS,"armorkinuleggins").setArmorTexture("tofucraft:textures/armor/armor_kinu_2.png");
+	public static ItemArmorBase kinuboots = new ItemArmorBase(TofuArmorMaterial.KINU, EntityEquipmentSlot.FEET,"armorkinuboots").setArmorTexture("tofucraft:textures/armor/armor_kinu_1.png");
+
+	public static ItemArmorBase momenhelmet = new ItemArmorBase(TofuArmorMaterial.MOMEN, EntityEquipmentSlot.HEAD,"armormomenhelmet").setArmorTexture("tofucraft:textures/armor/armor_momen_1.png");
+	public static ItemArmorBase momenchestplate = new ItemArmorBase(TofuArmorMaterial.MOMEN, EntityEquipmentSlot.CHEST,"armormomenchestplate").setArmorTexture("tofucraft:textures/armor/armor_momen_1.png");
+	public static ItemArmorBase momenleggins = new ItemArmorBase(TofuArmorMaterial.MOMEN, EntityEquipmentSlot.LEGS,"armormomenleggins").setArmorTexture("tofucraft:textures/armor/armor_momen_2.png");
+	public static ItemArmorBase momenboots = new ItemArmorBase(TofuArmorMaterial.MOMEN, EntityEquipmentSlot.FEET,"armormomenboots").setArmorTexture("tofucraft:textures/armor/armor_momen_1.png");
+
+	public static ItemArmorBase solidhelmet = new ItemArmorBase(TofuArmorMaterial.SOLID, EntityEquipmentSlot.HEAD,"armorsolidhelmet").setArmorTexture("tofucraft:textures/armor/armor_solid_1.png");
+	public static ItemArmorBase solidchestplate = new ItemArmorBase(TofuArmorMaterial.SOLID, EntityEquipmentSlot.CHEST,"armorsolidchestplate").setArmorTexture("tofucraft:textures/armor/armor_solid_1.png");
+	public static ItemArmorBase solidleggins = new ItemArmorBase(TofuArmorMaterial.SOLID, EntityEquipmentSlot.LEGS,"armorsolidleggins").setArmorTexture("tofucraft:textures/armor/armor_solid_2.png");
+	public static ItemArmorBase solidboots = new ItemArmorBase(TofuArmorMaterial.SOLID, EntityEquipmentSlot.FEET,"armorsolidboots").setArmorTexture("tofucraft:textures/armor/armor_solid_1.png");
+
+	public static ItemArmorBase metalhelmet = new ItemArmorBase(TofuArmorMaterial.METAL, EntityEquipmentSlot.HEAD,"armormetalhelmet").setArmorTexture("tofucraft:textures/armor/armor_metal_1.png");
+	public static ItemArmorBase metalchestplate = new ItemArmorBase(TofuArmorMaterial.METAL, EntityEquipmentSlot.CHEST,"armormetalchestplate").setArmorTexture("tofucraft:textures/armor/armor_metal_1.png");
+	public static ItemArmorBase metalleggins = new ItemArmorBase(TofuArmorMaterial.METAL, EntityEquipmentSlot.LEGS,"armormetalleggins").setArmorTexture("tofucraft:textures/armor/armor_metal_2.png");
+	public static ItemArmorBase metalboots = new ItemArmorBase(TofuArmorMaterial.METAL, EntityEquipmentSlot.FEET,"armormetalboots").setArmorTexture("tofucraft:textures/armor/armor_metal_1.png");
+
 	public static ItemSoybeans soybeans = new ItemSoybeans();
 
 	public static Item nigari = new ItemNigari();
@@ -217,6 +238,26 @@ public class ItemLoader {
 		register(ishiTofuPickaxe);
 		register(metalTofuPickaxe);
 
+		register(kinuhelmet);
+		register(kinuchestplate);
+		register(kinuleggins);
+		register(kinuboots);
+
+		register(momenhelmet);
+		register(momenchestplate);
+		register(momenleggins);
+		register(momenboots);
+
+		register(solidhelmet);
+		register(solidchestplate);
+		register(solidleggins);
+		register(solidboots);
+
+		register(metalhelmet);
+		register(metalchestplate);
+		register(metalleggins);
+		register(metalboots);
+
 		register(TOFUKINU_DOOR.setUnlocalizedName(TofuMain.MODID+"."+"tofudoor_kinu"));
 		register(TOFUMOMEN_DOOR.setUnlocalizedName(TofuMain.MODID+"."+"tofudoor_momen"));
 		register(TOFUISHI_DOOR.setUnlocalizedName(TofuMain.MODID+"."+"tofudoor_ishi"));
@@ -232,10 +273,16 @@ public class ItemLoader {
 		tofuItemRegister(TofuType.metal,new ItemStack(tofu_material));
 		tofuItemRegister(TofuType.diamond,new ItemStack(tofu_material,1,1));
 
+		//boildEdamame
+		GameRegistry.addSmelting( new ItemStack(material,1,3), new ItemStack(material,16,31), 0.25f);
+		//SoyBeenParched
+		GameRegistry.addSmelting( new ItemStack(soybeans,1), new ItemStack(material,1,32), 0.2f);
+
+		GameRegistry.addSmelting(tofu_food, new ItemStack(tofu_food,1,3), 0.2f);
 		GameRegistry.addSmelting(tofu_food, new ItemStack(tofu_food,1,3), 0.2f);
 		GameRegistry.addSmelting(new ItemStack(tofu_food,1,1), new ItemStack(tofu_food,1,3), 0.2f);
-		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.8f);
-		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.8f);
+		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
+		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
 	}
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
@@ -268,6 +315,26 @@ public class ItemLoader {
 		registerRender(TOFUMOMEN_DOOR);
 		registerRender(TOFUISHI_DOOR);
 		registerRender(TOFUMETAL_DOOR);
+
+		registerRender(kinuhelmet);
+		registerRender(kinuchestplate);
+		registerRender(kinuleggins);
+		registerRender(kinuboots);
+
+		registerRender(momenhelmet);
+		registerRender(momenchestplate);
+		registerRender(momenleggins);
+		registerRender(momenboots);
+
+		registerRender(solidhelmet);
+		registerRender(solidchestplate);
+		registerRender(solidleggins);
+		registerRender(solidboots);
+
+		registerRender(metalhelmet);
+		registerRender(metalchestplate);
+		registerRender(metalleggins);
+		registerRender(metalboots);
     }
 
 	private static void register(Item item)

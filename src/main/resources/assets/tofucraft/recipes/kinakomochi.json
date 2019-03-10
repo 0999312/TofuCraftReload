@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "tofucraft:material",
+      "data": 7
+    }
+  },
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 14
+  }
+}

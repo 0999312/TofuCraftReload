@@ -54,9 +54,9 @@ public class EntityTofunian extends EntityVillager {
         this.tasks.addTask(6, new EntityAIMoveTowardsRestriction(this, 0.6D));
         this.tasks.addTask(7, new EntityAIVillagerMate(this));
         this.tasks.addTask(8, new EntityAIFollowGolem(this));
-        this.tasks.addTask(10, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
-        this.tasks.addTask(10, new EntityAIVillagerInteract(this));
-        this.tasks.addTask(10, new EntityAIWanderAvoidWater(this, 0.6D));
+        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
+        this.tasks.addTask(9, new EntityAIVillagerInteract(this));
+        this.tasks.addTask(9, new EntityAIWanderAvoidWater(this, 0.6D));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
     }
 
@@ -64,6 +64,18 @@ public class EntityTofunian extends EntityVillager {
         super.applyEntityAttributes();
 
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
+    }
+
+    public void onLivingUpdate()
+    {
+        this.updateArmSwingProgress();
+
+        super.onLivingUpdate();
+        if (!this.world.isRemote) {
+            if (this.rand.nextInt(600) == 0 && this.deathTime == 0) {
+                this.heal(1.0F);
+            }
+        }
     }
 
     @Override
@@ -116,7 +128,7 @@ public class EntityTofunian extends EntityVillager {
 
     }
 
-    public void setTofuProfession() {
+    public void initTofuProfession() {
 
         int randValRole = rand.nextInt(TofuProfession.values().length);
 
@@ -128,9 +140,35 @@ public class EntityTofunian extends EntityVillager {
 
             this.setGuard();
 
-        }else if (randValRole == TofuProfession.TOFUCRAFTER.ordinal()) {
+        }else if (randValRole == TofuProfession.TOFUCOOK.ordinal()) {
 
-            this.setTofuCrafter();
+            this.setTofuCook();
+
+        }else if (randValRole == TofuProfession.TOFUSMISH.ordinal()) {
+
+            this.setTofuSmith();
+
+        }
+    }
+
+    public void setTofuProfession(int profession) {
+
+
+        if (profession == TofuProfession.FISHERMAN.ordinal()) {
+
+            this.setFisher();
+
+        } else if (profession == TofuProfession.GUARD.ordinal()) {
+
+            this.setGuard();
+
+        }else if (profession == TofuProfession.TOFUCOOK.ordinal()) {
+
+            this.setTofuCook();
+
+        }else if (profession == TofuProfession.TOFUSMISH.ordinal()) {
+
+            this.setTofuSmith();
 
         }
     }
@@ -144,7 +182,7 @@ public class EntityTofunian extends EntityVillager {
 
         IEntityLivingData data = super.onInitialSpawn(difficulty, livingdata);
 
-        setTofuProfession();
+        initTofuProfession();
 
         updateEntityAI();
 
@@ -160,7 +198,7 @@ public class EntityTofunian extends EntityVillager {
     public void updateEntityAI() {
 
         if(canGuard()){
-            this.tasks.addTask(1, new EntityAIAttackMelee(this,0.82F,true));
+            this.tasks.addTask(1, new EntityAIAttackMelee(this,0.65F,true));
             this.targetTasks.addTask(0, new EntityAIHurtByTarget(this,true));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this,EntityZombie.class,false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, AbstractIllager.class,false));
@@ -198,6 +236,12 @@ public class EntityTofunian extends EntityVillager {
 
     }
 
+    public boolean canSmish() {
+
+        return this.getDataManager().get(TOFUPROFESSION) == TofuProfession.TOFUSMISH.ordinal();
+
+    }
+
     public boolean canFish() {
 
         return this.getDataManager().get(TOFUPROFESSION) == TofuProfession.FISHERMAN.ordinal();
@@ -210,11 +254,14 @@ public class EntityTofunian extends EntityVillager {
 
     }
 
-    public void setTofuCrafter() {
+    public void setTofuSmith() {
 
-        this.getDataManager().set(TOFUPROFESSION, Integer.valueOf(TofuProfession.TOFUCRAFTER.ordinal()));
+        this.getDataManager().set(TOFUPROFESSION, Integer.valueOf(TofuProfession.TOFUSMISH.ordinal()));
+    }
 
+    public void setTofuCook() {
 
+        this.getDataManager().set(TOFUPROFESSION, Integer.valueOf(TofuProfession.TOFUCOOK.ordinal()));
     }
 
     public void setGuard() {
@@ -237,6 +284,12 @@ public class EntityTofunian extends EntityVillager {
 
         this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ItemLoader.ishiTofuSword));
 
+
+        if(this.rand.nextBoolean()){
+            this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ItemLoader.metalhelmet));
+        }else {
+            this.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ItemLoader.solidhelmet));
+        }
     }
 
     private static final Field _buyingList = ReflectionHelper.findField(EntityVillager.class, "field_70963_i", "buyingList");
@@ -247,13 +300,19 @@ public class EntityTofunian extends EntityVillager {
 
 
         if (getTofuProfession() == TofuProfession.FISHERMAN) {
-            addTradeRubyForItem(list,new ItemStack(ItemLoader.tofu_food),26);
-            addTradeForSingleRuby(list, new ItemStack(ItemLoader.foodset, 8 + rand.nextInt(3)),1,false);
-        }else if (getTofuProfession() == TofuProfession.TOFUCRAFTER) {
             addTradeRubyForItem(list,new ItemStack(ItemLoader.tofu_food),24+ rand.nextInt(6));
-            addTradeForSingleRuby(list, new ItemStack(ItemLoader.metalTofuSword, 1),4,false);
-            addTradeForSingleRuby(list, new ItemStack(ItemLoader.zundaMochi, 8 + rand.nextInt(3)),1,false);
-            addTradeForSingleRuby(list, new ItemStack(ItemLoader.tofustick, 2),1,true);
+            addTradeForSingleRuby(list, new ItemStack(ItemLoader.foodset, 8 + rand.nextInt(3)),1);
+        }else if (getTofuProfession() == TofuProfession.TOFUCOOK) {
+            addTradeRubyForItem(list,new ItemStack(ItemLoader.tofu_food),24+ rand.nextInt(6));
+            addTradeRubyForItem(list,new ItemStack(ItemLoader.soybeans),28+ rand.nextInt(6));
+
+            addTradeForSingleRuby(list, new ItemStack(ItemLoader.zundaMochi, 6 + rand.nextInt(3)),1);
+            addTradeForSingleRuby(list, new ItemStack(ItemLoader.foodset, 8 + rand.nextInt(5),14),1);
+
+        } else if (getTofuProfession() == TofuProfession.TOFUSMISH) {
+            addTradeForSingleRuby(list, new ItemStack(ItemLoader.metalTofuSword, 1),4+ rand.nextInt(3));
+            addTradeForSingleRuby(list, new ItemStack(ItemLoader.metalTofuPickaxe, 1),5+ rand.nextInt(3));
+            addTradeForSingleRuby(list, new ItemStack(ItemLoader.tofustick, 2),1+ rand.nextInt(2));
         }
 
         try {
@@ -277,17 +336,15 @@ public class EntityTofunian extends EntityVillager {
 
         ItemStack stack1 = buy.copy();
 
-        int i = rand.nextInt(4);
 
-
-        stack1.setCount(cost + i);
+        stack1.setCount(cost);
 
         list.add(new MerchantRecipe(stack1,new ItemStack(ItemLoader.zundaruby, 1)));
 
 
     }
 
-    public void addTradeForSingleRuby(MerchantRecipeList list, ItemStack sell,int cost,boolean randomCost) {
+    public void addTradeForSingleRuby(MerchantRecipeList list, ItemStack sell,int cost) {
 
         double tofuWorth = 1;
 
@@ -298,12 +355,8 @@ public class EntityTofunian extends EntityVillager {
 
         int i = rand.nextInt(3);
 
-        if(randomCost) {
+        list.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, cost), stack1));
 
-            list.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, cost + i), stack1));
-        }else {
-            list.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, cost), stack1));
-        }
 
     }
 
@@ -317,11 +370,14 @@ public class EntityTofunian extends EntityVillager {
             case GUARD:
                 s1 = "guard";
                 break;
-            case TOFUCRAFTER:
+            case TOFUCOOK:
                 s1 = "tofucrafter";
                 break;
             case FISHERMAN:
                 s1 = "fisherman";
+                break;
+            case TOFUSMISH:
+                s1 = "tofusmish";
                 break;
         }
 
@@ -334,11 +390,36 @@ public class EntityTofunian extends EntityVillager {
         return itextcomponent;
     }
 
+    @Override
+    public boolean isOnSameTeam(Entity entityIn)
+    {
+        if (super.isOnSameTeam(entityIn))
+        {
+            return true;
+        }
+        else if (entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getCreatureAttribute() == TofuEntityRegister.tofunian)
+        {
+            return this.getTeam() == null && entityIn.getTeam() == null;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    @Override
+    public EnumCreatureAttribute getCreatureAttribute()
+    {
+        return TofuEntityRegister.tofunian;
+    }
+
     public enum TofuProfession {
 
         GUARD,
         FISHERMAN,
-        TOFUCRAFTER;
+        TOFUCOOK,
+        TOFUSMISH;
+
 
 
 

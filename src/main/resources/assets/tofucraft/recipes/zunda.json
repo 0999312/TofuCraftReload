@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#S#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "tofucraft:material",
+      "data": 31
+    },"S": {
+      "item": "minecraft:suger"
+    }
+  },
+  "result": {
+    "item": "tofucraft:material",
+    "data": 4
+  }
+}
