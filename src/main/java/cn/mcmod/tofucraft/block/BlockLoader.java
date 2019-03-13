@@ -60,14 +60,19 @@ public class BlockLoader {
 	public static BlockTofuTorch TOFUMOMEN_TORCH = new BlockTofuTorch();
 	public static BlockTofuTorch TOFUISHI_TORCH = new BlockTofuTorch(SoundType.STONE);
 	public static BlockTofuTorch TOFUMETAL_TORCH = new BlockTofuTorch(SoundType.METAL);
+	public static BlockTofuTorch TOFUZUNDA_TORCH = new BlockTofuTorch();
 
 	public static BlockTofuDoor TOFUKINU_DOOR = new BlockTofuDoor(TofuMaterial.WOOD,TofuType.kinu);
 	public static BlockTofuDoor TOFUMOMEN_DOOR = new BlockTofuDoor(TofuMaterial.WOOD,TofuType.momen);
 	public static BlockTofuDoor TOFUISHI_DOOR = new BlockTofuDoor(Material.ROCK,TofuType.ishi);
 	public static BlockTofuDoor TOFUMETAL_DOOR = new BlockTofuDoor(Material.IRON,TofuType.metal);
+	public static BlockTofuDoor TOFUZUNDA_DOOR = new BlockTofuDoor(Material.WOOD,TofuType.zunda);
 
 	public static BlockTofuStairs TOFUKINU_STAIRS = new BlockTofuStairs(KINUTOFU.getDefaultState());
 	public static BlockTofuStairs TOFUMOMEN_STAIRS = new BlockTofuStairs(MOMENTOFU.getDefaultState());
+	public static BlockTofuStairs TOFUISHI_STAIRS = new BlockTofuStairs(ISHITOFU.getDefaultState());
+	public static BlockTofuStairs TOFUMETAL_STAIRS = new BlockTofuStairs(METALTOFU.getDefaultState());
+	public static BlockTofuStairs TOFUZUNDA_STAIRS = new BlockTofuStairs(TOFUZUNDA.getDefaultState());
 	public static BlockTofuStairs TOFUISHI_BRICK_STAIRS = new BlockTofuStairs(TOFUISHI_BRICK.getDefaultState());
 
 	public BlockLoader(FMLPreInitializationEvent event) {
@@ -112,17 +117,22 @@ public class BlockLoader {
 
 		register(TOFUKINU_STAIRS, new ItemBlock(TOFUKINU_STAIRS), "tofustair_kinu");
 		register(TOFUMOMEN_STAIRS, new ItemBlock(TOFUMOMEN_STAIRS), "tofustair_momen");
+		register(TOFUISHI_STAIRS, new ItemBlock(TOFUISHI_STAIRS), "tofustair_ishi");
+		register(TOFUMETAL_STAIRS, new ItemBlock(TOFUMETAL_STAIRS), "tofustair_metal");
+		register(TOFUZUNDA_STAIRS, new ItemBlock(TOFUZUNDA_STAIRS), "tofustair_zunda");
 		register(TOFUISHI_BRICK_STAIRS, new ItemBlock(TOFUISHI_BRICK_STAIRS), "tofustair_ishibrick");
 
 		register(TOFUKINU_TORCH, new ItemBlock(TOFUKINU_TORCH), "tofutorch_kinu");
 		register(TOFUMOMEN_TORCH, new ItemBlock(TOFUMOMEN_TORCH), "tofutorch_momen");
 		register(TOFUISHI_TORCH, new ItemBlock(TOFUISHI_TORCH), "tofutorch_ishi");
 		register(TOFUMETAL_TORCH, new ItemBlock(TOFUMETAL_TORCH), "tofutorch_metal");
+		register(TOFUZUNDA_TORCH, new ItemBlock(TOFUZUNDA_TORCH), "tofutorch_zunda");
 
 		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
 		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
 		registerNoItem(TOFUISHI_DOOR, "tofudoor_ishi");
 		registerNoItem(TOFUMETAL_DOOR, "tofudoor_metal");
+		registerNoItem(TOFUZUNDA_DOOR, "tofudoor_zunda");
 	}
 
 	private static void register(Block block, Item itemBlock, String string) {
@@ -171,6 +181,7 @@ public class BlockLoader {
 		registerRender(TOFUMOMEN_TORCH);
 		registerRender(TOFUISHI_TORCH);
 		registerRender(TOFUMETAL_TORCH);
+		registerRender(TOFUZUNDA_TORCH);
 
 		registerRender(TOFUKINU_DOOR);
 		registerRender(TOFUMOMEN_DOOR);
@@ -180,6 +191,9 @@ public class BlockLoader {
 		registerRender(TOFUKINU_STAIRS);
 		registerRender(TOFUISHI_BRICK_STAIRS);
 		registerRender(TOFUMOMEN_STAIRS);
+		registerRender(TOFUISHI_STAIRS);
+		registerRender(TOFUMETAL_STAIRS);
+		registerRender(TOFUZUNDA_STAIRS);
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {

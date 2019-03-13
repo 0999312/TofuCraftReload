@@ -252,7 +252,7 @@ public class StructureTofuVillagePieces {
             this.fillWithBlocks(worldIn,structureBoundingBoxIn,0,0,0,0,9,0,iblockstate3,iblockstate3,false);
             this.fillWithBlocks(worldIn,structureBoundingBoxIn,6,0,0,6,9,0,iblockstate3,iblockstate3,false);
             this.fillWithBlocks(worldIn,structureBoundingBoxIn,0,0,6,0,9,6,iblockstate3,iblockstate3,false);
-            this.fillWithBlocks(worldIn,structureBoundingBoxIn,6,6,6,6,9,6,iblockstate3,iblockstate3,false);
+            this.fillWithBlocks(worldIn,structureBoundingBoxIn,6,0,6,6,9,6,iblockstate3,iblockstate3,false);
 
             this.setBlockState(worldIn, BlockLoader.ISHITOFU.getDefaultState(), 1, 5, 5, structureBoundingBoxIn);
             this.setBlockState(worldIn, BlockLoader.TOFU_LEAVE.getDefaultState(), 1, 6, 5, structureBoundingBoxIn);
@@ -769,26 +769,17 @@ public class StructureTofuVillagePieces {
                 return event.getReplacement();
             if (event.getBiome() == TofuBiomes.ZUNDATOFU_PLAINS) {
 
-                /*if (blockstateIn.getBlock() == BlockLoader.ISHITOFU) {
-                    return BlockLoader.ISHITOFU.getDefaultState();
+                if (blockstateIn.getBlock() == BlockLoader.SOYMILK) {
+                    return BlockLoader.ZUNDASOYMILK.getDefaultState();
                 }
 
                 if (blockstateIn.getBlock() == BlockLoader.TOFUISHI_BRICK) {
-                    return BlockLoader.TOFUISHI_BRICK.getDefaultState();
+                    return BlockLoader.TOFUZUNDA.getDefaultState();
                 }
 
                 if (blockstateIn.getBlock() == BlockLoader.TOFUMOMEN_STAIRS) {
-                    return Blocks.SANDSTONE_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, blockstateIn.getValue(BlockStairs.FACING));
+                    return BlockLoader.TOFUZUNDA_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, blockstateIn.getValue(BlockStairs.FACING));
                 }
-
-                if (blockstateIn.getBlock() == Blocks.STONE_STAIRS) {
-                    return Blocks.SANDSTONE_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, blockstateIn.getValue(BlockStairs.FACING));
-                }
-
-                if (blockstateIn.getBlock() == Blocks.GRAVEL) {
-                    return Blocks.SANDSTONE.getDefaultState();
-                }*/
-
 
             }
 
@@ -865,18 +856,21 @@ public class StructureTofuVillagePieces {
                 this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 3, 0);
             }
 
-            IBlockState iblockstate = this.getBiomeSpecificBlockState(BlockLoader.tofuTerrain.getDefaultState());
+            IBlockState iblockstate = this.getBiomeSpecificBlockState(BlockLoader.TOFUISHI_BRICK.getDefaultState());
             IBlockState iblockstate1 = this.getBiomeSpecificBlockState(BlockLoader.TOFUMOMEN_TORCH.getDefaultState());
+            IBlockState soymilk = this.getBiomeSpecificBlockState(BlockLoader.SOYMILK.getDefaultState());
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 4, 12, 4, iblockstate, BlockLoader.SOYMILK.getDefaultState(), false);
-            this.setBlockState(worldIn, BlockLoader.SOYMILK.getDefaultState(), 2, 12, 2, structureBoundingBoxIn);
-            this.setBlockState(worldIn, BlockLoader.SOYMILK.getDefaultState(), 3, 12, 2, structureBoundingBoxIn);
-            this.setBlockState(worldIn, BlockLoader.SOYMILK.getDefaultState(), 2, 12, 3, structureBoundingBoxIn);
-            this.setBlockState(worldIn, BlockLoader.SOYMILK.getDefaultState(), 3, 12, 3, structureBoundingBoxIn);
+            this.setBlockState(worldIn, soymilk, 2, 12, 2, structureBoundingBoxIn);
+            this.setBlockState(worldIn, soymilk, 3, 12, 2, structureBoundingBoxIn);
+            this.setBlockState(worldIn, soymilk, 2, 12, 3, structureBoundingBoxIn);
+            this.setBlockState(worldIn, soymilk, 3, 12, 3, structureBoundingBoxIn);
 
-            this.setBlockState(worldIn, iblockstate1, 1, 12, 1, structureBoundingBoxIn);
-            this.setBlockState(worldIn, iblockstate1, 4, 12, 1, structureBoundingBoxIn);
-            this.setBlockState(worldIn, iblockstate1, 1, 12, 4, structureBoundingBoxIn);
-            this.setBlockState(worldIn, iblockstate1, 4, 12, 4, structureBoundingBoxIn);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn,1, 12, 1,1,15,1,iblockstate,iblockstate,false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn,4, 12, 1,4,15,1,iblockstate,iblockstate,false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn,1, 12, 4,1,15,4,iblockstate,iblockstate,false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn,4, 12, 4,4,15,4,iblockstate,iblockstate,false);
+
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn,1, 15, 1,4,15,4,iblockstate,iblockstate,false);
 
             return true;
         }
