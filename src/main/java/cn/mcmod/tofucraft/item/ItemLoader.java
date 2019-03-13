@@ -272,6 +272,7 @@ public class ItemLoader {
 		tofuItemRegister(TofuType.egg,new ItemStack(tofu_food,1,6));
 		tofuItemRegister(TofuType.metal,new ItemStack(tofu_material));
 		tofuItemRegister(TofuType.diamond,new ItemStack(tofu_material,1,1));
+		tofuItemRegister(TofuType.zunda,new ItemStack(tofu_food,1,9));
 
 		//boildEdamame
 		GameRegistry.addSmelting( new ItemStack(material,1,3), new ItemStack(material,16,31), 0.25f);

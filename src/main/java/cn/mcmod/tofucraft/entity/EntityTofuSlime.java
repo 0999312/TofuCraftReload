@@ -36,7 +36,7 @@ public class EntityTofuSlime extends EntitySlime {
         if (this.getSlimeSize() == 1 || this.world.getDifficulty() != EnumDifficulty.PEACEFUL) {
             int lightValue = this.world.getLightFromNeighbors(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY), MathHelper.floor(this.posZ)));
             Biome biome = this.world.getBiome(new BlockPos(this.posX, 0, this.posZ));
-            if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(30) == 0
+            if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(50) == 0
                     && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(48.0D, 24.0D, 48.0D)).size() == 0) {
                 return this.baseGetCanSpawnHere();
             }

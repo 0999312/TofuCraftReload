@@ -3,10 +3,7 @@ package cn.mcmod.tofucraft.block;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
-import cn.mcmod.tofucraft.block.fluid.BlockNigari;
-import cn.mcmod.tofucraft.block.fluid.BlockSoyMilk;
-import cn.mcmod.tofucraft.block.fluid.NigariFluid;
-import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
+import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
 import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
@@ -32,6 +29,8 @@ import net.minecraftforge.registries.GameData;
 public class BlockLoader {
 	public static Block SOYMILK;
 	public static Fluid SOYMILK_FLUID;
+	public static Block ZUNDASOYMILK;
+	public static Fluid ZUNDASOYMILK_FLUID;
 	public static Block NIGARI;
 	public static Fluid NIGARI_FLUID;
 
@@ -45,6 +44,7 @@ public class BlockLoader {
 	public static Block EGGTOFU = new BlockTofu(TofuType.egg);
 	public static Block GRILD = new BlockTofu(TofuType.grilled);
 	public static Block TOFUDRIED = new BlockTofu(TofuType.dried);
+	public static Block TOFUZUNDA = new BlockTofu(TofuType.zunda);
 
 	public static BlockLeek LEEK = new BlockLeek();
 	public static BlockSoybean SOYBEAN = new BlockSoybean();
@@ -76,6 +76,11 @@ public class BlockLoader {
 		SOYMILK = registerFluidBlock(SOYMILK_FLUID, new BlockSoyMilk(SOYMILK_FLUID), "soymilk");
 		SOYMILK_FLUID.setTemperature(15);
 
+		ZUNDASOYMILK_FLUID = ZundaSoyMilkFluid.instance;
+		FluidRegistry.addBucketForFluid(ZUNDASOYMILK_FLUID);
+		ZUNDASOYMILK = registerFluidBlock(ZUNDASOYMILK_FLUID, new BlockSoyMilk(ZUNDASOYMILK_FLUID), "zunda_soymilk");
+		ZUNDASOYMILK_FLUID.setTemperature(15);
+
 		NIGARI_FLUID = NigariFluid.instance;
 		FluidRegistry.addBucketForFluid(NIGARI_FLUID);
 		NIGARI = registerFluidBlock(NIGARI_FLUID, new BlockNigari(NIGARI_FLUID), "nigari");
@@ -91,7 +96,9 @@ public class BlockLoader {
 		register(EGGTOFU, new ItemBlock(EGGTOFU), "blocktofuegg");
 		register(GRILD, new ItemBlock(GRILD), "blocktofugrilled");
 		register(TOFUDRIED, new ItemBlock(TOFUDRIED), "blocktofudried");
+		register(TOFUZUNDA, new ItemBlock(TOFUZUNDA), "blocktofuzunda");
 		register(TOFUISHI_BRICK, new ItemBlock(TOFUISHI_BRICK), "tofuishi_brick");
+
 
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
 		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
@@ -151,6 +158,7 @@ public class BlockLoader {
 		registerRender(ANNINTOFU);
 		registerRender(EGGTOFU);
 		registerRender(GRILD);
+		registerRender(TOFUZUNDA);
 		registerRender(LEEK);
 		registerRender(TOFU_SAPLING);
 		registerRender(tofuTerrain);
