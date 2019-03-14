@@ -78,61 +78,8 @@ public class BlockSoyMilk extends BlockFluidClassic {
 
         super.neighborChanged(state, worldIn, pos, blockIn, neighborPos);
 
-        this.checkForMixing(worldIn, pos, state);
-
     }
 
-
-    public boolean checkForMixing(World worldIn, BlockPos pos, IBlockState state) {
-
-        boolean flag = false;
-
-
-        for (EnumFacing enumfacing : EnumFacing.values()) {
-
-            if (enumfacing != EnumFacing.DOWN && (worldIn.getBlockState(pos.offset(enumfacing)).getMaterial().isLiquid() == true)) {
-
-                if (worldIn.getBlockState(pos.offset(enumfacing)).getBlock() != this.getBlockState().getBlock()) {
-
-                    flag = true;
-
-                    break;
-
-                }
-
-            }
-
-        }
-
-
-        if (flag) {
-
-            Integer integer = state.getValue(LEVEL);
-
-
-            if (integer.intValue() == 0) {
-
-                worldIn.setBlockState(pos, Blocks.STONE.getDefaultState());
-
-                return true;
-
-            }
-
-
-            if (integer.intValue() <= 4) {
-
-                worldIn.setBlockState(pos, Blocks.STONE.getDefaultState());
-
-                return true;
-
-            }
-
-        }
-
-
-        return false;
-
-    }
 
 
     @Override

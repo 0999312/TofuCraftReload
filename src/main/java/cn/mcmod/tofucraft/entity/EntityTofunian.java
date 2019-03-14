@@ -30,7 +30,6 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 public class EntityTofunian extends EntityVillager {
-    public static int MAX_HOME_DISTANCE = 128;
     private static final DataParameter<Integer> TOFUPROFESSION = EntityDataManager.createKey(EntityTofunian.class, DataSerializers.VARINT);
     public EntityTofunian(World worldIn) {
         super(worldIn, 5);
@@ -71,6 +70,7 @@ public class EntityTofunian extends EntityVillager {
         this.updateArmSwingProgress();
 
         super.onLivingUpdate();
+
         if (!this.world.isRemote) {
             if (this.rand.nextInt(600) == 0 && this.deathTime == 0) {
                 this.heal(1.0F);
@@ -104,7 +104,6 @@ public class EntityTofunian extends EntityVillager {
     protected SoundEvent getAmbientSound() {
 
         return null;
-
     }
 
 
@@ -112,24 +111,20 @@ public class EntityTofunian extends EntityVillager {
     protected SoundEvent getDeathSound() {
 
         return null;
-
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
 
         return null;
-
     }
 
     public TofuProfession getTofuProfession() {
 
         return TofuProfession.get(this.getDataManager().get(TOFUPROFESSION));
-
     }
 
     public void initTofuProfession() {
-
         int randValRole = rand.nextInt(TofuProfession.values().length);
 
         if (randValRole == TofuProfession.FISHERMAN.ordinal()) {
@@ -152,8 +147,6 @@ public class EntityTofunian extends EntityVillager {
     }
 
     public void setTofuProfession(int profession) {
-
-
         if (profession == TofuProfession.FISHERMAN.ordinal()) {
 
             this.setFisher();
@@ -176,9 +169,6 @@ public class EntityTofunian extends EntityVillager {
     @Nullable
     @Override
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
-
-        this.setHomePosAndDistance(this.getPosition(), MAX_HOME_DISTANCE);
-
 
         IEntityLivingData data = super.onInitialSpawn(difficulty, livingdata);
 

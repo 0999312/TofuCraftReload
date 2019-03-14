@@ -40,8 +40,13 @@ public class BlockTofuDoor extends BlockDoor {
         this.setCreativeTab(CommonProxy.tab);
         if(material== Material.WOOD) {
             this.setSoundType(SoundType.CLOTH);
-            this.setHardness(0.4F);
-            this.setResistance(1.0F);
+            if(tofuType == TofuType.kinu){
+                this.setHardness(0.6F);
+                this.setResistance(2.0F);
+            }else {
+                this.setHardness(0.4F);
+                this.setResistance(1.0F);
+            }
         }else {
             if(material== Material.IRON){
                 this.setSoundType(SoundType.METAL);

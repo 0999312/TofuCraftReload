@@ -11,6 +11,11 @@
       "custom": {
         "fluid": "nigari"
       }
+    },"zunda_soymilk": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "zunda_soymilk"
+      }
     }
   }
 }

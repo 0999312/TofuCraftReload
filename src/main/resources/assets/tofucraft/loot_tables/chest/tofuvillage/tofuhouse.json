@@ -3,8 +3,8 @@
     {
       "name": "food",
       "rolls": {
-        "min": 2,
-        "max": 4
+        "min": 3,
+        "max": 6
       },
       "entries": [
         {
@@ -21,7 +21,10 @@
             },
             {
               "function": "minecraft:set_data",
-              "data": 3
+              "data":{
+                "min": 3,
+                "max": 6
+              }
             }
           ]
         }
