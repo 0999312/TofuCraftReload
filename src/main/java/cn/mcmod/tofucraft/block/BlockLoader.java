@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft.block;
 
+import cn.mcmod.tofucraft.ClientProxy;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
@@ -172,20 +173,15 @@ public class BlockLoader {
 		registerRender(TOFUKINU_STAIRS);
 		registerRender(TOFUISHI_BRICK_STAIRS);
 		registerRender(TOFUMOMEN_STAIRS);
+		ClientProxy.registerFluidBlockRendering(new BlockSoyMilk(SOYMILK_FLUID), "soymilk");
+		ClientProxy.registerFluidBlockRendering(new BlockNigari(NIGARI_FLUID), "nigari");
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {
-
 		fluidBlock.setRegistryName(new ResourceLocation(TofuMain.MODID, name));
-
 		ForgeRegistries.BLOCKS.register(fluidBlock);
-
-		TofuMain.proxy.registerFluidBlockRendering(fluidBlock, name);
-
 		fluid.setBlock(fluidBlock);
-
 		return fluidBlock;
-
 	}
 
 	@SideOnly(Side.CLIENT)
