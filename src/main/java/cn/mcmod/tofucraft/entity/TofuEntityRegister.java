@@ -1,6 +1,7 @@
 package cn.mcmod.tofucraft.entity;
 
 import cn.mcmod.tofucraft.TofuMain;
+import cn.mcmod.tofucraft.client.render.RenderTofuChinger;
 import cn.mcmod.tofucraft.client.render.RenderTofuCow;
 import cn.mcmod.tofucraft.client.render.RenderTofuSlime;
 import cn.mcmod.tofucraft.client.render.RenderTofunian;
@@ -27,6 +28,7 @@ public class TofuEntityRegister {
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofucow"), EntityTofuCow.class, prefix("TofuCow"), 1, TofuMain.instance, 70, 3, false, 0xEBE8E8, 0xA3A3A3);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofuslime"), EntityTofuSlime.class, prefix("TofuSlime"), 2, TofuMain.instance, 80, 3, false, 0xEBE8E8, 0x2E2E2E);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofunian"), EntityTofunian.class, prefix("Tofunian"), 3, TofuMain.instance, 80, 3, false, 0xEBE8E8, 0xCACFA1);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofuchinger"), EntityTofuChinger.class, prefix("TofuChinger"), 4, TofuMain.instance, 80, 3, false, 0xEBE8E8, 0xCACFA1);
     }
 
     private static String prefix(String path) {
@@ -40,6 +42,7 @@ public class TofuEntityRegister {
         RenderingRegistry.registerEntityRenderingHandler(EntityTofuCow.class, RenderTofuCow::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTofuSlime.class, RenderTofuSlime::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTofunian.class, RenderTofunian::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTofuChinger.class, RenderTofuChinger::new);
     }
     public static void entitySpawn() {
 

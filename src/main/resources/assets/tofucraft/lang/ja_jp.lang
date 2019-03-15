@@ -350,6 +350,7 @@ entity.tofucraft.TofuCow.name=豆腐牛
 entity.tofucraft.TofuSlime.name=豆腐スライム
 entity.tofucraft.TofuCreeper.name=豆腐クリーパー
 entity.tofucraft.Tofunian.name=トーフニアン
+entity.tofucraft.TofuChinger.name=トーフの捕食獣
 
 commands.tofuslimecheck.found=このチャンクには豆腐スライムが生息しています
 commands.tofuslimecheck.notFound=このチャンクには豆腐スライムはいないようだ

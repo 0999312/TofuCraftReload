@@ -48,7 +48,7 @@ public class BiomeTofu extends Biome {
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityTofuSlime.class, 3, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityTofuSlime.class, 2, 2, 3));
 
         this.topBlock = BlockLoader.tofuTerrain.getDefaultState();
         this.fillerBlock = BlockLoader.tofuTerrain.getDefaultState();
