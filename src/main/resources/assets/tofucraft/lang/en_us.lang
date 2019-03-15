@@ -352,6 +352,7 @@ entity.tofucraft.TofuCow.name=Tofu Cow
 entity.tofucraft.TofuSlime.name=Tofu Slime
 entity.tofucraft.TofuCreeper.name=Tofu Creeper
 entity.tofucraft.Tofunian.name=Tofunian
+entity.tofucraft.TofuChinger.name=TofuChinger
 
 commands.tofuslimecheck.usage=/tofuslimecheck
 commands.tofuslimecheck.found=Tofu Slimes habit in this chunk
@@ -391,3 +392,4 @@ entity.Tofunian.tofucrafter=Tofu Craftsman
 entity.Tofunian.fisherman=Fisher Tofunian
 entity.Tofunian.guard=Guard Tofunian
 entity.Tofunian.tofusmith=Tofu Smith
+

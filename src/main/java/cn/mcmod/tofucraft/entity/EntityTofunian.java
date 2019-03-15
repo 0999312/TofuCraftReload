@@ -41,9 +41,9 @@ public class EntityTofunian extends EntityVillager {
     protected void initEntityAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, EntityTofuChinger.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
-        this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, EntityEvoker.class, 12.0F, 0.8D, 0.8D));
-        this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, EntityVindicator.class, 8.0F, 0.8D, 0.8D));
+        this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, AbstractIllager.class, 8.0F, 0.8D, 0.8D));
         this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, EntityVex.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(2, new EntityAITradePlayer(this));
         this.tasks.addTask(2, new EntityAILookAtTradePlayer(this));
@@ -190,6 +190,7 @@ public class EntityTofunian extends EntityVillager {
         if(canGuard()){
             this.tasks.addTask(1, new EntityAIAttackMelee(this,0.65F,true));
             this.targetTasks.addTask(0, new EntityAIHurtByTarget(this,true));
+            this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this,EntityTofuChinger.class,false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this,EntityZombie.class,false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, AbstractIllager.class,false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityVex.class,false));
