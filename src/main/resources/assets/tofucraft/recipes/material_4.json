@@ -1,0 +1,17 @@
+{
+   "result" : {
+      "item" : "tofucraft:material",
+      "data" : 4
+   },
+   "pattern" : [ "WWW", "WSW", "WWW" ],
+   "type" : "minecraft:crafting_shaped",
+   "key" : {
+      "S" : {
+         "item" : "minecraft:sugar"
+      },
+      "W" : {
+         "item" : "tofucraft:foodset",
+         "data" : 23
+      }
+   }
+}

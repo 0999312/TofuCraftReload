@@ -1,6 +1,5 @@
 package cn.mcmod.tofucraft.world;
 
-import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
@@ -19,7 +18,7 @@ public class WorldProviderTofu extends WorldProvider {
 
     @Override
     public DimensionType getDimensionType() {
-        return CommonProxy.TOFU_DIMENSION;
+        return TofuMain.TOFU_DIMENSION;
     }
 
     /**

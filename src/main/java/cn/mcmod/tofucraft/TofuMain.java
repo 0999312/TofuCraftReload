@@ -38,11 +38,39 @@ public class TofuMain {
     @SidedProxy(clientSide = "cn.mcmod.tofucraft.ClientProxy", serverSide = "cn.mcmod.tofucraft.CommonProxy")
     public static CommonProxy proxy;
 
+    public static DimensionType TOFU_DIMENSION;
+
+    @EventHandler
+    public void construct(FMLConstructionEvent event) {
+        MinecraftForge.EVENT_BUS.register(this);
+
+        FluidRegistry.enableUniversalBucket();
+    }
+
+    @SubscribeEvent
+    public void registerBiomes(RegistryEvent.Register<Biome> event) {
+        IForgeRegistry<Biome> registry = event.getRegistry();
+
+        TofuBiomes.register(registry);
+
+    }
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
 
-        
+        TofuEntityRegister.entitySpawn();
+
+        MapGenStructureIO.registerStructure(MapGenTofuVillage.Start.class,"TofuVillage");
+        StructureTofuVillagePieces.registerVillagePieces();
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new TofuGuiHandler());
+
+
+        TOFU_DIMENSION = DimensionType.register("Tofu World", "_tofu", DimensionManager.getNextFreeDimId(), WorldProviderTofu.class, false);
+        DimensionManager.registerDimension(TOFU_DIMENSION.getId(), TOFU_DIMENSION);
+
+        TofuVillages.register();
     }
 
     @EventHandler

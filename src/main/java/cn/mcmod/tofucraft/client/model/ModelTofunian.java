@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.client.model;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.EnumHandSide;
 import org.lwjgl.opengl.GL11;
 
 public class ModelTofunian extends ModelBiped {
@@ -116,5 +117,15 @@ public class ModelTofunian extends ModelBiped {
         this.bipedHeadwear.rotateAngleX = this.bipedHead.rotateAngleX;
         this.bipedHeadwear.rotateAngleY = this.bipedHead.rotateAngleY;
         this.bipedHeadwear.rotateAngleZ = this.bipedHead.rotateAngleZ;
+    }
+
+    public void postRenderArm(float scale, EnumHandSide side)
+    {
+        this.getArmForSide(side).postRender(scale);
+    }
+
+    protected ModelRenderer getArmForSide(EnumHandSide side)
+    {
+        return side == EnumHandSide.LEFT ? this.bipedLeftArm : this.bipedRightArm;
     }
 }

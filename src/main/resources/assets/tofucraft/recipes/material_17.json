@@ -1,0 +1,17 @@
+{
+   "result" : {
+      "item" : "tofucraft:material",
+      "data" : 17
+   },
+   "pattern" : [ " W ", "WSW", " W " ],
+   "type" : "minecraft:crafting_shaped",
+   "key" : {
+      "S" : {
+         "item" : "minecraft:glowstone_dust"
+      },
+      "W" : {
+         "item" : "tofucraft:material",
+         "data" : 4
+      }
+   }
+}

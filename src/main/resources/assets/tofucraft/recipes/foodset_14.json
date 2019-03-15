@@ -1,11 +1,12 @@
 {
   "result": {
-    "item": "tofucraft:zundamochi"
+    "item": "tofucraft:foodset",
+    "data": 14
   },
   "ingredients": [
     {
       "item": "tofucraft:material",
-      "data": 4
+      "data": 7
     },
     {
       "item": "tofucraft:foodset",

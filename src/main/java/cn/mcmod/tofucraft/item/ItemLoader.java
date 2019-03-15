@@ -56,8 +56,8 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"tofudried"
 	});
 	public static ItemFoodBasic foodset = new ItemFoodBasic("foodset", 64,
-			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,6   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4   ,6   ,16  ,20,2   ,8   ,7},
-			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.6f},
+			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,6   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4,4   ,6   ,16  ,20,2   ,8   ,7   ,1},
+			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.6f,0.1f},
 			new String[]{
 					TofuMain.MODID+"."+"tofuchikuwa",
 					TofuMain.MODID+"."+"oage",
@@ -74,13 +74,15 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"tofufishraw",
 					TofuMain.MODID+"."+"tofufishcooked",
 					TofuMain.MODID+"."+"kinakomochi",
+					TofuMain.MODID+"."+"kinakomanju",
 					TofuMain.MODID+"."+"chikuwa",
 					TofuMain.MODID+"."+"tofusteak",
 					TofuMain.MODID+"."+"tofuhamburgt",
 					TofuMain.MODID+"."+"tofuhamburgta",
 					TofuMain.MODID+"."+"tofuminced",
 					TofuMain.MODID+"."+"ricesoborotofu",
-					TofuMain.MODID+"."+"soborotofusaute"
+					TofuMain.MODID+"."+"soborotofusaute",
+					TofuMain.MODID+"."+"edamameboiled"
 			}
 	);
 	public static ItemBase material = new ItemBase("material", 64, new String[]{
@@ -114,9 +116,7 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"activatedhelltofu",
 			TofuMain.MODID+"."+"tofusomen",
 			TofuMain.MODID+"."+"glassbowl",
-			TofuMain.MODID+"."+"rollingpin",
-			TofuMain.MODID+"."+"edamameboiled",
-			TofuMain.MODID+"."+"soybeansparched"
+			TofuMain.MODID+"."+"rollingpin"
 	});
 	public static ItemFood zundaMochi = (ItemFood)new ItemFood(3, 0.8f, false)
 			.setPotionEffect(new PotionEffect(Potion.getPotionById(10), 20, 2), 1.0F)
@@ -272,15 +272,19 @@ public class ItemLoader {
 		tofuItemRegister(TofuType.egg,new ItemStack(tofu_food,1,6));
 		tofuItemRegister(TofuType.metal,new ItemStack(tofu_material));
 		tofuItemRegister(TofuType.diamond,new ItemStack(tofu_material,1,1));
+		tofuItemRegister(TofuType.zunda,new ItemStack(tofu_food,1,9));
 
 		//boildEdamame
-		GameRegistry.addSmelting( new ItemStack(material,1,3), new ItemStack(material,16,31), 0.25f);
+		GameRegistry.addSmelting( new ItemStack(material,1,3), new ItemStack(foodset,16,23), 0.25f);
 		//SoyBeenParched
-		GameRegistry.addSmelting( new ItemStack(soybeans,1), new ItemStack(material,1,32), 0.2f);
+		GameRegistry.addSmelting( new ItemStack(soybeans,1), new ItemStack(material,1,6), 0.2f);
 
-		GameRegistry.addSmelting(tofu_food, new ItemStack(tofu_food,1,3), 0.2f);
-		GameRegistry.addSmelting(tofu_food, new ItemStack(tofu_food,1,3), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(tofu_food,1,0), new ItemStack(tofu_food,1,3), 0.2f);
 		GameRegistry.addSmelting(new ItemStack(tofu_food,1,1), new ItemStack(tofu_food,1,3), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(tofu_food,1,2), new ItemStack(foodset,1,17), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(material,1,20), new ItemStack(foodset,1,9), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(foodset,1,12), new ItemStack(foodset,1,13), 0.2f);
+		
 		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
 		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
 	}

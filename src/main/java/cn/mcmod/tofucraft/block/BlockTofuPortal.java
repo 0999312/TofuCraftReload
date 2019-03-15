@@ -1,7 +1,5 @@
 package cn.mcmod.tofucraft.block;
 
-import cn.mcmod.tofucraft.ClientProxy;
-import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.client.TofuParticleType;
 import cn.mcmod.tofucraft.world.TofuTeleporter;
@@ -320,7 +318,7 @@ public class BlockTofuPortal extends Block {
                 d5 = (double) (rand.nextFloat() * 2.0F * (float) j);
             }
 
-            ClientProxy.spawnParticle(worldIn, TofuParticleType.TOFUPORTAL,d0,d1,d2,d3,d4,d5);
+            TofuMain.proxy.spawnParticle(worldIn, TofuParticleType.TOFUPORTAL,d0,d1,d2,d3,d4,d5);
         }
 
     }
@@ -399,7 +397,7 @@ public class BlockTofuPortal extends Block {
 
                 PlayerList playerList = server.getPlayerList();
 
-                int i = entityIn.dimension == DimensionType.OVERWORLD.getId() ? CommonProxy.TOFU_DIMENSION.getId() : DimensionType.OVERWORLD.getId();
+                int i = entityIn.dimension == DimensionType.OVERWORLD.getId() ? TofuMain.TOFU_DIMENSION.getId() : DimensionType.OVERWORLD.getId();
 
                 TofuTeleporter teleporter = new TofuTeleporter(server.getWorld(i));
 
@@ -813,7 +811,7 @@ public class BlockTofuPortal extends Block {
 
             PlayerList playerList = server.getPlayerList();
 
-            int i = playerIn.dimension == DimensionType.OVERWORLD.getId() ? CommonProxy.TOFU_DIMENSION.getId() :
+            int i = playerIn.dimension == DimensionType.OVERWORLD.getId() ? TofuMain.TOFU_DIMENSION.getId() :
 
                     DimensionType.OVERWORLD.getId();
 
