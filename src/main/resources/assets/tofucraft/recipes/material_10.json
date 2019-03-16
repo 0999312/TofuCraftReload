@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "tofucraft:material",
+    "data": 10,
+    "count": 32
+  },
+  "pattern": [
+    "OOO"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "O": {
+      "item": "minecraft:wool",
+      "data": 0
+    }
+  }
+}

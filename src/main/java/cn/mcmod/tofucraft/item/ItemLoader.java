@@ -56,8 +56,8 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"tofudried"
 	});
 	public static ItemFoodBasic foodset = new ItemFoodBasic("foodset", 64,
-			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,6   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4,4   ,6   ,16  ,20,2   ,8   ,7   ,1},
-			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.6f,0.1f},
+			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,6   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4,4   ,6   ,16  ,20,2   ,8 ,7 ,1,3},
+			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.6f,0.1f,0.3f},
 			new String[]{
 					TofuMain.MODID+"."+"tofuchikuwa",
 					TofuMain.MODID+"."+"oage",
@@ -82,7 +82,8 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"tofuminced",
 					TofuMain.MODID+"."+"ricesoborotofu",
 					TofuMain.MODID+"."+"soborotofusaute",
-					TofuMain.MODID+"."+"edamameboiled"
+					TofuMain.MODID+"."+"edamameboiled",
+					TofuMain.MODID+"."+"saltymelon"
 			}
 	);
 	public static ItemBase material = new ItemBase("material", 64, new String[]{
@@ -279,6 +280,7 @@ public class ItemLoader {
 		//SoyBeenParched
 		GameRegistry.addSmelting( new ItemStack(soybeans,1), new ItemStack(material,1,6), 0.2f);
 
+		GameRegistry.addSmelting( new ItemStack(material,1,13), new ItemStack(material,1,14), 0.2f);
 		GameRegistry.addSmelting(new ItemStack(tofu_food,1,0), new ItemStack(tofu_food,1,3), 0.2f);
 		GameRegistry.addSmelting(new ItemStack(tofu_food,1,1), new ItemStack(tofu_food,1,3), 0.2f);
 		GameRegistry.addSmelting(new ItemStack(tofu_food,1,2), new ItemStack(foodset,1,17), 0.2f);

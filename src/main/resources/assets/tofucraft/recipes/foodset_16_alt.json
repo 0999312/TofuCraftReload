@@ -1,0 +1,29 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 16
+  },
+  "pattern": [
+    " O ",
+    "DFS",
+    " O "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "tofucraft:material",
+      "data": 0
+    },
+    "D": {
+      "item": "tofucraft:material",
+      "data": 14
+    },
+    "F": {
+      "item": "minecraft:egg"
+    },
+    "O": {
+      "item": "minecraft:cooked_fish",
+      "data": 0
+    }
+  }
+}

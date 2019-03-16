@@ -11,6 +11,7 @@ import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
 import cn.mcmod.tofucraft.world.gen.structure.tofuvillage.StructureTofuVillagePieces;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -57,7 +58,7 @@ public class CommonProxy {
 
 	@SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-		
+
 	}
     
     public void spawnParticle(World world, TofuParticleType particleType, double x, double y, double z, double velX, double velY, double velZ) {
