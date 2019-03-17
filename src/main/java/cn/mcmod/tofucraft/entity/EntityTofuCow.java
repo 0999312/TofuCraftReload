@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.entity;
 
 import cn.mcmod.tofucraft.advancements.TofuAdvancements;
 import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
+import cn.mcmod.tofucraft.block.fluid.ZundaSoyMilkFluid;
 import cn.mcmod.tofucraft.util.TofuLootTables;
 import cn.mcmod.tofucraft.world.biome.BiomeZundaTofuPlains;
 import net.minecraft.entity.EntityAgeable;
@@ -46,17 +47,33 @@ public class EntityTofuCow extends EntityCow {
         ItemStack itemstack = player.getHeldItem(hand);
 
         if (itemstack.getItem() == Items.BUCKET && !player.capabilities.isCreativeMode && !this.isChild()) {
-            FluidStack fluidStack = FluidRegistry.getFluidStack(SoyMilkFluid.name, Fluid.BUCKET_VOLUME);
+            if(this.getVariant() == 1) {
+                FluidStack fluidStack = FluidRegistry.getFluidStack(ZundaSoyMilkFluid.name, Fluid.BUCKET_VOLUME);
 
-            player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
-            itemstack.shrink(1);
+                player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
+                itemstack.shrink(1);
 
-            TofuAdvancements.grantAdvancement(player,"flesh_soymilk");
-            if (itemstack.isEmpty()) {
+                TofuAdvancements.grantAdvancement(player, "flesh_soymilk");
+                if (itemstack.isEmpty()) {
 
-                player.setHeldItem(hand, FluidUtil.getFilledBucket(fluidStack));
-            } else if (!player.inventory.addItemStackToInventory(FluidUtil.getFilledBucket(fluidStack))) {
-                player.dropItem(FluidUtil.getFilledBucket(fluidStack), false);
+                    player.setHeldItem(hand, FluidUtil.getFilledBucket(fluidStack));
+                } else if (!player.inventory.addItemStackToInventory(FluidUtil.getFilledBucket(fluidStack))) {
+                    player.dropItem(FluidUtil.getFilledBucket(fluidStack), false);
+                }
+
+            }else {
+                FluidStack fluidStack = FluidRegistry.getFluidStack(SoyMilkFluid.name, Fluid.BUCKET_VOLUME);
+
+                player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
+                itemstack.shrink(1);
+
+                TofuAdvancements.grantAdvancement(player, "flesh_soymilk");
+                if (itemstack.isEmpty()) {
+
+                    player.setHeldItem(hand, FluidUtil.getFilledBucket(fluidStack));
+                } else if (!player.inventory.addItemStackToInventory(FluidUtil.getFilledBucket(fluidStack))) {
+                    player.dropItem(FluidUtil.getFilledBucket(fluidStack), false);
+                }
             }
 
             return true;

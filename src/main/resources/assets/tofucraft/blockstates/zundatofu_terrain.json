@@ -1,5 +1,20 @@
 {
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "tofucraft:blocks/blocktofumomen",
+      "down": "tofucraft:blocks/blocktofumomen",
+      "up": "tofucraft:blocks/blocktofuzunda",
+      "north": "tofucraft:blocks/zundatofu_terrain_side",
+      "east": "tofucraft:blocks/zundatofu_terrain_side",
+      "south": "tofucraft:blocks/zundatofu_terrain_side",
+      "west": "tofucraft:blocks/zundatofu_terrain_side"
+    }
+  },
   "variants": {
-    "normal": { "model": "tofucraft:zundatofu_terrain" }
+    "normal": { "model": "cube" },
+    "inventory": {
+      "model": "cube"
+    }
   }
 }

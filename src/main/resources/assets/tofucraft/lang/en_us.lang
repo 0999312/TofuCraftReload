@@ -121,6 +121,7 @@ tile.tofucraft.tofutorch_zunda.name=TofuZunda Torch
 tile.tofucraft.tofuTrapdoor.name=%s Trapdoor
 tile.tofucraft.tofuWall.name=%s Wall
 tile.tofucraft.tofuishi_brick.name=TofuIshi Brick
+tile.tofucraft.tofu_terrain.name=NaturalTofu
 tile.tofucraft.zundatofu_terrain.name=ZundaGrass
 
 item.tofucraft.seeds_soybeans.name=Soybeans
@@ -321,6 +322,10 @@ advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
 advancements.tofucraft.flesh_soymilk.title=Flesh Soymilk
 advancements.tofucraft.flesh_soymilk.description=Squeeze SoyMilk from Tofu Cow
+advancements.tofucraft.getnigari.title=Bitter work
+advancements.tofucraft.getnigari.description=Get Bittern from SaltFurnace
+advancements.tofucraft.getsalt.title=Salty work
+advancements.tofucraft.getsalt.description=Get Salt from SaltFurnace
 
 container.tofucraft.SaltFurnace=Salt Furnace
 container.tofucraft.TfStorage=TF Storage
@@ -332,9 +337,9 @@ container.tofucraft.TfReformer.simple=TF Reformer
 container.tofucraft.TfReformer.mix=TF Mix Reformer
 
 fluid.soymilk=Soy Milk
-fluid.tile.tofucraft.zundasoymilk=Zunda SoyMilk
-fluid.tile.tofucraft.soymilkHell=Hell Soy Milk
-fluid.tile.tofucraft.soySauce=Soy Sauce
+fluid.zundasoymilk=Zunda SoyMilk
+fluid.soymilkHell=Hell Soy Milk
+fluid.tofucraft.soySauce=Soy Sauce
 fluid.nigari=Bittern
 fluid.tofucraft.mineralSoymilk=Mineral Soy Milk
 fluid.tofucraft.strawberryJam=Strawberry Jam
