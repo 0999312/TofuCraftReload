@@ -271,6 +271,7 @@ public class ItemLoader {
 		tofuItemRegister(TofuType.friedPouch,new ItemStack(tofu_food,1,4));
 		tofuItemRegister(TofuType.fried,new ItemStack(tofu_food,1,5));
 		tofuItemRegister(TofuType.egg,new ItemStack(tofu_food,1,6));
+		tofuItemRegister(TofuType.annin,new ItemStack(tofu_food,1,7));
 		tofuItemRegister(TofuType.metal,new ItemStack(tofu_material));
 		tofuItemRegister(TofuType.diamond,new ItemStack(tofu_material,1,1));
 		tofuItemRegister(TofuType.zunda,new ItemStack(tofu_food,1,9));
