@@ -11,10 +11,8 @@
         "model": "cube_all"
       }
     ],
-    "inventory": [
-      {
-        "model": "cube_all"
-      }
-    ]
+    "inventory": {
+      "model": "cube_all"
+    }
   }
 }

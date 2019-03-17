@@ -45,4 +45,10 @@ public class BlockTofuTerrain extends BlockTofuBase {
         return new ItemStack(ItemLoader.tofu_food,1,1);
     }
 
+    @Override
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+
+        return new ItemStack(this);
+    }
+
 }

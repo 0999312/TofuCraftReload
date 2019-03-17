@@ -228,6 +228,13 @@ public class BlockTofu extends BlockTofuBase {
 
     }
 
+    @Override
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+
+        return new ItemStack(this);
+
+    }
+
 //    @SideOnly(Side.CLIENT)
 //
 //    /**
