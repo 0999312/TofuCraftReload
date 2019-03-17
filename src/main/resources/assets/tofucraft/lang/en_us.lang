@@ -322,6 +322,10 @@ advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
 advancements.tofucraft.flesh_soymilk.title=Flesh Soymilk
 advancements.tofucraft.flesh_soymilk.description=Squeeze SoyMilk from Tofu Cow
+advancements.tofucraft.getnigari.title=Bitter work
+advancements.tofucraft.getnigari.description=Get Bittern from SaltFurnace
+advancements.tofucraft.getsalt.title=Salty work
+advancements.tofucraft.getsalt.description=Get Salt from SaltFurnace
 
 container.tofucraft.SaltFurnace=Salt Furnace
 container.tofucraft.TfStorage=TF Storage

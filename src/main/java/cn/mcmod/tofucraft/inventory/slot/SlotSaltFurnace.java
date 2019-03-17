@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft.inventory.slot;
 
+import cn.mcmod.tofucraft.advancements.TofuAdvancements;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
@@ -102,14 +103,15 @@ public class SlotSaltFurnace extends Slot {
 
         this.field_75228_b = 0;
 
-     /*   if (par1ItemStack.getItem() == TcItems.salt)
+
+        if (par1ItemStack.getItem() == ItemLoader.material)
         {
-            TcAchievementMgr.achieve(this.thePlayer, TcAchievementMgr.Key.salt);
+            TofuAdvancements.grantAdvancement(this.thePlayer, "getsalt");
         }
-        else if (par1ItemStack.getItem() == TcItems.nigari)
+        else if (par1ItemStack.getItem() == ItemLoader.nigari)
         {
-            TcAchievementMgr.achieve(this.thePlayer, TcAchievementMgr.Key.nigari);
-        }*/
+            TofuAdvancements.grantAdvancement(this.thePlayer, "getnigari");
+        }
     }
 
 }

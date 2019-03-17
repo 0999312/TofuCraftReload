@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "tofucraft:nigari"
+    },
+    "title": {
+      "translate": "advancements.tofucraft.getnigari.title"
+    },
+    "description": {
+      "translate": "advancements.tofucraft.getnigari.description"
+    }
+  },
+  "parent": "tofucraft:tofucraft/root",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

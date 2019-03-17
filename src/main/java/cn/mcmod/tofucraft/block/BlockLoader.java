@@ -68,12 +68,12 @@ public class BlockLoader {
 	public static BlockTofuDoor TOFUMETAL_DOOR = new BlockTofuDoor(Material.IRON,TofuType.metal);
 	public static BlockTofuDoor TOFUZUNDA_DOOR = new BlockTofuDoor(Material.WOOD,TofuType.zunda);
 
-	public static BlockTofuStairs TOFUKINU_STAIRS = new BlockTofuStairs(KINUTOFU.getDefaultState());
-	public static BlockTofuStairs TOFUMOMEN_STAIRS = new BlockTofuStairs(MOMENTOFU.getDefaultState());
-	public static BlockTofuStairs TOFUISHI_STAIRS = new BlockTofuStairs(ISHITOFU.getDefaultState());
-	public static BlockTofuStairs TOFUMETAL_STAIRS = new BlockTofuStairs(METALTOFU.getDefaultState());
-	public static BlockTofuStairs TOFUZUNDA_STAIRS = new BlockTofuStairs(TOFUZUNDA.getDefaultState());
-	public static BlockTofuStairs TOFUISHI_BRICK_STAIRS = new BlockTofuStairs(TOFUISHI_BRICK.getDefaultState());
+	public static Block TOFUKINU_STAIRS = new BlockTofuStairs(KINUTOFU.getDefaultState()).setFragile();
+	public static Block TOFUMOMEN_STAIRS = new BlockTofuStairs(MOMENTOFU.getDefaultState());
+	public static Block TOFUISHI_STAIRS = new BlockTofuStairs(ISHITOFU.getDefaultState());
+	public static Block TOFUMETAL_STAIRS = new BlockTofuStairs(METALTOFU.getDefaultState());
+	public static Block TOFUZUNDA_STAIRS = new BlockTofuStairs(TOFUZUNDA.getDefaultState());
+	public static Block TOFUISHI_BRICK_STAIRS = new BlockTofuStairs(TOFUISHI_BRICK.getDefaultState());
 
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;

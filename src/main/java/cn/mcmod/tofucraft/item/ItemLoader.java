@@ -180,6 +180,16 @@ public class ItemLoader {
 	public static ItemPickaxeBasic ishiTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.SOLID,"toolsolidpickaxe");
 	public static ItemPickaxeBasic metalTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.METAL,"toolmetalpickaxe");
 
+	public static ItemShovelBasic kinuTofuShovel = new ItemShovelBasic(TofuToolMaterial.KINU,"toolkinushovel");
+	public static ItemShovelBasic momenTofuShovel = new ItemShovelBasic(TofuToolMaterial.MOMEN,"toolmomenshovel");
+	public static ItemShovelBasic ishiTofuShovel = new ItemShovelBasic(TofuToolMaterial.SOLID,"toolsolidshovel");
+	public static ItemShovelBasic metalTofuShovel = new ItemShovelBasic(TofuToolMaterial.METAL,"toolmetalshovel");
+
+	public static ItemAxeBasic kinuTofuAxe = new ItemAxeBasic(TofuToolMaterial.KINU,0.0F,-2.6F,"toolkinuaxe");
+	public static ItemAxeBasic momenTofuAxe = new ItemAxeBasic(TofuToolMaterial.MOMEN,0.5F,-2.8F,"toolmomenaxe");
+	public static ItemAxeBasic ishiTofuAxe = new ItemAxeBasic(TofuToolMaterial.SOLID,5.0F,-2.9F,"toolsolidaxe");
+	public static ItemAxeBasic metalTofuAxe = new ItemAxeBasic(TofuToolMaterial.METAL,7.0F,-2.95F,"toolmetalaxe");
+
 	public static ItemArmorBase kinuhelmet = new ItemArmorBase(TofuArmorMaterial.KINU, EntityEquipmentSlot.HEAD,"armorkinuhelmet").setArmorTexture("tofucraft:textures/armor/armor_kinu_1.png");
 	public static ItemArmorBase kinuchestplate = new ItemArmorBase(TofuArmorMaterial.KINU, EntityEquipmentSlot.CHEST,"armorkinuchestplate").setArmorTexture("tofucraft:textures/armor/armor_kinu_1.png");
 	public static ItemArmorBase kinuleggins = new ItemArmorBase(TofuArmorMaterial.KINU, EntityEquipmentSlot.LEGS,"armorkinuleggins").setArmorTexture("tofucraft:textures/armor/armor_kinu_2.png");
@@ -238,6 +248,16 @@ public class ItemLoader {
 		register(momenTofuPickaxe);
 		register(ishiTofuPickaxe);
 		register(metalTofuPickaxe);
+
+		register(kinuTofuShovel);
+		register(momenTofuShovel);
+		register(ishiTofuShovel);
+		register(metalTofuShovel);
+
+		register(kinuTofuAxe);
+		register(momenTofuAxe);
+		register(ishiTofuAxe);
+		register(metalTofuAxe);
 
 		register(kinuhelmet);
 		register(kinuchestplate);
@@ -318,6 +338,16 @@ public class ItemLoader {
 		registerRender(momenTofuPickaxe);
 		registerRender(ishiTofuPickaxe);
 		registerRender(metalTofuPickaxe);
+
+		registerRender(kinuTofuShovel);
+		registerRender(momenTofuShovel);
+		registerRender(ishiTofuShovel);
+		registerRender(metalTofuShovel);
+
+		registerRender(kinuTofuAxe);
+		registerRender(momenTofuAxe);
+		registerRender(ishiTofuAxe);
+		registerRender(metalTofuAxe);
 
 		registerRender(TOFUKINU_DOOR);
 		registerRender(TOFUMOMEN_DOOR);

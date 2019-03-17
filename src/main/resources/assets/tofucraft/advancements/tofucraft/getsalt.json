@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "tofucraft:material",
+      "date": 2
+    },
+    "title": {
+      "translate": "advancements.tofucraft.getsalt.title"
+    },
+    "description": {
+      "translate": "advancements.tofucraft.getsalt.description"
+    }
+  },
+  "parent": "tofucraft:tofucraft/getnigari",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}
