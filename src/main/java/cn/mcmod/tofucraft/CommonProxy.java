@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TofuParticleType;
 import cn.mcmod.tofucraft.entity.TofuEntityRegister;
+import cn.mcmod.tofucraft.event.TofuEventLoader;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntityRegistry;
@@ -17,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -37,6 +39,7 @@ public class CommonProxy {
         new BlockLoader(event);
         new ItemLoader(event);
         TofuEntityRegister.entityRegister();
+        MinecraftForge.EVENT_BUS.register(new TofuEventLoader());
     }
 
     public void init(FMLInitializationEvent event) {
@@ -51,15 +54,15 @@ public class CommonProxy {
     public void registerFluidBlockRendering(Block block, String name) {
 
     }
-
-    public World getClientWorld() {
-        return null;
-    }
-
 	@SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 
 	}
+    public World getClientWorld() {
+        return null;
+    }
+
+
     
     public void spawnParticle(World world, TofuParticleType particleType, double x, double y, double z, double velX, double velY, double velZ) {
 

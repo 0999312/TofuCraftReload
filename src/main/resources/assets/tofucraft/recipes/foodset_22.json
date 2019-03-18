@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 22
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:material",
+      "data": 11
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}
