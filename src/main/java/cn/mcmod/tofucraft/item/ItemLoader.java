@@ -57,8 +57,8 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"tofudried"
 	});
 	public static ItemFoodBasic foodset = new ItemFoodBasic("foodset", 64,
-			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,6   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4,4   ,6   ,16  ,20,2   ,8 ,7 ,1,3},
-			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.6f,0.1f,0.3f},
+			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,6   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4,4   ,6   ,16  ,20,2   ,8 ,4 ,1,3},
+			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.4f,0.1f,0.3f},
 			new String[]{
 					TofuMain.MODID+"."+"tofuchikuwa",
 					TofuMain.MODID+"."+"oage",
@@ -82,7 +82,7 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"tofuhamburgta",
 					TofuMain.MODID+"."+"tofuminced",
 					TofuMain.MODID+"."+"ricesoborotofu",
-					TofuMain.MODID+"."+"soborotofusaute",
+					TofuMain.MODID+"."+"okarastick",
 					TofuMain.MODID+"."+"edamameboiled",
 					TofuMain.MODID+"."+"saltymelon"
 			}
@@ -133,8 +133,8 @@ public class ItemLoader {
 			}
 	);
 	public static ItemFoodBasic foodsetContain = new ItemFoodContain("foodsetContain", 1,
-			  new int[]{16  ,8   ,5   ,6   ,8   ,3   ,20,20,3   ,5   ,10  ,6   ,8   ,3   },
-			new float[]{0.5f,0.4f,0.3f,0.5f,0.8f,0.3f,1F,1f,0.3f,0.6f,0.7f,0.6f,0.8f,0.3f},
+			  new int[]{16  ,8   ,5   ,6   ,8   ,3   ,20,20,3   ,5   ,10  ,6   ,8   ,3   ,7},
+			new float[]{0.5f,0.4f,0.3f,0.5f,0.8f,0.3f,1F,1f,0.3f,0.6f,0.7f,0.6f,0.8f,0.3f,0.6f},
 			new String[]{
 					TofuMain.MODID+"."+"mabodofu",
 					TofuMain.MODID+"."+"moyashiitame",
@@ -150,7 +150,8 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"nikujaga",
 					TofuMain.MODID+"."+"agedashitofu",
 					TofuMain.MODID+"."+"koyadofustew",
-					TofuMain.MODID+"."+"apricot"
+					TofuMain.MODID+"."+"apricot",
+					TofuMain.MODID+"."+"soborotofusaute"
 			},
 			new ItemStack[]{
 					
@@ -168,7 +169,8 @@ public class ItemLoader {
 					new ItemStack(Items.BOWL),	
 					new ItemStack(Items.BOWL),	
 					new ItemStack(Items.BOWL),	
-					new ItemStack(material,1,9)
+					new ItemStack(material,1,9),
+					new ItemStack(Items.BOWL)	
 			}
 	);
 	public static ItemSwordBasic kinuTofuSword = new ItemSwordBasic(TofuToolMaterial.KINU,"swordkinu");

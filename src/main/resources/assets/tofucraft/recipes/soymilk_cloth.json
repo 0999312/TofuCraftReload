@@ -1,0 +1,22 @@
+{
+   "type" : "minecraft:crafting_shapeless",
+   "ingredients" : [
+      {
+         "item" : "tofucraft:seeds_soybeans"
+      },
+    {
+      "item": "tofucraft:material",
+      "data": 10
+    },
+      {
+         "item" : "minecraft:bucket"
+      }
+   ],
+   "result" : {
+      "item" : "forge:bucketfilled",
+      "nbt" : {
+         "FluidName" : "soymilk",
+         "Amount" : 1000
+      }
+   }
+}
