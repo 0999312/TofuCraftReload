@@ -22,6 +22,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.EnumMap;
 
@@ -216,6 +217,8 @@ public class ItemLoader {
 	public static Item tofustick = new ItemTofuStick();
 
 	public static Item zundaruby = new Item();
+	public static Item rice = new Item();
+	public static Item riceseed = new ItemRiceSeed();
 
 	public static ItemDoor TOFUKINU_DOOR = new ItemDoor(BlockLoader.TOFUKINU_DOOR);
 	public static ItemDoor TOFUMOMEN_DOOR = new ItemDoor(BlockLoader.TOFUMOMEN_DOOR);
@@ -233,9 +236,13 @@ public class ItemLoader {
 		register(foodsetContain);
 		register(nigari);
 		register(soybeans);
+		register(rice.setUnlocalizedName(TofuMain.MODID+"."+"rice"));
+		register(riceseed);
+
 		register(tofustick);
 
 		MinecraftForge.addGrassSeed(new ItemStack(soybeans), 2);
+		MinecraftForge.addGrassSeed(new ItemStack(riceseed), 3);
 
 		register(kinuTofuSword);
 		register(momenTofuSword);
@@ -311,6 +318,9 @@ public class ItemLoader {
 		
 		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
 		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
+
+		OreDictionary.registerOre("seedRice",riceseed);
+		OreDictionary.registerOre("cropRice",rice);
 	}
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
@@ -325,6 +335,8 @@ public class ItemLoader {
 		registerRender(foodsetContain);
 		registerRender(nigari);
 		registerRender(soybeans);
+		registerRender(rice);
+		registerRender(riceseed);
 		registerRender(tofustick);
 
 		registerRender(zundaruby);
