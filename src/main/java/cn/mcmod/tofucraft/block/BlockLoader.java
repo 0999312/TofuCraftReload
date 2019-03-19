@@ -47,7 +47,8 @@ public class BlockLoader {
 	public static Block TOFUZUNDA = new BlockTofu(TofuType.zunda);
 
 	public static BlockLeek LEEK = new BlockLeek();
-	public static BlockSoybean SOYBEAN = new BlockSoybean();
+	public static Block SOYBEAN = new BlockSoybean();
+	public static Block RICECROP = new BlockRice();
 	public static Block tofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
 	public static Block zundatofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
 	public static BlockTofuSapling TOFU_SAPLING = new BlockTofuSapling();
@@ -107,6 +108,7 @@ public class BlockLoader {
 
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
 		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
+		register(RICECROP, new ItemBlock(RICECROP), "ricecrop");
 		register(tofuTerrain, new ItemBlock(tofuTerrain), "tofu_terrain");
 		register(zundatofuTerrain, new ItemBlock(zundatofuTerrain), "zundatofu_terrain");
 		register(TOFU_SAPLING, new ItemBlock(TOFU_SAPLING), "sapling_tofu");
