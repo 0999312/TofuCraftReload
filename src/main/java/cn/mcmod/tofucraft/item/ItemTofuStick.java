@@ -42,8 +42,6 @@ public class ItemTofuStick extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public boolean hasEffect(ItemStack stack) {
-
         return true;
-
     }
 }

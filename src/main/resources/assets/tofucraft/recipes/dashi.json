@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "tofucraft:dashi"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "minecraft:cooked_fish",
+      "data": 0
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

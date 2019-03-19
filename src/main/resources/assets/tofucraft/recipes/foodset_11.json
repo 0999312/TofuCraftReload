@@ -1,0 +1,32 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 11
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "tofucraft:bottlesoysause",
+      "data": 32767
+    },
+    {
+      "item": "tofucraft:dashi",
+      "data": 32767
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

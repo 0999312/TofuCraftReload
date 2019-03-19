@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "tofucraft:soyoil"
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:seeds_soybeans"
+    },
+    {
+      "item": "tofucraft:defattingpotion"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

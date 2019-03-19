@@ -6,6 +6,7 @@ import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.TofuBlockUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -27,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
 
-public class BlockTofu extends BlockTofuBase {
+public class BlockTofu extends BlockTofuBase{
     public static final PropertyInteger DRY = PropertyInteger.create("dry", 0, 7);
     private boolean isFragile = false;
     private boolean canDrain = false;
@@ -282,4 +283,6 @@ public class BlockTofu extends BlockTofuBase {
             return false;
         }
     }
+    
+
 }

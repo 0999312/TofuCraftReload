@@ -16,6 +16,11 @@
       "custom": {
         "fluid": "zunda_soymilk"
       }
+    },"soysauce": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "soysauce"
+      }
     }
   }
 }

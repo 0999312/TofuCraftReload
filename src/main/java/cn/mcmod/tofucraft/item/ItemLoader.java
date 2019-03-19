@@ -227,6 +227,12 @@ public class ItemLoader {
 	public static ItemDoor TOFUISHI_DOOR = new ItemDoor(BlockLoader.TOFUISHI_DOOR);
 	public static ItemDoor TOFUMETAL_DOOR = new ItemDoor(BlockLoader.TOFUMETAL_DOOR);
 	
+	public static Item soysauce_bottle = new ItemSeason(TofuMain.MODID+"."+"bottlesoysause", 20);
+	public static Item dashi_bottle = new ItemSeason(TofuMain.MODID+"."+"dashi", 10);
+	public static Item soyoil_bottle = new ItemSeason(TofuMain.MODID+"."+"soyoil", 20);
+	public static Item doubanjiang_bottle = new ItemSeason(TofuMain.MODID+"."+"doubanjiang", 58);
+	
+	public static Item defatting_potion = new ItemDefattingPotion();
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
 		register(tofu_food);
@@ -240,6 +246,11 @@ public class ItemLoader {
 		register(soybeans);
 		register(rice.setUnlocalizedName(TofuMain.MODID+"."+"rice"));
 		register(riceseed);
+		register(defatting_potion);
+		register(soysauce_bottle);
+		register(dashi_bottle);
+		register(soyoil_bottle);
+		register(doubanjiang_bottle);
 
 		register(tofustick);
 
@@ -321,12 +332,16 @@ public class ItemLoader {
 		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
 		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
 
-		OreDictionary.registerOre("seedRice",riceseed);
-		OreDictionary.registerOre("cropRice",rice);
+
 	}
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
     {
+		registerRender(doubanjiang_bottle);
+		registerRender(defatting_potion);
+		registerRender(soyoil_bottle);
+		registerRender(dashi_bottle);
+		registerRender(soysauce_bottle);
 		registerRender(material);
 		registerRender(tofu_food);
 		registerRender(tofu_hell);

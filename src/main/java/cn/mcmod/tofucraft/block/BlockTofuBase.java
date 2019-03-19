@@ -2,16 +2,20 @@ package cn.mcmod.tofucraft.block;
 
 import cn.mcmod.tofucraft.material.TofuMaterial;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome.FlowerEntry;
 
 import java.util.Random;
 
-public class BlockTofuBase extends Block {
+public class BlockTofuBase extends Block implements IGrowable{
 
     public BlockTofuBase() {
         super(TofuMaterial.tofu);
@@ -45,4 +49,59 @@ public class BlockTofuBase extends Block {
         return new ItemStack(this);
     }
 
+    /**
+     * Whether this IGrowable can grow
+     */
+    public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient)
+    {
+        return true;
+    }
+
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state)
+    {
+        return true;
+    }
+
+    public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state)
+    {
+        BlockPos blockpos = pos.up();
+
+        for (int i = 0; i < 128; ++i)
+        {
+            BlockPos blockpos1 = blockpos;
+            int j = 0;
+
+            while (true)
+            {
+                if (j >= i / 16)
+                {
+                    if (worldIn.isAirBlock(blockpos1))
+                    {
+                    	if (rand.nextInt(8) == 0) 	plantFlower(worldIn, rand, blockpos1);
+                    }
+                    break;
+                }
+
+                blockpos1 = blockpos1.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
+
+                if (!(worldIn.getBlockState(blockpos1.down()).getBlock() instanceof BlockTofuBase) || worldIn.getBlockState(blockpos1).isNormalCube())
+                {
+                    break;
+                }
+
+                ++j;
+	            }
+	        }
+	    }
+	
+    
+    public void plantFlower(World world, Random rand, BlockPos pos)
+    {
+        if (!BlockLoader.LEEK.canBlockStay(world, pos, BlockLoader.LEEK.getDefaultState()))
+        {
+            return;
+        }
+
+        world.setBlockState(pos, BlockLoader.LEEK.getDefaultState(), 3);
+    }
 }

@@ -6,6 +6,7 @@ import cn.mcmod.tofucraft.entity.TofuEntityRegister;
 import cn.mcmod.tofucraft.event.TofuEventLoader;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.item.ItemLoader;
+import cn.mcmod.tofucraft.item.TofuOreDictLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntityRegistry;
 import cn.mcmod.tofucraft.util.RecipesUtil;
 import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
@@ -40,6 +41,7 @@ public class CommonProxy {
         new ItemLoader(event);
         TofuEntityRegister.entityRegister();
         MinecraftForge.EVENT_BUS.register(new TofuEventLoader());
+        new TofuOreDictLoader();
     }
 
     public void init(FMLInitializationEvent event) {
@@ -56,7 +58,18 @@ public class CommonProxy {
     }
 	@SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-
+//		RecipesUtil.addShapelessRecipe(new ItemStack(ItemLoader.soyoil_bottle,1), new Object[]{
+//				new ItemStack(ItemLoader.soybeans),ItemLoader.defatting_potion,Items.GLASS_BOTTLE
+//		});
+//		RecipesUtil.addShapelessRecipe(new ItemStack(ItemLoader.dashi_bottle,1), new Object[]{
+//				Items.WATER_BUCKET,Items.COOKED_FISH,Items.GLASS_BOTTLE
+//		});
+//		RecipesUtil.addShapelessRecipe(new ItemStack(ItemLoader.foodset,1,11), new Object[]{
+//				Items.BOWL,Items.COOKED_BEEF,Items.POTATO,Items.CARROT,Items.SUGAR,TofuOreDictLoader.Soysause,TofuOreDictLoader.Dashi
+//		});
+//		RecipesUtil.addShapelessRecipe(new ItemStack(ItemLoader.foodset,1,11), new Object[]{
+//				Items.BOWL,Items.COOKED_PORKCHOP,Items.POTATO,Items.CARROT,Items.SUGAR,TofuOreDictLoader.Soysause,TofuOreDictLoader.Dashi
+//		});
 	}
     public World getClientWorld() {
         return null;

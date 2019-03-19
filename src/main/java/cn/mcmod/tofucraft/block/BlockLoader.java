@@ -33,6 +33,8 @@ public class BlockLoader {
 	public static Fluid ZUNDASOYMILK_FLUID;
 	public static Block NIGARI;
 	public static Fluid NIGARI_FLUID;
+	public static Block SOYSAUCE;
+	public static Fluid SOYSAUCE_FLUID;
 
 	public static Block SALTFURNACE = new BlockSaltFurnace(false).setCreativeTab(CommonProxy.tab);
 	public static Block SALTFURNACE_LIT = new BlockSaltFurnace(true);
@@ -91,6 +93,11 @@ public class BlockLoader {
 		FluidRegistry.addBucketForFluid(NIGARI_FLUID);
 		NIGARI = registerFluidBlock(NIGARI_FLUID, new BlockNigari(NIGARI_FLUID), "nigari");
 		NIGARI_FLUID.setTemperature(12);
+		
+		SOYSAUCE_FLUID = SoySauceFluid.instance;
+		FluidRegistry.addBucketForFluid(SOYSAUCE_FLUID);
+		SOYSAUCE = registerFluidBlock(SOYSAUCE_FLUID, new BlockSoySauce(SOYSAUCE_FLUID), "soysauce");
+		SOYSAUCE_FLUID.setTemperature(15);
 
 		register(SALTFURNACE, new ItemBlock(SALTFURNACE), "saltfurnace");
 		register(SALTFURNACE_LIT, new ItemBlock(SALTFURNACE_LIT), "saltfurnace_lit");
