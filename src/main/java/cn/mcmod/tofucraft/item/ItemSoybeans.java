@@ -74,9 +74,4 @@ public class ItemSoybeans extends Item implements IPlantable {
         return BlockLoader.SOYBEAN.getDefaultState();
     }
 
-//    @Override
-//    public int getPlantMetadata(IBlockAccess world, BlockPos pos)
-//    {
-//        return 0;
-//    }
 }
