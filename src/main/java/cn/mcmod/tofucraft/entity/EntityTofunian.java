@@ -1,13 +1,19 @@
 package cn.mcmod.tofucraft.entity;
 
 import cn.mcmod.tofucraft.entity.ai.EntityAITofunianAvoidEntity;
+import cn.mcmod.tofucraft.entity.ai.EntityAITofunianInteract;
 import cn.mcmod.tofucraft.item.ItemLoader;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -31,6 +37,10 @@ import java.util.*;
 
 public class EntityTofunian extends EntityVillager {
     private static final DataParameter<Integer> TOFUPROFESSION = EntityDataManager.createKey(EntityTofunian.class, DataSerializers.VARINT);
+
+    private int tofunianCareerLevel;
+    private int tofunianTimeUntilReset;
+    private boolean isWillingToMate;
     public EntityTofunian(World worldIn) {
         super(worldIn, 5);
         this.setSize(0.45F, 1.4F);
@@ -54,15 +64,41 @@ public class EntityTofunian extends EntityVillager {
         this.tasks.addTask(7, new EntityAIVillagerMate(this));
         this.tasks.addTask(8, new EntityAIFollowGolem(this));
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
-        this.tasks.addTask(9, new EntityAIVillagerInteract(this));
+        this.tasks.addTask(9, new EntityAITofunianInteract(this));
         this.tasks.addTask(9, new EntityAIWanderAvoidWater(this, 0.6D));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
+        this.targetTasks.addTask(0, new EntityAIHurtByTarget(this,true));
     }
 
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
 
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
+    }
+
+    @Override
+    protected void updateAITasks() {
+        if (!this.isTrading() && this.tofunianTimeUntilReset > 0) {
+            --this.tofunianTimeUntilReset;
+
+            if (this.tofunianTimeUntilReset <= 0) {
+                //update TofunianTrade
+                this.initTrades();
+            }
+        }
+
+        super.updateAITasks();
+    }
+
+    @Override
+    public void useRecipe(MerchantRecipe recipe)
+    {
+        super.useRecipe(recipe);
+
+        if (recipe.getToolUses() == 1 || this.rand.nextInt(5) == 0) {
+            this.tofunianTimeUntilReset = 40;
+        }
+
     }
 
     public void onLivingUpdate()
@@ -92,11 +128,18 @@ public class EntityTofunian extends EntityVillager {
 
         super.writeEntityToNBT(compound);
         compound.setInteger("tofu_profession", this.getDataManager().get(TOFUPROFESSION));
+        compound.setInteger("CareerLevel", this.tofunianCareerLevel);
+
+        compound.setBoolean("Willing", this.isWillingToMate);
     }
 
     public void readEntityFromNBT(NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
         this.getDataManager().set(TOFUPROFESSION, compound.getInteger("tofu_profession"));
+        //Load villager's CarrierLevel and make it usable as tofunian CareerLevel
+        this.tofunianCareerLevel = compound.getInteger("CareerLevel");
+
+        this.isWillingToMate = compound.getBoolean("Willing");
         this.updateEntityAI();
     }
 
@@ -189,12 +232,26 @@ public class EntityTofunian extends EntityVillager {
 
         if(canGuard()){
             this.tasks.addTask(1, new EntityAIAttackMelee(this,0.65F,true));
-            this.targetTasks.addTask(0, new EntityAIHurtByTarget(this,true));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this,EntityTofuChinger.class,false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this,EntityZombie.class,false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, AbstractIllager.class,false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityVex.class,false));
         }
+
+        if(canFarm()&&!this.isChild()){
+            this.tasks.addTask(8, new EntityAIHarvestFarmland(this, 0.6D));
+        }
+    }
+
+    protected void onGrowingAdult()
+    {
+
+        if (this.getTofuProfession() == TofuProfession.TOFUCOOK)
+        {
+            this.tasks.addTask(8, new EntityAIHarvestFarmland(this, 0.6D));
+        }
+
+        super.onGrowingAdult();
     }
 
     @Override
@@ -224,6 +281,12 @@ public class EntityTofunian extends EntityVillager {
         entityvillager.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(entityvillager)), (IEntityLivingData)null);
 
         return entityvillager;
+
+    }
+
+    public boolean canFarm() {
+
+        return this.getDataManager().get(TOFUPROFESSION) == TofuProfession.TOFUCOOK.ordinal();
 
     }
 
@@ -290,19 +353,65 @@ public class EntityTofunian extends EntityVillager {
         MerchantRecipeList list = new MerchantRecipeList();
 
 
+        if(this.tofunianCareerLevel != 0)
+        {
+            ++this.tofunianCareerLevel;
+        } else
+        {
+            this.tofunianCareerLevel = 1;
+        }
+
         if (getTofuProfession() == TofuProfession.FISHERMAN) {
-            addTradeRubyForItem(list,new ItemStack(ItemLoader.tofu_food),24+ rand.nextInt(6));
+
+
+            addTradeRubyForItem(list,new ItemStack(ItemLoader.tofu_food),22+ rand.nextInt(6));
+
             addTradeForSingleRuby(list, new ItemStack(ItemLoader.foodset, 8 + rand.nextInt(3)),1);
         }else if (getTofuProfession() == TofuProfession.TOFUCOOK) {
-            addTradeRubyForItem(list,new ItemStack(ItemLoader.tofu_food),24+ rand.nextInt(6));
-            addTradeRubyForItem(list,new ItemStack(ItemLoader.soybeans),28+ rand.nextInt(6));
+            addTradeRubyForItem(list, new ItemStack(ItemLoader.tofu_food), 24 + rand.nextInt(6));
+            addTradeRubyForItem(list, new ItemStack(ItemLoader.soybeans), 24 + rand.nextInt(6));
 
-            addTradeForSingleRuby(list, new ItemStack(ItemLoader.zundaMochi, 6 + rand.nextInt(3)),1);
-            addTradeForSingleRuby(list, new ItemStack(ItemLoader.foodset, 8 + rand.nextInt(5),14),1);
+            if(tofunianCareerLevel > 1) {
+                addTradeRubyForItem(list, new ItemStack(ItemLoader.rice), 16 + rand.nextInt(6));
 
+                addTradeForSingleRuby(list, new ItemStack(ItemLoader.tofu_food, 6 + rand.nextInt(4), 6), 1);
+                addTradeForSingleRuby(list, new ItemStack(ItemLoader.tofu_food, 6 + rand.nextInt(4), 5), 1);
+            }
+            if (tofunianCareerLevel > 2){
+                if(this.rand.nextInt(2)==0) {
+                    addTradeForSingleRuby(list, new ItemStack(ItemLoader.foodset, 5 + rand.nextInt(3), 15), 1);
+                }else {
+                    addTradeForSingleRuby(list, new ItemStack(ItemLoader.foodset, 6 + rand.nextInt(4), 14), 1);
+                }
+            }
+
+            if (tofunianCareerLevel > 3){
+                addTradeForSingleRuby(list, new ItemStack(ItemLoader.zundaMochi, 4 + rand.nextInt(4)), 1);
+
+                addTradeForSingleRuby(list, new ItemStack(ItemLoader.material, 2 + rand.nextInt(2), 17), 4);
+            }
+
+            if (tofunianCareerLevel > 4){
+                if(this.rand.nextInt(2)==0) {
+                    addTradeForSingleRuby(list, new ItemStack(ItemLoader.material, 1 + rand.nextInt(2), 9), 5);
+                }
+            }
         } else if (getTofuProfession() == TofuProfession.TOFUSMISH) {
+            addTradeRubyForItem(list,new ItemStack(ItemLoader.tofu_food,1,2),22+ rand.nextInt(6));
+
             addTradeForSingleRuby(list, new ItemStack(ItemLoader.metalTofuSword, 1),4+ rand.nextInt(3));
-            addTradeForSingleRuby(list, new ItemStack(ItemLoader.metalTofuPickaxe, 1),5+ rand.nextInt(3));
+            addTradeForSingleRuby(list, new ItemStack(ItemLoader.metalTofuShovel, 1),5+ rand.nextInt(3));
+            if(tofunianCareerLevel > 1) {
+                addTradeRubyForItem(list,new ItemStack(ItemLoader.tofu_material,1),5+ rand.nextInt(4));
+                addTradeForSingleRuby(list, new ItemStack(ItemLoader.metalhelmet, 1),4+ rand.nextInt(3));
+                addEnchantTradeForSingleRuby(list, new ItemStack(ItemLoader.metalTofuPickaxe, 1),6+ rand.nextInt(6));
+            }
+
+            if(tofunianCareerLevel > 2) {
+                addEnchantTradeForSingleRuby(list, new ItemStack(ItemLoader.metalleggins, 1),6+ rand.nextInt(4));
+                addEnchantTradeForSingleRuby(list, new ItemStack(ItemLoader.metalchestplate, 1),7+ rand.nextInt(4));
+            }
+
             addTradeForSingleRuby(list, new ItemStack(ItemLoader.tofustick, 2),1+ rand.nextInt(2));
         }
 
@@ -331,8 +440,6 @@ public class EntityTofunian extends EntityVillager {
         stack1.setCount(cost);
 
         list.add(new MerchantRecipe(stack1,new ItemStack(ItemLoader.zundaruby, 1)));
-
-
     }
 
     public void addTradeForSingleRuby(MerchantRecipeList list, ItemStack sell,int cost) {
@@ -344,11 +451,22 @@ public class EntityTofunian extends EntityVillager {
 
         ItemStack stack1 = sell.copy();
 
-        int i = rand.nextInt(3);
 
         list.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, cost), stack1));
+    }
+
+    public void addEnchantTradeForSingleRuby(MerchantRecipeList list, ItemStack sell,int cost) {
+
+        double tofuWorth = 1;
 
 
+        List<Double> listTradeCosts = new ArrayList<>();
+
+        ItemStack stack1 = sell.copy();
+
+        ItemStack enchantStack = EnchantmentHelper.addRandomEnchantment(this.rand, new ItemStack(stack1.getItem(), 1, stack1.getMetadata()), 5 + this.rand.nextInt(15), false);
+
+        list.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, cost), enchantStack));
     }
 
     @Override
@@ -381,6 +499,117 @@ public class EntityTofunian extends EntityVillager {
         return itextcomponent;
     }
 
+    public boolean getIsWillingToMate(boolean updateFirst)
+    {
+        if (!this.isWillingToMate && updateFirst && this.hasEnoughFoodToBreed())
+        {
+            boolean flag = false;
+
+            for (int i = 0; i < this.getVillagerInventory().getSizeInventory(); ++i)
+            {
+                ItemStack itemstack = this.getVillagerInventory().getStackInSlot(i);
+
+                if (!itemstack.isEmpty())
+                {
+                    if (itemstack.getItem() == Items.BREAD && itemstack.getCount() >= 3)
+                    {
+                        flag = true;
+                        this.getVillagerInventory().decrStackSize(i, 3);
+                    }
+                    else if ((itemstack.getItem() == ItemLoader.soybeans ||itemstack.getItem() == ItemLoader.foodset ||itemstack.getItem() == Items.POTATO || itemstack.getItem() == Items.CARROT) && itemstack.getCount() >= 12)
+                    {
+                        flag = true;
+                        this.getVillagerInventory().decrStackSize(i, 12);
+                    }
+                }
+
+                if (flag)
+                {
+                    this.world.setEntityState(this, (byte)18);
+                    this.isWillingToMate = true;
+                    break;
+                }
+            }
+        }
+
+        return this.isWillingToMate;
+    }
+
+    public void setIsWillingToMate(boolean isWillingToMate)
+    {
+        this.isWillingToMate = isWillingToMate;
+    }
+
+    public boolean wantsMoreFood()
+    {
+        return !this.hasEnoughItems(1);
+    }
+
+    private boolean hasEnoughItems(int multiplier)
+    {
+        boolean flag = this.getProfession() == 0;
+
+        for (int i = 0; i < this.getVillagerInventory().getSizeInventory(); ++i)
+        {
+            ItemStack itemstack = this.getVillagerInventory().getStackInSlot(i);
+
+            if (!itemstack.isEmpty())
+            {
+                if (itemstack.getItem() == Items.BREAD && itemstack.getCount() >= 3 * multiplier || itemstack.getItem() == Items.POTATO && itemstack.getCount() >= 12 * multiplier || itemstack.getItem() == Items.CARROT && itemstack.getCount() >= 12 * multiplier || itemstack.getItem() == Items.BEETROOT && itemstack.getCount() >= 12 * multiplier|| itemstack.getItem() == ItemLoader.foodset && itemstack.getCount() >= 12 * multiplier|| itemstack.getItem() == ItemLoader.soybeans && itemstack.getCount() >= 12 * multiplier)
+                {
+                    return true;
+                }
+
+                if (flag && itemstack.getItem() == Items.WHEAT && itemstack.getCount() >= 9 * multiplier ||flag && itemstack.getItem() == ItemLoader.rice && itemstack.getCount() >= 9 * multiplier)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    protected void updateEquipmentIfNeeded(EntityItem itemEntity)
+    {
+        super.updateEquipmentIfNeeded(itemEntity);
+        ItemStack itemstack = itemEntity.getItem();
+        Item item = itemstack.getItem();
+
+        if (this.canTofunianPickupItem(item))
+        {
+            ItemStack itemstack1 = this.getVillagerInventory().addItem(itemstack);
+
+            if (itemstack1.isEmpty())
+            {
+                itemEntity.setDead();
+            }
+            else
+            {
+                itemstack.setCount(itemstack1.getCount());
+            }
+        }
+    }
+    private boolean canTofunianPickupItem(Item itemIn)
+    {
+        return itemIn == ItemLoader.riceseed || itemIn == ItemLoader.soybeans || itemIn == ItemLoader.rice;
+    }
+
+    public boolean isFarmItemInInventory()
+    {
+        for (int i = 0; i < this.getVillagerInventory().getSizeInventory(); ++i)
+        {
+            ItemStack itemstack = this.getVillagerInventory().getStackInSlot(i);
+
+            if (!itemstack.isEmpty() && (itemstack.getItem() == Items.WHEAT_SEEDS || itemstack.getItem() == Items.POTATO || itemstack.getItem() == Items.CARROT || itemstack.getItem() == Items.BEETROOT_SEEDS || itemstack.getItem() == ItemLoader.riceseed ||itemstack.getItem() == ItemLoader.soybeans))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     @Override
     public boolean isOnSameTeam(Entity entityIn)
     {
@@ -396,6 +625,21 @@ public class EntityTofunian extends EntityVillager {
         {
             return false;
         }
+    }
+
+    @Override
+
+    public void playSound(SoundEvent soundIn, float volume, float pitch) {
+
+        //cancel villager trade sounds
+        if (soundIn == SoundEvents.ENTITY_VILLAGER_YES || soundIn == SoundEvents.ENTITY_VILLAGER_NO) {
+
+            return;
+
+        }
+
+        super.playSound(soundIn, volume, pitch);
+
     }
 
     @Override
