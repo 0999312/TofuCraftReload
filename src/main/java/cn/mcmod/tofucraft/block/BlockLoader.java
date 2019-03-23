@@ -12,11 +12,17 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemDoor;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -77,7 +83,9 @@ public class BlockLoader {
 	public static Block TOFUMETAL_STAIRS = new BlockTofuStairs(METALTOFU.getDefaultState());
 	public static Block TOFUZUNDA_STAIRS = new BlockTofuStairs(TOFUZUNDA.getDefaultState());
 	public static Block TOFUISHI_BRICK_STAIRS = new BlockTofuStairs(TOFUISHI_BRICK.getDefaultState());
-
+	
+	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
+	public static BlockBarrel DOUBANJIANGBARREL = new BlockDoubanjiangBarrel().setDrain(3);
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
 		FluidRegistry.addBucketForFluid(SOYMILK_FLUID);
@@ -112,7 +120,9 @@ public class BlockLoader {
 		register(TOFUZUNDA, new ItemBlock(TOFUZUNDA), "blocktofuzunda");
 		register(TOFUISHI_BRICK, new ItemBlock(TOFUISHI_BRICK), "tofuishi_brick");
 
-
+		register(MISOBARREL, new ItemBlock(MISOBARREL), "barrelmiso");
+		register(DOUBANJIANGBARREL, new ItemBlock(DOUBANJIANGBARREL), "barreldoubanjiang");
+		
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
 		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
 		register(RICECROP, new ItemBlock(RICECROP), "ricecrop");
@@ -166,6 +176,8 @@ public class BlockLoader {
 
 	@SideOnly(Side.CLIENT)
 	public static void registerRenders() {
+		registerRender(MISOBARREL);registerRender(DOUBANJIANGBARREL);
+		
 		registerRender(tofu_Cake);
 		registerRender(TOFUDRIED);
 		registerRender(SALTFURNACE);
@@ -224,6 +236,7 @@ public class BlockLoader {
 		ModelResourceLocation model = new ModelResourceLocation(TofuMain.MODID + ":" + block.getRegistryName().getResourcePath(), "inventory");
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, model);
 	}
+
 
 	@SideOnly(Side.CLIENT)
 	public static void registerCakeRender(Block block, String name) {

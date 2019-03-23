@@ -4,8 +4,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemSeason extends Item {
-	public ItemSeason(String name, int damage) {
+public class ItemSeasoning extends Item {
+	public ItemSeasoning(String name, int damage) {
 		setUnlocalizedName(name);
 		setMaxDamage(damage);
 		setMaxStackSize(1);

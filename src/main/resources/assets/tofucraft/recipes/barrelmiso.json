@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "tofucraft:barrelmiso"
+  },
+  "pattern": [
+    "CCC",
+    "KKK",
+    " B "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "B": {
+      "item": "tofucraft:material",
+      "data": 5
+    },
+    "C": {
+      "item": "#DUSTSALT"
+    },
+    "K": {
+      "item": "tofucraft:material",
+      "data": 1
+    }
+  }
+}

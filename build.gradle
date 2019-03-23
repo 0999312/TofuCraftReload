@@ -76,7 +76,6 @@ configurations.all {
     runtime ("mezz.jei:jei_1.12.2:4.14.3.242"){
     force = true
     }
-    
 }
 
 processResources {

@@ -550,3 +550,6 @@ tofucraft.wrongPotionId1=[豆腐工艺] §c＊警告＊§r 药水ID与服务器�
 tofucraft.wrongPotionId2=请按照下列内容在配置文件中更改设置，否则游戏将会崩溃。
 tofucraft.wrongPotionId3=I.glowing=%s   I.filling=%s
 
+tile.tofucraft.barreldoubanjiang.name=豆瓣酱桶
+
+item.tofucraft.chill.name=红辣椒

@@ -400,3 +400,6 @@ entity.Tofunian.fisherman=Fisher Tofunian
 entity.Tofunian.guard=Guard Tofunian
 entity.Tofunian.tofusmish=Tofu Smish
 
+tile.tofucraft.barreldoubanjiang.name=Doubanjiang Barrel
+
+item.tofucraft.chill.name=Chill Pepper

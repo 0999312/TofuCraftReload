@@ -58,18 +58,21 @@ public class CommonProxy {
     }
 	@SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-//		RecipesUtil.addShapelessRecipe(new ItemStack(ItemLoader.soyoil_bottle,1), new Object[]{
-//				new ItemStack(ItemLoader.soybeans),ItemLoader.defatting_potion,Items.GLASS_BOTTLE
-//		});
-//		RecipesUtil.addShapelessRecipe(new ItemStack(ItemLoader.dashi_bottle,1), new Object[]{
-//				Items.WATER_BUCKET,Items.COOKED_FISH,Items.GLASS_BOTTLE
-//		});
-//		RecipesUtil.addShapelessRecipe(new ItemStack(ItemLoader.foodset,1,11), new Object[]{
-//				Items.BOWL,Items.COOKED_BEEF,Items.POTATO,Items.CARROT,Items.SUGAR,TofuOreDictLoader.Soysause,TofuOreDictLoader.Dashi
-//		});
-//		RecipesUtil.addShapelessRecipe(new ItemStack(ItemLoader.foodset,1,11), new Object[]{
-//				Items.BOWL,Items.COOKED_PORKCHOP,Items.POTATO,Items.CARROT,Items.SUGAR,TofuOreDictLoader.Soysause,TofuOreDictLoader.Dashi
-//		});
+		//boildEdamame
+		GameRegistry.addSmelting( new ItemStack(ItemLoader.material,1,3), new ItemStack(ItemLoader.foodset,16,23), 0.25f);
+		//SoyBeenParched
+		GameRegistry.addSmelting( new ItemStack(ItemLoader.soybeans,1), new ItemStack(ItemLoader.material,1,6), 0.2f);
+
+		GameRegistry.addSmelting( new ItemStack(ItemLoader.material,1,13), new ItemStack(ItemLoader.material,1,14), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(ItemLoader.tofu_food,1,0), new ItemStack(ItemLoader.tofu_food,1,3), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(ItemLoader.tofu_food,1,1), new ItemStack(ItemLoader.tofu_food,1,3), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(ItemLoader.tofu_food,1,2), new ItemStack(ItemLoader.foodset,1,17), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(ItemLoader.material,1,20), new ItemStack(ItemLoader.foodset,1,9), 0.2f);
+		GameRegistry.addSmelting(new ItemStack(ItemLoader.foodset,1,12), new ItemStack(ItemLoader.foodset,1,13), 0.2f);
+		
+		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
+		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
+
 	}
     public World getClientWorld() {
         return null;

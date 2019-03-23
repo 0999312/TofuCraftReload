@@ -16,10 +16,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import cn.mcmod.tofucraft.TofuMain;
+import cn.mcmod.tofucraft.item.TofuOreDictLoader;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -177,7 +179,7 @@ public class RecipesUtil {
 	}
 
 	// Call this after you are done generating
-	private static void generateConstants() {
+	public static void generateConstants() {
 		List<Map<String, Object>> json = new ArrayList<>();
 		for (String s : USED_OD_NAMES) {
 			Map<String, Object> entry = new HashMap<>();
@@ -193,6 +195,25 @@ public class RecipesUtil {
 			}
 		}
 	
+	// Call this after you are done generating
+	public static void generateAllConstants() {
+		setupDir();
+		List<Map<String, Object>> json = new ArrayList<>();
+		for (String s : TofuOreDictLoader.OreList) {
+			Map<String, Object> entry = new HashMap<>();
+			entry.put("name", s.toUpperCase(Locale.ROOT));
+			entry.put("ingredient", ImmutableMap.of("type", "forge:ore_dict", "ore", s));
+			json.add(entry);
+		}
+
+		try (FileWriter w = new FileWriter(new File(RECIPE_DIR, "_constants.json"))) {
+			GSON.toJson(json, w);
+		} catch (IOException e) {
+			e.printStackTrace();
+			}
+		}
+	
+	
 	public static void addOreDictionarySmelting(String ore,ItemStack output,float exp){
 		for(ItemStack item :OreDictionary.getOres(ore)){
 			GameRegistry.addSmelting(item, output, exp);
@@ -203,4 +224,15 @@ public class RecipesUtil {
 			GameRegistry.addSmelting(item, output, 0F);
 		}
 	}
+	   public static NBTTagCompound getItemTagCompound(ItemStack stack){
+			NBTTagCompound tag;
+			if(stack.hasTagCompound()){
+				tag = stack.getTagCompound();
+			}else{
+				tag = new NBTTagCompound();
+				stack.setTagCompound(tag);
+			}
+
+			return tag;
+		}
 }

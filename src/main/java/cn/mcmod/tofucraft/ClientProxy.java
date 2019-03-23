@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft;
 
+import cn.mcmod.tofucraft.block.BlockBarrel;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TofuParticleType;
 import cn.mcmod.tofucraft.client.particle.ParticleTofuPortal;
@@ -11,13 +12,21 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ClientProxy extends CommonProxy {
 	 	@Override
@@ -33,12 +42,22 @@ public class ClientProxy extends CommonProxy {
 	    public void init(FMLInitializationEvent event)
 	    {
 	        super.init(event);
+	        
+			Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor() {
+				@Override
+				public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex)
+				{
+					 int metadata = state.getValue(BlockBarrel.FERM);
+					 return metadata >= 7 ? 0x885511 : ((BlockBarrel) state.getBlock()).isUnderWeight((World) worldIn, pos) ? 0xffd399 : 0xffffff ;
+				}
+			}, BlockLoader.MISOBARREL);
 	    }
 
 	    @Override
 	    public void postInit(FMLPostInitializationEvent event)
 	    {
 	        super.postInit(event);
+
 	    }
 
 	@Override
@@ -111,4 +130,5 @@ public class ClientProxy extends CommonProxy {
 			}
 		}
 	}
+
 }

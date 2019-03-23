@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "tofucraft:koujibase"
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:seeds_soybeans"
+    },
+    {
+      "item": "#LISTALLGRAIN"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

@@ -118,8 +118,10 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"activatedhelltofu",
 			TofuMain.MODID+"."+"tofusomen",
 			TofuMain.MODID+"."+"glassbowl",
-			TofuMain.MODID+"."+"rollingpin"
+			TofuMain.MODID+"."+"rollingpin",
+			TofuMain.MODID+"."+"chill"
 	});
+	public static Item koujiBase = new ItemKoujiBase();
 	public static ItemFood zundaMochi = (ItemFood)new ItemFood(3, 0.8f, false)
 			.setPotionEffect(new PotionEffect(Potion.getPotionById(10), 20, 2), 1.0F)
 			.setUnlocalizedName(TofuMain.MODID+"."+"zundamochi");
@@ -227,14 +229,15 @@ public class ItemLoader {
 	public static ItemDoor TOFUISHI_DOOR = new ItemDoor(BlockLoader.TOFUISHI_DOOR);
 	public static ItemDoor TOFUMETAL_DOOR = new ItemDoor(BlockLoader.TOFUMETAL_DOOR);
 	
-	public static Item soysauce_bottle = new ItemSeason(TofuMain.MODID+"."+"bottlesoysause", 20);
-	public static Item dashi_bottle = new ItemSeason(TofuMain.MODID+"."+"dashi", 10);
-	public static Item soyoil_bottle = new ItemSeason(TofuMain.MODID+"."+"soyoil", 20);
-	public static Item doubanjiang_bottle = new ItemSeason(TofuMain.MODID+"."+"doubanjiang", 58);
+	public static Item soysauce_bottle = new ItemSeasoning(TofuMain.MODID+"."+"bottlesoysause", 20);
+	public static Item dashi_bottle = new ItemSeasoning(TofuMain.MODID+"."+"dashi", 10);
+	public static Item soyoil_bottle = new ItemSeasoning(TofuMain.MODID+"."+"soyoil", 20);
+	public static Item doubanjiang_bottle = new ItemSeasoning(TofuMain.MODID+"."+"doubanjiang", 58);
 	
 	public static Item defatting_potion = new ItemDefattingPotion();
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
+		register(koujiBase);
 		register(tofu_food);
 		register(tofu_hell);
 		register(tofu_material);
@@ -317,26 +320,11 @@ public class ItemLoader {
 		tofuItemRegister(TofuType.zunda,new ItemStack(tofu_food,1,9));
 		tofuItemRegister(TofuType.dried,new ItemStack(tofu_material,1,2));
 
-		//boildEdamame
-		GameRegistry.addSmelting( new ItemStack(material,1,3), new ItemStack(foodset,16,23), 0.25f);
-		//SoyBeenParched
-		GameRegistry.addSmelting( new ItemStack(soybeans,1), new ItemStack(material,1,6), 0.2f);
-
-		GameRegistry.addSmelting( new ItemStack(material,1,13), new ItemStack(material,1,14), 0.2f);
-		GameRegistry.addSmelting(new ItemStack(tofu_food,1,0), new ItemStack(tofu_food,1,3), 0.2f);
-		GameRegistry.addSmelting(new ItemStack(tofu_food,1,1), new ItemStack(tofu_food,1,3), 0.2f);
-		GameRegistry.addSmelting(new ItemStack(tofu_food,1,2), new ItemStack(foodset,1,17), 0.2f);
-		GameRegistry.addSmelting(new ItemStack(material,1,20), new ItemStack(foodset,1,9), 0.2f);
-		GameRegistry.addSmelting(new ItemStack(foodset,1,12), new ItemStack(foodset,1,13), 0.2f);
-		
-		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
-		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
-
-
 	}
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
     {
+		registerRender(koujiBase);
 		registerRender(doubanjiang_bottle);
 		registerRender(defatting_potion);
 		registerRender(soyoil_bottle);

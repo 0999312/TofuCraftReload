@@ -1,12 +1,92 @@
 package cn.mcmod.tofucraft.item;
 
+import java.util.Set;
+import java.util.TreeSet;
+
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TofuOreDictLoader {
+	public static final Set<String> OreList = new TreeSet<>();
 	public TofuOreDictLoader() {
-		OreDictionary.registerOre("seedRice",ItemLoader.riceseed);
-		OreDictionary.registerOre("cropRice",ItemLoader.rice);
+		registerOre("seedRice",ItemLoader.riceseed);
+		registerOre("cropRice",ItemLoader.rice);
+	    registerOre("listAllgrain", ItemLoader.rice);
+	    
+	    registerOre("dustSalt", new ItemStack(ItemLoader.material,1,0));
+	    registerOre("itemSalt", new ItemStack(ItemLoader.material,1,0));
+	    
+	    registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,0));
+	    registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,1));
+	    registerOre("cropChilipepper", new ItemStack(ItemLoader.material,1,31));
+	    
+	    registerVanillaFoods();
+	}
+	
+	private static void registerVanillaFoods() {
+		  registerOre("listAllchickenraw", Items.CHICKEN);
+		  registerOre("listAllegg", Items.EGG);
+		  registerOre("listAllchickencooked", Items.COOKED_CHICKEN);
+		  registerOre("listAllporkraw", Items.PORKCHOP);
+		  registerOre("listAllporkcooked", Items.COOKED_PORKCHOP);
+		  registerOre("listAllbeefraw", Items.BEEF);
+		  registerOre("listAllbeefcooked", Items.COOKED_BEEF);
+		  registerOre("listAllmuttonraw", Items.MUTTON);
+		  registerOre("listAllmuttoncooked", Items.COOKED_MUTTON);
+		  registerOre("listAllrabbitraw", Items.RABBIT);
+		  registerOre("listAllrabbitcooked", Items.COOKED_RABBIT);
+		  registerOre("bread", Items.BREAD);
+		  registerOre("foodBread", Items.BREAD);
+		    
+		  registerOre("cropCarrot", Items.CARROT);
+		  registerOre("cropPotato", Items.POTATO);
+		  registerOre("cropPumpkin", Blocks.PUMPKIN);
+		  registerOre("cropWheat", Items.WHEAT);
+		  registerOre("cropBeet", Items.BEETROOT);
+		    
+		  registerOre("listAllgrain", Items.WHEAT);
+		  registerOre("cropApple", Items.APPLE);
+		  registerOre("listAllfruit", Items.APPLE);
+		  registerOre("listAllfruit", Items.CHORUS_FRUIT);
+		    
+		  registerOre("listAllmeatraw", Items.BEEF);
+		  registerOre("listAllmeatraw", Items.CHICKEN);
+		  registerOre("listAllmeatraw", Items.PORKCHOP);
+		  registerOre("listAllmeatraw", Items.MUTTON);
+		  registerOre("listAllmeatraw", Items.RABBIT);
+		  registerOre("listAllmeatcooked", Items.COOKED_BEEF);
+		  registerOre("listAllmeatcooked", Items.COOKED_CHICKEN);
+		  registerOre("listAllmeatcooked", Items.COOKED_PORKCHOP);
+		  registerOre("listAllmeatcooked", Items.COOKED_MUTTON);
+		  registerOre("listAllmeatcooked", Items.COOKED_RABBIT);
+
+		  registerOre("listAllfishraw", new ItemStack(Items.FISH, 1, 32767));
+		  registerOre("listAllfishfresh", new ItemStack(Items.FISH, 1, 32767));
+		  registerOre("listAllfishcooked", Items.COOKED_FISH);
+		  registerOre("listAllfishcooked", new ItemStack(Items.COOKED_FISH, 1, 1));
+		  registerOre("salmonRaw", new ItemStack(Items.FISH, 1));
+		    
+		  registerOre("listAllsugar", Items.SUGAR);
+		  registerOre("cropBeet", Items.BEETROOT);
+		  registerOre("seedBeet", Items.BEETROOT_SEEDS);
+	}
+	private static void registerOre(String string, Block itemStack) {
+		OreList.add(string);
+		OreDictionary.registerOre(string, itemStack);
+	}
+
+	private static void registerOre(String string, ItemStack itemStack) {
+		OreList.add(string);
+		OreDictionary.registerOre(string, itemStack);
+	}
+
+	private static void registerOre(String string, Item itemStack) {
+		OreList.add(string);
+		OreDictionary.registerOre(string, itemStack);
 	}
 	public static final ItemStack Soysause = new ItemStack(ItemLoader.soysauce_bottle, 1, OreDictionary.WILDCARD_VALUE);
 	public static final ItemStack Dashi = new ItemStack(ItemLoader.dashi_bottle, 1, OreDictionary.WILDCARD_VALUE);
