@@ -592,7 +592,7 @@ public class EntityTofunian extends EntityVillager {
     }
     private boolean canTofunianPickupItem(Item itemIn)
     {
-        return itemIn == ItemLoader.riceseed || itemIn == ItemLoader.soybeans || itemIn == ItemLoader.rice;
+        return itemIn == ItemLoader.soybeans || itemIn == ItemLoader.rice;
     }
 
     public boolean isFarmItemInInventory()
@@ -601,7 +601,7 @@ public class EntityTofunian extends EntityVillager {
         {
             ItemStack itemstack = this.getVillagerInventory().getStackInSlot(i);
 
-            if (!itemstack.isEmpty() && (itemstack.getItem() == Items.WHEAT_SEEDS || itemstack.getItem() == Items.POTATO || itemstack.getItem() == Items.CARROT || itemstack.getItem() == Items.BEETROOT_SEEDS || itemstack.getItem() == ItemLoader.riceseed ||itemstack.getItem() == ItemLoader.soybeans))
+            if (!itemstack.isEmpty() && (itemstack.getItem() == Items.WHEAT_SEEDS || itemstack.getItem() == Items.POTATO || itemstack.getItem() == Items.CARROT || itemstack.getItem() == Items.BEETROOT_SEEDS ||itemstack.getItem() == ItemLoader.soybeans))
             {
                 return true;
             }

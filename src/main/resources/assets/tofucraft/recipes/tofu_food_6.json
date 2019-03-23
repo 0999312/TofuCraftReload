@@ -1,0 +1,16 @@
+{
+  "result" : {
+    "item" : "tofucraft:tofu_food",
+    "data" : 6
+  },
+  "ingredients" : [
+    {
+      "item" : "minecraft:egg"
+    },
+    {
+      "item" : "tofucraft:dashi",
+      "data" : 32767
+    }
+  ],
+  "type" : "minecraft:crafting_shapeless"
+}
