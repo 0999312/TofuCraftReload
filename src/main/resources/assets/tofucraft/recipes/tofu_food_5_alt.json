@@ -1,0 +1,17 @@
+{
+  "result" : {
+    "item" : "tofucraft:tofu_food",
+    "data" : 5
+  },
+  "ingredients" : [
+    {
+      "item" : "tofucraft:tofu_food",
+      "data" : 1
+    },
+    {
+      "item" : "tofucraft:soyoil",
+      "data" : 32767
+    }
+  ],
+  "type" : "minecraft:crafting_shapeless"
+}

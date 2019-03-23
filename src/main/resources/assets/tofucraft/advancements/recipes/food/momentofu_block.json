@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "soybeans": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "tofucraft:tofu_food",
+            "data": 0
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "tofucraft:blocktofumomen"
+    ]
+  }
+}

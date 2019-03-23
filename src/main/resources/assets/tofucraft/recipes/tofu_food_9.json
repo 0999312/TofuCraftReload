@@ -1,0 +1,25 @@
+{
+  "result" : {
+    "item" : "tofucraft:tofu_food",
+    "data" : 9
+  },
+  "ingredients" : [
+    {
+      "item" : "tofucraft:material",
+      "data" : 0
+    },
+    {
+      "item" : "tofucraft:material",
+      "data" : 4
+    },
+    {
+      "item" : "tofucraft:material",
+      "data" : 14
+    },
+    {
+      "item" : "tofucraft:dashi",
+      "data" : 32767
+    }
+  ],
+  "type" : "minecraft:crafting_shapeless"
+}
