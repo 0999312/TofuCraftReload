@@ -23,7 +23,9 @@ public class TofuOreDictLoader {
 	    registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,0));
 	    registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,1));
 	    registerOre("cropChilipepper", new ItemStack(ItemLoader.material,1,31));
-	    
+//	    foodOliveoil
+	    registerOre("foodSoysauce", Soysauce);
+	    registerOre("foodOliveoil", Soyoil);
 	    registerVanillaFoods();
 	}
 	
@@ -73,6 +75,8 @@ public class TofuOreDictLoader {
 		  registerOre("listAllsugar", Items.SUGAR);
 		  registerOre("cropBeet", Items.BEETROOT);
 		  registerOre("seedBeet", Items.BEETROOT_SEEDS);
+		  
+		  registerOre("listAllwater", Items.WATER_BUCKET);
 	}
 	private static void registerOre(String string, Block itemStack) {
 		OreList.add(string);
@@ -88,8 +92,8 @@ public class TofuOreDictLoader {
 		OreList.add(string);
 		OreDictionary.registerOre(string, itemStack);
 	}
-	public static final ItemStack Soysause = new ItemStack(ItemLoader.soysauce_bottle, 1, OreDictionary.WILDCARD_VALUE);
+	public static final ItemStack Soysauce = new ItemStack(ItemLoader.soysauce_bottle, 1, OreDictionary.WILDCARD_VALUE);
 	public static final ItemStack Dashi = new ItemStack(ItemLoader.dashi_bottle, 1, OreDictionary.WILDCARD_VALUE);
-	public static final ItemStack Soyold = new ItemStack(ItemLoader.soyoil_bottle, 1, OreDictionary.WILDCARD_VALUE);
+	public static final ItemStack Soyoil = new ItemStack(ItemLoader.soyoil_bottle, 1, OreDictionary.WILDCARD_VALUE);
 	public static final ItemStack Doubanjiang = new ItemStack(ItemLoader.doubanjiang_bottle, 1, OreDictionary.WILDCARD_VALUE);
 }

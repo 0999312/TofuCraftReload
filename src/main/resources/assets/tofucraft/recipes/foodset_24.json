@@ -8,9 +8,9 @@
       "item": "minecraft:melon"
     },
     {
-      "item": "tofucraft:material",
+      "item": "#DUSTSALT",
       "data": 0
     }
   ],
-  "type": "minecraft:crafting_shapeless"
+  "type": "forge:ore_shapeless"
 }

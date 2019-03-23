@@ -79,6 +79,20 @@
   {
     "ingredient": {
       "type": "forge:ore_dict",
+      "ore": "foodOliveoil"
+    },
+    "name": "FOODOLIVEOIL"
+  },
+  {
+    "ingredient": {
+      "type": "forge:ore_dict",
+      "ore": "foodSoysauce"
+    },
+    "name": "FOODSOYSAUCE"
+  },
+  {
+    "ingredient": {
+      "type": "forge:ore_dict",
       "ore": "itemSalt"
     },
     "name": "ITEMSALT"
@@ -222,6 +236,13 @@
       "ore": "listAlltofu"
     },
     "name": "LISTALLTOFU"
+  },
+  {
+    "ingredient": {
+      "type": "forge:ore_dict",
+      "ore": "listAllwater"
+    },
+    "name": "LISTALLWATER"
   },
   {
     "ingredient": {

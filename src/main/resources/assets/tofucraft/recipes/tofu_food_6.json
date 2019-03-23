@@ -5,12 +5,12 @@
   },
   "ingredients" : [
     {
-      "item" : "minecraft:egg"
+      "item" : "#LISTALLEGG"
     },
     {
       "item" : "tofucraft:dashi",
       "data" : 32767
     }
   ],
-  "type" : "minecraft:crafting_shapeless"
+  "type" : "forge:ore_shapeless"
 }

@@ -4,10 +4,10 @@
       "data" : 4
    },
    "pattern" : [ "WWW", "WSW", "WWW" ],
-   "type" : "minecraft:crafting_shaped",
+   "type" : "forge:ore_shaped",
    "key" : {
       "S" : {
-         "item" : "minecraft:sugar"
+         "item" : "#LISTALLSUGAR"
       },
       "W" : {
          "item" : "tofucraft:foodset",

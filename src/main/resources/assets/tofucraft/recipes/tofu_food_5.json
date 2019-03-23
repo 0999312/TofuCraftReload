@@ -9,9 +9,8 @@
       "data" : 0
     },
     {
-      "item" : "tofucraft:soyoil",
-      "data" : 32767
+      "item" : "#FOODOLIVEOIL"
     }
   ],
-  "type" : "minecraft:crafting_shapeless"
+  "type" : "forge:ore_shapeless"
 }

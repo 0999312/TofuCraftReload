@@ -5,8 +5,7 @@
   },
   "ingredients" : [
     {
-      "item" : "tofucraft:material",
-      "data" : 0
+      "item" : "#DUSTSALT"
     },
     {
       "item" : "tofucraft:material",
@@ -21,5 +20,5 @@
       "data" : 32767
     }
   ],
-  "type" : "minecraft:crafting_shapeless"
+  "type" : "forge:ore_shapeless"
 }

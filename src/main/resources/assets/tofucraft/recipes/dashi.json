@@ -4,15 +4,15 @@
   },
   "ingredients": [
     {
-      "item": "minecraft:water_bucket"
+      "item": "#LISTALLWATER"
     },
     {
-      "item": "minecraft:cooked_fish",
+      "item": "#LISTALLFISHCOOKED",
       "data": 0
     },
     {
       "item": "minecraft:glass_bottle"
     }
   ],
-  "type": "minecraft:crafting_shapeless"
+  "type": "forge:ore_shapeless"
 }

@@ -1,11 +1,11 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "forge:ore_shaped",
   "pattern": [
     "#T#"
   ],
   "key": {
     "#": {
-      "item": "minecraft:wheat"
+      "item": "#LISTALLGRAIN"
     },
     "T": {
       "item": "tofucraft:tofu_food",

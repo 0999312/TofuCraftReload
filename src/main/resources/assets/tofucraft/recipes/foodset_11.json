@@ -8,25 +8,24 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "minecraft:cooked_beef"
+      "item": "#LISTALLBEEFCOOKED"
     },
     {
-      "item": "minecraft:potato"
+      "item": "#CROPPOTATO"
     },
     {
-      "item": "minecraft:carrot"
+      "item": "#CROPCARROT"
     },
     {
-      "item": "minecraft:sugar"
+      "item": "#LISTALLSUGAR"
     },
     {
-      "item": "tofucraft:bottlesoysause",
-      "data": 32767
+      "item": "#FOODSOYSAUCE"
     },
     {
       "item": "tofucraft:dashi",
       "data": 32767
     }
   ],
-  "type": "minecraft:crafting_shapeless"
+  "type": "forge:ore_shapeless"
 }

@@ -1,12 +1,12 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "forge:ore_shapeless",
   "pattern": [
     " # ",
     "###"
   ],
   "key": {
     "#": {
-      "item": "tofucraft:rice"
+      "item": "#CROPRICE"
     }
   },
   "result": {

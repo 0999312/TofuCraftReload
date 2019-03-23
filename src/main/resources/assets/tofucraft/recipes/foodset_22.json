@@ -9,11 +9,11 @@
       "data": 11
     },
     {
-      "item": "minecraft:egg"
+      "item": "#LISTALLEGG"
     },
     {
-      "item": "minecraft:wheat"
+      "item": "#LISTALLGRAIN"
     }
   ],
-  "type": "minecraft:crafting_shapeless"
+  "type": "forge:ore_shapeless"
 }

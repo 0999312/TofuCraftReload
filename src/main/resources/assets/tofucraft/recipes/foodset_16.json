@@ -8,22 +8,20 @@
     "SFD",
     " O "
   ],
-  "type": "minecraft:crafting_shaped",
+  "type": "forge:ore_shaped",
   "key": {
     "S": {
-      "item": "tofucraft:material",
-      "data": 0
+      "item": "#DUSTSALT"
     },
     "D": {
       "item": "tofucraft:material",
       "data": 14
     },
     "F": {
-      "item": "minecraft:egg"
+      "item": "#LISTALLEGG"
     },
     "O": {
-      "item": "minecraft:cooked_fish",
-      "data": 0
+      "item": "#listAllfishcooked"
     }
   }
 }
