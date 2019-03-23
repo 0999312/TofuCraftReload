@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  #",
+    " ##",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "tofucraft:tofu_food",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "tofucraft:tofustair_kinu",
+    "count": 4
+  }
+}
