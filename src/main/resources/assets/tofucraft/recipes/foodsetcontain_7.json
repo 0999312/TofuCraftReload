@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "tofucraft:foodsetcontain",
+    "data": 7
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "#LISTALLBEEFCOOKED"
+    },
+    {
+      "item": "#DUSTSALT"
+    },
+    {
+      "item": "#LISTALLMILK"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

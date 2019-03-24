@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "tofucraft:mayonnaise"
+  },
+  "ingredients": [
+    {
+      "item": "#CROPLEMON"
+    },
+    {
+      "item": "#FOODOLIVEOIL"
+    },
+    {
+      "item": "#LISTALLEGG"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

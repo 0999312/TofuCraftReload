@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "tofucraft:rollingpin"
+  },
+  "pattern": [
+    "  W",
+    " P ",
+    "W  "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "P": {
+      "item": "#PLANKWOOD"
+    },
+    "W": {
+      "item": "#STICKWOOD"
+    }
+  }
+}

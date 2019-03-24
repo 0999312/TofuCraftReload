@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "0.0.1"
+version = "0.0.2"
 group = "cn.mcmod.tofucraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "TofuCraftReload"
 
@@ -76,6 +76,7 @@ configurations.all {
     runtime ("mezz.jei:jei_1.12.2:4.14.3.242"){
     force = true
     }
+    deobfCompile "jei-integration:jeiintegration_1.12.2:1.5.1.36"
 }
 
 processResources {

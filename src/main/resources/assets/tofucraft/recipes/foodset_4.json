@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 4
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:material",
+      "data": 2
+    },
+    {
+      "item": "tofucraft:foodset",
+      "data": 2
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

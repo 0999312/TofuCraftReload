@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "tofucraft:foodset",
+    "item": "tofucraft:foodsetcontain",
     "data": 11
   },
   "ingredients": [
@@ -8,7 +8,7 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "#LISTALLPORKCOOKED"
+      "item": "#LISTALLBEEFCOOKED"
     },
     {
       "item": "#CROPPOTATO"

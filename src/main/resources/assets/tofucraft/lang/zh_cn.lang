@@ -553,3 +553,15 @@ tofucraft.wrongPotionId3=I.glowing=%s   I.filling=%s
 tile.tofucraft.barreldoubanjiang.name=豆瓣酱桶
 
 item.tofucraft.chill.name=红辣椒
+
+item.tofucraft.lemon.name=柠檬
+
+item.tofucraft.chillstick.name=辣条
+
+item.tofucraft.nanban.name=南蛮鸡
+item.tofucraft.nanbantofu.name=南蛮豆腐
+
+item.tofucraft.mayonnaise.name=蛋黄酱
+
+
+entity.Villager.tofu_trader=商人

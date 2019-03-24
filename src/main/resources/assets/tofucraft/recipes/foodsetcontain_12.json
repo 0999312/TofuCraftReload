@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "tofucraft:foodsetcontain",
+    "data": 12
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:dashi",
+      "data": 32767
+    },
+    {
+      "item": "#FOODSOYSAUCE"
+    },
+    {
+      "item": "tofucraft:tofu_material",
+      "data": 2
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

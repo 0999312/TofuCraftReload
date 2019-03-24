@@ -399,3 +399,6 @@ entity.Tofunian.tofucrafter=豆腐加工のトウフニアン
 entity.Tofunian.fisherman=漁業のトウフニアン
 entity.Tofunian.guard=護衛のトウフニアン
 entity.Tofunian.tofusmish=豆腐金属加工のトウフニアン
+
+item.tofucraft.nanban.name=チキン南蛮
+item.tofucraft.nanbantofu.name=豆腐南蛮

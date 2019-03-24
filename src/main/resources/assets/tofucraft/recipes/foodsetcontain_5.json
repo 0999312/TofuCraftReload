@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "tofucraft:foodsetcontain",
+    "data": 5
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:tsuyubowl_glass",
+      "data": 0
+    },
+    {
+      "item": "tofucraft:material",
+      "data": 28
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

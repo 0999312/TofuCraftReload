@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "tofucraft:material",
+    "data": 29,
+    "count": 2
+  },
+  "pattern": [
+    "W W",
+    " W "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "W": {
+      "item": "#PANEGLASSCOLORLESS"
+    }
+  }
+}

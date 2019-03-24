@@ -8,13 +8,12 @@
       "item": "#LISTALLGRAIN"
     },
     "T": {
-      "item": "tofucraft:tofu_food",
-      "data": 1
+      "item": "#LISTALLTOFU"
     }
   },
   "result": {
     "item": "tofucraft:foodset",
-    "data": 10,
+    "data": 9,
     "count": 8
   }
 }

@@ -1,15 +1,15 @@
 {
   "result": {
     "item": "tofucraft:foodset",
-    "data": 22
+    "data": 17
   },
   "ingredients": [
     {
       "item": "tofucraft:material",
-      "data": 11
+      "data": 20
     },
     {
-      "item": "#LISTALLEGG"
+      "item": "#FOODOLIVEOIL"
     },
     {
       "item": "#LISTALLGRAIN"
