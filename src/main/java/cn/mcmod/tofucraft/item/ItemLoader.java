@@ -10,6 +10,7 @@ import cn.mcmod.tofucraft.util.JSON_Creator;
 import com.google.common.collect.Maps;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
@@ -126,7 +127,7 @@ public class ItemLoader {
 	public static Item koujiBase = new ItemKoujiBase();
 	public static Item RollingPin = new ItemRolling();
 	public static ItemFood zundaMochi = (ItemFood)new ItemFood(3, 0.8f, false)
-			.setPotionEffect(new PotionEffect(Potion.getPotionById(10), 20, 2), 1.0F)
+			.setPotionEffect(new PotionEffect(MobEffects.REGENERATION, 20, 2), 1.0F)
 			.setUnlocalizedName(TofuMain.MODID+"."+"zundamochi");
 	public static ItemFoodBasic tsuyuBowl = new ItemFoodContain("tsuyuBowl_glass", 1,
 			  new int[]{2   },
