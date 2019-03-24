@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft.entity;
 
+import cn.mcmod.tofucraft.util.TofuLootTables;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,11 +13,14 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class EntityTofuChinger extends EntityMob {
     private static final DataParameter<Boolean> IS_MOUSEOPEN = EntityDataManager.<Boolean>createKey(EntityTofuChinger.class, DataSerializers.BOOLEAN);
@@ -161,5 +165,10 @@ public class EntityTofuChinger extends EntityMob {
             EntityTofuChinger.this.setMouseOpen(false);
             super.resetTask();
         }
+    }
+
+    @Nullable
+    protected ResourceLocation getLootTable() {
+        return TofuLootTables.tofuchinger;
     }
 }

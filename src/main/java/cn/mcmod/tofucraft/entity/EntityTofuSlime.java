@@ -16,6 +16,7 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nullable;
@@ -36,8 +37,8 @@ public class EntityTofuSlime extends EntitySlime {
         if (this.getSlimeSize() == 1 || this.world.getDifficulty() != EnumDifficulty.PEACEFUL) {
             int lightValue = this.world.getLightFromNeighbors(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY), MathHelper.floor(this.posZ)));
             Biome biome = this.world.getBiome(new BlockPos(this.posX, 0, this.posZ));
-            if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(50) == 0
-                    && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(58.0D, 24.0D, 58.0D)).size() == 0) {
+            if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(30) == 0
+                    && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(56.0D, 24.0D, 56.0D)).size() == 0) {
                 return this.baseGetCanSpawnHere();
             }
 
@@ -59,13 +60,17 @@ public class EntityTofuSlime extends EntitySlime {
         return iblockstate.canEntitySpawn(this);
     }
 
+
     @Nullable
-    protected ResourceLocation getLootTable() {
-        return TofuLootTables.tofuslime;
+    @Override
+    protected ResourceLocation getLootTable()
+    {
+        return this.getSlimeSize() == 1 ? TofuLootTables.tofuslime : LootTableList.EMPTY;
     }
     /**
      * Returns the name of a particle effect that may be randomly created by EntitySlime.onUpdate()
      */
+    @Override
     protected EnumParticleTypes getParticleType() {
         return EnumParticleTypes.SNOWBALL;
     }
