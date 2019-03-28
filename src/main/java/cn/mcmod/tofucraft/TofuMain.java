@@ -67,8 +67,8 @@ public class TofuMain {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new TofuGuiHandler());
 
 
-        TOFU_DIMENSION = DimensionType.register("Tofu World", "_tofu", DimensionManager.getNextFreeDimId(), WorldProviderTofu.class, false);
-        DimensionManager.registerDimension(TOFU_DIMENSION.getId(), TOFU_DIMENSION);
+        TOFU_DIMENSION = DimensionType.register("Tofu World", "_tofu", TofuConfig.dimensionID, WorldProviderTofu.class, false);
+        DimensionManager.registerDimension(TofuConfig.dimensionID, TOFU_DIMENSION);
 
         TofuVillages.register();
     }
