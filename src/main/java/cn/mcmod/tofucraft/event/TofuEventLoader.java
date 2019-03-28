@@ -34,10 +34,13 @@ public class TofuEventLoader {
         ItemStack item = event.crafting;
 		IInventory craftMatrix = event.craftMatrix;
 		
+		if(craftMatrix instanceof InventoryCrafting){
+		InventoryCrafting craftMatrix1 = (InventoryCrafting) craftMatrix;
 		IRecipe recipe = ForgeRegistries.RECIPES.getValue(new ResourceLocation(TofuMain.MODID, "soymilk_cloth"));
-		if(!item.isEmpty()&&recipe.matches((InventoryCrafting) craftMatrix, player.world)){
+		if(!item.isEmpty()&&recipe.matches(craftMatrix1, player.world)){
 			player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.material,1,11));
 		}
+	}
 	}
 
 }
