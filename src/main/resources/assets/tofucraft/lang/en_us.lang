@@ -364,7 +364,7 @@ entity.tofucraft.TofuCreeper.name=Tofu Creeper
 entity.tofucraft.Tofunian.name=Tofunian
 entity.tofucraft.TofuChinger.name=TofuChinger
 entity.tofucraft.TofuSpider.name=TofuSpider
-entity.tofucraft.Fukumame.name=
+entity.tofucraft.Fukumame.name=Fukumame
 
 commands.tofuslimecheck.usage=/tofuslimecheck
 commands.tofuslimecheck.found=Tofu Slimes habit in this chunk
@@ -408,3 +408,5 @@ entity.Tofunian.tofusmish=Tofu Smish
 tile.tofucraft.barreldoubanjiang.name=Doubanjiang Barrel
 
 item.tofucraft.chill.name=Chill Pepper
+
+tofucraft.config.dimension_id=TofuWorld's DimensionID
