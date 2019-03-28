@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "tofucraft:material",
+    "data": 28,
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "item": "#DUSTSALT"
+    },
+    {
+      "item": "tofucraft:foodset",
+      "data": 19
+    },
+    {
+      "item": "tofucraft:material",
+      "data": 14
+    },
+    {
+      "item": "tofucraft:rollingpin",
+      "data": 32767
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

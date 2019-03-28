@@ -3,15 +3,19 @@
     "item": "tofucraft:foodset",
     "data": 14
   },
-  "ingredients": [
-    {
+  "pattern": [
+    " W ",
+    "SSS",
+    "   "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:wheat"
+    },
+    "W": {
       "item": "tofucraft:material",
       "data": 7
-    },
-    {
-      "item": "tofucraft:foodset",
-      "data": 2
     }
-  ],
-  "type": "minecraft:crafting_shapeless"
+  }
 }

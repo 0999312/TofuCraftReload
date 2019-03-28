@@ -1,23 +1,16 @@
 {
   "result": {
     "item": "tofucraft:foodset",
-    "data": 11
+    "data": 18
   },
   "ingredients": [
     {
-      "item": "minecraft:bowl"
+      "item": "tofucraft:foodset",
+      "data": 17
     },
     {
-      "item": "#LISTALLBEEFCOOKED"
-    },
-    {
-      "item": "#CROPPOTATO"
-    },
-    {
-      "item": "#CROPCARROT"
-    },
-    {
-      "item": "#LISTALLSUGAR"
+      "item": "tofucraft:material",
+      "data": 14
     },
     {
       "item": "#FOODSOYSAUCE"

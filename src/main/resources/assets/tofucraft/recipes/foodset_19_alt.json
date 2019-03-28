@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 19,
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "item": "#LISTALLTOFUBLOCK"
+    },
+    {
+      "item": "tofucraft:rollingpin",
+      "data": 32767
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

@@ -1,0 +1,29 @@
+{
+  "result": {
+    "item": "tofucraft:foodsetcontain",
+    "data": 0
+  },
+  "ingredients": [
+    {
+      "item": "#LISTALLTOFU"
+    },
+    {
+      "item": "#LISTALLPORKRAW"
+    },
+    {
+      "item": "tofucraft:material",
+      "data": 14
+    },
+    {
+      "item": "tofucraft:doubanjiang",
+      "data": 32767
+    },
+    {
+      "item": "#FOODSOYSAUCE"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

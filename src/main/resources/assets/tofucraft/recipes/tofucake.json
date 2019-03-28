@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "tofucraft:tofucake"
+  },
+  "pattern": [
+    "TTT",
+    "SES",
+    "BBB"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "B": {
+      "item": "#LISTALLGRAIN"
+    },
+    "S": {
+      "item": "#LISTALLSUGAR"
+    },
+    "T": {
+      "item": "#LISTALLTOFU"
+    },
+    "E": {
+      "item": "#LISTALLEGG"
+    }
+  }
+}

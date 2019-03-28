@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 25
+  },
+  "pattern": [
+    " B ",
+    "TTT",
+    " B "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "B": {
+      "item": "#FOODBREAD"
+    },
+    "T": {
+      "item": "tofucraft:tofu_food",
+      "data": 4
+    }
+  }
+}

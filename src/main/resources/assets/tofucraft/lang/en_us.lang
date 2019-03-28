@@ -410,3 +410,14 @@ tile.tofucraft.barreldoubanjiang.name=Doubanjiang Barrel
 item.tofucraft.chill.name=Chill Pepper
 
 tofucraft.config.dimension_id=TofuWorld's DimensionID
+
+item.tofucraft.lemon.name=Lemon
+
+item.tofucraft.mayonnaise.name=Mayonnaise
+
+item.tofucraft.chillstick.name=Chill Okara Stick
+
+entity.Villager.tofu_trader=Trader
+item.tofucraft.nanban.name=Chicken Nanban
+item.tofucraft.nanbantofu.name=Tofu Nanban
+

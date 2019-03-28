@@ -58,8 +58,8 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"tofudried"
 	});
 	public static ItemFoodBasic foodset = new ItemFoodBasic("foodset", 64,
-			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,6   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4,4   ,6   ,16  ,20,2   ,8 ,4 ,1,3},
-			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.4f,0.1f,0.3f},
+			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4,4   ,6   ,16  ,20,2   ,8 ,4   ,1,3,6   ,8,3},
+			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.4f,0.1f,0.3f,0.5f,0.4f,1f},
 			new String[]{
 					TofuMain.MODID+"."+"tofuchikuwa",
 					TofuMain.MODID+"."+"oage",
@@ -68,7 +68,6 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"yakionigirimiso",
 					TofuMain.MODID+"."+"yakionigirishoyu",
 					TofuMain.MODID+"."+"sprouts",
-					TofuMain.MODID+"."+"hiyayakko",
 					TofuMain.MODID+"."+"ricetofu",
 					TofuMain.MODID+"."+"tofuhamburg",
 					TofuMain.MODID+"."+"tofucookie",
@@ -85,7 +84,10 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"ricesoborotofu",
 					TofuMain.MODID+"."+"okarastick",
 					TofuMain.MODID+"."+"edamameboiled",
-					TofuMain.MODID+"."+"saltymelon"
+					TofuMain.MODID+"."+"saltymelon",
+					TofuMain.MODID+"."+"chillstick",
+					TofuMain.MODID+"."+"tttburger",
+					TofuMain.MODID+"."+"fukumeni"
 			}
 	);
 	public static ItemBase material = new ItemBase("material", 64, new String[]{
@@ -119,10 +121,11 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"activatedhelltofu",
 			TofuMain.MODID+"."+"tofusomen",
 			TofuMain.MODID+"."+"glassbowl",
-			TofuMain.MODID+"."+"rollingpin",
+			TofuMain.MODID+"."+"lemon",
 			TofuMain.MODID+"."+"chill"
 	});
 	public static Item koujiBase = new ItemKoujiBase();
+	public static Item RollingPin = new ItemRolling();
 	public static ItemFood zundaMochi = (ItemFood)new ItemFood(3, 0.8f, false)
 			.setPotionEffect(new PotionEffect(MobEffects.REGENERATION, 20, 2), 1.0F)
 			.setUnlocalizedName(TofuMain.MODID+"."+"zundamochi");
@@ -135,9 +138,9 @@ public class ItemLoader {
 					new ItemStack(material,1,29),	
 			}
 	);
-	public static ItemFoodBasic foodsetContain = new ItemFoodContain("foodsetContain", 1,
-			  new int[]{16  ,8   ,5   ,6   ,8   ,3   ,20,20,3   ,5   ,10  ,6   ,8   ,3   ,7},
-			new float[]{0.5f,0.4f,0.3f,0.5f,0.8f,0.3f,1F,1f,0.3f,0.6f,0.7f,0.6f,0.8f,0.3f,0.6f},
+	public static ItemFoodBasic foodsetContain = new ItemFoodContain("foodsetcontain", 1,
+			  new int[]{16  ,8   ,5   ,6   ,8   ,3   ,20,20,3   ,5   ,10  ,6   ,8   ,3   ,7,6,5,8,9},
+			new float[]{0.5f,0.4f,0.3f,0.5f,0.8f,0.3f,1F,1f,0.3f,0.6f,0.7f,0.6f,0.8f,0.3f,0.6f,0.5f,0.4f,0.5f,0.5f},
 			new String[]{
 					TofuMain.MODID+"."+"mabodofu",
 					TofuMain.MODID+"."+"moyashiitame",
@@ -154,7 +157,11 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"agedashitofu",
 					TofuMain.MODID+"."+"koyadofustew",
 					TofuMain.MODID+"."+"apricot",
-					TofuMain.MODID+"."+"soborotofusaute"
+					TofuMain.MODID+"."+"soborotofusaute",
+					TofuMain.MODID+"."+"hiyayakko",
+					TofuMain.MODID+"."+"goheimochi",
+					TofuMain.MODID+"."+"nanbantofu",
+					TofuMain.MODID+"."+"nanban"
 			},
 			new ItemStack[]{
 					
@@ -173,7 +180,11 @@ public class ItemLoader {
 					new ItemStack(Items.BOWL),	
 					new ItemStack(Items.BOWL),	
 					new ItemStack(material,1,9),
-					new ItemStack(Items.BOWL)	
+					new ItemStack(Items.BOWL),
+					new ItemStack(Items.BOWL),
+					new ItemStack(Items.STICK),
+					new ItemStack(Items.BOWL),
+					new ItemStack(Items.BOWL)
 			}
 	);
 	public static ItemSwordBasic kinuTofuSword = new ItemSwordBasic(TofuToolMaterial.KINU,"swordkinu");
@@ -234,10 +245,12 @@ public class ItemLoader {
 	public static Item dashi_bottle = new ItemSeasoning(TofuMain.MODID+"."+"dashi", 10);
 	public static Item soyoil_bottle = new ItemSeasoning(TofuMain.MODID+"."+"soyoil", 20);
 	public static Item doubanjiang_bottle = new ItemSeasoning(TofuMain.MODID+"."+"doubanjiang", 58);
+	public static Item mayonnaise_bottle = new ItemSeasoning(TofuMain.MODID+"."+"mayonnaise", 20);
 	
 	public static Item defatting_potion = new ItemDefattingPotion();
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
+		register(RollingPin);
 		register(koujiBase);
 		register(tofu_food);
 		register(tofu_hell);
@@ -255,6 +268,7 @@ public class ItemLoader {
 		register(dashi_bottle);
 		register(soyoil_bottle);
 		register(doubanjiang_bottle);
+		register(mayonnaise_bottle);
 
 		register(tofustick);
 
@@ -325,6 +339,8 @@ public class ItemLoader {
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
     {
+		registerRender(mayonnaise_bottle);
+		registerRender(RollingPin);
 		registerRender(koujiBase);
 		registerRender(doubanjiang_bottle);
 		registerRender(defatting_potion);

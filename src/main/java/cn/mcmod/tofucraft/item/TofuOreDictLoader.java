@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.item;
 import java.util.Set;
 import java.util.TreeSet;
 
+import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -16,16 +17,23 @@ public class TofuOreDictLoader {
 		registerOre("seedRice",ItemLoader.riceseed);
 		registerOre("cropRice",ItemLoader.rice);
 	    registerOre("listAllgrain", ItemLoader.rice);
-	    
+		registerOre("cropLeek", new ItemStack(ItemLoader.material,1,16));
 	    registerOre("dustSalt", new ItemStack(ItemLoader.material,1,0));
 	    registerOre("itemSalt", new ItemStack(ItemLoader.material,1,0));
 	    
 	    registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,0));
 	    registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,1));
+	    
+	    registerOre("listAlltofuBlock", new ItemStack(BlockLoader.MOMENTOFU));
+	    registerOre("listAlltofuBlock", new ItemStack(BlockLoader.KINUTOFU));
+	    
 	    registerOre("cropChilipepper", new ItemStack(ItemLoader.material,1,31));
-//	    foodOliveoil
+	    registerOre("cropLemon", new ItemStack(ItemLoader.material,1,30));
+	    
 	    registerOre("foodSoysauce", Soysauce);
 	    registerOre("foodOliveoil", Soyoil);
+	    registerOre("foodMayo", Mayonnaise);
+	    
 	    registerVanillaFoods();
 	}
 	
@@ -77,6 +85,7 @@ public class TofuOreDictLoader {
 		  registerOre("seedBeet", Items.BEETROOT_SEEDS);
 		  
 		  registerOre("listAllwater", Items.WATER_BUCKET);
+		  registerOre("listAllmilk", Items.MILK_BUCKET);
 	}
 	private static void registerOre(String string, Block itemStack) {
 		OreList.add(string);
@@ -96,4 +105,6 @@ public class TofuOreDictLoader {
 	public static final ItemStack Dashi = new ItemStack(ItemLoader.dashi_bottle, 1, OreDictionary.WILDCARD_VALUE);
 	public static final ItemStack Soyoil = new ItemStack(ItemLoader.soyoil_bottle, 1, OreDictionary.WILDCARD_VALUE);
 	public static final ItemStack Doubanjiang = new ItemStack(ItemLoader.doubanjiang_bottle, 1, OreDictionary.WILDCARD_VALUE);
+	public static final ItemStack Mayonnaise = new ItemStack(ItemLoader.mayonnaise_bottle, 1, OreDictionary.WILDCARD_VALUE);
+	public static final ItemStack RollingPin = new ItemStack(ItemLoader.RollingPin, 1, OreDictionary.WILDCARD_VALUE);
 }

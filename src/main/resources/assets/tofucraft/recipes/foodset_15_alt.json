@@ -1,7 +1,7 @@
 {
   "result": {
     "item": "tofucraft:foodset",
-    "data": 16
+    "data": 15
   },
   "pattern": [
     " O ",
@@ -21,7 +21,7 @@
       "item": "#LISTALLEGG"
     },
     "O": {
-      "item": "#listAllfishcooked"
+      "item": "#LISTALLFISHCOOKED"
     }
   }
 }

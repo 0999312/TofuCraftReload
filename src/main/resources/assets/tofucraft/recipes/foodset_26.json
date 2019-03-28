@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 26
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:dashi",
+      "data": 32767
+    },
+    {
+      "item": "#DUSTSALT"
+    },
+    {
+      "item": "tofucraft:tofu_material",
+      "data": 2
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

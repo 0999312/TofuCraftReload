@@ -1,0 +1,31 @@
+{
+  "result": {
+    "item": "tofucraft:foodsetcontain",
+    "data": 11
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "#LISTALLPORKCOOKED"
+    },
+    {
+      "item": "#CROPPOTATO"
+    },
+    {
+      "item": "#CROPCARROT"
+    },
+    {
+      "item": "#LISTALLSUGAR"
+    },
+    {
+      "item": "#FOODSOYSAUCE"
+    },
+    {
+      "item": "tofucraft:dashi",
+      "data": 32767
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "tofucraft:foodsetcontain",
+    "data": 10
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:material",
+      "data": 2
+    },
+    {
+      "item": "#LISTALLTOFU"
+    },
+    {
+      "item": "#STICKWOOD"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

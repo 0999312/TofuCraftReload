@@ -1,21 +1,21 @@
 {
   "result": {
-    "item": "tofucraft:foodset",
-    "data": 24
+    "item": "tofucraft:foodsetcontain",
+    "data": 3
   },
   "ingredients": [
     {
-      "item": "#CROPCHILIPEPPER"
+      "item": "#LISTALLTOFU"
     },
     {
-      "item": "#LISTALLGRAIN"
+      "item": "#CROPLEEK"
     },
     {
-      "item": "#LISTALLEGG"
+      "item": "#FOODSOYSAUCE"
     },
     {
       "item": "tofucraft:material",
-      "data": 11
+      "data": 29
     }
   ],
   "type": "forge:ore_shapeless"

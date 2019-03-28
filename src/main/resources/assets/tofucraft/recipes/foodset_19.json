@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 19
+  },
+  "ingredients": [
+    {
+      "item": "#LISTALLTOFU"
+    },
+    {
+      "item": "tofucraft:rollingpin",
+      "data": 32767
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

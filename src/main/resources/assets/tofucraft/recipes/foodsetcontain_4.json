@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "tofucraft:foodsetcontain",
+    "data": 4
+  },
+  "ingredients": [
+    {
+      "item": "#LISTALLTOFU"
+    },
+    {
+      "item": "#CROPLEEK"
+    },
+    {
+      "item": "tofucraft:material",
+      "data": 8
+    },
+    {
+      "item": "#FOODSOYSAUCE"
+    },
+    {
+      "item": "tofucraft:material",
+      "data": 29
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

@@ -5,8 +5,7 @@
   },
   "ingredients" : [
     {
-      "item" : "tofucraft:tofu_food",
-      "data" : 0
+      "item" : "#LISTALLTOFU"
     },
     {
       "item" : "#FOODOLIVEOIL"

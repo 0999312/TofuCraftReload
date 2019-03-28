@@ -1,0 +1,28 @@
+{
+  "result": {
+    "item": "tofucraft:material",
+    "data": 20,
+    "count": 4
+  },
+  "pattern": [
+    "WWW",
+    "BPM",
+    "WWW"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "P": {
+      "item": "#LISTALLPORKRAW"
+    },
+    "B": {
+      "item": "#FOODBREAD"
+    },
+    "W": {
+      "item": "#LISTALLTOFU"
+    },
+    "M": {
+      "item": "tofucraft:material",
+      "data": 2
+    }
+  }
+}
