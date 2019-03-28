@@ -364,6 +364,7 @@ entity.tofucraft.TofuSlime.name=豆腐スライム
 entity.tofucraft.TofuCreeper.name=豆腐クリーパー
 entity.tofucraft.Tofunian.name=トーフニアン
 entity.tofucraft.TofuChinger.name=トーフの捕食獣
+entity.tofucraft.Fukumame.name=福豆
 
 commands.tofuslimecheck.found=このチャンクには豆腐スライムが生息しています
 commands.tofuslimecheck.notFound=このチャンクには豆腐スライムはいないようだ
@@ -400,5 +401,8 @@ entity.Tofunian.fisherman=漁業のトウフニアン
 entity.Tofunian.guard=護衛のトウフニアン
 entity.Tofunian.tofusmish=豆腐金属加工のトウフニアン
 
+tofucraft.config.dimension_id=トーフワールドのDimensionID
+
 item.tofucraft.nanban.name=チキン南蛮
 item.tofucraft.nanbantofu.name=豆腐南蛮
+
