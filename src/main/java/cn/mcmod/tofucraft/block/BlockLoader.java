@@ -90,22 +90,18 @@ public class BlockLoader {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
 		FluidRegistry.addBucketForFluid(SOYMILK_FLUID);
 		SOYMILK = registerFluidBlock(SOYMILK_FLUID, new BlockSoyMilk(SOYMILK_FLUID), "soymilk");
-		SOYMILK_FLUID.setTemperature(15);
 
 		ZUNDASOYMILK_FLUID = ZundaSoyMilkFluid.instance;
 		FluidRegistry.addBucketForFluid(ZUNDASOYMILK_FLUID);
 		ZUNDASOYMILK = registerFluidBlock(ZUNDASOYMILK_FLUID, new BlockSoyMilk(ZUNDASOYMILK_FLUID), "zunda_soymilk");
-		ZUNDASOYMILK_FLUID.setTemperature(15);
 
 		NIGARI_FLUID = NigariFluid.instance;
 		FluidRegistry.addBucketForFluid(NIGARI_FLUID);
 		NIGARI = registerFluidBlock(NIGARI_FLUID, new BlockNigari(NIGARI_FLUID), "nigari");
-		NIGARI_FLUID.setTemperature(12);
 		
 		SOYSAUCE_FLUID = SoySauceFluid.instance;
 		FluidRegistry.addBucketForFluid(SOYSAUCE_FLUID);
 		SOYSAUCE = registerFluidBlock(SOYSAUCE_FLUID, new BlockSoySauce(SOYSAUCE_FLUID), "soysauce");
-		SOYSAUCE_FLUID.setTemperature(15);
 
 		register(SALTFURNACE, new ItemBlock(SALTFURNACE), "saltfurnace");
 		register(SALTFURNACE_LIT, new ItemBlock(SALTFURNACE_LIT), "saltfurnace_lit");
