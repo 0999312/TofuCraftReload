@@ -4,6 +4,7 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -51,6 +52,7 @@ public class ItemNigari extends Item {
 
                 if (var13 != null)
                 {
+                    playerIn.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE,1));
                     worldIn.playSound(playerIn, targetPos.add(0.5, 0.5, 0.5), var13.getSoundType().getBreakSound(), SoundCategory.BLOCKS, (var13.getSoundType().getVolume() + 1.0F) / 2.0F, var13.getSoundType().getPitch() * 0.8F);
 
                     worldIn.setBlockState(targetPos, var13.getDefaultState());

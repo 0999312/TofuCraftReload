@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    " B "
+  ],
+  "key": {
+    "#": {
+      "item": "tofucraft:material",
+      "data": 6
+    },
+    "B": {
+      "item": "minecraft:bowl"
+    }
+  },
+  "result": {
+    "item": "tofucraft:fukumame"
+  }
+}

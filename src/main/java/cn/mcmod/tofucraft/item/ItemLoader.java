@@ -16,14 +16,13 @@ import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.EnumMap;
 
@@ -229,6 +228,8 @@ public class ItemLoader {
 
 	public static ItemSoybeans soybeans = new ItemSoybeans();
 
+	public static Item fukumame = new ItemFukumame();
+
 	public static Item nigari = new ItemNigari();
 	public static Item tofustick = new ItemTofuStick();
 
@@ -261,6 +262,7 @@ public class ItemLoader {
 		register(foodsetContain);
 		register(nigari);
 		register(soybeans);
+		register(fukumame);
 		register(rice.setUnlocalizedName(TofuMain.MODID+"."+"rice"));
 		register(riceseed);
 		register(defatting_potion);
@@ -334,7 +336,6 @@ public class ItemLoader {
 		tofuItemRegister(TofuType.diamond,new ItemStack(tofu_material,1,1));
 		tofuItemRegister(TofuType.zunda,new ItemStack(tofu_food,1,9));
 		tofuItemRegister(TofuType.dried,new ItemStack(tofu_material,1,2));
-
 	}
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
@@ -357,6 +358,7 @@ public class ItemLoader {
 		registerRender(foodsetContain);
 		registerRender(nigari);
 		registerRender(soybeans);
+		registerRender(fukumame);
 		registerRender(rice);
 		registerRender(riceseed);
 		registerRender(tofustick);
