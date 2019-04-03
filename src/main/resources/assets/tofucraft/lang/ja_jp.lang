@@ -326,12 +326,17 @@ item.tofucraft.tooldiamondaxe.name=金剛豆腐斧
 
 advancements.tofucraft.root.title=豆腐クラフト
 advancements.tofucraft.root.description=豆腐の技術や豆腐の食材
+advancements.tofucraft.zunda.title=ずんだ＼（ず・ω・だ）／
+advancements.tofucraft.zunda.description=枝豆と砂糖で、ずんだを作る
 advancements.tofucraft.flesh_soymilk.title=新鮮な豆乳
 advancements.tofucraft.flesh_soymilk.description=豆腐牛から豆乳を搾り取る
 advancements.tofucraft.getnigari.title=苦い思い
 advancements.tofucraft.getnigari.description=製塩かまどからにがりを取り出す
 advancements.tofucraft.getsalt.title=塩辛い思い
 advancements.tofucraft.getsalt.description=製塩かまどから塩を取り出す
+
+advancements.tofucraft.caringshooting.title=愛の射撃
+advancements.tofucraft.caringshooting.description=ずんだアローを射てmobを回復させる
 
 container.tofucraft.SaltFurnace=製塩かまど
 container.tofucraft.TfAntenna=TFアンテナ

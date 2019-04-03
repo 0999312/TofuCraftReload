@@ -14,7 +14,7 @@
     "announce_to_chat": false
   },
   "criteria": {
-    "japariman": {
+    "soybean": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [

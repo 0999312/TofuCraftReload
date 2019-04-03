@@ -230,6 +230,9 @@ public class ItemLoader {
 
 	public static Item fukumame = new ItemFukumame();
 
+	public static Item zundaBow = new ItemZundaBow();
+	public static Item zundaArrow = new ItemZundaArrow();
+
 	public static Item nigari = new ItemNigari();
 	public static Item tofustick = new ItemTofuStick();
 
@@ -318,6 +321,8 @@ public class ItemLoader {
 		register(metalchestplate);
 		register(metalleggins);
 		register(metalboots);
+		register(zundaBow);
+		register(zundaArrow.setUnlocalizedName(TofuMain.MODID+"."+"zundaarrow"));
 
 		register(TOFUKINU_DOOR.setUnlocalizedName(TofuMain.MODID+"."+"tofudoor_kinu"));
 		register(TOFUMOMEN_DOOR.setUnlocalizedName(TofuMain.MODID+"."+"tofudoor_momen"));
@@ -409,6 +414,9 @@ public class ItemLoader {
 		registerRender(metalchestplate);
 		registerRender(metalleggins);
 		registerRender(metalboots);
+
+		registerRender(zundaBow);
+		registerRender(zundaArrow);
     }
 
 	private static void register(Item item)

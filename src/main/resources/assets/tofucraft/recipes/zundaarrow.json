@@ -1,0 +1,16 @@
+{
+  "result" : {
+    "item" : "tofucraft:zundaarrow"
+  },
+  "pattern" : [ "AAA", "AZA", "AAA" ],
+  "type" : "forge:ore_shaped",
+  "key" : {
+    "Z" : {
+      "item" : "tofucraft:material",
+      "data" : 4
+    },
+    "A" : {
+      "item" : "minecraft:arrow"
+    }
+  }
+}

@@ -77,8 +77,8 @@ public class EntityTofuSpider extends EntitySpider implements IRangedAttackMob {
     @Override
     public boolean getCanSpawnHere() {
 
-        if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(30) == 0
-                && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(50.0D, 20.0D, 50.0D)).size() == 0) {
+        if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(25) == 0
+                && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(45.0D, 20.0D, 45.0D)).size() == 0) {
             return super.getCanSpawnHere();
         }
         return false;

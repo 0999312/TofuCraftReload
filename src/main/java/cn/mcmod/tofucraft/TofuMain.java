@@ -7,6 +7,11 @@ import cn.mcmod.tofucraft.world.WorldProviderTofu;
 import cn.mcmod.tofucraft.world.biome.TofuBiomes;
 import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
 import cn.mcmod.tofucraft.world.gen.structure.tofuvillage.StructureTofuVillagePieces;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
@@ -26,6 +31,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import java.util.Random;
+
 @Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION)
 public class TofuMain {
     public static final String MODID = "tofucraft";
@@ -39,6 +46,8 @@ public class TofuMain {
     public static CommonProxy proxy;
 
     public static DimensionType TOFU_DIMENSION;
+
+    public static DamageSource zunda;
 
     @EventHandler
     public void construct(FMLConstructionEvent event) {
@@ -66,6 +75,16 @@ public class TofuMain {
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new TofuGuiHandler());
 
+
+        zunda = new DamageSource("zunda") {
+            @Override
+            public ITextComponent getDeathMessage(EntityLivingBase entityLivingBaseIn) {
+                String s = "death.attack.zunda";
+                String s1 = s + ".player";
+
+                return new TextComponentString(entityLivingBaseIn.getDisplayName().getFormattedText() + " ").appendSibling(new TextComponentTranslation(s1, new Object[]{entityLivingBaseIn.getDisplayName()}));
+            }
+        }.setDamageIsAbsolute();
 
         TOFU_DIMENSION = DimensionType.register("Tofu World", "_tofu", TofuConfig.dimensionID, WorldProviderTofu.class, false);
         DimensionManager.registerDimension(TofuConfig.dimensionID, TOFU_DIMENSION);
