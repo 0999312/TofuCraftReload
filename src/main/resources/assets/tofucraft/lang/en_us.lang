@@ -325,12 +325,16 @@ item.tofucraft.toolDiamondAxe.name=Diamond Tofu Axe
 
 advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
+advancements.tofucraft.zunda.title=ZUNDA＼（ず・ω・だ）／
+advancements.tofucraft.zunda.description=Make zunda with edamame and sugar
 advancements.tofucraft.flesh_soymilk.title=Flesh Soymilk
 advancements.tofucraft.flesh_soymilk.description=Squeeze SoyMilk from Tofu Cow
 advancements.tofucraft.getnigari.title=Bitter work
 advancements.tofucraft.getnigari.description=Get Bittern from SaltFurnace
 advancements.tofucraft.getsalt.title=Salty work
 advancements.tofucraft.getsalt.description=Get Salt from SaltFurnace
+advancements.tofucraft.caringshooting.title=Caring Shooting
+advancements.tofucraft.caringshooting.description=Shoot ZundaArrow on mob and healing mob
 
 container.tofucraft.SaltFurnace=Salt Furnace
 container.tofucraft.TfStorage=TF Storage

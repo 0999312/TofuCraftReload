@@ -1,0 +1,16 @@
+{
+  "result" : {
+    "item" : "tofucraft:zundabow"
+  },
+  "pattern" : [ " W ", "WBW", " W " ],
+  "type" : "forge:ore_shaped",
+  "key" : {
+    "B" : {
+      "item" : "minecraft:bow"
+    },
+    "W" : {
+      "item" : "tofucraft:material",
+      "data" : 17
+    }
+  }
+}

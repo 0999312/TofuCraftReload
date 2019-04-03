@@ -1,17 +1,16 @@
 {
   "display": {
     "icon": {
-      "item": "tofucraft:material",
-      "data": 0
+      "item": "tofucraft:zundaarrow"
     },
     "title": {
-      "translate": "advancements.tofucraft.getsalt.title"
+      "translate": "advancements.tofucraft.caringshooting.title"
     },
     "description": {
-      "translate": "advancements.tofucraft.getsalt.description"
+      "translate": "advancements.tofucraft.caringshooting.description"
     }
   },
-  "parent": "tofucraft:tofucraft/getnigari",
+  "parent": "tofucraft:tofucraft/zunda",
   "criteria": {
     "done": {
       "trigger": "minecraft:impossible"

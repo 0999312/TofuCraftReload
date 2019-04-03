@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.entity;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.client.render.*;
 import cn.mcmod.tofucraft.entity.projectile.EntityFukumame;
+import cn.mcmod.tofucraft.entity.projectile.EntityZundaArrow;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
@@ -29,6 +30,7 @@ public class TofuEntityRegister {
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofuchinger"), EntityTofuChinger.class, prefix("TofuChinger"), 4, TofuMain.instance, 80, 3, false, 0xEBE8E8, 0xB3B3B3);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofuspider"), EntityTofuSpider.class, prefix("TofuSpider"), 5, TofuMain.instance, 90, 3, false, 0xEBE8E8, 0x080808);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "fukumame"), EntityFukumame.class, prefix("Fukumame"), 6, TofuMain.instance, 100, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "zundaarrow"), EntityZundaArrow.class, prefix("ZundaArrow"), 7, TofuMain.instance, 100, 2, true);
     }
 
     private static String prefix(String path) {
@@ -45,6 +47,7 @@ public class TofuEntityRegister {
         RenderingRegistry.registerEntityRenderingHandler(EntityTofuChinger.class, RenderTofuChinger::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTofuSpider.class, RenderTofuSpider::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityFukumame.class, RenderFukumame::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityZundaArrow.class, RenderZundaArrow::new);
     }
     public static void entitySpawn() {
 
