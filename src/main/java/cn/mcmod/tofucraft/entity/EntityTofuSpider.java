@@ -55,7 +55,7 @@ public class EntityTofuSpider extends EntitySpider implements IRangedAttackMob {
 
     public float getEyeHeight()
     {
-        return 0.35F;
+        return 0.36F;
     }
 
     @Override
@@ -69,7 +69,9 @@ public class EntityTofuSpider extends EntitySpider implements IRangedAttackMob {
 
             projectile.setLocationAndAngles(this.posX + vec3d.x * 1.3D, this.posY + this.getEyeHeight(), this.posZ + vec3d.z * 1.3D, this.rotationYaw, this.rotationPitch);
 
-            projectile.shoot(projectile.motionX, projectile.motionY, projectile.motionZ, 1.5f, 0.8F);
+            float d0 = (this.rand.nextFloat() * 8.0F) - 4.0F;
+
+            projectile.shoot(this, this.rotationPitch,this.rotationYaw + d0,0.0F, 1.5f, 0.8F);
             this.world.spawnEntity(projectile);
         }
     }
