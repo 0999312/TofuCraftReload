@@ -72,6 +72,6 @@ public class TofuEntityRegister {
         biomes.addAll(BiomeManager.oceanBiomes);
 
 
-        EntityRegistry.addSpawn(EntityTofuSlime.class, 8, 1, 1, EnumCreatureType.MONSTER,biomes.toArray(new Biome[biomes.size()]));
+        EntityRegistry.addSpawn(EntityTofuSlime.class, 12, 1, 1, EnumCreatureType.MONSTER,biomes.toArray(new Biome[biomes.size()]));
     }
 }
