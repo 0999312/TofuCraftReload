@@ -82,6 +82,19 @@
           ]
         }
       ]
+    },{
+      "rolls": {
+        "min": 0,
+        "max": 1
+      },
+      "name": "rare",
+      "entries": [
+        {
+          "type": "item",
+          "name": "tofucraft:bottlesoysauce",
+          "weight": 2
+        }
+      ]
     }
   ]
 }

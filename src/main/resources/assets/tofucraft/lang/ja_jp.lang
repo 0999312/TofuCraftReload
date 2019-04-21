@@ -127,6 +127,7 @@ tile.tofucraft.tofuwall.name=%sの壁
 tile.tofucraft.tofuishi_brick.name=豆腐石レンガ
 tile.tofucraft.tofu_terrain.name=自然の豆腐
 tile.tofucraft.zundatofu_terrain.name=ずんだ草ブロック
+tile.tofucraft.tofuchest.name=豆腐チェスト
 
 item.tofucraft.seeds_soybeans.name=大豆
 item.tofucraft.seeds_soybeansHell.name=地獄大豆
@@ -346,6 +347,7 @@ container.tofucraft.TfCondenser=TFコンデンスマシン
 container.tofucraft.TfOven=TFオーブン
 container.tofucraft.TfReformer.simple=TFリフォーマー
 container.tofucraft.TfReformer.mix=TFミックスリフォーマー
+container.tofucraft.tofuchest=豆腐チェスト
 
 fluid.soymilk=豆乳
 fluid.zundasoymilk=ずんだの豆乳

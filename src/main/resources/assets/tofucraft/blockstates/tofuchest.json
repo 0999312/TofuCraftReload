@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tofucraft:tofuchest",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "tofucraft:tofuchest",
+      "y": 0
+    },
+    "facing=west": {
+      "model": "tofucraft:tofuchest",
+      "y": -270
+    },
+    "facing=east": {
+      "model": "tofucraft:tofuchest",
+      "y": -90
+    }
+  }
+}

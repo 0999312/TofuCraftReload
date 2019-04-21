@@ -83,6 +83,7 @@ public class BlockLoader {
 	public static Block TOFUMETAL_STAIRS = new BlockTofuStairs(METALTOFU.getDefaultState());
 	public static Block TOFUZUNDA_STAIRS = new BlockTofuStairs(TOFUZUNDA.getDefaultState());
 	public static Block TOFUISHI_BRICK_STAIRS = new BlockTofuStairs(TOFUISHI_BRICK.getDefaultState());
+	public static Block TOFUCHEST = new BlockTofuChest();
 	
 	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
 	public static BlockBarrel DOUBANJIANGBARREL = new BlockDoubanjiangBarrel().setDrain(3);
@@ -142,6 +143,8 @@ public class BlockLoader {
 		register(TOFUISHI_TORCH, new ItemBlock(TOFUISHI_TORCH), "tofutorch_ishi");
 		register(TOFUMETAL_TORCH, new ItemBlock(TOFUMETAL_TORCH), "tofutorch_metal");
 		register(TOFUZUNDA_TORCH, new ItemBlock(TOFUZUNDA_TORCH), "tofutorch_zunda");
+
+		register(TOFUCHEST, new ItemBlock(TOFUCHEST), "tofuchest");
 
 		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
 		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
@@ -211,6 +214,8 @@ public class BlockLoader {
 		registerRender(TOFUISHI_STAIRS);
 		registerRender(TOFUMETAL_STAIRS);
 		registerRender(TOFUZUNDA_STAIRS);
+
+		registerRender(TOFUCHEST);
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {
