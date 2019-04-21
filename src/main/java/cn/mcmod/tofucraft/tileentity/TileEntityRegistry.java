@@ -1,6 +1,9 @@
 package cn.mcmod.tofucraft.tileentity;
 
 import cn.mcmod.tofucraft.TofuMain;
+import cn.mcmod.tofucraft.block.BlockLoader;
+import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
+import cn.mcmod.tofucraft.client.render.tileentity.RenderTofuChest;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -9,15 +12,20 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TileEntityRegistry {
+    private static final TileEntityRenderHelper TEISR = new TileEntityRenderHelper();
+
     private TileEntityRegistry() {
     }
 
 
     public static void init() {
         registerTileEntity(TileEntitySaltFurnace.class, "saltfurnace");
+        registerTileEntity(TileEntityTofuChest.class, "tofuchest");
     }
 
     public static void render() {
+        Item.getItemFromBlock(BlockLoader.TOFUCHEST).setTileEntityItemStackRenderer(TEISR);
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTofuChest.class, new RenderTofuChest());
     }
 
 

@@ -6,6 +6,7 @@ import cn.mcmod.tofucraft.client.TofuParticleType;
 import cn.mcmod.tofucraft.client.particle.ParticleTofuPortal;
 import cn.mcmod.tofucraft.entity.TofuEntityRegister;
 import cn.mcmod.tofucraft.item.ItemLoader;
+import cn.mcmod.tofucraft.tileentity.TileEntityRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -36,6 +37,7 @@ public class ClientProxy extends CommonProxy {
 			BlockLoader.registerRenders();
 	        ItemLoader.registerRenders();
 			TofuEntityRegister.entityRender();
+			TileEntityRegistry.render();
 	    }
 
 	    @Override

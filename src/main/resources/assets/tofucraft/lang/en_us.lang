@@ -62,6 +62,7 @@ tile.tofucraft.blocksaltpan.name=Salt Pan
 tile.tofucraft.soymilk.name=Soy Milk
 tile.tofucraft.soymilkhell.name=Hell Soy Milk
 tile.tofucraft.soySauce.name=Soy Sauce
+tile.tofucraft.tofuchest.name=TofuChest
 
 tile.tofucraft.leaves_apricot.name=Apricot Leaves
 tile.tofucraft.leaves_tofu.name=Tofu Leaves
@@ -344,6 +345,7 @@ container.tofucraft.TfCondenser=TF Condenser
 container.tofucraft.TfOven=TF Oven
 container.tofucraft.TfReformer.simple=TF Reformer
 container.tofucraft.TfReformer.mix=TF Mix Reformer
+container.tofucraft.tofuchest=Tofu Chest
 
 fluid.soymilk=Soy Milk
 fluid.zundasoymilk=Zunda SoyMilk

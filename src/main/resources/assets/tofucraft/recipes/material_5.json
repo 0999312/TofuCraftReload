@@ -5,12 +5,12 @@
   },
   "pattern": [
     "W W",
-    "FFF",
+    "RRR",
     "WWW"
   ],
   "type": "forge:ore_shaped",
   "key": {
-    "F": {
+    "R": {
       "item": "#SUGARCANE"
     },
     "W": {
