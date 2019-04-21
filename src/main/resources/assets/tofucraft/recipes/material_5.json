@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "tofucraft:material",
+    "data": 5
+  },
+  "pattern": [
+    "W W",
+    "RRR",
+    "WWW"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:reeds"
+    },
+    "W": {
+      "item": "#PLANKWOOD"
+    }
+  }
+}
