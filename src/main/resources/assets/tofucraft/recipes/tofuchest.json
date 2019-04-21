@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TTT",
+    "T T",
+    "TTT"
+  ],
+  "key": {
+    "T": {
+      "item": "tofucraft:tofu_food",
+      "data": 2
+    }
+  },
+  "result": {
+    "item": "tofucraft:tofuchest"
+  }
+}

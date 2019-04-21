@@ -55,7 +55,7 @@ public class ItemFukumame extends Item {
             for (int i = 0; i < 6; i++) {
                 EntityFukumame entityfukumame = new EntityFukumame(worldIn, playerIn);
 
-                float d0 = (worldIn.rand.nextFloat() * 8.0F) - 4.0F;
+                float d0 = (worldIn.rand.nextFloat() * 12.0F) - 6.0F;
                 applyEffect(entityfukumame, stack);
 
                 entityfukumame.shoot(playerIn, playerIn.rotationPitch,playerIn.rotationYaw + d0,0.0F, 1.5f, 1.0F);

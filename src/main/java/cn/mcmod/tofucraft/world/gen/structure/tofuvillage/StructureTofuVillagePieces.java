@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.world.gen.structure.tofuvillage;
 
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
+import cn.mcmod.tofucraft.block.BlockTofuChest;
 import cn.mcmod.tofucraft.entity.EntityTofunian;
 import cn.mcmod.tofucraft.util.TofuLootTables;
 import cn.mcmod.tofucraft.world.biome.TofuBiomes;
@@ -256,7 +257,10 @@ public class StructureTofuVillagePieces {
 
             this.setBlockState(worldIn, BlockLoader.ISHITOFU.getDefaultState(), 1, 5, 5, structureBoundingBoxIn);
             this.setBlockState(worldIn, BlockLoader.TOFU_LEAVE.getDefaultState(), 1, 6, 5, structureBoundingBoxIn);
-            this.generateChest(worldIn,structureBoundingBoxIn,randomIn,2,5,5, TofuLootTables.tofuhouse);
+
+            BlockPos blockpos = new BlockPos(this.getXWithOffset(2,5), this.getYWithOffset(5), this.getZWithOffset(2,5));
+
+            this.generateChest(worldIn,structureBoundingBoxIn,randomIn,blockpos, TofuLootTables.tofuhouse,BlockLoader.TOFUCHEST.getDefaultState().withProperty(BlockTofuChest.FACING, EnumFacing.EAST));
 
             this.setBlockState(worldIn, Blocks.GLASS_PANE.getDefaultState(), 0, 6, 3, structureBoundingBoxIn);
             this.setBlockState(worldIn, Blocks.GLASS_PANE.getDefaultState(), 3, 6, 6, structureBoundingBoxIn);
