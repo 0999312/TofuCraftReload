@@ -20,7 +20,6 @@ public enum TofuType {
     zunda,
     strawberry,
     hell,
-    glow,
     diamond,
     miso;
 

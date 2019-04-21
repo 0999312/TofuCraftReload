@@ -5,7 +5,6 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@SuppressWarnings("WeakerAccess")
 @Config(modid = TofuMain.MODID)
 public class TofuConfig {
     @Config.Ignore
@@ -19,10 +18,8 @@ public class TofuConfig {
 
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-
         if (event.getModID().equals(TofuMain.MODID)) {
             ConfigManager.sync(TofuMain.MODID, Config.Type.INSTANCE);
-
         }
     }
 }

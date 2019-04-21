@@ -5,6 +5,7 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
 import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
+import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
@@ -19,6 +20,7 @@ import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemDoor;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -86,6 +88,9 @@ public class BlockLoader {
 	
 	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
 	public static BlockBarrel DOUBANJIANGBARREL = new BlockDoubanjiangBarrel().setDrain(3);
+	public static BlockBarrel MISOTOFUBARREL = new BlockBarrel(new ItemStack(ItemLoader.tofu_food,3,11), new ItemStack[]{
+			new ItemStack(ItemLoader.tofu_food,3,1),new ItemStack(ItemLoader.material,3,2)
+	}).setDrain(3);
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
 		FluidRegistry.addBucketForFluid(SOYMILK_FLUID);
@@ -118,6 +123,7 @@ public class BlockLoader {
 
 		register(MISOBARREL, new ItemBlock(MISOBARREL), "barrelmiso");
 		register(DOUBANJIANGBARREL, new ItemBlock(DOUBANJIANGBARREL), "barreldoubanjiang");
+		register(MISOTOFUBARREL, new ItemBlock(MISOTOFUBARREL), "barrelmisotofu");
 		
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
 		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
@@ -172,7 +178,9 @@ public class BlockLoader {
 
 	@SideOnly(Side.CLIENT)
 	public static void registerRenders() {
-		registerRender(MISOBARREL);registerRender(DOUBANJIANGBARREL);
+		registerRender(MISOBARREL);
+		registerRender(DOUBANJIANGBARREL);
+		registerRender(MISOTOFUBARREL);
 		
 		registerRender(tofu_Cake);
 		registerRender(TOFUDRIED);

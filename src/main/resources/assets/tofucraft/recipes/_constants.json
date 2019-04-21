@@ -6,6 +6,13 @@
       },
       "name" : "BREAD"
    },
+  {
+    "ingredient": {
+      "type": "forge:ore_dict",
+      "ore": "sugarcane"
+    },
+    "name": "SUGARCANE"
+  },
    {
       "ingredient" : {
          "type" : "forge:ore_dict",

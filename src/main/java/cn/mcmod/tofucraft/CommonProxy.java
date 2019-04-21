@@ -67,7 +67,6 @@ public class CommonProxy {
 
 		GameRegistry.addSmelting( new ItemStack(ItemLoader.material,1,13), new ItemStack(ItemLoader.material,1,14), 0.2f);
 		
-		
 		GameRegistry.addSmelting(new ItemStack(ItemLoader.tofu_food,1,0), new ItemStack(ItemLoader.tofu_food,1,3), 0.2f);
 		GameRegistry.addSmelting(new ItemStack(ItemLoader.tofu_food,1,1), new ItemStack(ItemLoader.tofu_food,1,3), 0.2f);
 		GameRegistry.addSmelting(new ItemStack(ItemLoader.tofu_food,1,2), new ItemStack(ItemLoader.foodset,1,16), 0.2f);

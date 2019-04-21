@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "tofucraft:barrelmisotofu"
+  },
+  "pattern": [
+    "CCC",
+    "KKK",
+    " B "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "B": {
+      "item": "tofucraft:material",
+      "data": 5
+    },
+    "C": {
+      "item": "tofucraft:material",
+      "data": 2
+    },
+    "K": {
+      "item": "tofucraft:tofu_food",
+      "data": 0
+    }
+  }
+}

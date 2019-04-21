@@ -30,10 +30,10 @@ public class ItemLoader {
 	public static EnumMap<TofuType, ItemStack> tofuItems = Maps.newEnumMap(TofuType.class);
 
 	public static ItemFoodBasic tofu_food = new ItemFoodBasic("tofu_food", 64,
-			  new int[]{2   ,2   ,3   ,3   ,4   ,4   ,4   ,4   ,4   ,4   ,3   ,5   ,2},
-			new float[]{0.1F,0.1F,0.4F,0.2F,0.2F,0.2f,0.2f,0.2f,0.2f,0.2f,0.2f,0.8F,0.2F},
+			  new int[]{2   ,2   ,3   ,3   ,4   ,4   ,4   ,4   ,4   ,4   ,3   ,5},
+			new float[]{0.1F,0.1F,0.4F,0.2F,0.2F,0.2f,0.2f,0.2f,0.2f,0.2f,0.2f,0.8F},
 			new String[]{
-					TofuMain.MODID+"."+"tofukinu",
+					TofuMain.MODID+"."+"tofukinu",//0
 					TofuMain.MODID+"."+"tofumomen",
 					TofuMain.MODID+"."+"tofuishi",
 					TofuMain.MODID+"."+"tofugrilled",
@@ -44,8 +44,7 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"tofusesame",
 					TofuMain.MODID+"."+"tofuzunda",
 					TofuMain.MODID+"."+"tofustrawberry",
-					TofuMain.MODID+"."+"tofumiso",
-					TofuMain.MODID+"."+"tofuglow"
+					TofuMain.MODID+"."+"tofumiso"
 			}
 	);
 	public static ItemFood tofu_hell = (ItemFood)new ItemFood(2, 0.2f, false)

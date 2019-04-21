@@ -7,6 +7,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -67,10 +68,22 @@ public class EntityZundaArrow extends EntityArrow {
 
             PotionEffect potioneffect = new PotionEffect(MobEffects.REGENERATION, this.duration, 0);
 
-
             DamageSource damagesource = TofuMain.zunda;
-            if (entity instanceof EntityLivingBase ){
+            
+            if (entity instanceof EntityLivingBase){
                 EntityLivingBase entitylivingbase = (EntityLivingBase) entity;
+                if(entity instanceof EntitySlime){
+               	 EntitySlime slime = (EntitySlime)entity;
+               	if (!world.isRemote)
+                   {
+                       for (int J1 = 0; J1 < slime.getSlimeSize(); J1++)
+                       {
+                           slime.entityDropItem(new ItemStack(ItemLoader.tofu_food,1,9), 0.2f);
+                       }
+
+                   }
+               	slime.setDead();
+               }else
                 if (entitylivingbase.isEntityUndead()) {
 
                     if (!this.world.isRemote) {

@@ -74,4 +74,6 @@ public class EntityTofuSlime extends EntitySlime {
     protected EnumParticleTypes getParticleType() {
         return EnumParticleTypes.SNOWBALL;
     }
+    
+    
 }

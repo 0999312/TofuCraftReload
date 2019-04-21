@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "tofucraft:material",
+    "data": 5
+  },
+  "pattern": [
+    "W W",
+    "FFF",
+    "WWW"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "F": {
+      "item": "#SUGARCANE"
+    },
+    "W": {
+      "item": "#PLANKWOOD"
+    }
+  }
+}

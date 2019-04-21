@@ -40,7 +40,6 @@ public class TofuEventLoader {
 
 		if(!item.isEmpty()&&recipe.matches(craftMatrix1, player.world)){
 			player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.material,1,11));
-
 		}
 	}
     
