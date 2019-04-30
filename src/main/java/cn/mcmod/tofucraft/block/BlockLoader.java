@@ -154,11 +154,11 @@ public class BlockLoader {
 		register(TOFUISHI_BRICK_STAIRS, new ItemBlock(TOFUISHI_BRICK_STAIRS), "tofustair_ishibrick");
 
 		register(TOFUKINU_SLAB, new ItemTofuSlab(TOFUKINU_SLAB), "tofuslab_kinu");
-		register(TOFUMOMEN_SLAB, new ItemBlock(TOFUMOMEN_SLAB), "tofuslab_momen");
-		register(TOFUISHI_SLAB, new ItemBlock(TOFUISHI_SLAB), "tofuslab_ishi");
-		register(TOFUMETAL_SLAB, new ItemBlock(TOFUMETAL_SLAB), "tofuslab_metal");
-		register(TOFUZUNDA_SLAB, new ItemBlock(TOFUZUNDA_SLAB), "tofuslab_zunda");
-		register(TOFUISHI_BRICK_SLAB, new ItemBlock(TOFUISHI_BRICK_SLAB), "tofuslab_ishibrick");
+		register(TOFUMOMEN_SLAB, new ItemTofuSlab(TOFUMOMEN_SLAB), "tofuslab_momen");
+		register(TOFUISHI_SLAB, new ItemTofuSlab(TOFUISHI_SLAB), "tofuslab_ishi");
+		register(TOFUMETAL_SLAB, new ItemTofuSlab(TOFUMETAL_SLAB), "tofuslab_metal");
+		register(TOFUZUNDA_SLAB, new ItemTofuSlab(TOFUZUNDA_SLAB), "tofuslab_zunda");
+		register(TOFUISHI_BRICK_SLAB, new ItemTofuSlab(TOFUISHI_BRICK_SLAB), "tofuslab_ishibrick");
 
 		register(TOFUKINU_TORCH, new ItemBlock(TOFUKINU_TORCH), "tofutorch_kinu");
 		register(TOFUMOMEN_TORCH, new ItemBlock(TOFUMOMEN_TORCH), "tofutorch_momen");

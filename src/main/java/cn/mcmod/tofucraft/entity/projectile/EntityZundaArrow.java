@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.entity.projectile;
 
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.advancements.TofuAdvancements;
+import cn.mcmod.tofucraft.entity.EntityTofuCow;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -66,25 +67,33 @@ public class EntityZundaArrow extends EntityArrow {
                 i += this.rand.nextInt(i / 2 + 2);
             }
 
-            PotionEffect potioneffect = new PotionEffect(MobEffects.REGENERATION, this.duration, 0);
 
             DamageSource damagesource = TofuMain.zunda;
-            
-            if (entity instanceof EntityLivingBase){
-                EntityLivingBase entitylivingbase = (EntityLivingBase) entity;
-                if(entity instanceof EntitySlime){
-               	 EntitySlime slime = (EntitySlime)entity;
-               	if (!world.isRemote)
-                   {
-                       for (int J1 = 0; J1 < slime.getSlimeSize(); J1++)
-                       {
-                           slime.entityDropItem(new ItemStack(ItemLoader.tofu_food,1,9), 0.2f);
-                       }
 
-                   }
-               	slime.setDead();
-               }else
-                if (entitylivingbase.isEntityUndead()) {
+            if (entity instanceof EntityLivingBase) {
+                EntityLivingBase entitylivingbase = (EntityLivingBase) entity;
+                if (entity instanceof EntitySlime) {
+                    EntitySlime slime = (EntitySlime) entity;
+                    if (!world.isRemote) {
+                        for (int J1 = 0; J1 < slime.getSlimeSize(); J1++) {
+                            slime.entityDropItem(new ItemStack(ItemLoader.tofu_food, 1, 9), 0.2f);
+                        }
+                        slime.setDead();
+                    }
+                } else if (entity instanceof EntityTofuCow) {
+                    EntityTofuCow cow = (EntityTofuCow) entity;
+                    if(cow.getVariant() == 0) {
+                        cow.setVariant(1);
+                        cow.playSound(SoundEvents.ENTITY_ZOMBIE_VILLAGER_CONVERTED, 1.5F, 1.0F);
+                    }
+                    if (!this.world.isRemote) {
+                        entitylivingbase.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, this.duration, 0));
+                    }
+                    if (this.shootingEntity instanceof EntityPlayer) {
+                        EntityPlayer player = (EntityPlayer) this.shootingEntity;
+                        TofuAdvancements.grantAdvancement(player, "caring_shooting");
+                    }
+                } else if (entitylivingbase.isEntityUndead()) {
 
                     if (!this.world.isRemote) {
                         entitylivingbase.setArrowCountInEntity(entitylivingbase.getArrowCountInEntity() + 1);
@@ -111,16 +120,20 @@ public class EntityZundaArrow extends EntityArrow {
                     }
 
                 } else {
-                    (entitylivingbase).addPotionEffect(potioneffect);
-                    if(this.shootingEntity instanceof EntityPlayer){
+                    if (!this.world.isRemote) {
+                        entitylivingbase.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, this.duration, 0));
+                    }
+                    if (this.shootingEntity instanceof EntityPlayer) {
                         EntityPlayer player = (EntityPlayer) this.shootingEntity;
                         TofuAdvancements.grantAdvancement(player, "caring_shooting");
                     }
                 }
                 this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 
-                if (!(entity instanceof EntityEnderman)) {
-                    this.setDead();
+                if (!this.world.isRemote) {
+                    if (!(entity instanceof EntityEnderman)) {
+                        this.setDead();
+                    }
                 }
             } else {
                 super.onHit(raytraceResultIn);
@@ -130,8 +143,7 @@ public class EntityZundaArrow extends EntityArrow {
         }
     }
 
-    protected void arrowHit(EntityLivingBase living)
-    {
+    protected void arrowHit(EntityLivingBase living) {
         super.arrowHit(living);
         PotionEffect potioneffect = new PotionEffect(MobEffects.REGENERATION, this.duration, 0);
         living.addPotionEffect(potioneffect);
