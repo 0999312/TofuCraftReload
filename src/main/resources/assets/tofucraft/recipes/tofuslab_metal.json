@@ -1,19 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "T",
-    "#",
-    "#"
+    "###"
   ],
   "key": {
     "#": {
-      "item": "minecraft:stick"
-    },
-    "T": {
       "item": "tofucraft:blocktofumetal"
     }
   },
   "result": {
-    "item": "tofucraft:toolmetalshovel"
+    "item": "tofucraft:tofuslab_metal",
+    "count": 6
   }
 }

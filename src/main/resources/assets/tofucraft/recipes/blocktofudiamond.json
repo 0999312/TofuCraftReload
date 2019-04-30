@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "TT",
-    "TT",
-    "TT"
+    "##",
+    "##"
   ],
   "key": {
-    "T": {
+    "#": {
       "item": "tofucraft:tofu_material",
-      "data": 0
+      "data": 1
     }
   },
   "result": {
-    "item": "tofucraft:tofudoor_metal",
-    "count": 1
+    "item": "tofucraft:blocktofudiamond"
   }
 }

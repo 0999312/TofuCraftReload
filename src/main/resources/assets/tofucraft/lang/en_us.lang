@@ -129,6 +129,7 @@ tile.tofucraft.tofuWall.name=%s Wall
 tile.tofucraft.tofuishi_brick.name=TofuIshi Brick
 tile.tofucraft.tofu_terrain.name=NaturalTofu
 tile.tofucraft.zundatofu_terrain.name=ZundaGrass
+tile.tofucraft.ore_tofudiamond.name=Tofu Diamond Ore
 
 item.tofucraft.seeds_soybeans.name=Soybeans
 item.tofucraft.seeds_soybeansHell.name=Hell Soybeans
@@ -338,6 +339,8 @@ advancements.tofucraft.getsalt.title=Salty work
 advancements.tofucraft.getsalt.description=Get Salt from SaltFurnace
 advancements.tofucraft.caringshooting.title=Caring Shooting
 advancements.tofucraft.caringshooting.description=Shoot ZundaArrow on mob and healing mob
+advancements.tofucraft.enter_tofuworld.title=Enter TofuWorld
+advancements.tofucraft.enter_tofuworld.description=Entered TofuWorld
 
 container.tofucraft.SaltFurnace=Salt Furnace
 container.tofucraft.TfStorage=TF Storage
@@ -350,7 +353,7 @@ container.tofucraft.TfReformer.mix=TF Mix Reformer
 container.tofucraft.tofuchest=Tofu Chest
 
 fluid.soymilk=Soy Milk
-fluid.zundasoymilk=Zunda SoyMilk
+fluid.zunda_soymilk=Zunda SoyMilk
 fluid.soymilkHell=Hell Soy Milk
 fluid.tofucraft.soySauce=Soy Sauce
 fluid.nigari=Bittern

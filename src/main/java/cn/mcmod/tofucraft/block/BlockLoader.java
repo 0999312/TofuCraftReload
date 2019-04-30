@@ -5,6 +5,7 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
 import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.half.BlockTofuSlab;
+import cn.mcmod.tofucraft.block.ore.BlockTofuOreDiamond;
 import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.item.ItemTofuSlab;
@@ -95,6 +96,8 @@ public class BlockLoader {
 	public static BlockTofuSlab TOFUMETAL_SLAB = new BlockTofuSlab(Material.IRON);
 	public static BlockTofuSlab TOFUZUNDA_SLAB = new BlockTofuSlab(TofuMaterial.tofu);
 	public static BlockTofuSlab TOFUISHI_BRICK_SLAB = new BlockTofuSlab(Material.ROCK);
+
+	public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
 	
 	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
 	public static BlockBarrel DOUBANJIANGBARREL = new BlockDoubanjiangBarrel().setDrain(3);
@@ -167,6 +170,8 @@ public class BlockLoader {
 		register(TOFUZUNDA_TORCH, new ItemBlock(TOFUZUNDA_TORCH), "tofutorch_zunda");
 
 		register(TOFUCHEST, new ItemBlock(TOFUCHEST), "tofuchest");
+
+		register(TOFUORE_DIAMOND,new ItemBlock(TOFUORE_DIAMOND),"ore_tofudiamond");
 
 		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
 		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
@@ -245,6 +250,8 @@ public class BlockLoader {
 		registerRender(TOFUISHI_SLAB);
 		registerRender(TOFUMETAL_SLAB);
 		registerRender(TOFUZUNDA_SLAB);
+
+		registerRender(TOFUORE_DIAMOND);
 
 		registerRender(TOFUCHEST);
 	}

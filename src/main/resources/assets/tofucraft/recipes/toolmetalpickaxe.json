@@ -10,8 +10,7 @@
       "item": "minecraft:stick"
     },
     "T": {
-      "item": "tofucraft:tofu_material",
-      "data": 0
+      "item": "tofucraft:blocktofumetal"
     }
   },
   "result": {

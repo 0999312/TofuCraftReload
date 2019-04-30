@@ -1,19 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "T",
-    "T",
-    "#"
+    "###"
   ],
   "key": {
     "#": {
-      "item": "minecraft:stick"
-    },
-    "T": {
       "item": "tofucraft:blocktofumomen"
     }
   },
   "result": {
-    "item": "tofucraft:swordmomen"
+    "item": "tofucraft:tofuslab_momen",
+    "count": 6
   }
 }

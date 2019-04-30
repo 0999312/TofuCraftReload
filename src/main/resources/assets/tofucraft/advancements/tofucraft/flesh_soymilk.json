@@ -10,7 +10,7 @@
       "translate": "advancements.tofucraft.flesh_soymilk.description"
     }
   },
-  "parent": "tofucraft:tofucraft/root",
+  "parent": "tofucraft:tofucraft/enter_tofuworld",
   "criteria": {
     "done": {
       "trigger": "minecraft:impossible"

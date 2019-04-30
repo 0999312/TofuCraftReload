@@ -1,17 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "  #",
-    " ##",
     "###"
   ],
   "key": {
     "#": {
-      "item": "tofucraft:blocktofuishi"
+      "item": "tofucraft:tofuishi_brick"
     }
   },
   "result": {
-    "item": "tofucraft:tofustair_ishi",
-    "count": 4
+    "item": "tofucraft:tofuslab_ishibrick",
+    "count": 6
   }
 }

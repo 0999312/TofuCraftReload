@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "tofucraft:blocktofuishi"
+      "item": "tofucraft:tofuishi_brick"
     }
   },
   "result": {
-    "item": "tofucraft:tofustair_ishi",
+    "item": "tofucraft:tofustair_ishibrick",
     "count": 4
   }
 }
