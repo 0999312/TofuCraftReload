@@ -33,7 +33,9 @@ public class TofuEntityRegister {
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofuspider"), EntityTofuSpider.class, prefix("TofuSpider"), 5, TofuMain.instance, 80, 3, true, 0xEBE8E8, 0x080808);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "fukumame"), EntityFukumame.class, prefix("Fukumame"), 6, TofuMain.instance, 100, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "zundaarrow"), EntityZundaArrow.class, prefix("ZundaArrow"), 7, TofuMain.instance, 100, 1, true);
-        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofufish"), EntityTofuFish.class, prefix("TofuFish"), 8, TofuMain.instance, 80, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofufish"), EntityTofuFish.class, prefix("TofuFish"), 8, TofuMain.instance, 80, 3, true, 0xEBE8E8, 0x3a3e3f);
+        //EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofugurdian"), EntityTofuGurdian.class, prefix("TofuGurdian"), 9, TofuMain.instance, 120, 3, true, 0xEBE8E8, 0x3a3e3f);
+
 
         EntitySpawnPlacementRegistry.setPlacementType(EntityTofuFish.class, EntityLiving.SpawnPlacementType.IN_WATER);
     }
