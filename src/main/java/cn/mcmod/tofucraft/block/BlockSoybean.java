@@ -4,6 +4,7 @@ import cn.mcmod.tofucraft.item.ItemLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -54,6 +55,11 @@ public class BlockSoybean extends BlockCrops {
         {
             return 1;
         }
+    }
+
+    protected boolean canSustainBush(IBlockState state)
+    {
+        return state.getBlock() == Blocks.FARMLAND || state.getBlock() == BlockLoader.TOFUFARMLAND;
     }
 
     /**

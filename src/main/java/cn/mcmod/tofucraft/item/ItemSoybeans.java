@@ -34,7 +34,8 @@ public class ItemSoybeans extends Item implements IPlantable {
 
                 if (soil != null && worldIn.isAirBlock(pos.up())) {
                     boolean isPlanted = false;
-                    if (soil.getBlock().canSustainPlant(soil, worldIn, pos, EnumFacing.UP, this)) {
+
+                    if (soil.getBlock() == BlockLoader.TOFUFARMLAND||soil.getBlock().canSustainPlant(soil, worldIn, pos, EnumFacing.UP, this)) {
                         worldIn.setBlockState(pos.up(), BlockLoader.SOYBEAN.getDefaultState());
                         isPlanted = true;
                     } /*else if (soil.getBlock() == Blocks.WOOL) {

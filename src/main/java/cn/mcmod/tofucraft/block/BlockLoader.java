@@ -100,6 +100,8 @@ public class BlockLoader {
 	public static Block TOFUBEDROCK = new Block(Material.ROCK).setCreativeTab(CommonProxy.tab).setBlockUnbreakable().setResistance(1000000.0F);
 
 	public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
+
+	public static Block TOFUFARMLAND = new BlockTofuFarmLand();
 	
 	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
 	public static BlockBarrel DOUBANJIANGBARREL = new BlockDoubanjiangBarrel().setDrain(3);
@@ -175,6 +177,8 @@ public class BlockLoader {
 
 		register(TOFUBEDROCK,new ItemBlock(TOFUBEDROCK),"tofubedrock");
 		register(TOFUORE_DIAMOND,new ItemBlock(TOFUORE_DIAMOND),"ore_tofudiamond");
+
+		register(TOFUFARMLAND,new ItemBlock(TOFUFARMLAND),"tofu_farmland");
 
 		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
 		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
@@ -257,6 +261,7 @@ public class BlockLoader {
 		registerRender(TOFUBEDROCK);
 		registerRender(TOFUORE_DIAMOND);
 
+		registerRender(TOFUFARMLAND);
 		registerRender(TOFUCHEST);
 	}
 
