@@ -10,20 +10,18 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityRegistry {
-    private static final TileEntityRenderHelper TEISR = new TileEntityRenderHelper();
-
-    private TileEntityRegistry() {
-    }
-
 
     public static void init() {
         registerTileEntity(TileEntitySaltFurnace.class, "saltfurnace");
         registerTileEntity(TileEntityTofuChest.class, "tofuchest");
     }
-
+    @SideOnly(Side.CLIENT)
     public static void render() {
+    	TileEntityRenderHelper TEISR = new TileEntityRenderHelper();
         Item.getItemFromBlock(BlockLoader.TOFUCHEST).setTileEntityItemStackRenderer(TEISR);
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTofuChest.class, new RenderTofuChest());
     }

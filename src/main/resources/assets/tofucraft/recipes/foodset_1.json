@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 1,
+    "count": 2
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:tofuslab_kinu"
+    },
+    {
+      "item": "#FOODOLIVEOIL"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 10,
+    "count": 2
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:foodset",
+      "data": 1
+    },
+    {
+      "item": "#FOODSOYSAUCE"
+    },
+    {
+      "item": "#LISTALLSUGAR"
+    },
+    {
+      "item": "tofucraft:foodset",
+      "data": 2
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}
