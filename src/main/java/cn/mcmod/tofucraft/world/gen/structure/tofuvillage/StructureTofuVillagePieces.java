@@ -1,14 +1,15 @@
 package cn.mcmod.tofucraft.world.gen.structure.tofuvillage;
 
-import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.BlockTofuChest;
 import cn.mcmod.tofucraft.entity.EntityTofunian;
 import cn.mcmod.tofucraft.util.TofuLootTables;
 import cn.mcmod.tofucraft.world.biome.TofuBiomes;
-import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
 import com.google.common.collect.Lists;
-import net.minecraft.block.*;
+import net.minecraft.block.BlockDoor;
+import net.minecraft.block.BlockLadder;
+import net.minecraft.block.BlockStairs;
+import net.minecraft.block.BlockTorch;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.IEntityLivingData;
@@ -17,10 +18,7 @@ import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -29,11 +27,7 @@ import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
-import net.minecraft.world.gen.structure.template.PlacementSettings;
-import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
-import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraftforge.event.terraingen.BiomeEvent;
 
 import java.util.Iterator;
 import java.util.List;
@@ -46,6 +40,7 @@ public class StructureTofuVillagePieces {
         MapGenStructureIO.registerStructureComponent(WoodHut.class, "TofuViWH");
         MapGenStructureIO.registerStructureComponent(Torch.class, "TofuViT");
         MapGenStructureIO.registerStructureComponent(TallTofuHouse.class, "TofuViTTH");
+        MapGenStructureIO.registerStructureComponent(FarmLand.class, "TofuViTFL");
         MapGenStructureIO.registerStructureComponent(Start.class, "TofuViS");
         MapGenStructureIO.registerStructureComponent(Path.class, "TofuViP");
         MapGenStructureIO.registerStructureComponent(Well.class, "TofuViW");
@@ -54,10 +49,11 @@ public class StructureTofuVillagePieces {
 
     public static List<StructureTofuVillagePieces.PieceWeight> getStructureVillageWeightedPieceList(Random random, int size) {
         List<StructureTofuVillagePieces.PieceWeight> list = Lists.<PieceWeight>newArrayList();
-        list.add(new PieceWeight(TorchNew.class, 20, MathHelper.getInt(random, 1 + size, 2 + size)));
+        list.add(new PieceWeight(TorchNew.class, 25, MathHelper.getInt(random, 1 + size, 2 + size)));
         list.add(new PieceWeight(House.class, 10, MathHelper.getInt(random, size, 3 + size)));
         list.add(new PieceWeight(WoodHut.class, 5, MathHelper.getInt(random, 3 + size, 5 + size)));
         list.add(new PieceWeight(TallTofuHouse.class, 20, MathHelper.getInt(random, size, 2 + size)));
+        list.add(new PieceWeight(FarmLand.class, 25, MathHelper.getInt(random,1 + size, 2 + size)));
         Iterator<PieceWeight> iterator = list.iterator();
         while (iterator.hasNext()) {
             if (((PieceWeight) iterator.next()).villagePiecesLimit == 0) {
@@ -92,6 +88,10 @@ public class StructureTofuVillagePieces {
         else if (oclass == StructureTofuVillagePieces.House.class)
         {
             village = House.createPiece(start, structureComponents, rand, structureMinX, structureMinY, structureMinZ, facing, componentType);
+        }
+        else if (oclass == StructureTofuVillagePieces.FarmLand.class)
+        {
+            village = FarmLand.createPiece(start, structureComponents, rand, structureMinX, structureMinY, structureMinZ, facing, componentType);
         }
         else if (oclass == StructureTofuVillagePieces.TorchNew.class)
         {
@@ -921,6 +921,82 @@ public class StructureTofuVillagePieces {
             this.placeTorch(worldIn, EnumFacing.NORTH, 1, 3, 1, structureBoundingBoxIn);
             this.placeTorch(worldIn, EnumFacing.WEST, 0, 3, 0, structureBoundingBoxIn);
             this.placeTorch(worldIn, EnumFacing.SOUTH, 1, 3, -1, structureBoundingBoxIn);
+            return true;
+        }
+
+        @Override
+        protected void readStructureFromNBT(NBTTagCompound tagCompound, TemplateManager p_143011_2_) {
+            super.readStructureFromNBT(tagCompound);
+        }
+    }
+
+    public static class FarmLand extends Village {
+        private boolean isTallHouse;
+        private int tablePosition;
+
+        public FarmLand() {
+        }
+
+        public FarmLand(Start start, int type, Random rand, StructureBoundingBox structurebb, EnumFacing facing) {
+            super(start, type);
+            this.setCoordBaseMode(facing);
+            this.boundingBox = structurebb;
+        }
+
+        public static FarmLand createPiece(Start start, List<StructureComponent> p_175853_1_, Random rand, int p_175853_3_, int p_175853_4_, int p_175853_5_, EnumFacing facing, int p_175853_7_) {
+            StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(p_175853_3_, p_175853_4_, p_175853_5_, 0, 0, 0, 6, 5, 6, facing);
+            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175853_1_, structureboundingbox) == null ? new FarmLand(start, p_175853_7_, rand, structureboundingbox, facing) : null;
+        }
+
+        /**
+         * (abstract) Helper method to write subclass data to NBT
+         */
+        protected void writeStructureToNBT(NBTTagCompound tagCompound) {
+            super.writeStructureToNBT(tagCompound);
+        }
+
+        /**
+         * (abstract) Helper method to read subclass data from NBT
+         */
+        protected void readStructureFromNBT(NBTTagCompound tagCompound) {
+            super.readStructureFromNBT(tagCompound);
+        }
+
+        /**
+         * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
+         * Mineshafts at the end, it adds Fences...
+         */
+        public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn) {
+            if (this.averageGroundLvl < 0) {
+                this.averageGroundLvl = this.getAverageGroundLevel(worldIn, structureBoundingBoxIn);
+
+                if (this.averageGroundLvl < 0) {
+                    return true;
+                }
+
+                this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 6 - 1, 0);
+            }
+
+            IBlockState iblockstate = this.getBiomeSpecificBlockState(BlockLoader.tofuTerrain.getDefaultState());
+            IBlockState iblockstate1 = this.getBiomeSpecificBlockState(BlockLoader.TOFUISHI_BRICK.getDefaultState());
+            IBlockState iblockstate4 = BlockLoader.TOFUFARMLAND.getDefaultState();
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 0, 6, 5, 6, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 6, 0, 6, iblockstate1, iblockstate1, false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 5, 0, 5, iblockstate4, iblockstate4, false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 3, 5, 0, 3, BlockLoader.SOYMILK.getDefaultState(), BlockLoader.SOYMILK.getDefaultState(), false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 1, 5, 1, 1, BlockLoader.SOYBEAN.getDefaultState(), BlockLoader.SOYBEAN.getDefaultState(), false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 2, 5, 1, 2, BlockLoader.SOYBEAN.getDefaultState(), BlockLoader.SOYBEAN.getDefaultState(), false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 4, 5, 1, 4, BlockLoader.SOYBEAN.getDefaultState(), BlockLoader.SOYBEAN.getDefaultState(), false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 5, 5, 1, 5, BlockLoader.SOYBEAN.getDefaultState(), BlockLoader.SOYBEAN.getDefaultState(), false);
+
+
+            for (int i = 0; i < 7; ++i) {
+                for (int j = 0; j < 7; ++j) {
+                    this.clearCurrentPositionBlocksUpwards(worldIn, j, 6, i, structureBoundingBoxIn);
+                    this.replaceAirAndLiquidDownwards(worldIn, iblockstate, j, -1, i, structureBoundingBoxIn);
+                }
+            }
+
             return true;
         }
 
