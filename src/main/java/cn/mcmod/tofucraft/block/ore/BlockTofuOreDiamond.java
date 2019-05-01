@@ -24,7 +24,7 @@ public class BlockTofuOreDiamond extends BlockOre {
         super(MapColor.CLOTH);
 
         this.setCreativeTab(CommonProxy.tab);
-        this.setHardness(0.5F);
+        this.setHardness(0.8F);
         this.setResistance(4.0F);
         this.setHarvestLevel("shovel", 2);
         this.setSoundType(SoundType.CLOTH);

@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Random;
 
 public class ChunkProviderTofu implements IChunkGenerator {
-    private static final IBlockState BEDROCK = Blocks.BEDROCK.getDefaultState();
+    private static final IBlockState BEDROCK = BlockLoader.TOFUBEDROCK.getDefaultState();
 
     private final boolean mapFeaturesEnabled;
 
