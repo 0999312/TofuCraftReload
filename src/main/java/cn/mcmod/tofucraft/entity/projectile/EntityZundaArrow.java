@@ -80,7 +80,8 @@ public class EntityZundaArrow extends EntityArrow {
                         }
                         slime.setDead();
                     }
-                } else if (entity instanceof EntityTofuCow) {
+                }
+                else if (entity instanceof EntityTofuCow) {
                     EntityTofuCow cow = (EntityTofuCow) entity;
                     if(cow.getVariant() == 0) {
                         cow.setVariant(1);

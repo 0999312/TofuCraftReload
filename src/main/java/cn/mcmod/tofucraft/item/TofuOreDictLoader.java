@@ -30,6 +30,8 @@ public class TofuOreDictLoader {
 	    registerOre("cropChilipepper", new ItemStack(ItemLoader.material,1,31));
 	    registerOre("cropLemon", new ItemStack(ItemLoader.material,1,30));
 	    
+	    registerOre("cropSoybean", new ItemStack(ItemLoader.soybeans));
+	    
 	    registerOre("foodSoysauce", Soysauce);
 	    registerOre("foodOliveoil", Soyoil);
 	    registerOre("foodMayo", Mayonnaise);

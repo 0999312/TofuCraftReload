@@ -1,8 +1,8 @@
 {
-   "type" : "minecraft:crafting_shapeless",
+   "type" : "forge:ore_shapeless",
    "ingredients" : [
       {
-         "item" : "tofucraft:seeds_soybeans"
+         "item" : "#CROPSOYBEAN"
       },
     {
       "item": "tofucraft:material",

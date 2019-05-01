@@ -4,7 +4,7 @@
   },
   "ingredients": [
     {
-      "item": "tofucraft:seeds_soybeans"
+      "item":  "#CROPSOYBEAN"
     },
     {
       "item": "#LISTALLGRAIN"

@@ -59,8 +59,8 @@ public class ItemLoader {
 			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4,4   ,6   ,16  ,20,2   ,8 ,4   ,1,3,6   ,8,3},
 			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.4f,0.1f,0.3f,0.5f,0.4f,1f},
 			new String[]{
-					TofuMain.MODID+"."+"tofuchikuwa",
-					TofuMain.MODID+"."+"oage",
+					TofuMain.MODID+"."+"tofuchikuwa",//0
+					TofuMain.MODID+"."+"oage",//1
 					TofuMain.MODID+"."+"onigiri",
 					TofuMain.MODID+"."+"onigirisalt",
 					TofuMain.MODID+"."+"yakionigirimiso",
