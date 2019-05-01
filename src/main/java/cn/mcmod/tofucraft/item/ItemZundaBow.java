@@ -130,7 +130,7 @@ public class ItemZundaBow extends ItemBow {
 
                         if (j > 0)
                         {
-                            entityarrow.setDamage(entityarrow.getDamage() + (double)j * 0.51D + 0.5D);
+                            entityarrow.setDamage(entityarrow.getDamage() + (double)j * 0.5D + 0.5D);
                         }
 
 

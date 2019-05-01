@@ -4,8 +4,11 @@ import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
 import cn.mcmod.tofucraft.block.fluid.*;
+import cn.mcmod.tofucraft.block.half.BlockTofuSlab;
+import cn.mcmod.tofucraft.block.ore.BlockTofuOreDiamond;
 import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
 import cn.mcmod.tofucraft.item.ItemLoader;
+import cn.mcmod.tofucraft.item.ItemTofuSlab;
 import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
@@ -86,6 +89,17 @@ public class BlockLoader {
 	public static Block TOFUZUNDA_STAIRS = new BlockTofuStairs(TOFUZUNDA.getDefaultState());
 	public static Block TOFUISHI_BRICK_STAIRS = new BlockTofuStairs(TOFUISHI_BRICK.getDefaultState());
 	public static Block TOFUCHEST = new BlockTofuChest();
+
+	public static BlockTofuSlab TOFUKINU_SLAB = new BlockTofuSlab(TofuMaterial.softtofu);
+	public static BlockTofuSlab TOFUMOMEN_SLAB = new BlockTofuSlab(TofuMaterial.tofu);
+	public static BlockTofuSlab TOFUISHI_SLAB = new BlockTofuSlab(Material.ROCK);
+	public static BlockTofuSlab TOFUMETAL_SLAB = new BlockTofuSlab(Material.IRON);
+	public static BlockTofuSlab TOFUZUNDA_SLAB = new BlockTofuSlab(TofuMaterial.tofu);
+	public static BlockTofuSlab TOFUISHI_BRICK_SLAB = new BlockTofuSlab(Material.ROCK);
+
+	public static Block TOFUBEDROCK = new Block(Material.ROCK).setCreativeTab(CommonProxy.tab).setBlockUnbreakable().setResistance(1000000.0F);
+
+	public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
 	
 	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
 	public static BlockBarrel DOUBANJIANGBARREL = new BlockDoubanjiangBarrel().setDrain(3);
@@ -144,6 +158,13 @@ public class BlockLoader {
 		register(TOFUZUNDA_STAIRS, new ItemBlock(TOFUZUNDA_STAIRS), "tofustair_zunda");
 		register(TOFUISHI_BRICK_STAIRS, new ItemBlock(TOFUISHI_BRICK_STAIRS), "tofustair_ishibrick");
 
+		register(TOFUKINU_SLAB, new ItemTofuSlab(TOFUKINU_SLAB), "tofuslab_kinu");
+		register(TOFUMOMEN_SLAB, new ItemTofuSlab(TOFUMOMEN_SLAB), "tofuslab_momen");
+		register(TOFUISHI_SLAB, new ItemTofuSlab(TOFUISHI_SLAB), "tofuslab_ishi");
+		register(TOFUMETAL_SLAB, new ItemTofuSlab(TOFUMETAL_SLAB), "tofuslab_metal");
+		register(TOFUZUNDA_SLAB, new ItemTofuSlab(TOFUZUNDA_SLAB), "tofuslab_zunda");
+		register(TOFUISHI_BRICK_SLAB, new ItemTofuSlab(TOFUISHI_BRICK_SLAB), "tofuslab_ishibrick");
+
 		register(TOFUKINU_TORCH, new ItemBlock(TOFUKINU_TORCH), "tofutorch_kinu");
 		register(TOFUMOMEN_TORCH, new ItemBlock(TOFUMOMEN_TORCH), "tofutorch_momen");
 		register(TOFUISHI_TORCH, new ItemBlock(TOFUISHI_TORCH), "tofutorch_ishi");
@@ -151,6 +172,9 @@ public class BlockLoader {
 		register(TOFUZUNDA_TORCH, new ItemBlock(TOFUZUNDA_TORCH), "tofutorch_zunda");
 
 		register(TOFUCHEST, new ItemBlock(TOFUCHEST), "tofuchest");
+
+		register(TOFUBEDROCK,new ItemBlock(TOFUBEDROCK),"tofubedrock");
+		register(TOFUORE_DIAMOND,new ItemBlock(TOFUORE_DIAMOND),"ore_tofudiamond");
 
 		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
 		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
@@ -222,6 +246,16 @@ public class BlockLoader {
 		registerRender(TOFUISHI_STAIRS);
 		registerRender(TOFUMETAL_STAIRS);
 		registerRender(TOFUZUNDA_STAIRS);
+
+		registerRender(TOFUKINU_SLAB);
+		registerRender(TOFUISHI_BRICK_SLAB);
+		registerRender(TOFUMOMEN_SLAB);
+		registerRender(TOFUISHI_SLAB);
+		registerRender(TOFUMETAL_SLAB);
+		registerRender(TOFUZUNDA_SLAB);
+
+		registerRender(TOFUBEDROCK);
+		registerRender(TOFUORE_DIAMOND);
 
 		registerRender(TOFUCHEST);
 	}

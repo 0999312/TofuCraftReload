@@ -31,8 +31,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.Random;
-
 @Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION)
 public class TofuMain {
     public static final String MODID = "tofucraft";

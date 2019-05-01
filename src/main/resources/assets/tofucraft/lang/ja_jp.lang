@@ -128,6 +128,7 @@ tile.tofucraft.tofuishi_brick.name=豆腐石レンガ
 tile.tofucraft.tofu_terrain.name=自然の豆腐
 tile.tofucraft.zundatofu_terrain.name=ずんだ草ブロック
 tile.tofucraft.tofuchest.name=豆腐チェスト
+tile.tofucraft.ore_tofudiamond.name=金剛豆腐鉱石
 
 item.tofucraft.seeds_soybeans.name=大豆
 item.tofucraft.seeds_soybeansHell.name=地獄大豆
@@ -279,6 +280,9 @@ item.tofucraft.soborotofusaute.name=そぼろ豆腐炒め
 item.tofucraft.zundaruby.name=ずんだルビー
 item.tofucraft.rice.name=お米
 item.tofucraft.seeds_rice.name=お米の種
+item.tofucraft.lemon.name=レモン
+item.tofucraft.chill.name=唐辛子
+item.tofucraft.bottlesoysause.name=醬油
 
 item.tofucraft.armorkinuhelmet.name=絹豆腐ヘルメット
 item.tofucraft.armorkinuchestplate.name=絹豆腐チェストプレート
@@ -335,6 +339,8 @@ advancements.tofucraft.getnigari.title=苦い思い
 advancements.tofucraft.getnigari.description=製塩かまどからにがりを取り出す
 advancements.tofucraft.getsalt.title=塩辛い思い
 advancements.tofucraft.getsalt.description=製塩かまどから塩を取り出す
+advancements.tofucraft.enter_tofuworld.title=豆腐ワールド
+advancements.tofucraft.enter_tofuworld.description=豆腐ワールドに入る
 
 advancements.tofucraft.caringshooting.title=愛の射撃
 advancements.tofucraft.caringshooting.description=ずんだアローを射てmobを回復させる
@@ -350,7 +356,7 @@ container.tofucraft.TfReformer.mix=TFミックスリフォーマー
 container.tofucraft.tofuchest=豆腐チェスト
 
 fluid.soymilk=豆乳
-fluid.zundasoymilk=ずんだの豆乳
+fluid.zunda_soymilk=ずんだの豆乳
 fluid.soymilkHell=地獄豆乳
 fluid.tofucraft.soySauce=醤油
 fluid.nigari=にがり

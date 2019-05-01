@@ -26,22 +26,8 @@ public class TofuTeleporter extends Teleporter {
     public static final IBlockState FRAME_BLOCK = BlockLoader.GRILD.getDefaultState();
     public static final BlockTofuPortal PORTAL_BLOCK = BlockLoader.tofu_PORTAL;
 
-    private final WorldServer world;
-
-    /**
-     * A private Random() function in Teleporter
-     */
-    private final Random random;
-
-    /**
-     * Stores successful portal placement locations for rapid lookup.
-     */
-    private final Long2ObjectMap<PortalPosition> destinationCoordinateCache = new Long2ObjectOpenHashMap<PortalPosition>(4096);
-
     public TofuTeleporter(WorldServer world) {
         super(world);
-        this.world = world;
-        this.random = new Random();
     }
 
     /**
@@ -55,237 +41,145 @@ public class TofuTeleporter extends Teleporter {
         }
     }
 
-    public Vec3d locateSpawnPoint(Entity entity) {
-        World world = this.world;
-        byte byte0 = 16;
-        double d = -1D;
-        int i = MathHelper.floor(entity.posX);
-        int j = MathHelper.floor(entity.posY);
-        int k = MathHelper.floor(entity.posZ);
-        int l = i;
-        int i1 = j;
-        int j1 = k;
-        int k1 = 0;
-        int l1 = random.nextInt(4);
-        for (int i2 = i - byte0; i2 <= i + byte0; i2++) {
-            double d1 = (i2 + 0.5D) - entity.posX;
-            for (int j3 = k - byte0; j3 <= k + byte0; j3++) {
-                double d3 = (j3 + 0.5D) - entity.posZ;
-                for (int k4 = 127; k4 >= 0; k4--) {
-                    if (!world.isAirBlock(new BlockPos(i2, k4, j3))) {
-                        continue;
-                    }
-                    for (; k4 > 0 && world.isAirBlock(new BlockPos(i2, k4 - 1, j3)); k4--) {
-                    }
-                    label0:
-                    for (int k5 = l1; k5 < l1 + 4; k5++) {
-                        int l6 = k5 % 2;
-                        int i8 = 1 - l6;
-                        if (k5 % 4 >= 2) {
-                            l6 = -l6;
-                            i8 = -i8;
-                        }
-                        for (int j9 = 0; j9 < 3; j9++) {
-                            for (int k10 = 0; k10 < 4; k10++) {
-                                for (int l11 = -1; l11 < 4; l11++) {
-                                    int j12 = i2 + (k10 - 1) * l6 + j9 * i8;
-                                    int l12 = k4 + l11;
-                                    int j13 = (j3 + (k10 - 1) * i8) - j9 * l6;
-                                    BlockPos pos = new BlockPos(j12, l12, j13);
-                                    if (l11 < 0 && !world.getBlockState(pos).getMaterial().isSolid() || l11 >= 0 && !world.isAirBlock(pos)) {
-                                        break label0;
-                                    }
-                                }
-
-                            }
-
-                        }
-
-                        double d5 = (k4 + 0.5D) - entity.posY;
-                        double d7 = d1 * d1 + d5 * d5 + d3 * d3;
-                        if (d < 0.0D || d7 < d) {
-                            d = d7;
-                            l = i2;
-                            i1 = k4;
-                            j1 = j3;
-                            k1 = k5 % 4;
-                        }
-                    }
-
-                }
-
-            }
-
-        }
-
-        if (d < 0.0D) {
-            for (int j2 = i - byte0; j2 <= i + byte0; j2++) {
-                double d2 = (j2 + 0.5D) - entity.posX;
-                for (int k3 = k - byte0; k3 <= k + byte0; k3++) {
-                    double d4 = (k3 + 0.5D) - entity.posZ;
-                    for (int l4 = 127; l4 >= 0; l4--) {
-                        if (!world.isAirBlock(new BlockPos(j2, l4, k3))) {
-                            continue;
-                        }
-                        for (; l4 > 0 && world.isAirBlock(new BlockPos(j2, l4 - 1, k3)); l4--) {
-                        }
-                        label1:
-                        for (int l5 = l1; l5 < l1 + 2; l5++) {
-                            int i7 = l5 % 2;
-                            int j8 = 1 - i7;
-                            for (int k9 = 0; k9 < 4; k9++) {
-                                for (int l10 = -1; l10 < 4; l10++) {
-                                    int i12 = j2 + (k9 - 1) * i7;
-                                    int k12 = l4 + l10;
-                                    int i13 = k3 + (k9 - 1) * j8;
-                                    BlockPos pos = new BlockPos(i12, k12, i13);
-                                    if (l10 < 0 && !world.getBlockState(pos).getMaterial().isSolid() || l10 >= 0 && !world.isAirBlock(pos)) {
-                                        break label1;
-                                    }
-                                }
-
-                            }
-
-                            double d6 = (l4 + 0.5D) - entity.posY;
-                            double d8 = d2 * d2 + d6 * d6 + d4 * d4;
-                            if (d < 0.0D || d8 < d) {
-                                d = d8;
-                                l = j2;
-                                i1 = l4;
-                                j1 = k3;
-                                k1 = l5 % 2;
-                            }
-                        }
-
-                    }
-
-                }
-
-            }
-
-        }
-        int k2 = k1;
-        int l2 = l;
-        int i3 = i1;
-        int l3 = j1;
-        int i4 = k2 % 2;
-        int j4 = 1 - i4;
-        if (k2 % 4 >= 2) {
-            i4 = -i4;
-            j4 = -j4;
-        }
-        if (d < 0.0D) {
-            if (i1 < 70) {
-                i1 = 70;
-            }
-            if (i1 > 118) {
-                i1 = 118;
-            }
-            i3 = i1;
-            for (int i5 = -1; i5 <= 1; i5++) {
-                for (int i6 = 0; i6 < 3; i6++) {
-                    for (int j7 = -1; j7 < 3; j7++) {
-                        int k8 = l2 + (i6 - 1) * i4 + i5 * j4;
-                        int l9 = i3 + j7;
-                        int i11 = (l3 + (i6 - 1) * j4) - i5 * i4;
-                        boolean flag = j7 < 0;
-                        world.setBlockState(new BlockPos(k8, l9, i11), flag ? FRAME_BLOCK : Blocks.AIR.getDefaultState(), 2);
-                    }
-
-                }
-            }
-
-        }
-        return new Vec3d(l2 + i4, i3, l3 + j4);
-    }
 
     @Override
-    public boolean placeInExistingPortal(Entity entityIn, float rotationYaw) {
-        //int i = 128;
-        double d0 = -1.0D;
-        int j = MathHelper.floor(entityIn.posX);
-        int k = MathHelper.floor(entityIn.posZ);
-        boolean flag = true;
-        BlockPos blockpos = BlockPos.ORIGIN;
-        long l = ChunkPos.asLong(j, k);
-        if (this.destinationCoordinateCache.containsKey(l)) {
-            Teleporter.PortalPosition teleporter$portalposition = (Teleporter.PortalPosition) this.destinationCoordinateCache.get(l);
-            d0 = 0.0D;
-            blockpos = teleporter$portalposition;
-            teleporter$portalposition.lastUpdateTime = this.world.getTotalWorldTime();
-            flag = false;
+    public boolean placeInExistingPortal(Entity entity, float rotationYaw) {final long chunkId = ChunkPos.asLong(MathHelper.floor(entity.posX), MathHelper.floor(entity.posZ));
+
+        double distance = -1.0D;
+        boolean doesPortalExist = true;
+        BlockPos location = BlockPos.ORIGIN;
+
+        if (this.destinationCoordinateCache.containsKey(chunkId)) {
+            final PortalPosition portalPosition = this.destinationCoordinateCache.get(chunkId);
+            distance = 0.0D;
+            location = portalPosition;
+            portalPosition.lastUpdateTime = this.world.getTotalWorldTime();
+            doesPortalExist = false;
         } else {
-            BlockPos blockpos3 = new BlockPos(entityIn);
+            final BlockPos entityPos = new BlockPos(entity);
+            for (int offsetX = -128; offsetX <= 128; ++offsetX) {
+                BlockPos positionCache;
 
-            for (int i1 = -128; i1 <= 128; ++i1) {
-                BlockPos blockpos2;
+                for (int offsetZ = -128; offsetZ <= 128; ++offsetZ) {
 
-                for (int j1 = -128; j1 <= 128; ++j1) {
-                    for (BlockPos blockpos1 = blockpos3.add(i1, this.world.getActualHeight() - 1 - blockpos3.getY(), j1); blockpos1.getY() >= 0; blockpos1 = blockpos2) {
-                        blockpos2 = blockpos1.down();
-
-                        if (this.world.getBlockState(blockpos1).getBlock() == TofuTeleporter.PORTAL_BLOCK) {
-
-                            for (blockpos2 = blockpos1.down(); this.world.getBlockState(blockpos2).getBlock() == TofuTeleporter.PORTAL_BLOCK; blockpos2 = blockpos2.down()) {
-                                blockpos1 = blockpos2;
+                    for (BlockPos currentPos = entityPos.add(offsetX, this.world.getActualHeight() - 1 - entityPos.getY(), offsetZ); currentPos.getY() >= 0; currentPos = positionCache) {
+                        positionCache = currentPos.down();
+                        if (this.world.getBlockState(currentPos).getBlock() == BlockLoader.tofu_PORTAL) {
+                            while (this.world.getBlockState(positionCache = currentPos.down()).getBlock() == BlockLoader.tofu_PORTAL) {
+                                currentPos = positionCache;
                             }
+                            final double distanceToEntity = currentPos.distanceSq(entityPos);
 
-                            double d1 = blockpos1.distanceSq(blockpos3);
-
-                            if (d0 < 0.0D || d1 < d0) {
-                                d0 = d1;
-                                blockpos = blockpos1;
+                            if (distance < 0.0D || distanceToEntity < distance) {
+                                distance = distanceToEntity;
+                                location = currentPos;
                             }
                         }
                     }
                 }
             }
         }
-        if (d0 >= 0.0D) {
-            if (flag) {
-                this.destinationCoordinateCache.put(l, new PortalPosition(blockpos, this.world.getTotalWorldTime()));
+
+        if (distance >= 0.0D) {
+            if (doesPortalExist) {
+                this.destinationCoordinateCache.put(chunkId, new PortalPosition(location, this.world.getTotalWorldTime()));
             }
 
-            double d5 = (double) blockpos.getX() + 0.5D;
-            double d7 = (double) blockpos.getZ() + 0.5D;
-            BlockPattern.PatternHelper blockpattern$patternhelper = PORTAL_BLOCK.createPatternHelper(this.world, blockpos);
-            boolean flag1 = blockpattern$patternhelper.getForwards().rotateY().getAxisDirection() == EnumFacing.AxisDirection.NEGATIVE;
-            double d2 = blockpattern$patternhelper.getForwards().getAxis() == EnumFacing.Axis.X ? (double) blockpattern$patternhelper.getFrontTopLeft().getZ() : (double) blockpattern$patternhelper.getFrontTopLeft().getX();
-            double d6 = blockpos.getY() + 0.5D;
+            double tpX = location.getX() + 0.5D;
+            double tpY = location.getY() + 0.5D;
+            double tpZ = location.getZ() + 0.5D;
+            EnumFacing direction = null;
 
-            if (flag1) {
-                ++d2;
+            if (this.world.getBlockState(location.west()).getBlock() == Blocks.AIR) {
+                direction = EnumFacing.NORTH;
             }
 
-            if (blockpattern$patternhelper.getForwards().getAxis() == EnumFacing.Axis.X) {
-                d7 = d2 + (1.0D) * (double) blockpattern$patternhelper.getWidth() * (double) blockpattern$patternhelper.getForwards().rotateY().getAxisDirection().getOffset();
+            if (this.world.getBlockState(location.east()).getBlock() == Blocks.AIR) {
+                direction = EnumFacing.SOUTH;
+            }
+
+            if (this.world.getBlockState(location.north()).getBlock() == Blocks.AIR) {
+                direction = EnumFacing.EAST;
+            }
+
+            if (this.world.getBlockState(location.south()).getBlock() == Blocks.AIR) {
+                direction = EnumFacing.WEST;
+            }
+
+            final EnumFacing enumfacing1 = EnumFacing.getHorizontal(MathHelper.floor(entity.rotationYaw * 4.0F / 360.0F + 0.5D) & 3);
+
+            if (direction != null) {
+                EnumFacing enumfacing2 = direction.rotateYCCW();
+                final BlockPos blockpos2 = location.offset(direction);
+                boolean flag2 = this.isAirBlock(blockpos2);
+                boolean flag3 = this.isAirBlock(blockpos2.offset(enumfacing2));
+
+                if (flag3 && flag2) {
+                    location = location.offset(enumfacing2);
+                    direction = direction.getOpposite();
+                    enumfacing2 = enumfacing2.getOpposite();
+                    final BlockPos blockpos3 = location.offset(direction);
+                    flag2 = this.isAirBlock(blockpos3);
+                    flag3 = this.isAirBlock(blockpos3.offset(enumfacing2));
+                }
+
+                float f6 = 0.5F;
+                float f1 = 0.5F;
+
+                if (!flag3 && flag2) {
+                    f6 = 1.0F;
+                } else if (flag3 && !flag2) {
+                    f6 = 0.0F;
+                } else if (flag3) {
+                    f1 = 0.0F;
+                }
+
+                tpX = location.getX() + 0.5D;
+                tpY = location.getY() + 0.5D;
+                tpZ = location.getZ() + 0.5D;
+                tpX += enumfacing2.getFrontOffsetX() * f6 + direction.getFrontOffsetX() * f1;
+                tpZ += enumfacing2.getFrontOffsetY() * f6 + direction.getFrontOffsetY() * f1;
+                float f2 = 0.0F;
+                float f3 = 0.0F;
+                float f4 = 0.0F;
+                float f5 = 0.0F;
+
+                if (direction == enumfacing1) {
+                    f2 = 1.0F;
+                    f3 = 1.0F;
+                } else if (direction == enumfacing1.getOpposite()) {
+                    f2 = -1.0F;
+                    f3 = -1.0F;
+                } else if (direction == enumfacing1.rotateY()) {
+                    f4 = 1.0F;
+                    f5 = -1.0F;
+                } else {
+                    f4 = -1.0F;
+                    f5 = 1.0F;
+                }
+
+                final double d2 = entity.motionX;
+                final double d3 = entity.motionZ;
+                entity.motionX = d2 * f2 + d3 * f5;
+                entity.motionZ = d2 * f4 + d3 * f3;
+                entity.rotationYaw = rotationYaw - enumfacing1.getHorizontalIndex() * 90 + direction.getHorizontalIndex() * 90;
             } else {
-                d5 = d2 + (1.0D) * (double) blockpattern$patternhelper.getWidth() * (double) blockpattern$patternhelper.getForwards().rotateY().getAxisDirection().getOffset();
+                entity.motionX = entity.motionY = entity.motionZ = 0.0D;
             }
 
-            float f = 0.0F;
-            float f1 = 0.0F;
-            float f2 = 0.0F;
-            float f3 = 0.0F;
-
-
-            double d3 = entityIn.motionX;
-            double d4 = entityIn.motionZ;
-            entityIn.motionX = d3 * (double) f + d4 * (double) f3;
-            entityIn.motionZ = d3 * (double) f2 + d4 * (double) f1;
-            entityIn.rotationYaw = rotationYaw - (float) (1 * 90) + (float) (blockpattern$patternhelper.getForwards().getHorizontalIndex() * 90);
-
-            if (entityIn instanceof EntityPlayerMP) {
-                ((EntityPlayerMP) entityIn).connection.setPlayerLocation(d5, d6, d7, entityIn.rotationYaw, entityIn.rotationPitch);
+            if (entity instanceof EntityPlayerMP) {
+                ((EntityPlayerMP) entity).connection.setPlayerLocation(tpX, tpY, tpZ, entity.rotationYaw, entity.rotationPitch);
             } else {
-                entityIn.setLocationAndAngles(d5, d6, d7, entityIn.rotationYaw, entityIn.rotationPitch);
+                entity.setLocationAndAngles(tpX, tpY, tpZ, entity.rotationYaw, entity.rotationPitch);
             }
-
             return true;
         } else {
             return false;
         }
+    }
 
+    private boolean isAirBlock(BlockPos position) {
+        return this.world.isAirBlock(position) ;
     }
 
     @Override

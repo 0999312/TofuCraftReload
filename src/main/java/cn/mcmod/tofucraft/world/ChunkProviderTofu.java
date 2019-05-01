@@ -6,6 +6,7 @@ import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -20,13 +21,16 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
+import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.event.terraingen.OreGenEvent;
 
 import java.util.List;
 import java.util.Random;
 
 public class ChunkProviderTofu implements IChunkGenerator {
-    private static final IBlockState BEDROCK = Blocks.BEDROCK.getDefaultState();
+    private static final IBlockState BEDROCK = BlockLoader.TOFUBEDROCK.getDefaultState();
 
     private final boolean mapFeaturesEnabled;
 
@@ -60,6 +64,8 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
     private int chunkX = 0;
     private int chunkZ = 0;
+
+    private final WorldGenerator diamondGen = new WorldGenMinable(BlockLoader.TOFUORE_DIAMOND.getDefaultState(), 4, BlockMatcher.forBlock(BlockLoader.tofuTerrain));
 
     private MapGenBase caveGenerator = new MapGenTofuCaves();
     private MapGenTofuVillage villageGenerator = new MapGenTofuVillage();
@@ -472,6 +478,13 @@ public class ChunkProviderTofu implements IChunkGenerator {
         int i = x * 16;
         int j = z * 16;
         int i2, genX, genY, genZ;
+
+        if (net.minecraftforge.event.terraingen.TerrainGen.generateOre(this.world, this.rand, diamondGen, blockpos, OreGenEvent.GenerateMinable.EventType.CUSTOM))
+            for (int l1 = 0; l1 < 18; ++l1)
+            {
+                this.diamondGen.generate(this.world, this.rand, blockpos.add(this.rand.nextInt(16), this.rand.nextInt(32) + 10, this.rand.nextInt(16)));
+            }
+
 
         ChunkPos chunkpos = new ChunkPos(x, z);
 

@@ -12,8 +12,8 @@
             {
               "function": "set_count",
               "count": {
-                "min": 0,
-                "max": 2
+                "min": 1,
+                "max": 3
               }
             },
             {
@@ -26,6 +26,18 @@
             {
               "function": "minecraft:set_data",
               "data": 20
+            },
+            {
+              "function": "furnace_smelt",
+              "conditions": [
+                {
+                  "condition": "entity_properties",
+                  "entity": "this",
+                  "properties": {
+                    "on_fire": true
+                  }
+                }
+              ]
             }
           ]
         }

@@ -10,6 +10,7 @@ public class TofuMaterial extends Material {
     }
 
     public static final Material tofu = new TofuMaterial(MapColor.CLOTH);
+    public static final Material softtofu = new TofuMaterial(MapColor.CLOTH);
 
 
 }

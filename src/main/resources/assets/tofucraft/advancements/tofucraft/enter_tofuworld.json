@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "tofucraft:tofustick"
+    },
+    "title": {
+      "translate": "advancements.tofucraft.enter_tofuworld.title"
+    },
+    "description": {
+      "translate": "advancements.tofucraft.enter_tofuworld.description"
+    }
+  },
+  "parent": "tofucraft:tofucraft/root",
+  "criteria": {
+    "entered_tofucraft": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "Tofu World"
+      }
+    }
+  }
+}
