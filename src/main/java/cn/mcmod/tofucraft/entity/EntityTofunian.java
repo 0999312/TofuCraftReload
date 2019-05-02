@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft.entity;
 
+import cn.mcmod.tofucraft.entity.ai.EntityAIHarvestTofuFarmland;
 import cn.mcmod.tofucraft.entity.ai.EntityAITofunianAvoidEntity;
 import cn.mcmod.tofucraft.entity.ai.EntityAITofunianInteract;
 import cn.mcmod.tofucraft.item.ItemLoader;
@@ -239,7 +240,7 @@ public class EntityTofunian extends EntityVillager {
         }
 
         if(canFarm()&&!this.isChild()){
-            this.tasks.addTask(8, new EntityAIHarvestFarmland(this, 0.6D));
+            this.tasks.addTask(8, new EntityAIHarvestTofuFarmland(this, 0.6D));
         }
     }
 
@@ -248,7 +249,7 @@ public class EntityTofunian extends EntityVillager {
 
         if (this.getTofuProfession() == TofuProfession.TOFUCOOK)
         {
-            this.tasks.addTask(8, new EntityAIHarvestFarmland(this, 0.6D));
+            this.tasks.addTask(8, new EntityAIHarvestTofuFarmland(this, 0.6D));
         }
 
         super.onGrowingAdult();

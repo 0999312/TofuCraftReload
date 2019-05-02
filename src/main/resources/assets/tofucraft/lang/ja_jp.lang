@@ -129,6 +129,8 @@ tile.tofucraft.tofu_terrain.name=自然の豆腐
 tile.tofucraft.zundatofu_terrain.name=ずんだ草ブロック
 tile.tofucraft.tofuchest.name=豆腐チェスト
 tile.tofucraft.ore_tofudiamond.name=金剛豆腐鉱石
+tile.tofucraft.tofubedrock.name=豆腐岩盤
+tile.tofucraft.tofu_farmland.name=豆腐耕地
 
 item.tofucraft.seeds_soybeans.name=大豆
 item.tofucraft.seeds_soybeansHell.name=地獄大豆
