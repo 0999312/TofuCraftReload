@@ -10,7 +10,7 @@
         {
           "type": "item",
           "name": "tofucraft:tofu_food",
-          "weight": 10,
+          "weight": 15,
           "functions": [
             {
               "function": "set_count",
