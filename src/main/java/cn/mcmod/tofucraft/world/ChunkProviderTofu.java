@@ -2,8 +2,8 @@ package cn.mcmod.tofucraft.world;
 
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.world.gen.MapGenTofuCaves;
-import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuFortress;
 import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
+import cn.mcmod.tofucraft.world.gen.structure.tofumineshaft.MapGenTofuMineshaft;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -69,12 +69,12 @@ public class ChunkProviderTofu implements IChunkGenerator {
     private final WorldGenerator diamondGen = new WorldGenMinable(BlockLoader.TOFUORE_DIAMOND.getDefaultState(), 4, BlockMatcher.forBlock(BlockLoader.tofuTerrain));
 
     private MapGenBase caveGenerator = new MapGenTofuCaves();
-    private MapGenTofuFortress fortress = new MapGenTofuFortress(this);
+    private MapGenTofuMineshaft mineshaft = new MapGenTofuMineshaft();
     private MapGenTofuVillage villageGenerator = new MapGenTofuVillage();
     public ChunkProviderTofu(World worldIn, long seed) {
         {
             villageGenerator = (MapGenTofuVillage) net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(villageGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.VILLAGE);
-            fortress = (MapGenTofuFortress) net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(fortress, InitMapGenEvent.EventType.CUSTOM);
+            mineshaft = (MapGenTofuMineshaft) net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(mineshaft, InitMapGenEvent.EventType.CUSTOM);
             caveGenerator = net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(caveGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE);
             this.mapFeaturesEnabled = worldIn.getWorldInfo().isMapFeaturesEnabled();
         }
@@ -129,7 +129,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
 
         if (this.mapFeaturesEnabled) {
-            this.fortress.generate(this.world, x, z, chunkprimer);
+            this.mineshaft.generate(this.world, x, z, chunkprimer);
             this.villageGenerator.generate(this.world, x, z, chunkprimer);
 
         }
@@ -494,7 +494,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
         ChunkPos chunkpos = new ChunkPos(x, z);
 
         if (mapFeaturesEnabled) {
-            this.fortress.generateStructure(this.world, this.rand, chunkpos);
+            this.mineshaft.generateStructure(this.world, this.rand, chunkpos);
             this.villageGenerator.generateStructure(this.world, this.rand, chunkpos);
         }
 
@@ -525,9 +525,9 @@ public class ChunkProviderTofu implements IChunkGenerator {
     public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos) {
         if (!this.mapFeaturesEnabled) {
             return false;
-        } else if ("TofuFortress".equals(structureName) && this.fortress != null)
+        } else if ("TofuMineshaft".equals(structureName) && this.mineshaft != null)
         {
-            return this.fortress.isInsideStructure(pos);
+            return this.mineshaft.isInsideStructure(pos);
         } else if ("TofuVillage".equals(structureName) && this.villageGenerator != null)
         {
             return this.villageGenerator.isInsideStructure(pos);
@@ -541,9 +541,9 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
         if (!this.mapFeaturesEnabled) {
             return null;
-        } else if ("TofuFortress".equals(structureName) && this.fortress != null)
+        } else if ("TofuMineshaft".equals(structureName) && this.mineshaft != null)
         {
-            return this.fortress.getNearestStructurePos(worldIn, position, findUnexplored);
+            return this.mineshaft.getNearestStructurePos(worldIn, position, findUnexplored);
         } else if ("TofuVillage".equals(structureName) && this.villageGenerator != null)
         {
             return this.villageGenerator.getNearestStructurePos(worldIn, position, findUnexplored);
@@ -557,7 +557,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
     @Override
     public void recreateStructures(Chunk chunk, int x, int z) {
         if (this.mapFeaturesEnabled) {
-            this.fortress.generate(this.world, x, z, null);
+            this.mineshaft.generate(this.world, x, z, null);
             this.villageGenerator.generate(this.world, x, z, null);
         }
     }
