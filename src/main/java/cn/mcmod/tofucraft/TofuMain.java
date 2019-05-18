@@ -6,6 +6,8 @@ import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.world.WorldProviderTofu;
 import cn.mcmod.tofucraft.world.biome.TofuBiomes;
 import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
+import cn.mcmod.tofucraft.world.gen.structure.tofumineshaft.StructureTofuMineshaftPieces;
+import cn.mcmod.tofucraft.world.gen.structure.tofumineshaft.StructureTofuMineshaftStart;
 import cn.mcmod.tofucraft.world.gen.structure.tofuvillage.StructureTofuVillagePieces;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
@@ -70,6 +72,8 @@ public class TofuMain {
 
         MapGenStructureIO.registerStructure(MapGenTofuVillage.Start.class,"TofuVillage");
         StructureTofuVillagePieces.registerVillagePieces();
+        MapGenStructureIO.registerStructure(StructureTofuMineshaftStart.class,"TofuMineshaft");
+        StructureTofuMineshaftPieces.registerStructurePieces();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new TofuGuiHandler());
 

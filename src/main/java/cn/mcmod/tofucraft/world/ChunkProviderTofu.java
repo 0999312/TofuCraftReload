@@ -3,12 +3,12 @@ package cn.mcmod.tofucraft.world;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.world.gen.MapGenTofuCaves;
 import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
+import cn.mcmod.tofucraft.world.gen.structure.tofumineshaft.MapGenTofuMineshaft;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
@@ -24,6 +24,7 @@ import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.event.terraingen.InitMapGenEvent;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 
 import java.util.List;
@@ -68,9 +69,12 @@ public class ChunkProviderTofu implements IChunkGenerator {
     private final WorldGenerator diamondGen = new WorldGenMinable(BlockLoader.TOFUORE_DIAMOND.getDefaultState(), 4, BlockMatcher.forBlock(BlockLoader.tofuTerrain));
 
     private MapGenBase caveGenerator = new MapGenTofuCaves();
+    private MapGenTofuMineshaft mineshaft = new MapGenTofuMineshaft();
     private MapGenTofuVillage villageGenerator = new MapGenTofuVillage();
     public ChunkProviderTofu(World worldIn, long seed) {
         {
+            villageGenerator = (MapGenTofuVillage) net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(villageGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.VILLAGE);
+            mineshaft = (MapGenTofuMineshaft) net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(mineshaft, InitMapGenEvent.EventType.CUSTOM);
             caveGenerator = net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(caveGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE);
             this.mapFeaturesEnabled = worldIn.getWorldInfo().isMapFeaturesEnabled();
         }
@@ -125,6 +129,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
 
         if (this.mapFeaturesEnabled) {
+            this.mineshaft.generate(this.world, x, z, chunkprimer);
             this.villageGenerator.generate(this.world, x, z, chunkprimer);
 
         }
@@ -489,6 +494,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
         ChunkPos chunkpos = new ChunkPos(x, z);
 
         if (mapFeaturesEnabled) {
+            this.mineshaft.generateStructure(this.world, this.rand, chunkpos);
             this.villageGenerator.generateStructure(this.world, this.rand, chunkpos);
         }
 
@@ -519,6 +525,9 @@ public class ChunkProviderTofu implements IChunkGenerator {
     public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos) {
         if (!this.mapFeaturesEnabled) {
             return false;
+        } else if ("TofuMineshaft".equals(structureName) && this.mineshaft != null)
+        {
+            return this.mineshaft.isInsideStructure(pos);
         } else if ("TofuVillage".equals(structureName) && this.villageGenerator != null)
         {
             return this.villageGenerator.isInsideStructure(pos);
@@ -532,6 +541,9 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
         if (!this.mapFeaturesEnabled) {
             return null;
+        } else if ("TofuMineshaft".equals(structureName) && this.mineshaft != null)
+        {
+            return this.mineshaft.getNearestStructurePos(worldIn, position, findUnexplored);
         } else if ("TofuVillage".equals(structureName) && this.villageGenerator != null)
         {
             return this.villageGenerator.getNearestStructurePos(worldIn, position, findUnexplored);
@@ -545,8 +557,8 @@ public class ChunkProviderTofu implements IChunkGenerator {
     @Override
     public void recreateStructures(Chunk chunk, int x, int z) {
         if (this.mapFeaturesEnabled) {
+            this.mineshaft.generate(this.world, x, z, null);
             this.villageGenerator.generate(this.world, x, z, null);
-
         }
     }
 }

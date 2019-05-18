@@ -4,7 +4,6 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.entity.ai.EntityAIAttackMoveRanged;
 import cn.mcmod.tofucraft.entity.projectile.EntityFukumame;
 import cn.mcmod.tofucraft.util.TofuLootTables;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -15,10 +14,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootTableList;
 
 import javax.annotation.Nullable;
 
@@ -79,8 +76,8 @@ public class EntityTofuSpider extends EntitySpider implements IRangedAttackMob {
     @Override
     public boolean getCanSpawnHere() {
 
-        if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(25) == 0
-                && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(45.0D, 20.0D, 45.0D)).size() == 0) {
+        if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(10) == 0
+                && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(32.0D, 10.0D, 32.0D)).size() == 0) {
             return super.getCanSpawnHere();
         }
         return false;
