@@ -11,6 +11,7 @@ import com.google.common.collect.Maps;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
@@ -251,6 +252,35 @@ public class ItemLoader {
 	public static Item mayonnaise_bottle = new ItemSeasoning(TofuMain.MODID+"."+"mayonnaise", 20);
 	
 	public static Item defatting_potion = new ItemDefattingPotion();
+	
+	public static DrinkSoymilk soymilk_drink = new DrinkSoymilk("soymilk_drink",
+			new int[]{2,2,2,2,2,2,2,2,2,2,2},
+			new float[]{0.2f,0.2f,0.2f,0.2f,0.2f,0.2f,0.2f,0.2f,0.2f,0.2f,0.2f},
+			new String[]{
+					TofuMain.MODID+"."+"soymilk",
+					TofuMain.MODID+"."+"soymilk_annin",
+					TofuMain.MODID+"."+"soymilk_apple",
+					TofuMain.MODID+"."+"soymilk_cocoa",
+					TofuMain.MODID+"."+"soymilk_kinako",
+					TofuMain.MODID+"."+"soymilk_pudding",
+					TofuMain.MODID+"."+"soymilk_pumpkin",
+					TofuMain.MODID+"."+"soymilk_sakura",
+					TofuMain.MODID+"."+"soymilk_strawberry",
+					TofuMain.MODID+"."+"soymilk_tea",
+					TofuMain.MODID+"."+"soymilk_zunda",
+			},
+			new PotionEffect[]{
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "regeneration")), 1, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "absorption")), 900, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "fire_resistance")), 900, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "jump_boost")), 900, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "haste")), 900, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "regeneration")), 1200, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "resistance")), 900, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "speed")), 900, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "water_breathing")), 600, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "night_vision")), 600, 0),
+		});
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
 		register(RollingPin);
