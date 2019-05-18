@@ -1,7 +1,6 @@
 package cn.mcmod.tofucraft.entity;
 
 import cn.mcmod.tofucraft.util.TofuLootTables;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -111,7 +110,7 @@ public class EntityTofuChinger extends EntityMob {
 
     public boolean getCanSpawnHere()
     {
-        return super.getCanSpawnHere() && this.world.canSeeSky(new BlockPos(this));
+        return super.getCanSpawnHere() && this.world.canSeeSky(new BlockPos(this))&& this.rand.nextInt(14) == 0;
     }
 
     class AIMeleeAttack extends EntityAIAttackMelee
