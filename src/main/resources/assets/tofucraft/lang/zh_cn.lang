@@ -168,17 +168,17 @@ item.tofucraft.dashi.name=高汤
 item.tofucraft.soyoil.name=大豆油
 item.tofucraft.agedashitofu.name=高汤炸豆腐
 item.tofucraft.kinakomanju.name=大豆馒头
-item.tofucraft.bottlesoymilk.plain.name=豆奶
-item.tofucraft.bottlesoymilk.kinako.name=原味豆奶
-item.tofucraft.bottlesoymilk.cocoa.name=可可豆奶
-item.tofucraft.bottlesoymilk.zunda.name=毛豆泥豆奶
-item.tofucraft.bottlesoymilk.apple.name=苹果豆奶
-item.tofucraft.bottlesoymilk.pumpkin.name=南瓜豆奶
-item.tofucraft.bottlesoymilk.ramune.name=弹珠汽水豆奶
-item.tofucraft.bottlesoymilk.strawberry.name=草莓豆奶
-item.tofucraft.bottlesoymilk.sakura.name=樱花豆奶
-item.tofucraft.bottlesoymilk.annin.name=杏仁豆奶
-item.tofucraft.bottlesoymilk.pudding.name=布丁豆奶
+item.tofucraft.soymilk.name=豆奶
+item.tofucraft.soymilk_kinako.name=原味豆奶
+item.tofucraft.soymilk_cocoa.name=可可豆奶
+item.tofucraft.soymilk_zunda.name=毛豆泥豆奶
+item.tofucraft.soymilk_apple.name=苹果豆奶
+item.tofucraft.soymilk_pumpkin.name=南瓜豆奶
+item.tofucraft.soymilk_ramune.name=弹珠汽水豆奶
+item.tofucraft.soymilk_strawberry.name=草莓豆奶
+item.tofucraft.soymilk_sakura.name=樱花豆奶
+item.tofucraft.soymilk_annin.name=杏仁豆奶
+item.tofucraft.soymilk_pudding.name=布丁豆奶
 item.tofucraft.fukumeni.name=水煮冻豆腐
 item.tofucraft.koyadofustew.name=炖冻豆腐
 item.tofucraft.natto.name=纳豆
@@ -563,5 +563,7 @@ item.tofucraft.nanbantofu.name=南蛮豆腐
 
 item.tofucraft.mayonnaise.name=蛋黄酱
 
-
 entity.Villager.tofu_trader=商人
+
+tofucraft.radar.result.success=在这个区块里发现了豆腐史莱姆的存在。
+tofucraft.radar.result.failed=在这个区块里无法发现豆腐史莱姆。

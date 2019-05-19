@@ -37,16 +37,26 @@ public class EntityTofuSlime extends EntitySlime {
                 return this.baseGetCanSpawnHere();
             }
 
+//            if (this.dimension == 0
+//                    && chunk.getRandomWithSeed(987234911L).nextInt(10) == 0 && this.posY < 40.0D
+//                    && lightValue <= this.rand.nextInt(8)) {
+//                return this.baseGetCanSpawnHere();
+//            }
             if (this.dimension == 0
-                    && chunk.getRandomWithSeed(987234911L).nextInt(10) == 0 && this.posY < 40.0D
-                    && lightValue <= this.rand.nextInt(8)) {
+                    && isSpawnChunk(this.world, this.posX, this.posZ)
+                    && this.posY > 15.0D && this.posY < 40.0D
+                    && lightValue <= this.rand.nextInt(8))
                 return this.baseGetCanSpawnHere();
-            }
         }
-
         return false;
     }
 
+    public static boolean isSpawnChunk(World world, double x, double z)
+    { BlockPos blockpos = new BlockPos(MathHelper.floor(x), 0, MathHelper.floor(z));
+        Chunk var1 = world.getChunkFromBlockCoords(blockpos);
+        return var1.getRandomWithSeed(987234911L).nextInt(10) == 0;
+    }
+    
     /**
      * Must be the same as EntityLiving.getCanSpawnHere!
      */

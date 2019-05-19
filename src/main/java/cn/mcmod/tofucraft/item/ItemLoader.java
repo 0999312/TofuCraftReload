@@ -91,8 +91,8 @@ public class ItemLoader {
 	);
 	public static ItemBase material = new ItemBase("material", 64, new String[]{
 			TofuMain.MODID+"."+"salt",
-			TofuMain.MODID+"."+"kouji",
-			TofuMain.MODID+"."+"miso",
+			TofuMain.MODID+"."+"kouji",//1
+			TofuMain.MODID+"."+"miso",//2
 			TofuMain.MODID+"."+"edamame",
 			TofuMain.MODID+"."+"zunda",
 			TofuMain.MODID+"."+"barrelempty",
@@ -270,7 +270,7 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"soymilk_zunda",
 			},
 			new PotionEffect[]{
-					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "regeneration")), 1, 0),
+				null,
 					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "absorption")), 900, 0),
 					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "fire_resistance")), 900, 0),
 					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "jump_boost")), 900, 0),
@@ -281,8 +281,23 @@ public class ItemLoader {
 					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "water_breathing")), 600, 0),
 					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "night_vision")), 600, 0),
 		});
+	public static Item soymilk_ramune = new DrinkSoymilkRamune("soymilk_ramune", 2, 0.2f, 
+			new PotionEffect[]{
+						new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "absorption")), 900, 0),
+						new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "fire_resistance")), 900, 0),
+						new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "jump_boost")), 900, 0),
+						new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "haste")), 900, 0),
+						new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "regeneration")), 1200, 0),
+						new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "resistance")), 900, 0),
+						new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "speed")), 900, 0),
+						new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "water_breathing")), 600, 0),
+						new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "night_vision")), 600, 0),
+			}
+			);
+	public static Item tofu_slime_radar = new ItemTofuSlimeRadar().setUnlocalizedName(TofuMain.MODID+"."+"tofuradar");
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
+		register(tofu_slime_radar);
 		register(RollingPin);
 		register(koujiBase);
 		register(tofu_food);
@@ -304,6 +319,9 @@ public class ItemLoader {
 		register(doubanjiang_bottle);
 		register(mayonnaise_bottle);
 
+		register(soymilk_drink);
+		register(soymilk_ramune);
+		
 		register(tofustick);
 
 		MinecraftForge.addGrassSeed(new ItemStack(soybeans), 2);
@@ -374,6 +392,9 @@ public class ItemLoader {
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
     {
+		registerRender(tofu_slime_radar);
+		registerRender(soymilk_ramune);
+		registerRender(soymilk_drink);
 		registerRender(mayonnaise_bottle);
 		registerRender(RollingPin);
 		registerRender(koujiBase);
@@ -474,6 +495,23 @@ public class ItemLoader {
     
     @SideOnly(Side.CLIENT)
     private static void registerRender(ItemBase item,boolean json_create)
+    {
+    	for(int i = 0;i<item.getSubNames().length;i++){
+    		String name = item.getSubNames()[i].substring(TofuMain.MODID.length()+1);
+    		if(json_create)JSON_Creator.genItem(name, name, "json_create");
+            ModelResourceLocation model = new ModelResourceLocation(new ResourceLocation(TofuMain.MODID,name), "inventory");
+            ModelLoader.setCustomModelResourceLocation(item, i, model);
+    	}
+    }
+    
+    @SideOnly(Side.CLIENT)
+    private static void registerRender(DrinkSoymilk item)
+    {
+    	registerRender(item, false);
+    }
+    
+    @SideOnly(Side.CLIENT)
+    private static void registerRender(DrinkSoymilk item,boolean json_create)
     {
     	for(int i = 0;i<item.getSubNames().length;i++){
     		String name = item.getSubNames()[i].substring(TofuMain.MODID.length()+1);

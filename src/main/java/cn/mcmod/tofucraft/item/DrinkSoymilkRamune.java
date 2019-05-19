@@ -1,5 +1,7 @@
 package cn.mcmod.tofucraft.item;
 
+import java.util.Random;
+
 import cn.mcmod.tofucraft.TofuMain;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.creativetab.CreativeTabs;
@@ -23,65 +25,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional.Interface;
 import net.minecraftforge.fml.common.Optional.Method;
 
-public class DrinkSoymilk extends ItemFood {
+public class DrinkSoymilkRamune extends ItemFood {
 	private PotionEffect[] effect;
+
 	
-	public String[] subNames;
-	public int[] amount;
-	public float[] saturation;
-	
-	public DrinkSoymilk(String name,int[] amounts,float[] saturations, String[] subNames, PotionEffect[] effects) {
-		super(amounts[0], saturations[0], false);
+	public DrinkSoymilkRamune(String name,int amounts,float saturations, PotionEffect[] effects) {
+		super(amounts, saturations, false);
 
 		this.setUnlocalizedName(TofuMain.MODID+"."+name);
 		this.setAlwaysEdible();
-		this.setHasSubtypes(subNames!=null&&subNames.length > 0);
 		this.setMaxStackSize(1);
 		this.effect=effects!=null&&effects.length>0?effects:null;
-		this.subNames = subNames!=null&&subNames.length > 0?subNames: null;
-		this.amount = amounts!=null&&amounts.length > 0?amounts: null;
-		this.saturation = saturations!=null&&saturations.length > 0?saturations: null;
-	}
-
-	@Override
-	public int getHealAmount(ItemStack stack) {
-		return stack.getMetadata() < getAmounts().length?getAmounts()[stack.getMetadata()]: 0;
-	}
-
-	@Override
-	public float getSaturationModifier(ItemStack stack) {
-		return stack.getMetadata() < getSaturations().length?getSaturations()[stack.getMetadata()]: 0;
-	}
-	
-	@Override
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if(this.isInCreativeTab(tab))
-			if(getSubNames()!=null)
-			{
-				for(int i = 0; i < getSubNames().length; i++)
-						list.add(new ItemStack(this, 1, i));
-			}
-			else
-				list.add(new ItemStack(this));
-	}
-	public int[] getAmounts() {
-		return amount;
-	}
-	
-	public float[] getSaturations() {
-		return saturation;
-	}
-	
-	public String[] getSubNames() {
-		return subNames;
-	}
-	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		if(getSubNames()!=null) {
-			String subName = stack.getMetadata() < getSubNames().length?"item."+getSubNames()[stack.getMetadata()]: "";
-			return subName;
-		}
-		return this.getUnlocalizedName();
+		
 	}
 
 	public PotionEffect[] getEffectList() {
@@ -125,8 +80,10 @@ public class DrinkSoymilk extends ItemFood {
 	 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		if(!worldIn.isRemote){
 		if(getEffectList()!=null&&getEffectList().length>0){
-			PotionEffect effect1 = getEffectList()[stack.getMetadata()];
+			Random rand = worldIn.rand;
+			PotionEffect effect1 = getEffectList()[rand.nextInt(getEffectList().length)];
 					if (effect1 != null && effect1.getPotion() != null) {
 						Potion por = effect1.getPotion();
 						int amp = effect1.getAmplifier();
@@ -139,6 +96,7 @@ public class DrinkSoymilk extends ItemFood {
 						player.addPotionEffect(new PotionEffect(effect1.getPotion(), dur, amp));
 					}
 			
+			}
 		}
 	}
 

@@ -9,6 +9,41 @@
   {
     "ingredient": {
       "type": "forge:ore_dict",
+      "ore": "cropStrawberry"
+    },
+    "name": "CROPSTRAWBERRY"
+  },
+  {
+    "ingredient": {
+      "type": "forge:ore_dict",
+      "ore": "cropTea"
+    },
+    "name": "CROPTEA"
+  },
+  {
+    "ingredient": {
+      "type": "forge:ore_dict",
+      "ore": "dyeLightBlue"
+    },
+    "name": "DYELIGHTBLUE"
+  },
+  {
+    "ingredient": {
+      "type": "forge:ore_dict",
+      "ore": "fullSakura"
+    },
+    "name": "FULLSAKURA"
+  },
+  {
+    "ingredient": {
+      "type": "forge:ore_dict",
+      "ore": "listAllsugar"
+    },
+    "name": "LISTALLSUGAR"
+  },
+  {
+    "ingredient": {
+      "type": "forge:ore_dict",
       "ore": "sugarcane"
     },
     "name": "SUGARCANE"
@@ -264,13 +299,6 @@
          "ore" : "listAllrabbitraw"
       },
       "name" : "LISTALLRABBITRAW"
-   },
-   {
-      "ingredient" : {
-         "type" : "forge:ore_dict",
-         "ore" : "listAllsugar"
-      },
-      "name" : "LISTALLSUGAR"
    },
    {
       "ingredient" : {
