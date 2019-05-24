@@ -1,0 +1,6 @@
+{
+    "parent": "tofucraft:block/saltPan_contentModel",
+    "textures": {
+        "texture": "tofucraft:blocks/nigari"
+    }
+}

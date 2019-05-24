@@ -758,37 +758,23 @@ public class BlockTofuPortal extends Block {
 
         }
 
-
         public int getHeight() {
-
             return this.height;
-
         }
 
 
         public int getWidth() {
-
             return this.width;
-
         }
 
 
         public boolean isValid() {
-
-            return this.bottomLeft != null && this.width >= 2 && this.width <= 21 && this.height >= 3 &&
-
-                    this.height <= 21;
-
+            return this.bottomLeft != null && this.width >= 2 && this.width <= 21 && this.height >= 3 &&this.height <= 21;
         }
 
-
         public void placePortalBlocks() {
-
             for (int i = 0; i < this.width; ++i) {
-
                 BlockPos blockpos = this.bottomLeft.offset(this.rightDir, i);
-
-
                 for (int j = 0; j < this.height; ++j) {
 
                     this.world.setBlockState(blockpos.up(j),

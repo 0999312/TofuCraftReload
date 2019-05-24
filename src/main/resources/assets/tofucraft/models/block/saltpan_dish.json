@@ -1,0 +1,6 @@
+{
+    "parent": "tofucraft:block/saltPan_dishModel",
+    "textures": {
+        "texture": "blocks/cobblestone"
+    }
+}

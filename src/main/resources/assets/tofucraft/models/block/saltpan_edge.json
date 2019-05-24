@@ -1,0 +1,6 @@
+{
+    "parent": "tofucraft:block/saltPan_edgeModel",
+    "textures": {
+        "texture": "blocks/planks_oak"
+    }
+}

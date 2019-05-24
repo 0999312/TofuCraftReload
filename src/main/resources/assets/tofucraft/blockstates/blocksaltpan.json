@@ -1,0 +1,17 @@
+{
+    "multipart": [
+        {   "apply": { "model": "tofucraft:saltpan_dish" }},
+        {   "when": { "north": "false" },
+            "apply": { "model": "tofucraft:saltpan_edge", "uvlock": true }
+        },
+        {   "when": { "east": "false" },
+            "apply": { "model": "tofucraft:saltpan_edge", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": "false" },
+            "apply": { "model": "tofucraft:saltpan_edge", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": "false" },
+            "apply": { "model": "tofucraft:saltpan_edge", "y": 270, "uvlock": true }
+        }
+    ]
+}

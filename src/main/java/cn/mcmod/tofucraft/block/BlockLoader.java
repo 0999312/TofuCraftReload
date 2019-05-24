@@ -89,7 +89,8 @@ public class BlockLoader {
 	public static Block TOFUZUNDA_STAIRS = new BlockTofuStairs(TOFUZUNDA.getDefaultState());
 	public static Block TOFUISHI_BRICK_STAIRS = new BlockTofuStairs(TOFUISHI_BRICK.getDefaultState());
 	public static Block TOFUCHEST = new BlockTofuChest();
-
+	public static Block SALTPAN = new BlockSaltPan().setHardness(0.2F).setCreativeTab(CommonProxy.tab);
+	
 	public static BlockTofuSlab TOFUKINU_SLAB = new BlockTofuSlab(TofuMaterial.softtofu);
 	public static BlockTofuSlab TOFUMOMEN_SLAB = new BlockTofuSlab(TofuMaterial.tofu);
 	public static BlockTofuSlab TOFUISHI_SLAB = new BlockTofuSlab(Material.ROCK);
@@ -127,6 +128,7 @@ public class BlockLoader {
 
 		register(SALTFURNACE, new ItemBlock(SALTFURNACE), "saltfurnace");
 		register(SALTFURNACE_LIT, new ItemBlock(SALTFURNACE_LIT), "saltfurnace_lit");
+		register(SALTPAN, new ItemBlock(SALTPAN), "blocksaltpan");
 		register(KINUTOFU, new ItemBlock(KINUTOFU), "blocktofukinu");
 		register(MOMENTOFU, new ItemBlock(MOMENTOFU), "blocktofumomen");
 		register(ISHITOFU, new ItemBlock(ISHITOFU), "blocktofuishi");
@@ -243,7 +245,7 @@ public class BlockLoader {
 		registerRender(TOFUMOMEN_DOOR);
 		registerRender(TOFUISHI_DOOR);
 		registerRender(TOFUMETAL_DOOR);
-
+		registerRender(SALTPAN);
 		registerRender(TOFUKINU_STAIRS);
 		registerRender(TOFUISHI_BRICK_STAIRS);
 		registerRender(TOFUMOMEN_STAIRS);
