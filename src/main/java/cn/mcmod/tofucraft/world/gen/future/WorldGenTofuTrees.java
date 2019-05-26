@@ -1,15 +1,13 @@
 package cn.mcmod.tofucraft.world.gen.future;
 
-import java.util.Random;
-
-import cn.mcmod.tofucraft.block.BlockTofuLeaves;
-import net.minecraft.block.Block;
+import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.world.gen.feature.WorldGenTrees;
+
+import java.util.Random;
 
 public class WorldGenTofuTrees extends WorldGenTrees {
 	
@@ -107,7 +105,7 @@ public class WorldGenTofuTrees extends WorldGenTrees {
 
                         if (state.getBlock().isAir(state, worldIn, upN) || state.getBlock().isLeaves(state, worldIn, upN) || state.getMaterial() == Material.VINE)
                         {
-                            this.setBlockAndNotifyAdequately(worldIn, position.up(j3), BlockLoader.ISHITOFU.getDefaultState());
+                            this.setBlockAndNotifyAdequately(worldIn, position.up(j3), BlockLoader.TOFU_LOG.getDefaultState());
 
                         }
                     }

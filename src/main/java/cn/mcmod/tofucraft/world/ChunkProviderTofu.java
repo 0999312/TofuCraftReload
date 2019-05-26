@@ -485,7 +485,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
         int i2, genX, genY, genZ;
 
         if (net.minecraftforge.event.terraingen.TerrainGen.generateOre(this.world, this.rand, diamondGen, blockpos, OreGenEvent.GenerateMinable.EventType.CUSTOM))
-            for (int l1 = 0; l1 < 18; ++l1)
+            for (int l1 = 0; l1 < 14; ++l1)
             {
                 this.diamondGen.generate(this.world, this.rand, blockpos.add(this.rand.nextInt(16), this.rand.nextInt(32) + 10, this.rand.nextInt(16)));
             }

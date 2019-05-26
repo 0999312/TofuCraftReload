@@ -1,15 +1,12 @@
 package cn.mcmod.tofucraft.block;
 
 import cn.mcmod.tofucraft.CommonProxy;
-import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.TofuBlockUtils;
 import net.minecraft.block.Block;
-import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -17,15 +14,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
 import java.util.Random;
 
 public class BlockTofu extends BlockTofuBase{
@@ -274,15 +268,15 @@ public class BlockTofu extends BlockTofuBase{
         return new BlockStateContainer(this, DRY);
     }
 
-    @Override
-    public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos)
-    {
-        if(this == BlockLoader.ISHITOFU) {
-            return true;
-        }else {
-            return false;
-        }
-    }
+//    @Override
+//    public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos)
+//    {
+//        if(this == BlockLoader.ISHITOFU) {
+//            return true;
+//        }else {
+//            return false;
+//        }
+//    }
     
 
 }

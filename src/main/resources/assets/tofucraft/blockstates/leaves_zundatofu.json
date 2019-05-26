@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "check_decay=false,decayable=true": {
+      "model": "tofucraft:leaves_zundatofu"
+    },
+    "check_decay=true,decayable=false": {
+      "model": "tofucraft:leaves_zundatofu"
+    },
+    "check_decay=false,decayable=false": {
+      "model": "tofucraft:leaves_zundatofu"
+    },
+    "check_decay=true,decayable=true": {
+      "model": "tofucraft:leaves_zundatofu"
+    }
+  }
+}

@@ -16,18 +16,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -66,6 +59,7 @@ public class BlockLoader {
 	public static Block zundatofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
 	public static BlockTofuSapling TOFU_SAPLING = new BlockTofuSapling();
 	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
+	public static Block TOFU_LOG = new BlockTofuLog();
 	public static BlockCake tofu_Cake = new BlockTofuCake();
 	public static BlockTofuPortal tofu_PORTAL = new BlockTofuPortal();
 	public static Block TOFUISHI_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F).setCreativeTab(CommonProxy.tab);
@@ -151,6 +145,7 @@ public class BlockLoader {
 		register(zundatofuTerrain, new ItemBlock(zundatofuTerrain), "zundatofu_terrain");
 		register(TOFU_SAPLING, new ItemBlock(TOFU_SAPLING), "sapling_tofu");
 		register(TOFU_LEAVE, new ItemBlock(TOFU_LEAVE), "leaves_tofu");
+		register(TOFU_LOG, new ItemBlock(TOFU_LOG), "tofulog");
 		
 		register(tofu_Cake, new ItemBlock(tofu_Cake), "tofucake");
 		register(tofu_PORTAL, new ItemBlock(tofu_PORTAL), "tofuportal");
@@ -232,6 +227,7 @@ public class BlockLoader {
 		registerRender(tofuTerrain);
 		registerRender(zundatofuTerrain);
 		registerRender(TOFU_LEAVE);
+		registerRender(TOFU_LOG);
 		registerRender(tofu_PORTAL);
 		registerRender(TOFUISHI_BRICK);
 
