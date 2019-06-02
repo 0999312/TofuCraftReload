@@ -1,11 +1,11 @@
 package cn.mcmod.tofucraft.world.biome;
 
-import java.util.Random;
-
+import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.entity.EntityTofuSlime;
 import cn.mcmod.tofucraft.entity.EntityTofuSpider;
 import cn.mcmod.tofucraft.world.gen.future.WorldGenTofuBuilding;
 import cn.mcmod.tofucraft.world.gen.future.WorldGenTofuTrees;
+import cn.mcmod.tofucraft.world.gen.future.WorldGenUnderVine;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -14,7 +14,7 @@ import net.minecraft.world.gen.feature.WorldGenBush;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import cn.mcmod.tofucraft.block.BlockLoader;
+import java.util.Random;
 
 public class BiomeTofu extends Biome {
 
@@ -27,21 +27,22 @@ public class BiomeTofu extends Biome {
     protected int tofuPerChunk;
     protected int maxGrassPerChunk;
     protected int chanceOfLeeks;
+    protected int chanceOfyuba;
+    protected int maxYubaPerChunk;
     protected boolean generateLakes;
-    
+
     protected WorldGenTofuTrees worldGeneratorTrees;
     protected WorldGenTofuBuilding worldGeneratorTofuBuilding;
-    
+
     public BiomeTofu(String name) {
-    	this(new BiomeProperties(name)
-        		.setBaseHeight(BiomeTofu.height_Tofu_Base)
-        		.setHeightVariation(BiomeTofu.height_Tofu_Variation));
+        this(new BiomeProperties(name)
+                .setBaseHeight(BiomeTofu.height_Tofu_Base)
+                .setHeightVariation(BiomeTofu.height_Tofu_Variation));
     }
-    
-    public BiomeTofu(BiomeProperties property)
-    {
+
+    public BiomeTofu(BiomeProperties property) {
         super(property);
-        
+
         this.worldGeneratorTrees = new WorldGenTofuTrees(false);
         this.worldGeneratorTofuBuilding = new WorldGenTofuBuilding(false);
 
@@ -50,7 +51,7 @@ public class BiomeTofu extends Biome {
         this.spawnableWaterCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
         this.spawnableMonsterList.add(new SpawnListEntry(EntityTofuSlime.class, 4, 2, 3));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityTofuSpider.class,2,1,2));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityTofuSpider.class, 2, 1, 2));
 
         this.topBlock = BlockLoader.tofuTerrain.getDefaultState();
         this.fillerBlock = BlockLoader.tofuTerrain.getDefaultState();
@@ -60,11 +61,13 @@ public class BiomeTofu extends Biome {
         this.tofuPerChunk = 0;
         this.maxGrassPerChunk = 1;
         this.chanceOfLeeks = 50;
+        this.chanceOfyuba = 10;
+        this.maxYubaPerChunk = 15;
         this.generateLakes = true;
 
 //        TcBiomes.TOFU_BIOME_LIST[localBiomeId] = this;
     }
-    
+
     /**
      * Gets a WorldGen appropriate for this biome.
      */
@@ -72,50 +75,57 @@ public class BiomeTofu extends Biome {
     {
         return this.worldGeneratorTrees;
     }
-    
+
     @Override
-    public void decorate(World worldIn, Random rand, BlockPos pos)
-    {
+    public void decorate(World worldIn, Random rand, BlockPos pos) {
         int i, j, k, l, i1;
 
         i = this.treesPerChunk;
-        if (rand.nextInt(10) == 0)
-        {
+        if (rand.nextInt(10) == 0) {
             ++i;
         }
         {
-        	BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
-        	for (j = 0; j < i; ++j)
-        	{
-            	k = pos.getX() + rand.nextInt(16) + 8;
-            	l = pos.getZ() + rand.nextInt(16) + 8;
-            	mutable.setPos( k, worldIn.getHeight(k, l), l);
-            	WorldGenerator worldgenerator = this.genBigTreeChance(rand);
-            	worldgenerator.generate(worldIn, rand, mutable);
-        	}
+            BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+            for (j = 0; j < i; ++j) {
+                k = pos.getX() + rand.nextInt(16) + 8;
+                l = pos.getZ() + rand.nextInt(16) + 8;
+                mutable.setPos(k, worldIn.getHeight(k, l), l);
+                WorldGenerator worldgenerator = this.genBigTreeChance(rand);
+                worldgenerator.generate(worldIn, rand, mutable);
+            }
         }
-        if (rand.nextInt(this.chanceOfLeeks) == 0)
-        {
-        	BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
-        	
-            for (j = 0; j < maxGrassPerChunk; j++)
-            {
+        if (rand.nextInt(this.chanceOfLeeks) == 0) {
+            BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+
+            for (j = 0; j < maxGrassPerChunk; j++) {
                 k = pos.getX() + rand.nextInt(16) + 8;
                 l = rand.nextInt(128);
                 i1 = pos.getZ() + rand.nextInt(16) + 8;
                 mutable.setPos(k, l, i1);
-                
+
                 WorldGenerator var6 = new WorldGenBush(BlockLoader.LEEK);
                 var6.generate(worldIn, rand, mutable);
             }
         }
 
-        if (this.generateLakes)
-        {
-        	BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
-        	
-            for (j = 0; j < 50; ++j)
-            {
+        if (rand.nextInt(this.chanceOfyuba) == 0) {
+            BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+            for (j = 0; j < maxYubaPerChunk; j++) {
+
+                k = pos.getX() + rand.nextInt(16) + 8;
+                l = rand.nextInt(128);
+                i1 = pos.getZ() + rand.nextInt(16) + 8;
+                mutable.setPos(k, l, i1);
+
+                WorldGenerator var6 = new WorldGenUnderVine(BlockLoader.yubaGrass);
+                var6.generate(worldIn, rand, mutable);
+            }
+        }
+
+        if (this.generateLakes) {
+            BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+
+            for (j = 0; j < 50; ++j) {
                 k = pos.getX() + rand.nextInt(16) + 8;
                 l = rand.nextInt(rand.nextInt(120) + 8);
                 i1 = pos.getZ() + rand.nextInt(16) + 8;
@@ -125,27 +135,21 @@ public class BiomeTofu extends Biome {
         }
 
         i = this.tofuPerChunk;
-        if (rand.nextInt(70) == 0)
-        {
+        if (rand.nextInt(70) == 0) {
             ++i;
         }
         {
-        	BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
-        	for (j = 0; j < i; ++j)
-        	{
-            	k = pos.getX() + rand.nextInt(16) + 8;
-            	l = pos.getZ() + rand.nextInt(16) + 8;
-            	mutable.setPos(k, worldIn.getHeight(k, l), l);
-            	WorldGenerator worldgenerator = this.worldGeneratorTofuBuilding;
-            	worldgenerator.generate(worldIn, rand, mutable);
-        	}
+            BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+            for (j = 0; j < i; ++j) {
+                k = pos.getX() + rand.nextInt(16) + 8;
+                l = pos.getZ() + rand.nextInt(16) + 8;
+                mutable.setPos(k, worldIn.getHeight(k, l), l);
+                WorldGenerator worldgenerator = this.worldGeneratorTofuBuilding;
+                worldgenerator.generate(worldIn, rand, mutable);
+            }
         }
-        
+
     }
-    
-    
-    
-    
-    
-    
+
+
 }

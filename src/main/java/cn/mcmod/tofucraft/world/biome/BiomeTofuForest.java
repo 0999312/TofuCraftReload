@@ -1,11 +1,10 @@
 package cn.mcmod.tofucraft.world.biome;
 
-import java.util.Random;
-
 import cn.mcmod.tofucraft.entity.EntityTofuChinger;
 import cn.mcmod.tofucraft.entity.EntityTofuCow;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+
+import java.util.Random;
 
 public class BiomeTofuForest extends BiomeTofu {
     public BiomeTofuForest(BiomeProperties property)
@@ -15,6 +14,8 @@ public class BiomeTofuForest extends BiomeTofu {
         this.chanceOfLeeks = 10;
         this.spawnableCreatureList.add(new SpawnListEntry(EntityTofuCow.class, 3, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityTofuChinger.class, 1, 1, 2));
+        this.chanceOfyuba = 5;
+        this.maxYubaPerChunk = 30;
     }
     
     /**

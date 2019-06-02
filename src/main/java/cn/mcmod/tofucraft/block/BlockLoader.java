@@ -7,6 +7,7 @@ import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.half.BlockTofuSlab;
 import cn.mcmod.tofucraft.block.ore.BlockTofuOreDiamond;
 import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
+import cn.mcmod.tofucraft.block.vine.BlockUnderVine;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.item.ItemTofuSlab;
 import cn.mcmod.tofucraft.material.TofuMaterial;
@@ -57,6 +58,7 @@ public class BlockLoader {
 	public static Block RICECROP = new BlockRice();
 	public static Block tofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
 	public static Block zundatofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
+	public static BlockUnderVine yubaGrass = new BlockTofuYuba();
 	public static BlockTofuSapling TOFU_SAPLING = new BlockTofuSapling();
 	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
 	public static Block TOFU_LOG = new BlockTofuLog();
@@ -141,6 +143,7 @@ public class BlockLoader {
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
 		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
 		register(RICECROP, new ItemBlock(RICECROP), "ricecrop");
+		register(yubaGrass, new ItemBlock(yubaGrass), "yubagrass");
 		register(tofuTerrain, new ItemBlock(tofuTerrain), "tofu_terrain");
 		register(zundatofuTerrain, new ItemBlock(zundatofuTerrain), "zundatofu_terrain");
 		register(TOFU_SAPLING, new ItemBlock(TOFU_SAPLING), "sapling_tofu");
@@ -224,6 +227,7 @@ public class BlockLoader {
 		registerRender(TOFUZUNDA);
 		registerRender(LEEK);
 		registerRender(TOFU_SAPLING);
+		registerRender(yubaGrass);
 		registerRender(tofuTerrain);
 		registerRender(zundatofuTerrain);
 		registerRender(TOFU_LEAVE);
