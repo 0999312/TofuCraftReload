@@ -419,7 +419,7 @@ tofucraft.wrongPotionId3=I.glowing=%s   I.filling=%s
 entity.Tofunian.tofucrafter=Tofu Craftsman
 entity.Tofunian.fisherman=Fisher Tofunian
 entity.Tofunian.guard=Guard Tofunian
-entity.Tofunian.tofusmish=Tofu Smish
+entity.Tofunian.tofusmith=Tofu Smith
 
 tile.tofucraft.barreldoubanjiang.name=Doubanjiang Barrel
 

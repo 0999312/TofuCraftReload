@@ -8,7 +8,9 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.*;
+import net.minecraft.entity.monster.AbstractIllager;
+import net.minecraft.entity.monster.EntityVex;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -183,7 +185,7 @@ public class EntityTofunian extends EntityVillager {
 
             this.setTofuCook();
 
-        }else if (randValRole == TofuProfession.TOFUSMISH.ordinal()) {
+        } else if (randValRole == TofuProfession.TOFUSMITH.ordinal()) {
 
             this.setTofuSmith();
 
@@ -203,7 +205,7 @@ public class EntityTofunian extends EntityVillager {
 
             this.setTofuCook();
 
-        }else if (profession == TofuProfession.TOFUSMISH.ordinal()) {
+        } else if (profession == TofuProfession.TOFUSMITH.ordinal()) {
 
             this.setTofuSmith();
 
@@ -293,7 +295,7 @@ public class EntityTofunian extends EntityVillager {
 
     public boolean canSmish() {
 
-        return this.getDataManager().get(TOFUPROFESSION) == TofuProfession.TOFUSMISH.ordinal();
+        return this.getDataManager().get(TOFUPROFESSION) == TofuProfession.TOFUSMITH.ordinal();
 
     }
 
@@ -311,7 +313,7 @@ public class EntityTofunian extends EntityVillager {
 
     public void setTofuSmith() {
 
-        this.getDataManager().set(TOFUPROFESSION, Integer.valueOf(TofuProfession.TOFUSMISH.ordinal()));
+        this.getDataManager().set(TOFUPROFESSION, Integer.valueOf(TofuProfession.TOFUSMITH.ordinal()));
     }
 
     public void setTofuCook() {
@@ -397,7 +399,7 @@ public class EntityTofunian extends EntityVillager {
                     addTradeForSingleRuby(list, new ItemStack(ItemLoader.material, 1 + rand.nextInt(2), 9), 5);
                 }
             }
-        } else if (getTofuProfession() == TofuProfession.TOFUSMISH) {
+        } else if (getTofuProfession() == TofuProfession.TOFUSMITH) {
             addTradeRubyForItem(list,new ItemStack(ItemLoader.tofu_food,1,2),22+ rand.nextInt(6));
 
             addTradeForSingleRuby(list, new ItemStack(ItemLoader.metalTofuSword, 1),4+ rand.nextInt(3));
@@ -486,8 +488,8 @@ public class EntityTofunian extends EntityVillager {
             case FISHERMAN:
                 s1 = "fisherman";
                 break;
-            case TOFUSMISH:
-                s1 = "tofusmish";
+            case TOFUSMITH:
+                s1 = "tofusmith";
                 break;
         }
 
@@ -654,7 +656,7 @@ public class EntityTofunian extends EntityVillager {
         GUARD,
         FISHERMAN,
         TOFUCOOK,
-        TOFUSMISH;
+        TOFUSMITH;
 
 
 
