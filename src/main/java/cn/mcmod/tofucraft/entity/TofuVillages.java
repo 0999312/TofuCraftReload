@@ -9,9 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
-import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
@@ -32,8 +29,6 @@ public class TofuVillages {
     public static VillagerRegistry.VillagerCareer CareerHunter;
 
     public static void register() {
-
-        VillagerRegistry vill = VillagerRegistry.instance();
         // Register the profession of Tofu Cook
         TofuVillages.ProfessionTofuCook = new VillagerRegistry.VillagerProfession("tofucraft:tofuCook",
                 new ResourceLocation("tofucraft", "textures/mob/tofucook.png").toString(),//new ResourceLocation("tofucraft", "textures/mob/tofucook.png").toString(),

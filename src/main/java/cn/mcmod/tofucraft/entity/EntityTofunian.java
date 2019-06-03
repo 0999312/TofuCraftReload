@@ -430,13 +430,7 @@ public class EntityTofunian extends EntityVillager {
 
     public void addTradeRubyForItem(MerchantRecipeList list, ItemStack buy,int cost) {
 
-        double tofuWorth = 1;
-
-
-        List<Double> listTradeCosts = new ArrayList<>();
-
         ItemStack stack1 = buy.copy();
-
 
         stack1.setCount(cost);
 
@@ -445,23 +439,12 @@ public class EntityTofunian extends EntityVillager {
 
     public void addTradeForSingleRuby(MerchantRecipeList list, ItemStack sell,int cost) {
 
-        double tofuWorth = 1;
-
-
-        List<Double> listTradeCosts = new ArrayList<>();
-
         ItemStack stack1 = sell.copy();
-
 
         list.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, cost), stack1));
     }
 
     public void addEnchantTradeForSingleRuby(MerchantRecipeList list, ItemStack sell,int cost) {
-
-        double tofuWorth = 1;
-
-
-        List<Double> listTradeCosts = new ArrayList<>();
 
         ItemStack stack1 = sell.copy();
 
@@ -548,7 +531,8 @@ public class EntityTofunian extends EntityVillager {
 
     private boolean hasEnoughItems(int multiplier)
     {
-        boolean flag = this.getProfession() == 0;
+        @SuppressWarnings("deprecation")
+		boolean flag = this.getProfession() == 0;
 
         for (int i = 0; i < this.getVillagerInventory().getSizeInventory(); ++i)
         {

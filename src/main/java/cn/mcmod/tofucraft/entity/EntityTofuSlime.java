@@ -10,7 +10,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.storage.loot.LootTableList;
 
@@ -27,21 +26,15 @@ public class EntityTofuSlime extends EntitySlime {
 
     @Override
     public boolean getCanSpawnHere() {
-        BlockPos blockpos = new BlockPos(MathHelper.floor(this.posX), 0, MathHelper.floor(this.posZ));
-        Chunk chunk = this.world.getChunkFromBlockCoords(blockpos);
+
         if (this.getSlimeSize() == 1 || this.world.getDifficulty() != EnumDifficulty.PEACEFUL) {
             int lightValue = this.world.getLightFromNeighbors(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY), MathHelper.floor(this.posZ)));
-            Biome biome = this.world.getBiome(new BlockPos(this.posX, 0, this.posZ));
+           
             if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(30) == 0
                     && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(52.0D, 24.0D, 52.0D)).size() == 0) {
                 return this.baseGetCanSpawnHere();
             }
 
-//            if (this.dimension == 0
-//                    && chunk.getRandomWithSeed(987234911L).nextInt(10) == 0 && this.posY < 40.0D
-//                    && lightValue <= this.rand.nextInt(8)) {
-//                return this.baseGetCanSpawnHere();
-//            }
             if (this.dimension == 0
                     && isSpawnChunk(this.world, this.posX, this.posZ)
                     && this.posY > 15.0D && this.posY < 40.0D
@@ -52,7 +45,8 @@ public class EntityTofuSlime extends EntitySlime {
     }
 
     public static boolean isSpawnChunk(World world, double x, double z)
-    { BlockPos blockpos = new BlockPos(MathHelper.floor(x), 0, MathHelper.floor(z));
+    { 
+    	BlockPos blockpos = new BlockPos(MathHelper.floor(x), 0, MathHelper.floor(z));
         Chunk var1 = world.getChunkFromBlockCoords(blockpos);
         return var1.getRandomWithSeed(987234911L).nextInt(10) == 0;
     }

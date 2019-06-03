@@ -34,7 +34,6 @@ public class RenderTofuSlime extends RenderLiving<EntityTofuSlime> {
      */
     protected void preRenderCallback(EntityTofuSlime entitylivingbaseIn, float partialTickTime)
     {
-        float f = 0.999F;
         GlStateManager.scale(0.999F, 0.999F, 0.999F);
         float f1 = (float)entitylivingbaseIn.getSlimeSize();
         float f2 = (entitylivingbaseIn.prevSquishFactor + (entitylivingbaseIn.squishFactor - entitylivingbaseIn.prevSquishFactor) * partialTickTime) / (f1 * 0.5F + 1.0F);

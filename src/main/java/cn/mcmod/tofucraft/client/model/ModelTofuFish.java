@@ -20,7 +20,7 @@ public class ModelTofuFish extends ModelBase {
     public ModelTofuFish() {
         this.textureWidth = 32;
         this.textureHeight = 32;
-        int i = 22;
+
         this.field_203723_a = new ModelRenderer(this, 0, 0);
         this.field_203723_a.addBox(-1.0F, -2.0F, 0.0F, 2, 4, 7);
         this.field_203723_a.setRotationPoint(0.0F, 22.0F, 0.0F);

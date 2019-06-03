@@ -1,21 +1,15 @@
 package cn.mcmod.tofucraft.item;
 
-import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.entity.EntityTofuSlime;
-import cn.mcmod.tofucraft.world.biome.TofuBiomes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 
 public class ItemTofuSlimeRadar extends Item {
 	 public ItemTofuSlimeRadar()
@@ -32,7 +26,6 @@ public class ItemTofuSlimeRadar extends Item {
 	        {
 	            if (!worldIn.isRemote)
 	            {
-	                Biome biome = playerIn.world.getBiomeForCoordsBody(new BlockPos(MathHelper.floor(playerIn.posX),0, MathHelper.floor(playerIn.posZ)));
 	                boolean isSpawnChunk = playerIn.dimension == TofuMain.TOFU_DIMENSION.getId() || EntityTofuSlime.isSpawnChunk(playerIn.world, playerIn.posX, playerIn.posZ);
 	            
 	                if(isSpawnChunk) playerIn.sendMessage(new TextComponentTranslation("tofucraft.radar.result.success", new Object()));

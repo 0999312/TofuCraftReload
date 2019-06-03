@@ -1,6 +1,5 @@
 package cn.mcmod.tofucraft.client.particle;
 
-import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticlePortal;
 import net.minecraft.world.World;
 

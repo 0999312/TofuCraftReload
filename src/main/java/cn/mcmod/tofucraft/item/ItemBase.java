@@ -5,12 +5,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBase extends Item {
 	protected String[] subNames;
-	private Item containerItem;
 	public ItemBase(String name, int stackSize, String... subNames) {
 		this.setUnlocalizedName(TofuMain.MODID+"."+name);
 		this.setHasSubtypes(subNames!=null&&subNames.length > 0);
@@ -41,8 +38,4 @@ public class ItemBase extends Item {
 		return this.getUnlocalizedName();
 	}
 
-	public ItemBase setContainerItem(Item containerItem) {
-		this.containerItem = containerItem;
-		return this;
-	}
 }

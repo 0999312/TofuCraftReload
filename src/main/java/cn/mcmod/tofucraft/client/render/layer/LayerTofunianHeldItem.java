@@ -1,6 +1,5 @@
 package cn.mcmod.tofucraft.client.render.layer;
 
-import cn.mcmod.tofucraft.client.render.RenderTofunian;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -34,7 +33,6 @@ public class LayerTofunianHeldItem implements LayerRenderer<EntityLivingBase> {
 
             if (this.livingEntityRenderer.getMainModel().isChild)
             {
-                float f = 0.5F;
                 GlStateManager.translate(0.0F, 0.75F, 0.0F);
                 GlStateManager.scale(0.5F, 0.5F, 0.5F);
             }

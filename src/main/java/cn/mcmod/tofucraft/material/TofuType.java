@@ -1,8 +1,6 @@
 package cn.mcmod.tofucraft.material;
 
-import cn.mcmod.tofucraft.block.BlockTofuBase;
 import cn.mcmod.tofucraft.item.ItemLoader;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public enum TofuType {

@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.block;
 
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.block.vine.BlockUnderVine;
+import cn.mcmod.tofucraft.item.ItemLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -11,6 +12,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
@@ -112,9 +114,20 @@ public class BlockTofuYuba extends BlockUnderVine implements net.minecraftforge.
 
     @Override
     public int quantityDropped(IBlockState state, int fortune, Random random) {
-        return 0;
+        return 1;
     }
 
+    @Override
+    public Item getItemDropped(IBlockState state, Random par2Random, int par3) {
+        return ItemLoader.material;
+    }
+
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 32;
+    }
+    
     @Override
     public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos) {
         return true;

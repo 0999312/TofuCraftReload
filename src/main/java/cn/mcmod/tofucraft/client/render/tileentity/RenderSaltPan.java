@@ -4,7 +4,6 @@ import org.lwjgl.opengl.GL11;
 
 import cn.mcmod.tofucraft.block.BlockSaltPan;
 import cn.mcmod.tofucraft.tileentity.TileEntitySaltPan;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;

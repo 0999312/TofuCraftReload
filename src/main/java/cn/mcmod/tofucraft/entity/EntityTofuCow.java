@@ -132,8 +132,6 @@ public class EntityTofuCow extends EntityCow {
 
 
     public EntityTofuCow createChild(EntityAgeable ageable) {
-        Biome biome = this.world.getBiome(new BlockPos(this));
-
         EntityTofuCow tofuCow = new EntityTofuCow(this.world);
 
        if(this.getVariant() == 1){

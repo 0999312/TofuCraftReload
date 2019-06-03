@@ -7,6 +7,7 @@
     "age=4": { "model": "tofucraft:ricecrop_2" },
     "age=5": { "model": "tofucraft:ricecrop_3" },
     "age=6": { "model": "tofucraft:ricecrop_3" },
-    "age=7": { "model": "tofucraft:ricecrop_4" }
+    "age=7": { "model": "tofucraft:ricecrop_4" },
+	"inventory": { "model": "tofucraft:ricecrop_4" }
   }
 }

@@ -1,7 +1,6 @@
 package cn.mcmod.tofucraft.block;
 
 import cn.mcmod.tofucraft.item.ItemLoader;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;

@@ -2,8 +2,6 @@ package cn.mcmod.tofucraft.block;
 
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntitySaltPan;
 import cn.mcmod.tofucraft.util.TileScanner;
@@ -18,7 +16,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
