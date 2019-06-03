@@ -101,8 +101,6 @@ public class BlockLoader {
     public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
     public static Block TOFUGEM_ORE = new BlockTofuGemOre();
 
-
-	
 	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
 	public static BlockBarrel DOUBANJIANGBARREL = new BlockDoubanjiangBarrel().setDrain(3);
 	public static BlockBarrel MISOTOFUBARREL = new BlockBarrel(new ItemStack(ItemLoader.tofu_food,3,11), new ItemStack[]{
