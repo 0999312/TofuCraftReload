@@ -9,7 +9,6 @@ import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.item.TofuOreDictLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntityRegistry;
-import cn.mcmod.tofucraft.world.gen.future.TofuOreGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -36,7 +35,6 @@ public class CommonProxy {
         TofuEntityRegister.entityRegister();
         MinecraftForge.EVENT_BUS.register(new TofuEventLoader());
         new TofuOreDictLoader();
-        GameRegistry.registerWorldGenerator(new TofuOreGenerator(), 0);
     }
 
     public void init(FMLInitializationEvent event) {

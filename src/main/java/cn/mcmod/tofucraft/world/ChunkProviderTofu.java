@@ -45,6 +45,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
     private final NoiseGeneratorOctaves mainPerlinNoise;
 
+    @SuppressWarnings("unused")
     private final NoiseGeneratorOctaves noiseGen4;
 
     protected final NoiseGeneratorPerlin surfaceNoise;
@@ -101,8 +102,6 @@ public class ChunkProviderTofu implements IChunkGenerator {
     public void replaceBiomeBlocks(int x, int z, ChunkPrimer primer, Biome[] biomesIn) {
         if (!ForgeEventFactory.onReplaceBiomeBlocks(this, x, z, primer, this.world)) return;
 
-        double d0 = 0.03125D;
-
         this.depthBuffer = this.surfaceNoise.getRegion(this.depthBuffer, (double) (x * 16), (double) (z * 16), 16, 16, 0.0625D, 0.0625D, 1.0D);
 
         for (int i = 0; i < 16; ++i) {
@@ -150,11 +149,6 @@ public class ChunkProviderTofu implements IChunkGenerator {
         for (int i = 0; i < 16; ++i) {
 
             for (int j = 0; j < 16; ++j) {
-                int k = 1;
-                int l = -1;
-
-                Biome biome = this.biomesForGeneration[j + i * 16];
-
                 IBlockState iblockstate2 = primer.getBlockState(i, 1, j);
                 if (iblockstate2.getBlock() == BlockLoader.tofuTerrain) {
                     primer.setBlockState(i, 0, j, BEDROCK);
@@ -167,16 +161,17 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
     //generate frigidstone and biomes block
     private void buildSurfaces(ChunkPrimer primer) {
+        int l;
+        IBlockState iblockstate, iblockstate1, desertstone;
         for (int i = 0; i < 16; ++i) {
 
             for (int j = 0; j < 16; ++j) {
-                int k = 1;
-                int l = -1;
+                l = -1;
 
                 Biome biome = this.biomesForGeneration[j + i * 16];
-                IBlockState iblockstate = biome.topBlock;
-                IBlockState iblockstate1 = biome.fillerBlock;
-                IBlockState desertstone = BlockLoader.tofuTerrain.getDefaultState();
+                iblockstate = biome.topBlock;
+                iblockstate1 = biome.fillerBlock;
+                desertstone = BlockLoader.tofuTerrain.getDefaultState();
 
                 for (int i1 = 127; i1 >= 0; --i1) {
 
@@ -188,11 +183,8 @@ public class ChunkProviderTofu implements IChunkGenerator {
                     } else if (iblockstate2.getBlock() == BlockLoader.tofuTerrain) {
                         if (l <= -1) {
                             if (l == -3) {
-
                                 primer.setBlockState(i, i1, j, iblockstate);
-
                             } else {
-
                                 primer.setBlockState(i, i1, j, iblockstate1);
 
                             }
@@ -468,10 +460,8 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
     @Override
     public void populate(int x, int z) {
-        ChunkPrimer chunkprimer = new ChunkPrimer();
         BlockFalling.fallInstantly = true;
         BlockPos blockpos = new BlockPos(x * 16, 0, z * 16);
-        ChunkPos chunkPos = new ChunkPos(chunkX, chunkZ);
 
         Biome biome = this.world.getBiome(blockpos.add(16, 0, 16));
 
@@ -482,7 +472,6 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
         int i = x * 16;
         int j = z * 16;
-        int i2, genX, genY, genZ;
 
         if (net.minecraftforge.event.terraingen.TerrainGen.generateOre(this.world, this.rand, diamondGen, blockpos, OreGenEvent.GenerateMinable.EventType.CUSTOM))
             for (int l1 = 0; l1 < 14; ++l1)

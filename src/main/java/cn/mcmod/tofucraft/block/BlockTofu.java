@@ -114,7 +114,7 @@ public class BlockTofu extends BlockTofuBase{
     }
 
     protected int getDry(IBlockState state) {
-        return state.getValue(this.DRY).intValue();
+        return state.getValue(DRY).intValue();
     }
 
     public IBlockState withDry(int age) {

@@ -36,7 +36,9 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EntityTofunian extends EntityVillager {
     private static final DataParameter<Integer> TOFUPROFESSION = EntityDataManager.createKey(EntityTofunian.class, DataSerializers.VARINT);
@@ -432,13 +434,7 @@ public class EntityTofunian extends EntityVillager {
 
     public void addTradeRubyForItem(MerchantRecipeList list, ItemStack buy,int cost) {
 
-        double tofuWorth = 1;
-
-
-        List<Double> listTradeCosts = new ArrayList<>();
-
         ItemStack stack1 = buy.copy();
-
 
         stack1.setCount(cost);
 
@@ -447,23 +443,12 @@ public class EntityTofunian extends EntityVillager {
 
     public void addTradeForSingleRuby(MerchantRecipeList list, ItemStack sell,int cost) {
 
-        double tofuWorth = 1;
-
-
-        List<Double> listTradeCosts = new ArrayList<>();
-
         ItemStack stack1 = sell.copy();
-
 
         list.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, cost), stack1));
     }
 
     public void addEnchantTradeForSingleRuby(MerchantRecipeList list, ItemStack sell,int cost) {
-
-        double tofuWorth = 1;
-
-
-        List<Double> listTradeCosts = new ArrayList<>();
 
         ItemStack stack1 = sell.copy();
 
@@ -550,6 +535,7 @@ public class EntityTofunian extends EntityVillager {
 
     private boolean hasEnoughItems(int multiplier)
     {
+        @SuppressWarnings("deprecation")
         boolean flag = this.getProfession() == 0;
 
         for (int i = 0; i < this.getVillagerInventory().getSizeInventory(); ++i)

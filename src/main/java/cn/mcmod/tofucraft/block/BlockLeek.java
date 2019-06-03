@@ -1,7 +1,6 @@
 package cn.mcmod.tofucraft.block;
 
 import cn.mcmod.tofucraft.CommonProxy;
-import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;

@@ -63,11 +63,11 @@ public class ItemLoader {
 			new String[]{
 					TofuMain.MODID+"."+"tofuchikuwa",//0
 					TofuMain.MODID+"."+"oage",//1
-					TofuMain.MODID+"."+"onigiri",
-					TofuMain.MODID+"."+"onigirisalt",
-					TofuMain.MODID+"."+"yakionigirimiso",
-					TofuMain.MODID+"."+"yakionigirishoyu",
-					TofuMain.MODID+"."+"sprouts",
+                    TofuMain.MODID + "." + "onigiri",//2
+                    TofuMain.MODID + "." + "onigirisalt",//3
+                    TofuMain.MODID + "." + "yakionigirimiso",//4
+                    TofuMain.MODID + "." + "yakionigirishoyu",//5
+                    TofuMain.MODID + "." + "sprouts",//6
 					TofuMain.MODID+"."+"ricetofu",
 					TofuMain.MODID+"."+"tofuhamburg",
 					TofuMain.MODID+"."+"tofucookie",
@@ -95,12 +95,12 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"salt",
 			TofuMain.MODID+"."+"kouji",//1
 			TofuMain.MODID+"."+"miso",//2
-			TofuMain.MODID+"."+"edamame",
-			TofuMain.MODID+"."+"zunda",
-			TofuMain.MODID+"."+"barrelempty",
-			TofuMain.MODID+"."+"soybeansparched",
-			TofuMain.MODID+"."+"kinako",
-			TofuMain.MODID+"."+"natto",
+            TofuMain.MODID + "." + "edamame",//3
+            TofuMain.MODID + "." + "zunda",//4
+            TofuMain.MODID + "." + "barrelempty",//5
+            TofuMain.MODID + "." + "soybeansparched",//6
+            TofuMain.MODID + "." + "kinako",//7
+            TofuMain.MODID + "." + "natto",//8
 			TofuMain.MODID+"."+"apricotseed",
 			TofuMain.MODID+"."+"filtercloth",
 			TofuMain.MODID+"."+"okara",

@@ -789,6 +789,7 @@ public class BlockTofuPortal extends Block {
 
     }
 
+    @SuppressWarnings("unused")
     private boolean changeDim(EntityPlayer playerIn) {
 
         MinecraftServer server = playerIn.world.getMinecraftServer();

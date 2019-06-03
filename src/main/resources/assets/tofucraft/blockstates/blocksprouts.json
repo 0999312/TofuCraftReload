@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "tofucraft:sprouts_0"
+    },
+    "age=1": {
+      "model": "tofucraft:sprouts_0"
+    },
+    "age=2": {
+      "model": "tofucraft:sprouts_1"
+    },
+    "age=3": {
+      "model": "tofucraft:sprouts_1"
+    },
+    "age=4": {
+      "model": "tofucraft:sprouts_1"
+    },
+    "age=5": {
+      "model": "tofucraft:sprouts_2"
+    },
+    "age=6": {
+      "model": "tofucraft:sprouts_2"
+    },
+    "age=7": {
+      "model": "tofucraft:sprouts_3"
+    },
+    "inventory": {
+      "model": "tofucraft:sprouts_3"
+    }
+  }
+}

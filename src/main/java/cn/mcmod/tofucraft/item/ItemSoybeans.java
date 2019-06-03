@@ -24,8 +24,7 @@ public class ItemSoybeans extends Item implements IPlantable {
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
         ItemStack item = playerIn.getHeldItem(hand);
-        //BlockPos blockPos = new BlockPos(par4, par5, par6);
-        //Enumside side = par7
+
         if(item.getItem() == this &&!item.isEmpty()) {
             if (side != EnumFacing.UP) {
                 return EnumActionResult.PASS;
@@ -38,11 +37,12 @@ public class ItemSoybeans extends Item implements IPlantable {
                     if (soil.getBlock() == BlockLoader.TOFUFARMLAND||soil.getBlock().canSustainPlant(soil, worldIn, pos, EnumFacing.UP, this)) {
                         worldIn.setBlockState(pos.up(), BlockLoader.SOYBEAN.getDefaultState());
                         isPlanted = true;
-                    } /*else if (soil.getBlock() == Blocks.WOOL) {
-                        worldIn.setBlockState(pos.up(), TcBlocks.sprouts.getDefaultState());
-
-                        *//*TcAchievementMgr.achieve(playerIn, Key.sproutPlanting);*//*
+                    } else if (soil.getBlock() == Blocks.WOOL) {
+                        worldIn.setBlockState(pos.up(), BlockLoader.SPROUTS.getDefaultState());
                         isPlanted = true;
+                    }
+                    /*TcAchievementMgr.achieve(playerIn, Key.sproutPlanting);*//*
+                        
                     }*/
                     if (isPlanted) {
                         item.shrink(1);

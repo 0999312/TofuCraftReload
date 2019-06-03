@@ -3,22 +3,13 @@ package cn.mcmod.tofucraft.block.door;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.item.ItemLoader;
-import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
-import cn.mcmod.tofucraft.util.BlockUtils;
-import cn.mcmod.tofucraft.util.TofuBlockUtils;
-import com.google.common.collect.Maps;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
@@ -26,7 +17,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.EnumMap;
 import java.util.Random;
 
 public class BlockTofuDoor extends BlockDoor {
@@ -59,8 +49,6 @@ public class BlockTofuDoor extends BlockDoor {
             }
         }
     }
-
-    private static BlockUtils.IEntityWeightingBlockHandler tofuWeightingHandler;
 
     @Override
     public void onFallenUpon(World par1World, BlockPos pos, Entity par5Entity, float par6)

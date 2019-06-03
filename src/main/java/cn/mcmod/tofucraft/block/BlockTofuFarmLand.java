@@ -102,6 +102,7 @@ public class BlockTofuFarmLand extends Block {
         super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
     }
 
+    @SuppressWarnings("deprecation")
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
     {
         super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
@@ -156,6 +157,7 @@ public class BlockTofuFarmLand extends Block {
         return false;
     }
 
+    @SuppressWarnings("deprecation")
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
     {

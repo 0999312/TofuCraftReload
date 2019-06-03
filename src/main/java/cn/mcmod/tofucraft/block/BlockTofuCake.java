@@ -3,8 +3,6 @@ package cn.mcmod.tofucraft.block;
 import cn.mcmod.tofucraft.CommonProxy;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.init.SoundEvents;
 
 public class BlockTofuCake extends BlockCake {
 	public BlockTofuCake() {

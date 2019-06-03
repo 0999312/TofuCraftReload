@@ -22,6 +22,7 @@ public class RenderTofuChest extends TileEntitySpecialRenderer<TileEntityTofuChe
     private final ModelChest simpleChest = new ModelChest();
     private final ModelChest largeChest = new ModelLargeChest();
 
+    @SuppressWarnings("unused")
     private boolean isChristmas;
 
     public RenderTofuChest() {
