@@ -5,8 +5,10 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
 import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.half.BlockTofuSlab;
+import cn.mcmod.tofucraft.block.ore.BlockTofuGemOre;
 import cn.mcmod.tofucraft.block.ore.BlockTofuOreDiamond;
 import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
+import cn.mcmod.tofucraft.block.vine.BlockTofuYuba;
 import cn.mcmod.tofucraft.block.vine.BlockUnderVine;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.item.ItemTofuSlab;
@@ -95,10 +97,11 @@ public class BlockLoader {
 	public static BlockTofuSlab TOFUISHI_BRICK_SLAB = new BlockTofuSlab(Material.ROCK);
 
 	public static Block TOFUBEDROCK = new Block(Material.ROCK).setCreativeTab(CommonProxy.tab).setBlockUnbreakable().setResistance(1000000.0F);
-
-	public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
-
 	public static Block TOFUFARMLAND = new BlockTofuFarmLand();
+    public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
+    public static Block TOFUGEM_ORE = new BlockTofuGemOre();
+
+
 	
 	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
 	public static BlockBarrel DOUBANJIANGBARREL = new BlockDoubanjiangBarrel().setDrain(3);
@@ -176,9 +179,10 @@ public class BlockLoader {
 		register(TOFUCHEST, new ItemBlock(TOFUCHEST), "tofuchest");
 
 		register(TOFUBEDROCK,new ItemBlock(TOFUBEDROCK),"tofubedrock");
-		register(TOFUORE_DIAMOND,new ItemBlock(TOFUORE_DIAMOND),"ore_tofudiamond");
-
 		register(TOFUFARMLAND,new ItemBlock(TOFUFARMLAND),"tofu_farmland");
+        register(TOFUORE_DIAMOND, new ItemBlock(TOFUORE_DIAMOND), "ore_tofudiamond");
+        register(TOFUGEM_ORE, new ItemBlock(TOFUGEM_ORE), "blockoretofu");
+
 
 		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
 		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
@@ -262,6 +266,7 @@ public class BlockLoader {
 
 		registerRender(TOFUBEDROCK);
 		registerRender(TOFUORE_DIAMOND);
+        registerRender(TOFUGEM_ORE);
 
 		registerRender(TOFUFARMLAND);
 		registerRender(TOFUCHEST);

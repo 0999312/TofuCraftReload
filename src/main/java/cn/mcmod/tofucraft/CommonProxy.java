@@ -9,30 +9,21 @@ import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.item.TofuOreDictLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntityRegistry;
-import cn.mcmod.tofucraft.util.RecipesUtil;
-import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
-import cn.mcmod.tofucraft.world.gen.structure.tofuvillage.StructureTofuVillagePieces;
+import cn.mcmod.tofucraft.world.gen.future.TofuOreGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.registries.IForgeRegistry;
 
 @EventBusSubscriber
 public class CommonProxy {
@@ -45,6 +36,7 @@ public class CommonProxy {
         TofuEntityRegister.entityRegister();
         MinecraftForge.EVENT_BUS.register(new TofuEventLoader());
         new TofuOreDictLoader();
+        GameRegistry.registerWorldGenerator(new TofuOreGenerator(), 0);
     }
 
     public void init(FMLInitializationEvent event) {
