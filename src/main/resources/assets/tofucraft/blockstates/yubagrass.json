@@ -1,0 +1,33 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cross",
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "stuck=true": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "tofucraft:blocks/yubagrass_bottom"
+        }
+      }
+    ],
+    "stuck=false": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "tofucraft:blocks/yubagrass_top"
+        }
+      }
+    ],
+    "inventory": [
+      {
+        "model": "builtin/generated",
+        "textures": {
+          "layer0": "tofucraft:blocks/yubagrass_top"
+        }
+      }
+    ]
+  }
+}

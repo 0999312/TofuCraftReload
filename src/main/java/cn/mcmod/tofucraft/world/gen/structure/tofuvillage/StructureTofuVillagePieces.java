@@ -236,9 +236,9 @@ public class StructureTofuVillagePieces {
 
             this.setBlockState(worldIn, Blocks.CRAFTING_TABLE.getDefaultState(), 1, 1, 4, structureBoundingBoxIn);
 
-            this.setBlockState(worldIn, BlockLoader.ISHITOFU.getDefaultState(), 1, 5, 1, structureBoundingBoxIn);
+            this.setBlockState(worldIn, BlockLoader.TOFU_LOG.getDefaultState(), 1, 5, 1, structureBoundingBoxIn);
             this.setBlockState(worldIn, BlockLoader.TOFU_LEAVE.getDefaultState(), 1, 6, 1, structureBoundingBoxIn);
-            this.setBlockState(worldIn, BlockLoader.ISHITOFU.getDefaultState(), 5, 5, 1, structureBoundingBoxIn);
+            this.setBlockState(worldIn, BlockLoader.TOFU_LOG.getDefaultState(), 5, 5, 1, structureBoundingBoxIn);
             this.setBlockState(worldIn, BlockLoader.TOFU_LEAVE.getDefaultState(), 5, 6, 1, structureBoundingBoxIn);
 
             IBlockState iblockstate5 = Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH);

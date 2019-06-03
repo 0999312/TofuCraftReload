@@ -11,13 +11,14 @@ import com.google.common.collect.Maps;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.PotionTypes;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemDoor;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -121,7 +122,8 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"tofusomen",
 			TofuMain.MODID+"."+"glassbowl",
 			TofuMain.MODID+"."+"lemon",
-			TofuMain.MODID+"."+"chill"
+			TofuMain.MODID+"."+"chill",//31
+			TofuMain.MODID+"."+"yuba"
 	});
 	public static Item koujiBase = new ItemKoujiBase();
 	public static Item RollingPin = new ItemRolling();
@@ -280,6 +282,7 @@ public class ItemLoader {
 					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "speed")), 900, 0),
 					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "water_breathing")), 600, 0),
 					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "night_vision")), 600, 0),
+					new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "regeneration")), 1200, 1),
 		});
 	public static Item soymilk_ramune = new DrinkSoymilkRamune("soymilk_ramune", 2, 0.2f, 
 			new PotionEffect[]{

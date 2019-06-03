@@ -131,6 +131,8 @@ tile.tofucraft.tofuchest.name=豆腐チェスト
 tile.tofucraft.ore_tofudiamond.name=金剛豆腐鉱石
 tile.tofucraft.tofubedrock.name=豆腐岩盤
 tile.tofucraft.tofu_farmland.name=豆腐耕地
+tile.tofucraft.tofulog.name=豆腐の原木
+tile.tofucraft.yubagrass.name=湯葉草
 
 item.tofucraft.seeds_soybeans.name=大豆
 item.tofucraft.seeds_soybeansHell.name=地獄大豆
@@ -360,7 +362,7 @@ container.tofucraft.tofuchest=豆腐チェスト
 fluid.soymilk=豆乳
 fluid.zunda_soymilk=ずんだの豆乳
 fluid.soymilkHell=地獄豆乳
-fluid.tofucraft.soySauce=醤油
+fluid.soysauce=醤油
 fluid.nigari=にがり
 fluid.tofucraft.mineralSoymilk=ミネラル豆乳
 fluid.tofucraft.strawberryJam=いちごジャム
@@ -380,6 +382,7 @@ entity.tofucraft.TofuCreeper.name=豆腐クリーパー
 entity.tofucraft.Tofunian.name=トーフニアン
 entity.tofucraft.TofuChinger.name=トーフの捕食獣
 entity.tofucraft.Fukumame.name=福豆
+entity.tofucraft.TofuFish.name=トーフウオ
 
 commands.tofuslimecheck.found=このチャンクには豆腐スライムが生息しています
 commands.tofuslimecheck.notFound=このチャンクには豆腐スライムはいないようだ
