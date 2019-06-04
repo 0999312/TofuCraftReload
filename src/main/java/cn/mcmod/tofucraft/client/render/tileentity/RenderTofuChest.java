@@ -23,7 +23,7 @@ public class RenderTofuChest extends TileEntitySpecialRenderer<TileEntityTofuChe
     private final ModelChest largeChest = new ModelLargeChest();
 
     @SuppressWarnings("unused")
-	private boolean isChristmas;
+    private boolean isChristmas;
 
     public RenderTofuChest() {
         Calendar calendar = Calendar.getInstance();

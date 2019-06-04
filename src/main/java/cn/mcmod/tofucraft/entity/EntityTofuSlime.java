@@ -29,7 +29,7 @@ public class EntityTofuSlime extends EntitySlime {
 
         if (this.getSlimeSize() == 1 || this.world.getDifficulty() != EnumDifficulty.PEACEFUL) {
             int lightValue = this.world.getLightFromNeighbors(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY), MathHelper.floor(this.posZ)));
-           
+
             if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(30) == 0
                     && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(52.0D, 24.0D, 52.0D)).size() == 0) {
                 return this.baseGetCanSpawnHere();
@@ -44,9 +44,8 @@ public class EntityTofuSlime extends EntitySlime {
         return false;
     }
 
-    public static boolean isSpawnChunk(World world, double x, double z)
-    { 
-    	BlockPos blockpos = new BlockPos(MathHelper.floor(x), 0, MathHelper.floor(z));
+    public static boolean isSpawnChunk(World world, double x, double z) {
+        BlockPos blockpos = new BlockPos(MathHelper.floor(x), 0, MathHelper.floor(z));
         Chunk var1 = world.getChunkFromBlockCoords(blockpos);
         return var1.getRandomWithSeed(987234911L).nextInt(10) == 0;
     }

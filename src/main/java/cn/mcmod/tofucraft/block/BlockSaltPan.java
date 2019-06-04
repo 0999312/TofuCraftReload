@@ -1,7 +1,5 @@
 package cn.mcmod.tofucraft.block;
 
-import java.util.Random;
-
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntitySaltPan;
 import cn.mcmod.tofucraft.util.TileScanner;
@@ -19,11 +17,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -31,6 +25,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockSaltPan extends BlockContainer {
 	

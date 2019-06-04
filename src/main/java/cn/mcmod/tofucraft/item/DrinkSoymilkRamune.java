@@ -1,7 +1,5 @@
 package cn.mcmod.tofucraft.item;
 
-import java.util.Random;
-
 import cn.mcmod.tofucraft.TofuMain;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,6 +18,8 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class DrinkSoymilkRamune extends ItemFood {
 	private PotionEffect[] effect;

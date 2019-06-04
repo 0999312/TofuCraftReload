@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class BlockSprouts extends BlockCrops {
 
-    private static final AxisAlignedBB[] SOYBEAN_AABB = new AxisAlignedBB[] {
+    private static final AxisAlignedBB[] SOYBEAN_AABB = new AxisAlignedBB[]{
             new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D),
             new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.1875D, 1.0D),
             new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D),
@@ -25,39 +25,30 @@ public class BlockSprouts extends BlockCrops {
             new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6875D, 1.0D)
     };
 
-    public BlockSprouts()
-    {
+    public BlockSprouts() {
         super();
     }
 
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-    {
-        return SOYBEAN_AABB[((Integer)state.getValue(this.getAgeProperty())).intValue()];
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        return SOYBEAN_AABB[((Integer) state.getValue(this.getAgeProperty())).intValue()];
     }
 
     @Override
-    public int quantityDropped(IBlockState state, int fortune, Random random)
-    {
-        if (this.isMaxAge(state))
-        {
+    public int quantityDropped(IBlockState state, int fortune, Random random) {
+        if (this.isMaxAge(state)) {
             int ret = 1;
-            for (int n = 0; n < 5 + fortune; n++)
-            {
-                if (random.nextInt(15) <= this.getAge(state))
-                {
+            for (int n = 0; n < 5 + fortune; n++) {
+                if (random.nextInt(15) <= this.getAge(state)) {
                     ret++;
                 }
             }
             return ret;
-        }
-        else
-        {
+        } else {
             return 1;
         }
     }
 
-    protected boolean canSustainBush(IBlockState state)
-    {
+    protected boolean canSustainBush(IBlockState state) {
         return state.getBlock() == Blocks.WOOL;
     }
 
@@ -65,8 +56,7 @@ public class BlockSprouts extends BlockCrops {
      * Generate a seed ItemStack for this crop.
      */
     @Override
-    protected Item getSeed()
-    {
+    protected Item getSeed() {
         return ItemLoader.soybeans;
     }
 
@@ -74,8 +64,7 @@ public class BlockSprouts extends BlockCrops {
      * Generate a crop produce ItemStack for this crop.
      */
     @Override
-    protected Item getCrop()
-    {
+    protected Item getCrop() {
         return ItemLoader.foodset;
     }
 
@@ -83,15 +72,14 @@ public class BlockSprouts extends BlockCrops {
      * Get the Item that this Block should drop when harvested.
      */
     @Nullable
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-    {
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return this.isMaxAge(state) ? this.getCrop() : this.getSeed();
     }
 
-    public int damageDropped(IBlockState state){
-        if(this.isMaxAge(state)){
+    public int damageDropped(IBlockState state) {
+        if (this.isMaxAge(state)) {
             return 6;
-        }else {
+        } else {
             return 0;
         }
     }

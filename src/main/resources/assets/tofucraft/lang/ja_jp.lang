@@ -287,6 +287,7 @@ item.tofucraft.seeds_rice.name=お米の種
 item.tofucraft.lemon.name=レモン
 item.tofucraft.chill.name=唐辛子
 item.tofucraft.bottlesoysause.name=醬油
+item.tofucraft.meatwrapped_yuba.name=肉巻き湯葉
 
 item.tofucraft.armorkinuhelmet.name=絹豆腐ヘルメット
 item.tofucraft.armorkinuchestplate.name=絹豆腐チェストプレート
@@ -417,7 +418,7 @@ tofucraft.wrongPotionId3=I.glowing=%s   I.filling=%s
 entity.Tofunian.tofucrafter=豆腐加工のトウフニアン
 entity.Tofunian.fisherman=漁業のトウフニアン
 entity.Tofunian.guard=護衛のトウフニアン
-entity.Tofunian.tofusmish=豆腐金属加工のトウフニアン
+entity.Tofunian.tofusmith=豆腐金属加工のトウフニアン
 
 tofucraft.config.dimension_id=トーフワールドのDimensionID
 

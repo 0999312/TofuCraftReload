@@ -58,20 +58,20 @@ public class ItemLoader {
 			TofuMain.MODID+"."+"tofudried"
 	});
 	public static ItemFoodBasic foodset = new ItemFoodBasic("foodset", 64,
-			  new int[]{6   ,5   ,4   ,5   ,6   ,6   ,2   ,10  ,12  ,2    ,5   ,4   ,6   ,5   ,4,4   ,6   ,16  ,20,2   ,8 ,4   ,1,3,6   ,8,3},
-			new float[]{0.4f,0.3f,0.4f,0.6f,0.8f,0.8f,0.5f,0.2f,0.8f,0.15f,0.6f,0.4f,0.6f,0.8f,0.6f,0.6f,0.6f,0.6f,1f,0.2f,0.6f,0.4f,0.1f,0.3f,0.5f,0.4f,1f},
+			new int[]{6, 5, 4, 5, 6, 6, 2, 10, 12, 2, 5, 4, 6, 5, 4, 4, 6, 16, 20, 2, 8, 4, 1, 3, 6, 8, 3, 4},
+			new float[]{0.4f, 0.3f, 0.4f, 0.6f, 0.8f, 0.8f, 0.5f, 0.2f, 0.8f, 0.15f, 0.6f, 0.4f, 0.6f, 0.8f, 0.6f, 0.6f, 0.6f, 0.6f, 1f, 0.2f, 0.6f, 0.4f, 0.1f, 0.3f, 0.5f, 0.4f, 1f, 0.3f},
 			new String[]{
 					TofuMain.MODID+"."+"tofuchikuwa",//0
 					TofuMain.MODID+"."+"oage",//1
-					TofuMain.MODID+"."+"onigiri",//2
-					TofuMain.MODID+"."+"onigirisalt",//3
-					TofuMain.MODID+"."+"yakionigirimiso",//4
-					TofuMain.MODID+"."+"yakionigirishoyu",//5
-					TofuMain.MODID+"."+"sprouts",//6
+                    TofuMain.MODID + "." + "onigiri",//2
+                    TofuMain.MODID + "." + "onigirisalt",//3
+                    TofuMain.MODID + "." + "yakionigirimiso",//4
+                    TofuMain.MODID + "." + "yakionigirishoyu",//5
+                    TofuMain.MODID + "." + "sprouts",//6
 					TofuMain.MODID+"."+"ricetofu",
 					TofuMain.MODID+"."+"tofuhamburg",
 					TofuMain.MODID+"."+"tofucookie",
-					TofuMain.MODID+"."+"inari",
+					TofuMain.MODID + "." + "inari",//10
 					TofuMain.MODID+"."+"tofufishraw",
 					TofuMain.MODID+"."+"tofufishcooked",
 					TofuMain.MODID+"."+"kinakomochi",
@@ -81,25 +81,26 @@ public class ItemLoader {
 					TofuMain.MODID+"."+"tofuhamburgt",
 					TofuMain.MODID+"."+"tofuhamburgta",
 					TofuMain.MODID+"."+"tofuminced",
-					TofuMain.MODID+"."+"ricesoborotofu",
+					TofuMain.MODID + "." + "ricesoborotofu",//20
 					TofuMain.MODID+"."+"okarastick",
 					TofuMain.MODID+"."+"edamameboiled",
 					TofuMain.MODID+"."+"saltymelon",
 					TofuMain.MODID+"."+"chillstick",
 					TofuMain.MODID+"."+"tttburger",
-					TofuMain.MODID+"."+"fukumeni"
+					TofuMain.MODID + "." + "fukumeni",
+					TofuMain.MODID + "." + "meatwrapped_yuba"
 			}
 	);
 	public static ItemBase material = new ItemBase("material", 64, new String[]{
 			TofuMain.MODID+"."+"salt",
 			TofuMain.MODID+"."+"kouji",//1
 			TofuMain.MODID+"."+"miso",//2
-			TofuMain.MODID+"."+"edamame",//3
-			TofuMain.MODID+"."+"zunda",//4
-			TofuMain.MODID+"."+"barrelempty",//5
-			TofuMain.MODID+"."+"soybeansparched",//6
-			TofuMain.MODID+"."+"kinako",//7
-			TofuMain.MODID+"."+"natto",//8
+            TofuMain.MODID + "." + "edamame",//3
+            TofuMain.MODID + "." + "zunda",//4
+            TofuMain.MODID + "." + "barrelempty",//5
+            TofuMain.MODID + "." + "soybeansparched",//6
+            TofuMain.MODID + "." + "kinako",//7
+            TofuMain.MODID + "." + "natto",//8
 			TofuMain.MODID+"."+"apricotseed",
 			TofuMain.MODID+"."+"filtercloth",
 			TofuMain.MODID+"."+"okara",
