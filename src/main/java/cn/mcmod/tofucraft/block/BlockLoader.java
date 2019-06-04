@@ -5,8 +5,10 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
 import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.half.BlockTofuSlab;
+import cn.mcmod.tofucraft.block.ore.BlockTofuGemOre;
 import cn.mcmod.tofucraft.block.ore.BlockTofuOreDiamond;
 import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
+import cn.mcmod.tofucraft.block.vine.BlockTofuYuba;
 import cn.mcmod.tofucraft.block.vine.BlockUnderVine;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.item.ItemTofuSlab;
@@ -56,7 +58,7 @@ public class BlockLoader {
 
 	public static BlockLeek LEEK = new BlockLeek();
 	public static Block SOYBEAN = new BlockSoybean();
-	public static Block SPROUTS = new BlockSprouts();
+    public static Block SPROUTS = new BlockSprouts();
 	public static Block RICECROP = new BlockRice();
 	public static Block tofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
 	public static Block zundatofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
@@ -97,15 +99,14 @@ public class BlockLoader {
 	public static BlockTofuSlab TOFUISHI_BRICK_SLAB = new BlockTofuSlab(Material.ROCK);
 
 	public static Block TOFUBEDROCK = new Block(Material.ROCK).setCreativeTab(CommonProxy.tab).setBlockUnbreakable().setResistance(1000000.0F);
-
-	public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
-
 	public static Block TOFUFARMLAND = new BlockTofuFarmLand();
-	
+    public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
+    public static Block TOFUGEM_ORE = new BlockTofuGemOre();
+
 	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
-	public static BlockNattoBed NATTO = new BlockNattoBed(new ItemStack(ItemLoader.material,6,8), new ItemStack[]{
-			new ItemStack(Items.WHEAT,3),new ItemStack(ItemLoader.soybeans,3)
-	}).setDrain(2);
+    public static BlockNattoBed NATTO = new BlockNattoBed(new ItemStack(ItemLoader.material, 6, 8), new ItemStack[]{
+            new ItemStack(Items.WHEAT, 3), new ItemStack(ItemLoader.soybeans, 3)
+    }).setDrain(2);
 	public static BlockBarrel DOUBANJIANGBARREL = new BlockDoubanjiangBarrel().setDrain(3);
 	public static BlockBarrel MISOTOFUBARREL = new BlockBarrel(new ItemStack(ItemLoader.tofu_food,3,11), new ItemStack[]{
 			new ItemStack(ItemLoader.tofu_food,3,1),new ItemStack(ItemLoader.material,3,2)
@@ -147,7 +148,7 @@ public class BlockLoader {
 		
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
 		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
-		register(SPROUTS, new ItemBlock(SPROUTS), "blocksprouts");
+        register(SPROUTS, new ItemBlock(SPROUTS), "blocksprouts");
 		register(RICECROP, new ItemBlock(RICECROP), "ricecrop");
 		register(yubaGrass, new ItemBlock(yubaGrass), "yubagrass");
 		register(tofuTerrain, new ItemBlock(tofuTerrain), "tofu_terrain");
@@ -155,8 +156,8 @@ public class BlockLoader {
 		register(TOFU_SAPLING, new ItemBlock(TOFU_SAPLING), "sapling_tofu");
 		register(TOFU_LEAVE, new ItemBlock(TOFU_LEAVE), "leaves_tofu");
 		register(TOFU_LOG, new ItemBlock(TOFU_LOG), "tofulog");
-		
-		register(NATTO, new ItemBlock(NATTO), "nattobed");
+
+        register(NATTO, new ItemBlock(NATTO), "nattobed");
 		
 		register(tofu_Cake, new ItemBlock(tofu_Cake), "tofucake");
 		register(tofu_PORTAL, new ItemBlock(tofu_PORTAL), "tofuportal");
@@ -184,9 +185,10 @@ public class BlockLoader {
 		register(TOFUCHEST, new ItemBlock(TOFUCHEST), "tofuchest");
 
 		register(TOFUBEDROCK,new ItemBlock(TOFUBEDROCK),"tofubedrock");
-		register(TOFUORE_DIAMOND,new ItemBlock(TOFUORE_DIAMOND),"ore_tofudiamond");
-
 		register(TOFUFARMLAND,new ItemBlock(TOFUFARMLAND),"tofu_farmland");
+        register(TOFUORE_DIAMOND, new ItemBlock(TOFUORE_DIAMOND), "ore_tofudiamond");
+        register(TOFUGEM_ORE, new ItemBlock(TOFUGEM_ORE), "blockoretofu");
+
 
 		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
 		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
@@ -220,8 +222,8 @@ public class BlockLoader {
 		registerRender(MISOBARREL);
 		registerRender(DOUBANJIANGBARREL);
 		registerRender(MISOTOFUBARREL);
-		registerRender(NATTO);
-		registerRender(SPROUTS);
+        registerRender(NATTO);
+        registerRender(SPROUTS);
 		registerRender(tofu_Cake);
 		registerRender(TOFUDRIED);
 		registerRender(SALTFURNACE);
@@ -271,6 +273,7 @@ public class BlockLoader {
 
 		registerRender(TOFUBEDROCK);
 		registerRender(TOFUORE_DIAMOND);
+        registerRender(TOFUGEM_ORE);
 
 		registerRender(TOFUFARMLAND);
 		registerRender(TOFUCHEST);

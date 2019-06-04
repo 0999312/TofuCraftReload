@@ -23,17 +23,17 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
-public class BlockNattoBed extends Block{
+public class BlockNattoBed extends Block {
     public static final PropertyInteger FERM = PropertyInteger.create("ferm", 0, 7);
     private boolean canFerm = false;
     private int fermRate;
     private ItemStack drop;
     private ItemStack[] in;
-    public BlockNattoBed(ItemStack drops,ItemStack[] in) {
+
+    public BlockNattoBed(ItemStack drops, ItemStack[] in) {
         super(Material.WOOD);
         this.setCreativeTab(CommonProxy.tab);
         this.setHardness(0.25F);
@@ -63,26 +63,24 @@ public class BlockNattoBed extends Block{
 
     @Override
     public int quantityDropped(IBlockState state, int fortune, Random random) {
-    	return 0;
+        return 0;
     }
-    
+
     public int getMaxDry() {
         return 7;
     }
-    
+
     @Nullable
     @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
-    {
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
         return NULL_AABB;
     }
-    
+
     @Override
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
-    	entityIn.setInWeb();
-        if (entityIn instanceof EntityLivingBase)
-        {
-            EntityLivingBase entityLiving = (EntityLivingBase)entityIn;
+        entityIn.setInWeb();
+        if (entityIn instanceof EntityLivingBase) {
+            EntityLivingBase entityLiving = (EntityLivingBase) entityIn;
             entityLiving.addPotionEffect(new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "slowness")), 300, 2));
         }
     }
@@ -97,35 +95,34 @@ public class BlockNattoBed extends Block{
 
     @Override
     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state,
-    		int fortune) {
-    	if(!canFerm(state)){
-    		drops.add(drop);
-    		
-    	}else{
-    		for(ItemStack stack : in){
-    			drops.add(stack);
-    		}
-    	}
-    	super.getDrops(drops, world, pos, state, fortune);
+                         int fortune) {
+        if (!canFerm(state)) {
+            drops.add(drop);
+
+        } else {
+            for (ItemStack stack : in) {
+                drops.add(stack);
+            }
+        }
+        super.getDrops(drops, world, pos, state, fortune);
     }
-    
-    
+
 
     @SideOnly(Side.CLIENT)
     @Override
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if (isUnderWeight(worldIn, pos)) {
             if (canFerm(stateIn)) {
-                    if (rand.nextInt(5)==0) {
-                        double d4 = rand.nextBoolean() ? 0.8 : -0.8;
-                        double d0 = ((float) pos.getX() + 0.5 + (rand.nextFloat() * d4));
-                        double d1 = (double) ((float) pos.getY() + rand.nextFloat());
-                        double d2 = ((float) pos.getZ() + 0.5 + rand.nextFloat()* d4);
+                if (rand.nextInt(5) == 0) {
+                    double d4 = rand.nextBoolean() ? 0.8 : -0.8;
+                    double d0 = ((float) pos.getX() + 0.5 + (rand.nextFloat() * d4));
+                    double d1 = (double) ((float) pos.getY() + rand.nextFloat());
+                    double d2 = ((float) pos.getZ() + 0.5 + rand.nextFloat() * d4);
 
-                        worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-                    }
+                    worldIn.spawnParticle(EnumParticleTypes.DRIP_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+                }
             }
-            
+
         }
     }
 
@@ -136,9 +133,9 @@ public class BlockNattoBed extends Block{
     public void updateTick(World par1World, BlockPos pos, IBlockState state, Random par5Random) {
 
         super.updateTick(par1World, pos, state, par5Random);
-         if (canFerm(state) && isUnderWeight(par1World, pos)) {
-                    this.drainOneStep(par1World, pos, par5Random, state);
-         }
+        if (canFerm(state) && isUnderWeight(par1World, pos)) {
+            this.drainOneStep(par1World, pos, par5Random, state);
+        }
 
     }
 
@@ -151,7 +148,7 @@ public class BlockNattoBed extends Block{
         IBlockState state2 = par1World.getBlockState(pos);
         int drainStep = state2.getValue(FERM);
 
-        if (drainStep < 7&&par5Random.nextInt(fermRate) == 0) {
+        if (drainStep < 7 && par5Random.nextInt(fermRate) == 0) {
             ++drainStep;
 
             par1World.setBlockState(pos, this.withFerm(drainStep), 2);
@@ -164,7 +161,7 @@ public class BlockNattoBed extends Block{
         return new ItemStack(this);
 
     }
-    
+
     public static boolean isValidPlaceForDriedTofu(World world, BlockPos pos) {
 
         return world.getBiomeForCoordsBody(pos).getTemperature(pos) < 0.15F

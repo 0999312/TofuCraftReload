@@ -1,7 +1,5 @@
 package cn.mcmod.tofucraft.client.render.tileentity;
 
-import org.lwjgl.opengl.GL11;
-
 import cn.mcmod.tofucraft.block.BlockSaltPan;
 import cn.mcmod.tofucraft.tileentity.TileEntitySaltPan;
 import net.minecraft.client.renderer.GlStateManager;
@@ -9,6 +7,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.lwjgl.opengl.GL11;
 
 public class RenderSaltPan extends TileEntitySpecialRenderer<TileEntitySaltPan> {
 	

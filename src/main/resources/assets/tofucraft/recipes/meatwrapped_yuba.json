@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " Y ",
+    "Y#Y",
+    " Y "
+  ],
+  "key": {
+    "#": {
+      "item": "#LISTALLMEATCOOKED"
+    },
+    "Y": {
+      "item": "tofucraft:material",
+      "data": 32
+    }
+  },
+  "result": {
+    "item": "tofucraft:foodset",
+    "data": 27,
+    "count": 4
+  }
+}

@@ -46,7 +46,7 @@ public class ChunkProviderTofu implements IChunkGenerator {
     private final NoiseGeneratorOctaves mainPerlinNoise;
 
     @SuppressWarnings("unused")
-	private final NoiseGeneratorOctaves noiseGen4;
+    private final NoiseGeneratorOctaves noiseGen4;
 
     protected final NoiseGeneratorPerlin surfaceNoise;
     private final NoiseGeneratorOctaves depthNoise;
@@ -161,8 +161,8 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
     //generate frigidstone and biomes block
     private void buildSurfaces(ChunkPrimer primer) {
-    	int l;
-    	IBlockState iblockstate,iblockstate1,desertstone;
+        int l;
+        IBlockState iblockstate, iblockstate1, desertstone;
         for (int i = 0; i < 16; ++i) {
 
             for (int j = 0; j < 16; ++j) {
