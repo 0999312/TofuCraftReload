@@ -1,12 +1,10 @@
 package cn.mcmod.tofucraft.world;
 
-import cn.mcmod.tofucraft.world.biome.BiomeTofu;
 import cn.mcmod.tofucraft.world.biome.TofuBiomes;
 import cn.mcmod.tofucraft.world.gen.layer.GenLayerTofu;
 import com.google.common.collect.Lists;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.init.Biomes;
 import net.minecraft.util.ReportedException;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldType;
@@ -16,9 +14,6 @@ import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraft.world.storage.WorldInfo;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.WorldTypeEvent;
-
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
