@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.world.gen.future;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenTrees;
@@ -71,7 +72,7 @@ public class WorldGenApricotTrees extends WorldGenTrees {
                                     state = worldIn.getBlockState(blockpos);
 
                                     if (state.getBlock().isAir(state, worldIn, blockpos) || state.getBlock().isLeaves(state, worldIn, blockpos) || state.getMaterial() == Material.VINE) {
-                                        this.setBlockAndNotifyAdequately(worldIn, blockpos, BlockLoader.TOFU_LEAVE.getDefaultState());
+                                        this.setBlockAndNotifyAdequately(worldIn, blockpos, BlockLoader.APRICOT_LEAVE.getDefaultState());
                                     }
                                 }
                             }
@@ -82,7 +83,7 @@ public class WorldGenApricotTrees extends WorldGenTrees {
                         state = worldIn.getBlockState(upN);
 
                         if (state.getBlock().isAir(state, worldIn, upN) || state.getBlock().isLeaves(state, worldIn, upN) || state.getMaterial() == Material.VINE) {
-                            this.setBlockAndNotifyAdequately(worldIn, position.up(j3), BlockLoader.TOFU_LOG.getDefaultState());
+                            this.setBlockAndNotifyAdequately(worldIn, position.up(j3), Blocks.LOG.getDefaultState());
 
                         }
                     }

@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "tofucraft:apricotjerry_bread",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "#FOODAPRICOTJERRY"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}
