@@ -74,8 +74,10 @@ public class ChunkProviderTofu implements IChunkGenerator {
     private MapGenTofuVillage villageGenerator = new MapGenTofuVillage();
     public ChunkProviderTofu(World worldIn, long seed) {
         {
+        	if(net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(villageGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.VILLAGE) instanceof MapGenTofuVillage)
             villageGenerator = (MapGenTofuVillage) net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(villageGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.VILLAGE);
-            mineshaft = (MapGenTofuMineshaft) net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(mineshaft, InitMapGenEvent.EventType.CUSTOM);
+        	if(net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(mineshaft, InitMapGenEvent.EventType.CUSTOM) instanceof MapGenTofuMineshaft)
+        	mineshaft = (MapGenTofuMineshaft) net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(mineshaft, InitMapGenEvent.EventType.CUSTOM);
             caveGenerator = net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(caveGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE);
             this.mapFeaturesEnabled = worldIn.getWorldInfo().isMapFeaturesEnabled();
         }
