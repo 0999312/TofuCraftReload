@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "tofucraft:apricotjerry",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "tofucraft:foodsetcontain",
+      "data": 14
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}
