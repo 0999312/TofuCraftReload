@@ -133,6 +133,7 @@ tile.tofucraft.tofubedrock.name=豆腐岩盤
 tile.tofucraft.tofu_farmland.name=豆腐耕地
 tile.tofucraft.tofulog.name=豆腐の原木
 tile.tofucraft.yubagrass.name=湯葉草
+tile.tofucraft.blocksaltpan.name=塩田
 
 item.tofucraft.seeds_soybeans.name=大豆
 item.tofucraft.seeds_soybeansHell.name=地獄大豆
@@ -288,6 +289,8 @@ item.tofucraft.lemon.name=レモン
 item.tofucraft.chill.name=唐辛子
 item.tofucraft.bottlesoysause.name=醬油
 item.tofucraft.meatwrapped_yuba.name=肉巻き湯葉
+item.tofucraft.apricotjerry.name=杏のゼリー入りボトル
+item.tofucraft.apricotjerry_bread.name=杏のゼリーを付けたパン
 
 item.tofucraft.armorkinuhelmet.name=絹豆腐ヘルメット
 item.tofucraft.armorkinuchestplate.name=絹豆腐チェストプレート

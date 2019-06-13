@@ -1,8 +1,5 @@
 package cn.mcmod.tofucraft.item;
 
-import java.util.Set;
-import java.util.TreeSet;
-
 import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -10,6 +7,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.Set;
+import java.util.TreeSet;
 
 public class TofuOreDictLoader {
 	public static final Set<String> OreList = new TreeSet<>();
@@ -35,6 +35,7 @@ public class TofuOreDictLoader {
 	    registerOre("foodSoysauce", Soysauce);
 	    registerOre("foodOliveoil", Soyoil);
 	    registerOre("foodMayo", Mayonnaise);
+        registerOre("foodApricotjelly", ApricotJerry);
 	    
 	    registerVanillaFoods();
 	}
@@ -109,4 +110,5 @@ public class TofuOreDictLoader {
 	public static final ItemStack Doubanjiang = new ItemStack(ItemLoader.doubanjiang_bottle, 1, OreDictionary.WILDCARD_VALUE);
 	public static final ItemStack Mayonnaise = new ItemStack(ItemLoader.mayonnaise_bottle, 1, OreDictionary.WILDCARD_VALUE);
 	public static final ItemStack RollingPin = new ItemStack(ItemLoader.RollingPin, 1, OreDictionary.WILDCARD_VALUE);
+    public static final ItemStack ApricotJerry = new ItemStack(ItemLoader.apricotjerry_bottle, 1, OreDictionary.WILDCARD_VALUE);
 }

@@ -253,8 +253,11 @@ public class ItemLoader {
 	public static Item soyoil_bottle = new ItemSeasoning(TofuMain.MODID+"."+"soyoil", 20);
 	public static Item doubanjiang_bottle = new ItemSeasoning(TofuMain.MODID+"."+"doubanjiang", 58);
 	public static Item mayonnaise_bottle = new ItemSeasoning(TofuMain.MODID+"."+"mayonnaise", 20);
+	public static Item apricotjerry_bottle = new ItemSeasoning(TofuMain.MODID + "." + "apricotjerry", 20);
 	
 	public static Item defatting_potion = new ItemDefattingPotion();
+
+	public static Item apricotjerry_bread = new ItemFood(5, 0.7f, false);
 	
 	public static DrinkSoymilk soymilk_drink = new DrinkSoymilk("soymilk_drink",
 			new int[]{2,2,2,2,2,2,2,2,2,2,2},
@@ -322,6 +325,8 @@ public class ItemLoader {
 		register(soyoil_bottle);
 		register(doubanjiang_bottle);
 		register(mayonnaise_bottle);
+		register(apricotjerry_bottle);
+		register(apricotjerry_bread.setUnlocalizedName(TofuMain.MODID + "." + "apricotjerry_bread"));
 
 		register(soymilk_drink);
 		register(soymilk_ramune);
@@ -400,6 +405,8 @@ public class ItemLoader {
 		registerRender(soymilk_ramune);
 		registerRender(soymilk_drink);
 		registerRender(mayonnaise_bottle);
+		registerRender(apricotjerry_bottle);
+		registerRender(apricotjerry_bread);
 		registerRender(RollingPin);
 		registerRender(koujiBase);
 		registerRender(doubanjiang_bottle);

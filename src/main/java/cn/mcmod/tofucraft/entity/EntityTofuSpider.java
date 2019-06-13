@@ -87,7 +87,7 @@ public class EntityTofuSpider extends EntitySpider implements IRangedAttackMob {
     @Override
     protected ResourceLocation getLootTable()
     {
-        return TofuLootTables.tofuchinger;
+        return TofuLootTables.tofuspider;
     }
 
     @Override

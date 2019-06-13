@@ -7,9 +7,10 @@ import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.half.BlockTofuSlab;
 import cn.mcmod.tofucraft.block.ore.BlockTofuGemOre;
 import cn.mcmod.tofucraft.block.ore.BlockTofuOreDiamond;
+import cn.mcmod.tofucraft.block.plants.*;
+import cn.mcmod.tofucraft.block.plants.vine.BlockTofuYuba;
+import cn.mcmod.tofucraft.block.plants.vine.BlockUnderVine;
 import cn.mcmod.tofucraft.block.torch.BlockTofuTorch;
-import cn.mcmod.tofucraft.block.vine.BlockTofuYuba;
-import cn.mcmod.tofucraft.block.vine.BlockUnderVine;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.item.ItemTofuSlab;
 import cn.mcmod.tofucraft.material.TofuMaterial;
@@ -66,6 +67,8 @@ public class BlockLoader {
 	public static BlockTofuSapling TOFU_SAPLING = new BlockTofuSapling();
 	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
 	public static Block TOFU_LOG = new BlockTofuLog();
+	public static BlockApricotSapling APRICOT_SAPLING = new BlockApricotSapling();
+	public static BlockApricotLeaves APRICOT_LEAVE = new BlockApricotLeaves();
 	public static BlockCake tofu_Cake = new BlockTofuCake();
 	public static BlockTofuPortal tofu_PORTAL = new BlockTofuPortal();
 	public static Block TOFUISHI_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F).setCreativeTab(CommonProxy.tab);
@@ -156,6 +159,8 @@ public class BlockLoader {
 		register(TOFU_SAPLING, new ItemBlock(TOFU_SAPLING), "sapling_tofu");
 		register(TOFU_LEAVE, new ItemBlock(TOFU_LEAVE), "leaves_tofu");
 		register(TOFU_LOG, new ItemBlock(TOFU_LOG), "tofulog");
+		register(APRICOT_SAPLING, new ItemBlock(APRICOT_SAPLING), "sapling_apricot");
+		register(APRICOT_LEAVE, new ItemBlock(APRICOT_LEAVE), "leaves_apricot");
 
         register(NATTO, new ItemBlock(NATTO), "nattobed");
 		
@@ -243,6 +248,8 @@ public class BlockLoader {
 		registerRender(zundatofuTerrain);
 		registerRender(TOFU_LEAVE);
 		registerRender(TOFU_LOG);
+		registerRender(APRICOT_SAPLING);
+		registerRender(APRICOT_LEAVE);
 		registerRender(tofu_PORTAL);
 		registerRender(TOFUISHI_BRICK);
 
