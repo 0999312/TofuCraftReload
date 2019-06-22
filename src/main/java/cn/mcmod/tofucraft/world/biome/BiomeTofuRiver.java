@@ -1,7 +1,6 @@
 package cn.mcmod.tofucraft.world.biome;
 
 import cn.mcmod.tofucraft.entity.EntityTofuFish;
-import net.minecraft.world.biome.Biome;
 
 public class BiomeTofuRiver extends BiomeTofu {
     public BiomeTofuRiver(BiomeProperties property)

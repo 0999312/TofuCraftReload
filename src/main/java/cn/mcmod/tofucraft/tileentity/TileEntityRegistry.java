@@ -5,7 +5,6 @@ import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
 import cn.mcmod.tofucraft.client.render.tileentity.RenderSaltPan;
 import cn.mcmod.tofucraft.client.render.tileentity.RenderTofuChest;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -32,10 +31,6 @@ public class TileEntityRegistry {
 
     private static void registerTileEntity(Class<? extends TileEntity> cls, String baseName) {
         GameRegistry.registerTileEntity(cls, new ResourceLocation(TofuMain.MODID, baseName));
-    }
-
-    private static Item getItem(final Block block) {
-        return Item.getItemFromBlock(block);
     }
 
 }

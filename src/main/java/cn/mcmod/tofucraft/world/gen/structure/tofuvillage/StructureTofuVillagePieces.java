@@ -188,7 +188,6 @@ public class StructureTofuVillagePieces {
         }
     }
 
-    @SuppressWarnings("deprecation")
     public static class TallTofuHouse extends Village {
 
         public TallTofuHouse() {

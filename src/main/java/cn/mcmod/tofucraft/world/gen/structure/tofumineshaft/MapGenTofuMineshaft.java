@@ -41,7 +41,6 @@ public class MapGenTofuMineshaft extends MapGenStructure
 
     public BlockPos getNearestStructurePos(World worldIn, BlockPos pos, boolean findUnexplored)
     {
-        int i = 1000;
         int j = pos.getX() >> 4;
         int k = pos.getZ() >> 4;
 

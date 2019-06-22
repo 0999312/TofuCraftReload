@@ -2,7 +2,6 @@ package cn.mcmod.tofucraft.world.biome;
 
 import java.util.Random;
 
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class BiomeTofuPlains extends BiomeTofu{

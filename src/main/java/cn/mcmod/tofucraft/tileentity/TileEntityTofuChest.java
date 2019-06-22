@@ -1,9 +1,7 @@
 package cn.mcmod.tofucraft.tileentity;
 
-import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.BlockTofuChest;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;

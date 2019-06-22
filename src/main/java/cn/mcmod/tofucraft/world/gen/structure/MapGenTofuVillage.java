@@ -23,12 +23,10 @@ public class MapGenTofuVillage extends MapGenStructure
     /** None */
     private int size;
     private int distance;
-    private final int minTownSeparation;
 
     public MapGenTofuVillage()
     {
         this.distance = 32;
-        this.minTownSeparation = 8;
     }
 
     public MapGenTofuVillage(Map<String, String> map)

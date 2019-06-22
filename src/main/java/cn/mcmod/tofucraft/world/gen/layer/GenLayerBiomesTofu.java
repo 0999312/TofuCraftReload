@@ -1,6 +1,5 @@
 package cn.mcmod.tofucraft.world.gen.layer;
 
-import cn.mcmod.tofucraft.world.BiomeProviderTofu;
 import cn.mcmod.tofucraft.world.biome.TofuBiomes;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;

@@ -66,32 +66,6 @@ public class GenLayerBiomeEdge extends GenLayerTofu {
         }
     }
 
-    private boolean func_151635_b(int[] p_151635_1_, int[] p_151635_2_, int p_151635_3_, int p_151635_4_, int p_151635_5_, int p_151635_6_, int p_151635_7_, int p_151635_8_)
-    {
-        if (p_151635_6_ != p_151635_7_)
-        {
-            return false;
-        }
-        else
-        {
-            int k1 = p_151635_1_[p_151635_3_ + 1 + (p_151635_4_ + 1 - 1) * (p_151635_5_ + 2)];
-            int l1 = p_151635_1_[p_151635_3_ + 1 + 1 + (p_151635_4_ + 1) * (p_151635_5_ + 2)];
-            int i2 = p_151635_1_[p_151635_3_ + 1 - 1 + (p_151635_4_ + 1) * (p_151635_5_ + 2)];
-            int j2 = p_151635_1_[p_151635_3_ + 1 + (p_151635_4_ + 1 + 1) * (p_151635_5_ + 2)];
-
-            if (compareBiomesById(k1, p_151635_7_) && compareBiomesById(l1, p_151635_7_) && compareBiomesById(i2, p_151635_7_) && compareBiomesById(j2, p_151635_7_))
-            {
-                p_151635_2_[p_151635_3_ + p_151635_4_ * p_151635_5_] = p_151635_6_;
-            }
-            else
-            {
-                p_151635_2_[p_151635_3_ + p_151635_4_ * p_151635_5_] = p_151635_8_;
-            }
-
-            return true;
-        }
-    }
-
     private boolean func_151634_b(int p_151634_1_, int p_151634_2_)
     {
         if (compareBiomesById(p_151634_1_, p_151634_2_))

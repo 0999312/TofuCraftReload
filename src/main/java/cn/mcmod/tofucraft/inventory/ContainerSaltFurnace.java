@@ -1,6 +1,5 @@
 package cn.mcmod.tofucraft.inventory;
 
-import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.inventory.slot.SlotSaltFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

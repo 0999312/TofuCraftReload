@@ -1,7 +1,6 @@
 package cn.mcmod.tofucraft.world.biome;
 
 import cn.mcmod.tofucraft.block.BlockLoader;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 import java.util.Random;

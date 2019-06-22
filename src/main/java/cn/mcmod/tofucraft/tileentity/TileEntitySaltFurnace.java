@@ -17,10 +17,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -33,7 +31,6 @@ import net.minecraft.util.datafix.FixTypes;
 import net.minecraft.util.datafix.walkers.ItemStackDataLists;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
@@ -337,7 +334,6 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
         this.furnaceItemStacks = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(par1NBTTagCompound, this.furnaceItemStacks);
 
@@ -475,11 +471,7 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
 
         if (containerStack != null && containerStack.getCount() > 0)
         {
-            @SuppressWarnings("deprecation")
             ItemStack filledStack = new ItemStack(Items.GLASS_BOTTLE);
-
-            @SuppressWarnings("deprecation")
-            int containerCapacity = nigariTank.getFluidAmount();
 
             if (containerStack.isItemEqual(filledStack)) {
                 if (this.nigariTank.getFluidAmount() <= 10) return false;
@@ -493,11 +485,7 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
 
     public void outputNigari()
     {
-        ItemStack containerStack = this.furnaceItemStacks.get(2);
-        @SuppressWarnings("deprecation")
         ItemStack filledStack = new ItemStack(ItemLoader.nigari, 1);
-        @SuppressWarnings("deprecation")
-        int containerCapacity = nigariTank.getFluidAmount();
         if (this.furnaceItemStacks.get(3).isEmpty())
         {
             this.furnaceItemStacks.set(3,filledStack.copy());

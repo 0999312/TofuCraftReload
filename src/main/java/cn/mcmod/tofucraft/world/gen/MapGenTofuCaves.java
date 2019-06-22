@@ -2,19 +2,14 @@ package cn.mcmod.tofucraft.world.gen;
 
 import cn.mcmod.tofucraft.block.BlockLoader;
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.MapGenBase;
-import net.minecraft.world.gen.MapGenCaves;
-
 import java.util.Random;
 
 public class MapGenTofuCaves extends MapGenBase {
@@ -135,8 +130,6 @@ public class MapGenTofuCaves extends MapGenBase {
                     }
 
                     if (!flag3) {
-                        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
                         for (int j3 = k2; j3 < k; ++j3) {
                             double d10 = ((double) (j3 + p_180702_3_ * 16) + 0.5D - p_180702_6_) / d2;
 

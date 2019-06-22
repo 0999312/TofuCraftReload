@@ -37,7 +37,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class TofuMain {
     public static final String MODID = "tofucraft";
     public static final String NAME = "TofuCraftReload";
-    public static final String VERSION = "0.0.5.5";
+    public static final String VERSION = "@version@";
 
     @Instance(TofuMain.MODID)
     public static TofuMain instance;

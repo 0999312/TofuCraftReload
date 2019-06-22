@@ -25,7 +25,6 @@ public class StructureTofuMineshaftStart extends StructureStart
 
         if (p_i47149_5_ == MapGenTofuMineshaft.Type.BUILDING)
         {
-            int i = -5;
             int j = p_i47149_1_.getSeaLevel() - this.boundingBox.maxY + this.boundingBox.getYSize() / 2 - -5;
             this.boundingBox.offset(0, j, 0);
 
