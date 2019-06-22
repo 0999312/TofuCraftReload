@@ -1,6 +1,7 @@
-package cn.mcmod.tofucraft.block;
+package cn.mcmod.tofucraft.block.plants;
 
 import cn.mcmod.tofucraft.CommonProxy;
+import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.world.gen.future.WorldGenTofuTrees;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;

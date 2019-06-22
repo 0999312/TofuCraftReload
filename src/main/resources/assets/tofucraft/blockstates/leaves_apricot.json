@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "check_decay=false,decayable=true,stage=0": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=true,decayable=false,stage=0": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=false,decayable=false,stage=0": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=true,decayable=true,stage=0": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=false,decayable=true,stage=1": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=true,decayable=false,stage=1": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=false,decayable=false,stage=1": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=true,decayable=true,stage=1": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=false,decayable=true,stage=2": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=true,decayable=false,stage=2": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=false,decayable=false,stage=2": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=true,decayable=true,stage=2": {
+      "model": "tofucraft:leaves_apricot"
+    },
+    "check_decay=false,decayable=true,stage=3": {
+      "model": "tofucraft:leaves_apricot_f"
+    },
+    "check_decay=true,decayable=false,stage=3": {
+      "model": "tofucraft:leaves_apricot_f"
+    },
+    "check_decay=false,decayable=false,stage=3": {
+      "model": "tofucraft:leaves_apricot_f"
+    },
+    "check_decay=true,decayable=true,stage=3": {
+      "model": "tofucraft:leaves_apricot_f"
+    }
+  }
+}

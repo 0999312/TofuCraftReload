@@ -1,4 +1,4 @@
-package cn.mcmod.tofucraft.block.vine;
+package cn.mcmod.tofucraft.block.plants.vine;
 
 import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.block.Block;

@@ -1,4 +1,4 @@
-package cn.mcmod.tofucraft.block;
+package cn.mcmod.tofucraft.block.plants;
 
 import cn.mcmod.tofucraft.item.ItemLoader;
 import net.minecraft.block.BlockCrops;

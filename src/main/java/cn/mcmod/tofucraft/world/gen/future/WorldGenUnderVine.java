@@ -1,6 +1,6 @@
 package cn.mcmod.tofucraft.world.gen.future;
 
-import cn.mcmod.tofucraft.block.vine.BlockUnderVine;
+import cn.mcmod.tofucraft.block.plants.vine.BlockUnderVine;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
