@@ -303,6 +303,7 @@ public class ItemLoader {
 			}
 			);
 	public static Item tofu_slime_radar = new ItemTofuSlimeRadar().setUnlocalizedName(TofuMain.MODID+"."+"tofuradar");
+	   public static Item anninApple = new ItemAnninApple();
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
 		register(tofu_slime_radar);
@@ -329,7 +330,7 @@ public class ItemLoader {
 		register(mayonnaise_bottle);
 		register(apricotjerry_bottle);
 		register(apricotjerry_bread.setUnlocalizedName(TofuMain.MODID + "." + "apricotjerry_bread"));
-
+		register(anninApple);
 		register(soymilk_drink);
 		register(soymilk_ramune);
 		
@@ -400,88 +401,6 @@ public class ItemLoader {
 		tofuItemRegister(TofuType.zunda,new ItemStack(tofu_food,1,9));
 		tofuItemRegister(TofuType.dried,new ItemStack(tofu_material,1,2));
 	}
-	@SideOnly(Side.CLIENT)
-    public static void registerRenders()
-    {
-		registerRender(soybeansHell);
-		registerRender(tofu_slime_radar);
-		registerRender(soymilk_ramune);
-		registerRender(soymilk_drink);
-		registerRender(mayonnaise_bottle);
-		registerRender(apricotjerry_bottle);
-		registerRender(apricotjerry_bread);
-		registerRender(RollingPin);
-		registerRender(koujiBase);
-		registerRender(doubanjiang_bottle);
-		registerRender(defatting_potion);
-		registerRender(soyoil_bottle);
-		registerRender(dashi_bottle);
-		registerRender(soysauce_bottle);
-		registerRender(material);
-		registerRender(tofu_food);
-		registerRender(tofu_hell);
-		registerRender(zundaMochi);
-		registerRender(tofu_material);
-		registerRender(foodset);
-		registerRender(tsuyuBowl);
-		registerRender(foodsetContain);
-		registerRender(nigari);
-		registerRender(soybeans);
-		registerRender(fukumame);
-		registerRender(rice);
-		registerRender(riceseed);
-		registerRender(tofustick);
-
-		registerRender(zundaruby);
-
-		registerRender(kinuTofuSword);
-		registerRender(momenTofuSword);
-		registerRender(ishiTofuSword);
-		registerRender(metalTofuSword);
-
-		registerRender(kinuTofuPickaxe);
-		registerRender(momenTofuPickaxe);
-		registerRender(ishiTofuPickaxe);
-		registerRender(metalTofuPickaxe);
-
-		registerRender(kinuTofuShovel);
-		registerRender(momenTofuShovel);
-		registerRender(ishiTofuShovel);
-		registerRender(metalTofuShovel);
-
-		registerRender(kinuTofuAxe);
-		registerRender(momenTofuAxe);
-		registerRender(ishiTofuAxe);
-		registerRender(metalTofuAxe);
-
-		registerRender(TOFUKINU_DOOR);
-		registerRender(TOFUMOMEN_DOOR);
-		registerRender(TOFUISHI_DOOR);
-		registerRender(TOFUMETAL_DOOR);
-
-		registerRender(kinuhelmet);
-		registerRender(kinuchestplate);
-		registerRender(kinuleggins);
-		registerRender(kinuboots);
-
-		registerRender(momenhelmet);
-		registerRender(momenchestplate);
-		registerRender(momenleggins);
-		registerRender(momenboots);
-
-		registerRender(solidhelmet);
-		registerRender(solidchestplate);
-		registerRender(solidleggins);
-		registerRender(solidboots);
-
-		registerRender(metalhelmet);
-		registerRender(metalchestplate);
-		registerRender(metalleggins);
-		registerRender(metalboots);
-
-		registerRender(zundaBow);
-		registerRender(zundaArrow);
-    }
 
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
