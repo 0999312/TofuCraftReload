@@ -1,8 +1,9 @@
 package cn.mcmod.tofucraft.world.biome;
 
-import java.util.Random;
-
+import cn.mcmod.tofucraft.entity.EntityTofuCow;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+
+import java.util.Random;
 
 public class BiomeTofuPlains extends BiomeTofu{
     public BiomeTofuPlains(BiomeProperties property)
@@ -11,6 +12,7 @@ public class BiomeTofuPlains extends BiomeTofu{
         		.setBaseHeight(0.1f)
         		.setHeightVariation(0.1f));
         this.treesPerChunk = -999;
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityTofuCow.class, 2, 2, 3));
     }
     
     /**

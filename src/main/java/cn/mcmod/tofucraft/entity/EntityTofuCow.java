@@ -1,6 +1,7 @@
 package cn.mcmod.tofucraft.entity;
 
 import cn.mcmod.tofucraft.advancements.TofuAdvancements;
+import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.fluid.SoyMilkFluid;
 import cn.mcmod.tofucraft.block.fluid.ZundaSoyMilkFluid;
 import cn.mcmod.tofucraft.util.TofuLootTables;
@@ -33,6 +34,7 @@ import javax.annotation.Nullable;
 
 public class EntityTofuCow extends EntityCow {
     private static final DataParameter<Integer> VARIANT = EntityDataManager.createKey(EntityTofuCow.class, DataSerializers.VARINT);
+
     public EntityTofuCow(World worldIn) {
         super(worldIn);
     }
@@ -47,7 +49,7 @@ public class EntityTofuCow extends EntityCow {
         ItemStack itemstack = player.getHeldItem(hand);
 
         if (itemstack.getItem() == Items.BUCKET && !player.capabilities.isCreativeMode && !this.isChild()) {
-            if(this.getVariant() == 1) {
+            if (this.getVariant() == 1) {
                 FluidStack fluidStack = FluidRegistry.getFluidStack(ZundaSoyMilkFluid.name, Fluid.BUCKET_VOLUME);
 
                 player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
@@ -61,7 +63,7 @@ public class EntityTofuCow extends EntityCow {
                     player.dropItem(FluidUtil.getFilledBucket(fluidStack), false);
                 }
 
-            }else {
+            } else {
                 FluidStack fluidStack = FluidRegistry.getFluidStack(SoyMilkFluid.name, Fluid.BUCKET_VOLUME);
 
                 player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
@@ -83,44 +85,37 @@ public class EntityTofuCow extends EntityCow {
     }
 
     @Nullable
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
-    {
+    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
         Biome biome = this.world.getBiome(new BlockPos(this));
 
-        if (biome instanceof BiomeZundaTofuPlains)
-        {
+        if (biome instanceof BiomeZundaTofuPlains) {
             this.setVariant(1);
-        }else {
+        } else {
             this.setVariant(0);
         }
         return super.onInitialSpawn(difficulty, livingdata);
     }
 
-    public int getVariant()
-    {
-        return MathHelper.clamp(((Integer)this.dataManager.get(VARIANT)).intValue(), 0, 1);
+    public int getVariant() {
+        return MathHelper.clamp(((Integer) this.dataManager.get(VARIANT)).intValue(), 0, 1);
     }
 
-    public void setVariant(int p_191997_1_)
-    {
+    public void setVariant(int p_191997_1_) {
         this.dataManager.set(VARIANT, Integer.valueOf(p_191997_1_));
     }
 
-    protected void entityInit()
-    {
+    protected void entityInit() {
         super.entityInit();
         this.dataManager.register(VARIANT, Integer.valueOf(0));
     }
 
-    public void writeEntityToNBT(NBTTagCompound compound)
-    {
+    public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
         compound.setInteger("Variant", this.getVariant());
     }
 
 
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
+    public void readEntityFromNBT(NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
         this.setVariant(compound.getInteger("Variant"));
     }
@@ -134,14 +129,17 @@ public class EntityTofuCow extends EntityCow {
     public EntityTofuCow createChild(EntityAgeable ageable) {
         EntityTofuCow tofuCow = new EntityTofuCow(this.world);
 
-       if(this.getVariant() == 1){
-           if(this.rand.nextInt(2)==0){
-               tofuCow.setVariant(0);
-           }else {
-               tofuCow.setVariant(1);
-           }
+        if (this.getVariant() == 1) {
+            if (this.rand.nextInt(2) == 0) {
+                tofuCow.setVariant(0);
+            } else {
+                tofuCow.setVariant(1);
+            }
         }
         return tofuCow;
     }
 
+    public float getBlockPathWeight(BlockPos pos) {
+        return (this.world.getBlockState(pos.down()).getBlock() == BlockLoader.tofuTerrain || this.world.getBlockState(pos.down()).getBlock() == BlockLoader.zundatofuTerrain) ? 10.0F : this.world.getLightBrightness(pos) - 0.5F;
+    }
 }
