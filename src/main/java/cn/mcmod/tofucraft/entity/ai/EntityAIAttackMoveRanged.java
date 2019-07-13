@@ -4,9 +4,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemBow;
-import net.minecraft.util.EnumHand;
 
 public class EntityAIAttackMoveRanged <T extends EntityMob & IRangedAttackMob> extends EntityAIBase
 {

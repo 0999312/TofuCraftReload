@@ -1,0 +1,12 @@
+{
+  "result": {
+    "item": "tofucraft:tofuhell",
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:blocktofuhell"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

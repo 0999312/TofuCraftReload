@@ -230,6 +230,7 @@ public class ItemLoader {
 	public static ItemArmorBase metalboots = new ItemArmorBase(TofuArmorMaterial.METAL, EntityEquipmentSlot.FEET,"armormetalboots").setArmorTexture("tofucraft:textures/armor/armor_metal_1.png");
 
 	public static ItemSoybeans soybeans = new ItemSoybeans();
+	public static ItemSoybeansNether soybeansHell = new ItemSoybeansNether();
 
 	public static Item fukumame = new ItemFukumame();
 
@@ -316,6 +317,7 @@ public class ItemLoader {
 		register(foodsetContain);
 		register(nigari);
 		register(soybeans);
+		register(soybeansHell);
 		register(fukumame);
 		register(rice.setUnlocalizedName(TofuMain.MODID+"."+"rice"));
 		register(riceseed);
@@ -401,6 +403,7 @@ public class ItemLoader {
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
     {
+		registerRender(soybeansHell);
 		registerRender(tofu_slime_radar);
 		registerRender(soymilk_ramune);
 		registerRender(soymilk_drink);

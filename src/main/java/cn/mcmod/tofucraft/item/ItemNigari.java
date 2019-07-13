@@ -45,10 +45,10 @@ public class ItemNigari extends Item {
                 {
                     var13 = BlockLoader.KINUTOFU;
                 }
-               /* else if (var11 == TcBlocks.soymilkHellStill)
+                else if (var11 == BlockLoader.SOYMILKHELL)
                 {
-                    var13 = TcBlocks.tofuHell;
-                }*/
+                    var13 = BlockLoader.TOFUHELL;
+                }
 
                 if (var13 != null)
                 {

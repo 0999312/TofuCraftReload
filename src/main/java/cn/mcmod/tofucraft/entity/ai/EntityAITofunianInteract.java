@@ -2,7 +2,6 @@ package cn.mcmod.tofucraft.entity.ai;
 
 import cn.mcmod.tofucraft.entity.EntityTofunian;
 import cn.mcmod.tofucraft.item.ItemLoader;
-import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
