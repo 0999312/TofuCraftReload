@@ -1,26 +1,35 @@
 {
-  "forge_marker": 1,
-  "variants": {
-    "soymilk": {
-      "model": "forge:fluid",
-      "custom": {
-        "fluid": "soymilk"
+   "forge_marker" : 1,
+   "variants" : {
+      "soymilk" : {
+         "model" : "forge:fluid",
+         "custom" : {
+            "fluid" : "soymilk"
+         }
+      },
+      "nigari" : {
+         "model" : "forge:fluid",
+         "custom" : {
+            "fluid" : "nigari"
+         }
+      },
+      "zunda_soymilk" : {
+         "model" : "forge:fluid",
+         "custom" : {
+            "fluid" : "zunda_soymilk"
+         }
+      },
+      "soysauce" : {
+         "model" : "forge:fluid",
+         "custom" : {
+            "fluid" : "soysauce"
+         }
+      },
+      "soymilk_hell" : {
+         "model" : "forge:fluid",
+         "custom" : {
+            "fluid" : "soymilk_hell"
+         }
       }
-    },"nigari": {
-      "model": "forge:fluid",
-      "custom": {
-        "fluid": "nigari"
-      }
-    },"zunda_soymilk": {
-      "model": "forge:fluid",
-      "custom": {
-        "fluid": "zunda_soymilk"
-      }
-    },"soysauce": {
-      "model": "forge:fluid",
-      "custom": {
-        "fluid": "soysauce"
-      }
-    }
-  }
+   }
 }

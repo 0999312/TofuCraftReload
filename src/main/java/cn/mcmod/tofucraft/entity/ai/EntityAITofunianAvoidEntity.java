@@ -4,10 +4,7 @@ import cn.mcmod.tofucraft.entity.EntityTofunian;
 import cn.mcmod.tofucraft.entity.TofuVillages;
 import com.google.common.base.Predicates;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.monster.EntityEvoker;
 
 public class EntityAITofunianAvoidEntity<T extends Entity> extends EntityAIAvoidEntity {
     protected EntityTofunian entity;

@@ -44,6 +44,8 @@ public class BlockLoader {
 	public static Fluid NIGARI_FLUID;
 	public static Block SOYSAUCE;
 	public static Fluid SOYSAUCE_FLUID;
+	public static Block SOYMILKHELL;
+	public static Fluid SOYMILKHELL_FLUID;
 
 	public static Block SALTFURNACE = new BlockSaltFurnace(false).setCreativeTab(CommonProxy.tab);
 	public static Block SALTFURNACE_LIT = new BlockSaltFurnace(true);
@@ -56,9 +58,11 @@ public class BlockLoader {
 	public static Block GRILD = new BlockTofu(TofuType.grilled);
 	public static Block TOFUDRIED = new BlockTofu(TofuType.dried);
 	public static Block TOFUZUNDA = new BlockTofu(TofuType.zunda);
+	public static Block TOFUHELL = new BlockTofu(TofuType.hell);
 
 	public static BlockLeek LEEK = new BlockLeek();
 	public static Block SOYBEAN = new BlockSoybean();
+	public static Block SOYBEAN_NETHER = new BlockSoybeanNether();
     public static Block SPROUTS = new BlockSprouts();
 	public static Block RICECROP = new BlockRice();
 	public static Block tofuTerrain = new BlockTofuTerrain(SoundType.CLOTH);
@@ -114,10 +118,15 @@ public class BlockLoader {
 	public static BlockBarrel MISOTOFUBARREL = new BlockBarrel(new ItemStack(ItemLoader.tofu_food,3,11), new ItemStack[]{
 			new ItemStack(ItemLoader.tofu_food,3,1),new ItemStack(ItemLoader.material,3,2)
 	}).setDrain(3);
+	
+	public static BlockYuba YUBA_FLOW = new BlockYuba();
 	public BlockLoader(FMLPreInitializationEvent event) {
 		SOYMILK_FLUID = SoyMilkFluid.instance;
 		FluidRegistry.addBucketForFluid(SOYMILK_FLUID);
 		SOYMILK = registerFluidBlock(SOYMILK_FLUID, new BlockSoyMilk(SOYMILK_FLUID), "soymilk");
+		SOYMILKHELL_FLUID = SoyMilkHellFluid.instance;
+		FluidRegistry.addBucketForFluid(SOYMILKHELL_FLUID);
+		SOYMILKHELL = registerFluidBlock(SOYMILKHELL_FLUID, new BlockSoyMilk(SOYMILKHELL_FLUID), "soymilk_hell");
 
 		ZUNDASOYMILK_FLUID = ZundaSoyMilkFluid.instance;
 		FluidRegistry.addBucketForFluid(ZUNDASOYMILK_FLUID);
@@ -140,6 +149,7 @@ public class BlockLoader {
 		register(METALTOFU, new ItemBlock(METALTOFU), "blocktofumetal");
 		register(ANNINTOFU, new ItemBlock(ANNINTOFU), "blocktofuannin");
 		register(EGGTOFU, new ItemBlock(EGGTOFU), "blocktofuegg");
+		register(TOFUHELL, new ItemBlock(TOFUHELL), "blocktofuhell");
 		register(GRILD, new ItemBlock(GRILD), "blocktofugrilled");
 		register(TOFUDRIED, new ItemBlock(TOFUDRIED), "blocktofudried");
 		register(TOFUZUNDA, new ItemBlock(TOFUZUNDA), "blocktofuzunda");
@@ -150,8 +160,10 @@ public class BlockLoader {
 		register(MISOTOFUBARREL, new ItemBlock(MISOTOFUBARREL), "barrelmisotofu");
 		
 		register(LEEK, new ItemBlock(LEEK), "blockleek");
-		register(SOYBEAN, new ItemBlock(SOYBEAN), "soybean");
-        register(SPROUTS, new ItemBlock(SPROUTS), "blocksprouts");
+//		SOYBEAN_NETHER
+		registerNoItem(SOYBEAN, "soybean");
+		registerNoItem(SOYBEAN_NETHER, "soybean_nether");
+		registerNoItem(SPROUTS, "blocksprouts");
 		register(RICECROP, new ItemBlock(RICECROP), "ricecrop");
 		register(yubaGrass, new ItemBlock(yubaGrass), "yubagrass");
 		register(tofuTerrain, new ItemBlock(tofuTerrain), "tofu_terrain");
@@ -194,7 +206,7 @@ public class BlockLoader {
         register(TOFUORE_DIAMOND, new ItemBlock(TOFUORE_DIAMOND), "ore_tofudiamond");
         register(TOFUGEM_ORE, new ItemBlock(TOFUGEM_ORE), "blockoretofu");
 
-
+        registerNoItem(YUBA_FLOW, "blockyuba");
 		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
 		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
 		registerNoItem(TOFUISHI_DOOR, "tofudoor_ishi");
@@ -224,6 +236,8 @@ public class BlockLoader {
 
 	@SideOnly(Side.CLIENT)
 	public static void registerRenders() {
+		registerRender(TOFUHELL);
+		registerRender(YUBA_FLOW);
 		registerRender(MISOBARREL);
 		registerRender(DOUBANJIANGBARREL);
 		registerRender(MISOTOFUBARREL);

@@ -54,8 +54,6 @@ public class WorldGenApricotTrees extends WorldGenTrees {
 
                 if (state.getBlock().canSustainPlant(state, worldIn, position.down(), net.minecraft.util.EnumFacing.UP, BlockLoader.APRICOT_SAPLING) && position.getY() < worldIn.getHeight() - i - 1) {
                     state.getBlock().onPlantGrow(state, worldIn, position.down(), position);
-                    int k2 = 3;
-                    int l2 = 0;
 
                     for (int i3 = position.getY() - 3 + i; i3 <= position.getY() + i; ++i3) {
                         int i4 = i3 - (position.getY() + i);

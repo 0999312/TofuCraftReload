@@ -1,13 +1,10 @@
 package cn.mcmod.tofucraft.entity.ai;
 
 import cn.mcmod.tofucraft.block.BlockLoader;
-import cn.mcmod.tofucraft.entity.EntityTofunian;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
-import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIMoveToBlock;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
