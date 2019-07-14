@@ -110,6 +110,8 @@ public class BlockLoader {
     public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
     public static Block TOFUGEM_ORE = new BlockTofuGemOre();
 
+	public static Block YUBA_NOREN = new BlockYubaNoren();
+
 	public static BlockBarrel MISOBARREL = new BlockMisoBarrel().setDrain(3);
     public static BlockNattoBed NATTO = new BlockNattoBed(new ItemStack(ItemLoader.material, 6, 8), new ItemStack[]{
             new ItemStack(Items.WHEAT, 3), new ItemStack(ItemLoader.soybeans, 3)
@@ -206,6 +208,8 @@ public class BlockLoader {
         register(TOFUORE_DIAMOND, new ItemBlock(TOFUORE_DIAMOND), "ore_tofudiamond");
         register(TOFUGEM_ORE, new ItemBlock(TOFUGEM_ORE), "blockoretofu");
 
+		register(YUBA_NOREN, new ItemBlock(YUBA_NOREN), "yuba_noren");
+
         registerNoItem(YUBA_FLOW, "blockyuba");
 		registerNoItem(TOFUKINU_DOOR, "tofudoor_kinu");
 		registerNoItem(TOFUMOMEN_DOOR, "tofudoor_momen");
@@ -298,6 +302,7 @@ public class BlockLoader {
 
 		registerRender(TOFUFARMLAND);
 		registerRender(TOFUCHEST);
+		registerRender(YUBA_NOREN);
 	}
 
 	public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {

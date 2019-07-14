@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "YYY",
+    "YYY"
+  ],
+  "key": {
+    "Y": {
+      "item": "tofucraft:material",
+      "data": 32
+    }
+  },
+  "result": {
+    "item": "tofucraft:yuba_noren",
+    "count": 3
+  }
+}

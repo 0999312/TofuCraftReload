@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "tofucraft:yuba_noren"
+    },
+    "axis=x": {
+      "model": "tofucraft:yuba_noren"
+    }
+  }
+}
