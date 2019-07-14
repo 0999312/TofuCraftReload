@@ -134,6 +134,7 @@ tile.tofucraft.tofubedrock.name=Tofu BedRock
 tile.tofucraft.tofu_farmland.name=Tofu FarmLand
 tile.tofucraft.tofulog.name=Tofu Log
 tile.tofucraft.yubagrass.name=Yuba Grass
+tile.tofucraft.yuba_noren.name=Yuba Noren
 
 item.tofucraft.seeds_soybeans.name=Soybeans
 item.tofucraft.seeds_soybeansHell.name=Hell Soybeans
@@ -288,6 +289,7 @@ item.tofucraft.seeds_rice.name=Rice Seeds
 item.tofucraft.meatwrapped_yuba.name=Meat Wrapped Yuba
 item.tofucraft.apricotjerry.name=ApricotJerry Bottle
 item.tofucraft.apricotjerry_bread.name=ApricotJerry Bread
+item.tofucraft.annin_apple.name=Annin Apple
 
 item.tofucraft.armorkinuhelmet.name=Kinu Tofu Helmet
 item.tofucraft.armorkinuchestplate.name=Kinu Tofu Chestplate

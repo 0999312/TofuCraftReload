@@ -1,0 +1,35 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "tofucraft:blocks/blockyuba",
+		"1": "tofucraft:blocks/yuba_noren",
+		"particle": "tofucraft:blocks/blockyuba"
+	},
+	"elements": [
+		{
+			"from": [1, 2, 8],
+			"to": [15, 16, 9],
+			"faces": {
+				"north": {"uv": [1, 0, 15, 14], "texture": "#1"},
+				"east": {"uv": [0, 0, 1, 14], "texture": "#0"},
+				"south": {"uv": [1, 0, 15, 14], "texture": "#1"},
+				"west": {"uv": [0, 0, 1, 14], "texture": "#0"},
+				"up": {"uv": [0, 0, 14, 1], "texture": "#0"},
+				"down": {"uv": [0, 0, 14, 1], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"ground": {
+			"scale": [0.78, 0.78, 0.78]
+		},
+		"gui": {
+			"rotation": [35, -43, 0],
+			"translation": [0, -0.5, 0],
+			"scale": [0.88, 0.88, 0.88]
+		},
+		"fixed": {
+			"translation": [0, 0, -0.5]
+		}
+	}
+}
