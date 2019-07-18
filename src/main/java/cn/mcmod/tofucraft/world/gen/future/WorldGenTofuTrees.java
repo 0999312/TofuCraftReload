@@ -65,37 +65,30 @@ public class WorldGenTofuTrees extends WorldGenTrees {
             else
             {
                 IBlockState state = worldIn.getBlockState(position.down());
-
+                int j1;
                 if (state.getBlock().canSustainPlant(state, worldIn, position.down(), net.minecraft.util.EnumFacing.UP, BlockLoader.TOFU_SAPLING) && position.getY() < worldIn.getHeight() - i - 1)
                 {
                     state.getBlock().onPlantGrow(state, worldIn, position.down(), position);
 
                     for (int i3 = position.getY() - 3 + i; i3 <= position.getY() + i; ++i3)
                     {
-                        int i4 = i3 - (position.getY() + i);
-                        int j1 = 1 - i4 / 2;
+                        j1 = i / 3;
 
                         for (int k1 = position.getX() - j1; k1 <= position.getX() + j1; ++k1)
                         {
-                            int l1 = k1 - position.getX();
-
                             for (int i2 = position.getZ() - j1; i2 <= position.getZ() + j1; ++i2)
                             {
-                                int j2 = i2 - position.getZ();
+                                BlockPos blockpos = new BlockPos(k1, i3, i2);
+                                state = worldIn.getBlockState(blockpos);
 
-                                if (Math.abs(l1) != j1 || Math.abs(j2) != j1 || rand.nextInt(2) != 0 && i4 != 0)
+                                if (state.getBlock().isAir(state, worldIn, blockpos) || state.getBlock().isLeaves(state, worldIn, blockpos) || state.getMaterial() == Material.VINE)
                                 {
-                                    BlockPos blockpos = new BlockPos(k1, i3, i2);
-                                    state = worldIn.getBlockState(blockpos);
-
-                                    if (state.getBlock().isAir(state, worldIn, blockpos) || state.getBlock().isLeaves(state, worldIn, blockpos) || state.getMaterial() == Material.VINE)
-                                    {
-                                        this.setBlockAndNotifyAdequately(worldIn, blockpos, BlockLoader.TOFU_LEAVE.getDefaultState());
-                                    }
+                                    this.setBlockAndNotifyAdequately(worldIn, blockpos, BlockLoader.TOFU_LEAVE.getDefaultState());
                                 }
                             }
                         }
                     }
+                    
                     for (int j3 = 0; j3 < i; ++j3)
                     {
                         BlockPos upN = position.up(j3);
@@ -103,7 +96,7 @@ public class WorldGenTofuTrees extends WorldGenTrees {
 
                         if (state.getBlock().isAir(state, worldIn, upN) || state.getBlock().isLeaves(state, worldIn, upN) || state.getMaterial() == Material.VINE)
                         {
-                            this.setBlockAndNotifyAdequately(worldIn, position.up(j3), BlockLoader.TOFU_LOG.getDefaultState());
+                            this.setBlockAndNotifyAdequately(worldIn, position.up(j3), BlockLoader.ISHITOFU.getDefaultState());
 
                         }
                     }

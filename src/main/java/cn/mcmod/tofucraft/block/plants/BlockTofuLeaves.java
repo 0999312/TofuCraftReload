@@ -69,6 +69,12 @@ public class BlockTofuLeaves extends BlockLeaves {
     }
 
     @Override
+    public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
+    	// TODO Auto-generated method stub
+    	return super.canSustainLeaves(state, world, pos);
+    }
+    
+    @Override
     public Item getItemDropped(IBlockState state, Random random, int fortune) {
         return Item.getItemFromBlock(BlockLoader.TOFU_SAPLING);
     }

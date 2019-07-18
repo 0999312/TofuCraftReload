@@ -32,31 +32,23 @@ public class BlockTofuSapling extends BlockBush implements IGrowable{
     @Override
     public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
         WorldGenerator treeGenerator = new WorldGenTofuTrees(true);
-
         world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
-
         if (!treeGenerator.generate(world, rand, pos)) {
-
             world.setBlockState(pos, state, 4);
-
         }
     }
     @Override
     protected boolean canSustainBush(IBlockState state) {
-
         Block block = state.getBlock();
-        return block == Blocks.GRASS || block == Blocks.DIRT || block == BlockLoader.tofuTerrain || block == BlockLoader.MOMENTOFU;
+        return block == BlockLoader.tofuTerrain || block == BlockLoader.MOMENTOFU;
     }
 
     @Override
     public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
         BlockPos down = pos.down();
-
         IBlockState soil = world.getBlockState(down);
-
         return soil.getBlock().canSustainPlant(soil, world, down, EnumFacing.UP, this);
     }
-
 
     @Override
     public net.minecraftforge.common.EnumPlantType getPlantType(net.minecraft.world.IBlockAccess world, BlockPos pos) {
@@ -72,14 +64,11 @@ public class BlockTofuSapling extends BlockBush implements IGrowable{
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         if (!worldIn.isRemote) {
             super.updateTick(worldIn, pos, state, rand);
-
             if (worldIn.getLightFromNeighbors(pos.up()) >= 0 && rand.nextInt(7) == 0) {
                 this.grow(worldIn, rand, pos, state);
             }
         }
     }
-
-
 
     @Override
     public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {

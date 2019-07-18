@@ -22,7 +22,6 @@ import java.util.Random;
 
 public class BlockYubaNoren extends Block {
 
-
     public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class, EnumFacing.Axis.X, EnumFacing.Axis.Z);
 
     protected static final AxisAlignedBB X_AABB = new AxisAlignedBB(0.05D, 0.1D, 0.375D, 0.95D, 1.0D, 0.625D);
@@ -49,7 +48,7 @@ public class BlockYubaNoren extends Block {
     }
 
     protected boolean canSustainNoren(IBlockState state) {
-        return state.getBlock().isFullCube(state);
+        return state.isFullCube();
     }
 
     public boolean canBlockStay(World worldIn, BlockPos pos) {
@@ -61,7 +60,7 @@ public class BlockYubaNoren extends Block {
         this.checkAndDropBlock(world, pos, state);
     }
 
-        @Override
+    @Override
     @Deprecated
     public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos fromPos) {
         super.neighborChanged(state, world, pos, block, fromPos);

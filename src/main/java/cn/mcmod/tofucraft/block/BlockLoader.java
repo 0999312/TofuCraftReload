@@ -70,7 +70,6 @@ public class BlockLoader {
 	public static BlockUnderVine yubaGrass = new BlockTofuYuba();
 	public static BlockTofuSapling TOFU_SAPLING = new BlockTofuSapling();
 	public static BlockTofuLeaves TOFU_LEAVE = new BlockTofuLeaves();
-	public static Block TOFU_LOG = new BlockTofuLog();
 	public static BlockApricotSapling APRICOT_SAPLING = new BlockApricotSapling();
 	public static BlockApricotLeaves APRICOT_LEAVE = new BlockApricotLeaves();
 	public static BlockCake tofu_Cake = new BlockTofuCake();
@@ -172,7 +171,6 @@ public class BlockLoader {
 		register(zundatofuTerrain, new ItemBlock(zundatofuTerrain), "zundatofu_terrain");
 		register(TOFU_SAPLING, new ItemBlock(TOFU_SAPLING), "sapling_tofu");
 		register(TOFU_LEAVE, new ItemBlock(TOFU_LEAVE), "leaves_tofu");
-		register(TOFU_LOG, new ItemBlock(TOFU_LOG), "tofulog");
 		register(APRICOT_SAPLING, new ItemBlock(APRICOT_SAPLING), "sapling_apricot");
 		register(APRICOT_LEAVE, new ItemBlock(APRICOT_LEAVE), "leaves_apricot");
 
@@ -265,7 +263,6 @@ public class BlockLoader {
 		registerRender(tofuTerrain);
 		registerRender(zundatofuTerrain);
 		registerRender(TOFU_LEAVE);
-		registerRender(TOFU_LOG);
 		registerRender(APRICOT_SAPLING);
 		registerRender(APRICOT_LEAVE);
 		registerRender(tofu_PORTAL);

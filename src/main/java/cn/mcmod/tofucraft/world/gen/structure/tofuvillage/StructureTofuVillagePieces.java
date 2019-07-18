@@ -79,7 +79,7 @@ public class StructureTofuVillagePieces {
 
     private static Village findAndCreateComponentFactory(Start start, PieceWeight weight, List<StructureComponent> structureComponents, Random rand, int structureMinX, int structureMinY, int structureMinZ, EnumFacing facing, int componentType) {
         Class<? extends StructureTofuVillagePieces.Village> oclass = weight.villagePieceClass;
-        StructureBoundingBox structureboundingbox = Torch.findPieceBox(start, structureComponents, rand, structureMinX, structureMinY, structureMinZ, facing);
+//        StructureBoundingBox structureboundingbox = Torch.findPieceBox(start, structureComponents, rand, structureMinX, structureMinY, structureMinZ, facing);
         Object village = null;
         if (oclass == StructureTofuVillagePieces.WoodHut.class)
         {
@@ -235,9 +235,9 @@ public class StructureTofuVillagePieces {
 
             this.setBlockState(worldIn, Blocks.CRAFTING_TABLE.getDefaultState(), 1, 1, 4, structureBoundingBoxIn);
 
-            this.setBlockState(worldIn, BlockLoader.TOFU_LOG.getDefaultState(), 1, 5, 1, structureBoundingBoxIn);
+            this.setBlockState(worldIn, BlockLoader.ISHITOFU.getDefaultState(), 1, 5, 1, structureBoundingBoxIn);
             this.setBlockState(worldIn, BlockLoader.TOFU_LEAVE.getDefaultState(), 1, 6, 1, structureBoundingBoxIn);
-            this.setBlockState(worldIn, BlockLoader.TOFU_LOG.getDefaultState(), 5, 5, 1, structureBoundingBoxIn);
+            this.setBlockState(worldIn, BlockLoader.ISHITOFU.getDefaultState(), 5, 5, 1, structureBoundingBoxIn);
             this.setBlockState(worldIn, BlockLoader.TOFU_LEAVE.getDefaultState(), 5, 6, 1, structureBoundingBoxIn);
 
             IBlockState iblockstate5 = Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH);
@@ -763,7 +763,6 @@ public class StructureTofuVillagePieces {
 
 
 
-        @SuppressWarnings("deprecation")
         protected IBlockState getBiomeSpecificBlockState(IBlockState blockstateIn) {
             net.minecraftforge.event.terraingen.BiomeEvent.GetVillageBlockID event = new net.minecraftforge.event.terraingen.BiomeEvent.GetVillageBlockID(startPiece == null ? null : startPiece.biome, blockstateIn);
             net.minecraftforge.common.MinecraftForge.TERRAIN_GEN_BUS.post(event);
@@ -860,7 +859,7 @@ public class StructureTofuVillagePieces {
             }
 
             IBlockState iblockstate = this.getBiomeSpecificBlockState(BlockLoader.TOFUISHI_BRICK.getDefaultState());
-            IBlockState iblockstate1 = this.getBiomeSpecificBlockState(BlockLoader.TOFUMOMEN_TORCH.getDefaultState());
+//            IBlockState iblockstate1 = this.getBiomeSpecificBlockState(BlockLoader.TOFUMOMEN_TORCH.getDefaultState());
             IBlockState soymilk = this.getBiomeSpecificBlockState(BlockLoader.SOYMILK.getDefaultState());
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 4, 12, 4, iblockstate, BlockLoader.SOYMILK.getDefaultState(), false);
             this.setBlockState(worldIn, soymilk, 2, 12, 2, structureBoundingBoxIn);
@@ -930,9 +929,6 @@ public class StructureTofuVillagePieces {
     }
 
     public static class FarmLand extends Village {
-        private boolean isTallHouse;
-        private int tablePosition;
-
         public FarmLand() {
         }
 
