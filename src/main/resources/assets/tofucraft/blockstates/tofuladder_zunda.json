@@ -1,0 +1,56 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:ladder",
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "facing=north": [
+      {
+        "model": "ladder",
+        "textures": {
+          "particle": "tofucraft:blocks/tofuladder_zunda",
+          "texture": "tofucraft:blocks/tofuladder_zunda"
+        }
+      }
+    ],
+    "facing=east": [
+      {
+        "model": "ladder",
+        "textures": {
+          "particle": "tofucraft:blocks/tofuladder_zunda",
+          "texture": "tofucraft:blocks/tofuladder_zunda"
+        },
+        "y": 90
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "ladder",
+        "textures": {
+          "particle": "tofucraft:blocks/tofuladder_zunda",
+          "texture": "tofucraft:blocks/tofuladder_zunda"
+        },
+        "y": 270
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "ladder",
+        "textures": {
+          "particle": "tofucraft:blocks/tofuladder_zunda",
+          "texture": "tofucraft:blocks/tofuladder_zunda"
+        },
+        "y": 180
+      }
+    ],
+    "inventory": [
+      {
+        "model": "builtin/generated",
+        "textures": {
+          "layer0": "tofucraft:blocks/tofuladder_zunda"
+        }
+      }
+    ]
+  }
+}
