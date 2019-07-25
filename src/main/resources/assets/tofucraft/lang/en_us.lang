@@ -450,5 +450,8 @@ entity.Villager.tofu_trader=Trader
 item.tofucraft.nanban.name=Chicken Nanban
 item.tofucraft.nanbantofu.name=Tofu Nanban
 
+subtitles.entity.tofunian.idle=Tofunian mutters
+subtitles.entity.tofunian.yes=Tofunian agrees
+
 tofucraft.radar.result.success=Found Tofu Slime's existence in this chuck.
 tofucraft.radar.result.failed=Can't find Tofu Slime in this chuck.

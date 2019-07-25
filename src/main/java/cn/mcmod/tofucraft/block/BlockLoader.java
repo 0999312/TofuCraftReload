@@ -59,7 +59,7 @@ public class BlockLoader {
 	public static Block TOFUDRIED = new BlockTofu(TofuType.dried);
 	public static Block TOFUZUNDA = new BlockTofu(TofuType.zunda);
 	public static Block TOFUHELL = new BlockTofu(TofuType.hell);
-	public static Block TOFUDIAMOND = new BlockTofu(TofuType.diamond);
+    public static Block TOFUDIAMOND = new BlockTofu(TofuType.diamond, Material.IRON);
 
 	public static BlockLeek LEEK = new BlockLeek();
 	public static Block SOYBEAN = new BlockSoybean();

@@ -433,6 +433,9 @@ entity.Tofunian.fisherman=漁業のトウフニアン
 entity.Tofunian.guard=護衛のトウフニアン
 entity.Tofunian.tofusmith=豆腐金属加工のトウフニアン
 
+subtitles.entity.tofunian.idle=トウフニアンがつぶやく
+subtitles.entity.tofunian.yes=トウフニアンが喜ぶ
+
 tofucraft.config.dimension_id=トーフワールドのDimensionID
 
 item.tofucraft.nanban.name=チキン南蛮

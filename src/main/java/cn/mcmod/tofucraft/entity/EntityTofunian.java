@@ -4,6 +4,7 @@ import cn.mcmod.tofucraft.entity.ai.EntityAIHarvestTofuFarmland;
 import cn.mcmod.tofucraft.entity.ai.EntityAITofunianAvoidEntity;
 import cn.mcmod.tofucraft.entity.ai.EntityAITofunianInteract;
 import cn.mcmod.tofucraft.item.ItemLoader;
+import cn.mcmod.tofucraft.sound.TofuSounds;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -151,7 +152,7 @@ public class EntityTofunian extends EntityVillager {
     @Override
     protected SoundEvent getAmbientSound() {
 
-        return null;
+        return TofuSounds.TOFUNIAN_AMBIENT;
     }
 
 
@@ -619,9 +620,12 @@ public class EntityTofunian extends EntityVillager {
     @Override
 
     public void playSound(SoundEvent soundIn, float volume, float pitch) {
-
+        if (soundIn == SoundEvents.ENTITY_VILLAGER_YES) {
+            super.playSound(TofuSounds.TOFUNIAN_YES, volume, pitch);
+            return;
+        }
         //cancel villager trade sounds
-        if (soundIn == SoundEvents.ENTITY_VILLAGER_YES || soundIn == SoundEvents.ENTITY_VILLAGER_NO) {
+        if (soundIn == SoundEvents.ENTITY_VILLAGER_NO) {
 
             return;
 
