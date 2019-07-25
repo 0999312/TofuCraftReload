@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TT",
+    "T#",
+    " #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "tofucraft:blocktofudiamond"
+    }
+  },
+  "result": {
+    "item": "tofucraft:tooldiamondaxe"
+  }
+}

@@ -5,7 +5,10 @@ import cn.mcmod.tofucraft.entity.TofuVillages;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.world.WorldProviderTofu;
 import cn.mcmod.tofucraft.world.biome.TofuBiomes;
+import cn.mcmod.tofucraft.world.gen.future.TofuOreGenerator;
 import cn.mcmod.tofucraft.world.gen.structure.MapGenTofuVillage;
+import cn.mcmod.tofucraft.world.gen.structure.tofucastle.MapGenTofuCastle;
+import cn.mcmod.tofucraft.world.gen.structure.tofucastle.TofuCastlePiece;
 import cn.mcmod.tofucraft.world.gen.structure.tofumineshaft.StructureTofuMineshaftPieces;
 import cn.mcmod.tofucraft.world.gen.structure.tofumineshaft.StructureTofuMineshaftStart;
 import cn.mcmod.tofucraft.world.gen.structure.tofuvillage.StructureTofuVillagePieces;
@@ -31,6 +34,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION)
@@ -70,10 +74,14 @@ public class TofuMain {
 
         TofuEntityRegister.entitySpawn();
 
+        GameRegistry.registerWorldGenerator(new TofuOreGenerator(), 0);
+
         MapGenStructureIO.registerStructure(MapGenTofuVillage.Start.class,"TofuVillage");
         StructureTofuVillagePieces.registerVillagePieces();
         MapGenStructureIO.registerStructure(StructureTofuMineshaftStart.class,"TofuMineshaft");
         StructureTofuMineshaftPieces.registerStructurePieces();
+        MapGenStructureIO.registerStructure(MapGenTofuCastle.Start.class, "TofuCastle");
+        TofuCastlePiece.registerTofuCastlePiece();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new TofuGuiHandler());
 

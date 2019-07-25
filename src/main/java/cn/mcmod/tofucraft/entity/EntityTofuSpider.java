@@ -28,7 +28,7 @@ public class EntityTofuSpider extends EntitySpider implements IRangedAttackMob {
     protected void initEntityAI()
     {
         this.tasks.addTask(1, new EntityAISwimming(this));
-        this.tasks.addTask(3,new EntityAIAttackMoveRanged<>(this, 1.0D, 20, 17.0F));
+        this.tasks.addTask(3, new EntityAIAttackMoveRanged<>(this, 1.0D, 24, 17.0F));
         this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.8D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));

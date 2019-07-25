@@ -22,7 +22,7 @@ public class BlockTofuTerrain extends BlockTofuBase {
 
     @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        if (!worldIn.isRemote) {
+        if (!worldIn.isRemote && worldIn.getBlockState(pos) == BlockLoader.zundatofuTerrain.getDefaultState()) {
             if (!worldIn.isAreaLoaded(pos, 3))
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getLightOpacity(worldIn, pos.up()) > 2) {
