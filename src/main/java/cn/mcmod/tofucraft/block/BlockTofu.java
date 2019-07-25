@@ -1,6 +1,7 @@
 package cn.mcmod.tofucraft.block;
 
 import cn.mcmod.tofucraft.CommonProxy;
+import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.TofuBlockUtils;
@@ -93,13 +94,13 @@ public class BlockTofu extends BlockTofuBase{
 
     @Override
     public Item getItemDropped(IBlockState state, Random par2Random, int par3) {
-        return tofuType.getItemStack().getItem();
+        return (tofuType!=null)?tofuType.getItemStack().getItem():ItemLoader.tofu_food;
     }
 
     @Override
     public int damageDropped(IBlockState state)
     {
-        return tofuType.getItemStack().getMetadata();
+        return (tofuType!=null)?tofuType.getItemStack().getMetadata():super.damageDropped(state);
     }
 
     /**

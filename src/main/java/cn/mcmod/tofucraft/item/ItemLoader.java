@@ -36,17 +36,17 @@ public class ItemLoader {
             new float[]{0.1F, 0.1F, 0.4F, 0.2F, 0.2F, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.8F},
             new String[]{
                     TofuMain.MODID + "." + "tofukinu",//0
-                    TofuMain.MODID + "." + "tofumomen",
-                    TofuMain.MODID + "." + "tofuishi",
-                    TofuMain.MODID + "." + "tofugrilled",
-                    TofuMain.MODID + "." + "tofufriedpouch",
-                    TofuMain.MODID + "." + "tofufried",
-                    TofuMain.MODID + "." + "tofuegg",
-                    TofuMain.MODID + "." + "tofuannin",
-                    TofuMain.MODID + "." + "tofusesame",
-                    TofuMain.MODID + "." + "tofuzunda",
-                    TofuMain.MODID + "." + "tofustrawberry",
-                    TofuMain.MODID + "." + "tofumiso"
+                    TofuMain.MODID + "." + "tofumomen",//1
+                    TofuMain.MODID + "." + "tofuishi",//2
+                    TofuMain.MODID + "." + "tofugrilled",//3
+                    TofuMain.MODID + "." + "tofufriedpouch",//4
+                    TofuMain.MODID + "." + "tofufried",//5
+                    TofuMain.MODID + "." + "tofuegg",//6
+                    TofuMain.MODID + "." + "tofuannin",//7
+                    TofuMain.MODID + "." + "tofusesame",//8
+                    TofuMain.MODID + "." + "tofuzunda",//9
+                    TofuMain.MODID + "." + "tofustrawberry",//10
+                    TofuMain.MODID + "." + "tofumiso"//11
             }
     ).setFastEat();
     public static ItemFood tofu_hell = (ItemFood) new ItemFood(2, 0.2f, false)
@@ -400,6 +400,11 @@ public class ItemLoader {
 		tofuItemRegister(TofuType.diamond,new ItemStack(tofu_material,1,1));
 		tofuItemRegister(TofuType.zunda,new ItemStack(tofu_food,1,9));
 		tofuItemRegister(TofuType.dried,new ItemStack(tofu_material,1,2));
+		tofuItemRegister(TofuType.sesame,new ItemStack(tofu_food,1,8));
+		tofuItemRegister(TofuType.strawberry,new ItemStack(tofu_food,1,10));
+		tofuItemRegister(TofuType.miso,new ItemStack(tofu_food,1,11));
+		tofuItemRegister(TofuType.hell,new ItemStack(tofu_hell,1));
+		
 	}
 
     @SideOnly(Side.CLIENT)
