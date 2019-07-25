@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.entity;
 
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.client.render.*;
+import cn.mcmod.tofucraft.entity.projectile.EntityBeam;
 import cn.mcmod.tofucraft.entity.projectile.EntityFukumame;
 import cn.mcmod.tofucraft.entity.projectile.EntityZundaArrow;
 import net.minecraft.entity.EntityLiving;
@@ -23,6 +24,7 @@ import java.util.List;
 public class TofuEntityRegister {
 
     public static EnumCreatureAttribute tofunian = EnumHelper.addCreatureAttribute("tofunian");
+    public static EnumCreatureAttribute tofuTurret = EnumHelper.addCreatureAttribute("tofu_turret");
 
 
     public static void entityRegister() {
@@ -34,7 +36,11 @@ public class TofuEntityRegister {
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "fukumame"), EntityFukumame.class, prefix("Fukumame"), 6, TofuMain.instance, 100, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "zundaarrow"), EntityZundaArrow.class, prefix("ZundaArrow"), 7, TofuMain.instance, 100, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofufish"), EntityTofuFish.class, prefix("TofuFish"), 8, TofuMain.instance, 80, 3, true, 0xEBE8E8, 0x3a3e3f);
-        //EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofugurdian"), EntityTofuGurdian.class, prefix("TofuGurdian"), 9, TofuMain.instance, 120, 3, true, 0xEBE8E8, 0x3a3e3f);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofuturret"), EntityTofuTurret.class, prefix("TofuTurret"), 9, TofuMain.instance, 90, 3, true, 0xe5e0bd, 0x9cd6f5);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "beam"), EntityBeam.class, prefix("Beam"), 10, TofuMain.instance, 100, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofumindcore"), EntityTofuMindCore.class, prefix("TofuMindCore"), 11, TofuMain.instance, 90, 3, true, 0xe5e0bd, 0x9cd6f5);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofugandlem"), EntityTofuGandlem.class, prefix("TofuGandlem"), 12, TofuMain.instance, 120, 3, true, 0xe5e0bd, 0x9cd6f5);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "falltofu"), EntityFallTofu.class, prefix("FallTofu"), 13, TofuMain.instance, 120, 2, true);
 
 
         EntitySpawnPlacementRegistry.setPlacementType(EntityTofuFish.class, EntityLiving.SpawnPlacementType.IN_WATER);
@@ -56,6 +62,11 @@ public class TofuEntityRegister {
         RenderingRegistry.registerEntityRenderingHandler(EntityFukumame.class, RenderFukumame::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityZundaArrow.class, RenderZundaArrow::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTofuFish.class, RenderTofuFish::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTofuTurret.class, RenderTofuTurret::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityBeam.class, RenderBeam::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTofuMindCore.class, RenderTofuMindCore::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTofuGandlem.class, RenderTofuGandlem::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityFallTofu.class, RenderFallTofu::new);
     }
     public static void entitySpawn() {
 

@@ -193,21 +193,25 @@ public class ItemLoader {
 	public static ItemSwordBasic momenTofuSword = new ItemSwordBasic(TofuToolMaterial.MOMEN,"swordmomen");
 	public static ItemSwordBasic ishiTofuSword = new ItemSwordBasic(TofuToolMaterial.SOLID,"swordsolid");
 	public static ItemSwordBasic metalTofuSword = new ItemSwordBasic(TofuToolMaterial.METAL,"swordmetal");
+	public static ItemSwordBasic diamondTofuSword = new ItemSwordBasic(TofuToolMaterial.DIAMOND, "sworddiamond");
 
 	public static ItemPickaxeBasic kinuTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.KINU,"toolkinupickaxe");
 	public static ItemPickaxeBasic momenTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.MOMEN,"toolmomenpickaxe");
 	public static ItemPickaxeBasic ishiTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.SOLID,"toolsolidpickaxe");
 	public static ItemPickaxeBasic metalTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.METAL,"toolmetalpickaxe");
+	public static ItemPickaxeBasic diamondTofuPickaxe = new ItemPickaxeBasic(TofuToolMaterial.METAL, "tooldiamondpickaxe");
 
 	public static ItemShovelBasic kinuTofuShovel = new ItemShovelBasic(TofuToolMaterial.KINU,"toolkinushovel");
 	public static ItemShovelBasic momenTofuShovel = new ItemShovelBasic(TofuToolMaterial.MOMEN,"toolmomenshovel");
 	public static ItemShovelBasic ishiTofuShovel = new ItemShovelBasic(TofuToolMaterial.SOLID,"toolsolidshovel");
 	public static ItemShovelBasic metalTofuShovel = new ItemShovelBasic(TofuToolMaterial.METAL,"toolmetalshovel");
+	public static ItemShovelBasic diamondTofuShovel = new ItemShovelBasic(TofuToolMaterial.METAL, "tooldiamondshovel");
 
 	public static ItemAxeBasic kinuTofuAxe = new ItemAxeBasic(TofuToolMaterial.KINU,0.0F,-2.6F,"toolkinuaxe");
 	public static ItemAxeBasic momenTofuAxe = new ItemAxeBasic(TofuToolMaterial.MOMEN,0.5F,-2.8F,"toolmomenaxe");
 	public static ItemAxeBasic ishiTofuAxe = new ItemAxeBasic(TofuToolMaterial.SOLID,5.0F,-2.9F,"toolsolidaxe");
 	public static ItemAxeBasic metalTofuAxe = new ItemAxeBasic(TofuToolMaterial.METAL,7.0F,-2.95F,"toolmetalaxe");
+	public static ItemAxeBasic diamondTofuAxe = new ItemAxeBasic(TofuToolMaterial.METAL, 7.0F, -2.95F, "tooldiamondaxe");
 
 	public static ItemArmorBase kinuhelmet = new ItemArmorBase(TofuArmorMaterial.KINU, EntityEquipmentSlot.HEAD,"armorkinuhelmet").setArmorTexture("tofucraft:textures/armor/armor_kinu_1.png");
 	public static ItemArmorBase kinuchestplate = new ItemArmorBase(TofuArmorMaterial.KINU, EntityEquipmentSlot.CHEST,"armorkinuchestplate").setArmorTexture("tofucraft:textures/armor/armor_kinu_1.png");
@@ -343,6 +347,7 @@ public class ItemLoader {
 		register(momenTofuSword);
 		register(ishiTofuSword);
 		register(metalTofuSword);
+		register(diamondTofuSword);
 
 		register(zundaruby.setUnlocalizedName(TofuMain.MODID+"."+"zundaruby"));
 
@@ -350,16 +355,19 @@ public class ItemLoader {
 		register(momenTofuPickaxe);
 		register(ishiTofuPickaxe);
 		register(metalTofuPickaxe);
+		register(diamondTofuPickaxe);
 
 		register(kinuTofuShovel);
 		register(momenTofuShovel);
 		register(ishiTofuShovel);
 		register(metalTofuShovel);
+		register(diamondTofuShovel);
 
 		register(kinuTofuAxe);
 		register(momenTofuAxe);
 		register(ishiTofuAxe);
 		register(metalTofuAxe);
+		register(diamondTofuAxe);
 
 		register(kinuhelmet);
 		register(kinuchestplate);
@@ -439,21 +447,25 @@ public class ItemLoader {
         registerRender(momenTofuSword);
         registerRender(ishiTofuSword);
         registerRender(metalTofuSword);
+		registerRender(diamondTofuSword);
 
         registerRender(kinuTofuPickaxe);
         registerRender(momenTofuPickaxe);
         registerRender(ishiTofuPickaxe);
         registerRender(metalTofuPickaxe);
+		registerRender(diamondTofuPickaxe);
 
         registerRender(kinuTofuShovel);
         registerRender(momenTofuShovel);
         registerRender(ishiTofuShovel);
         registerRender(metalTofuShovel);
+		registerRender(diamondTofuShovel);
 
         registerRender(kinuTofuAxe);
         registerRender(momenTofuAxe);
         registerRender(ishiTofuAxe);
         registerRender(metalTofuAxe);
+		registerRender(diamondTofuAxe);
 
         registerRender(TOFUKINU_DOOR);
         registerRender(TOFUMOMEN_DOOR);
