@@ -72,7 +72,17 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         this.tasks.addTask(3, new AIHealSpell());
         this.tasks.addTask(4, new AITofuShoot());
         this.tasks.addTask(5, new AISummonSpell());
-        this.tasks.addTask(6, new EntityAIAttackMoveRanged<>(this, 1.0D, 60, 16.0F));
+        this.tasks.addTask(6, new EntityAIAttackMoveRanged(this, 1.0D, 60, 16.0F) {
+            @Override
+            public boolean shouldExecute() {
+                return super.shouldExecute() && !isSpellcasting();
+            }
+
+            @Override
+            public boolean shouldContinueExecuting() {
+                return super.shouldContinueExecuting() && !isSpellcasting();
+            }
+        });
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.1D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
@@ -85,7 +95,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
 
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(250.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(260.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.262896D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40D);
@@ -400,11 +410,18 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         protected void castSpell() {
             for (int i = 0; i < 3; ++i) {
                 BlockPos blockpos = (new BlockPos(EntityTofuGandlem.this)).add(-2 + EntityTofuGandlem.this.rand.nextInt(5), 1, -2 + EntityTofuGandlem.this.rand.nextInt(5));
-                EntityTofuTurret entityturret = new EntityTofuTurret(EntityTofuGandlem.this.world);
-                entityturret.moveToBlockPosAndAngles(blockpos, 0.0F, 0.0F);
-                entityturret.onInitialSpawn(EntityTofuGandlem.this.world.getDifficultyForLocation(blockpos), (IEntityLivingData) null);
-                entityturret.setOwner(EntityTofuGandlem.this);
-                EntityTofuGandlem.this.world.spawnEntity(entityturret);
+                if (EntityTofuGandlem.this.world.rand.nextInt(2) == 0) {
+                    EntityTofuTurret entityturret = new EntityTofuTurret(EntityTofuGandlem.this.world);
+                    entityturret.moveToBlockPosAndAngles(blockpos, 0.0F, 0.0F);
+                    entityturret.onInitialSpawn(EntityTofuGandlem.this.world.getDifficultyForLocation(blockpos), (IEntityLivingData) null);
+                    entityturret.setOwner(EntityTofuGandlem.this);
+                    EntityTofuGandlem.this.world.spawnEntity(entityturret);
+                } else {
+                    EntityTofuMindCore entityturret = new EntityTofuMindCore(EntityTofuGandlem.this.world);
+                    entityturret.moveToBlockPosAndAngles(blockpos, 0.0F, 0.0F);
+                    entityturret.onInitialSpawn(EntityTofuGandlem.this.world.getDifficultyForLocation(blockpos), (IEntityLivingData) null);
+                    EntityTofuGandlem.this.world.spawnEntity(entityturret);
+                }
             }
         }
 
@@ -501,7 +518,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         }
 
         protected int getCastingInterval() {
-            return 250;
+            return 260;
         }
 
         protected int getCastWarmupTime() {

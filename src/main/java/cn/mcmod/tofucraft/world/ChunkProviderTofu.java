@@ -134,10 +134,9 @@ public class ChunkProviderTofu implements IChunkGenerator {
 
 
         if (this.mapFeaturesEnabled) {
-            this.tofuCastle.generate(this.world, x, z, chunkprimer);
             this.mineshaft.generate(this.world, x, z, chunkprimer);
             this.villageGenerator.generate(this.world, x, z, chunkprimer);
-
+            this.tofuCastle.generate(this.world, x, z, chunkprimer);
         }
 
         Chunk chunk = new Chunk(this.world, chunkprimer, x, z);
@@ -490,9 +489,9 @@ public class ChunkProviderTofu implements IChunkGenerator {
         ChunkPos chunkpos = new ChunkPos(x, z);
 
         if (mapFeaturesEnabled) {
-            this.tofuCastle.generateStructure(this.world, this.rand, chunkpos);
             this.mineshaft.generateStructure(this.world, this.rand, chunkpos);
             this.villageGenerator.generateStructure(this.world, this.rand, chunkpos);
+            this.tofuCastle.generateStructure(this.world, this.rand, chunkpos);
         }
 
         biome.decorate(world, rand, blockpos);
@@ -554,9 +553,9 @@ public class ChunkProviderTofu implements IChunkGenerator {
     @Override
     public void recreateStructures(Chunk chunk, int x, int z) {
         if (this.mapFeaturesEnabled) {
-            this.tofuCastle.generate(this.world, x, z, null);
             this.mineshaft.generate(this.world, x, z, null);
             this.villageGenerator.generate(this.world, x, z, null);
+            this.tofuCastle.generate(this.world, x, z, null);
         }
     }
 }

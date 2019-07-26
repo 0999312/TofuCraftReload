@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
-version = "0.0.7"
+version = "0.0.7.1"
 group = "cn.mcmod.tofucraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "TofuCraftReload"
 

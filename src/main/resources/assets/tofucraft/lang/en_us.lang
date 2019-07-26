@@ -337,9 +337,9 @@ item.tofucraft.toolsolidaxe.name=Solid Tofu Axe
 item.tofucraft.toolmetalshovel.name=Metal Tofu Shovel
 item.tofucraft.toolmetalpickaxe.name=Metal Tofu Pickaxe
 item.tofucraft.toolmetalaxe.name=Metal Tofu Axe
-item.tofucraft.tooldiamondShovel.name=Diamond Tofu Shovel
-item.tofucraft.tooldiamondPickaxe.name=Diamond Tofu Pickaxe
-item.tofucraft.tooldiamondAxe.name=Diamond Tofu Axe
+item.tofucraft.tooldiamondshovel.name=Diamond Tofu Shovel
+item.tofucraft.tooldiamondpickaxe.name=Diamond Tofu Pickaxe
+item.tofucraft.tooldiamondaxe.name=Diamond Tofu Axe
 
 advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
@@ -449,6 +449,9 @@ item.tofucraft.chillstick.name=Chill Okara Stick
 entity.Villager.tofu_trader=Trader
 item.tofucraft.nanban.name=Chicken Nanban
 item.tofucraft.nanbantofu.name=Tofu Nanban
+
+subtitles.entity.tofunian.idle=Tofunian mutters
+subtitles.entity.tofunian.yes=Tofunian agrees
 
 tofucraft.radar.result.success=Found Tofu Slime's existence in this chuck.
 tofucraft.radar.result.failed=Can't find Tofu Slime in this chuck.
