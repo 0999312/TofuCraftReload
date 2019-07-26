@@ -1,3 +1,29 @@
 {
-   "tofubugle": {"category": "master","sounds": [{"name": "tofucraft:tofubugle1","stream": false},{"name": "tofucraft:tofubugle2","stream": false}]}
+  "tofubugle": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "tofucraft:tofubugle1",
+        "stream": false
+      },
+      {
+        "name": "tofucraft:tofubugle2",
+        "stream": false
+      }
+    ]
+  },
+  "mob.tofunian.yes": {
+    "category": "neutral",
+    "sounds": [
+      "tofucraft:tofunian/tofunian_yes"
+    ],
+    "subtitle": "subtitles.entity.tofunian.idle"
+  },
+  "mob.tofunian.ambient": {
+    "category": "neutral",
+    "sounds": [
+      "tofucraft:tofunian/tofunian_ambient"
+    ],
+    "subtitle": "subtitles.entity.tofunian.yes"
+  }
 }
