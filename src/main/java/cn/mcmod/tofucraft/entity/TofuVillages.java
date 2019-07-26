@@ -1,7 +1,6 @@
 package cn.mcmod.tofucraft.entity;
 
 import cn.mcmod.tofucraft.item.ItemLoader;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
@@ -72,69 +71,6 @@ public class TofuVillages {
             //Sell
             recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(ItemLoader.tofu_material, 2 + random.nextInt(2))));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(ItemLoader.tofu_material, 8 + random.nextInt(4),2)));
-        }
-    }
-
-    private static class TradeListTofunianLv1 implements EntityVillager.ITradeList {
-        @Override
-        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-            recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.tofu_food,26 + random.nextInt(4),2), new ItemStack(ItemLoader.zundaruby, 1)));
-            recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby,1 + random.nextInt(1)), new ItemStack(ItemLoader.tofustick, 1)));
-        }
-    }
-    private static class TradeListTofunianLv2 implements EntityVillager.ITradeList {
-        @Override
-        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-
-            if(random.nextBoolean()) {
-                ItemStack enchantedItemStack = new ItemStack(ItemLoader.metalTofuSword, 1);
-                ItemStack itemstack1 = EnchantmentHelper.addRandomEnchantment(random, new ItemStack(enchantedItemStack.getItem(), 1, enchantedItemStack.getMetadata()), 5 + random.nextInt(15), false);
-                recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, 5 + random.nextInt(4)), itemstack1));
-            }
-            recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.tofu_hell,10 + random.nextInt(6)), new ItemStack(ItemLoader.zundaruby)));
-        }
-    }
-
-    private static class TradeListTofunianLv3 implements EntityVillager.ITradeList {
-        @Override
-        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-
-            if(random.nextBoolean()) {
-                recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, 2 + random.nextInt(3)), new ItemStack(ItemLoader.material,1,22)));
-            }
-            recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.tofu_food,10 + random.nextInt(6),3), new ItemStack(ItemLoader.zundaruby)));
-        }
-    }
-
-    private static class TradeListTofunianLv4 implements EntityVillager.ITradeList {
-        @Override
-        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-
-            if(random.nextBoolean()) {
-                ItemStack enchantedItemStack = new ItemStack(ItemLoader.metalTofuPickaxe, 1);
-                ItemStack itemstack1 = EnchantmentHelper.addRandomEnchantment(random, new ItemStack(enchantedItemStack.getItem(), 1, enchantedItemStack.getMetadata()), 5 + random.nextInt(15), false);
-                recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, 6 + random.nextInt(4)), itemstack1));
-            }
-
-            if(random.nextBoolean()) {
-                recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, 2 + random.nextInt(3)), new ItemStack(ItemLoader.material,1,23)));
-            }else {
-                recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, 2 + random.nextInt(3)), new ItemStack(ItemLoader.material,1,24)));
-            }
-        }
-    }
-
-    private static class TradeListTofunianFisherLv1 implements EntityVillager.ITradeList {
-        @Override
-        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-            recipeList.add(new MerchantRecipe(new ItemStack(Items.COAL, 14 + random.nextInt(4)), new ItemStack(ItemLoader.zundaruby,1)));
-            recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.zundaruby, 1), new ItemStack(ItemLoader.tofu_food,8+ random.nextInt(4))));
-        }
-    }
-    private static class TradeListTofunianFisherLv2 implements EntityVillager.ITradeList {
-        @Override
-        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
-            recipeList.add(new MerchantRecipe(new ItemStack(Items.STRING, 14 + random.nextInt(4)), new ItemStack(ItemLoader.zundaruby,1)));
         }
     }
 }

@@ -50,7 +50,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     private float prevClientSideAttackingAnimation;
     private float clientSideAttackingAnimation;
 
-    private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.WHITE, BossInfo.Overlay.PROGRESS));
+    public final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.WHITE, BossInfo.Overlay.PROGRESS));
 
     public EntityTofuGandlem(World worldIn) {
         super(worldIn);
@@ -60,6 +60,11 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         this.experienceValue = 60;
     }
 
+    @Override
+    public boolean isNonBoss() {
+    	return false;
+    }
+    
     @Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new AIDoNothing());
@@ -267,7 +272,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
 
         projectile.setLocationAndAngles(this.posX + vec3d.x * 1.3D, this.posY + this.getEyeHeight(), this.posZ + vec3d.z * 1.3D, this.rotationYaw, this.rotationPitch);
 
-        float d0 = (this.rand.nextFloat() * 16.0F) - 8.0F;
+//        float d0 = (this.rand.nextFloat() * 16.0F) - 8.0F;
 
         projectile.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
         this.world.spawnEntity(projectile);
@@ -505,8 +510,8 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
 
         protected void castSpell() {
             EntityLivingBase entitylivingbase = EntityTofuGandlem.this.getAttackTarget();
-            double d0 = Math.min(entitylivingbase.posY, EntityTofuGandlem.this.posY);
-            double d1 = Math.max(entitylivingbase.posY, EntityTofuGandlem.this.posY) + 1.0D;
+//            double d0 = Math.min(entitylivingbase.posY, EntityTofuGandlem.this.posY);
+//            double d1 = Math.max(entitylivingbase.posY, EntityTofuGandlem.this.posY) + 1.0D;
             float f = (float) MathHelper.atan2(entitylivingbase.posZ - EntityTofuGandlem.this.posZ, entitylivingbase.posX - EntityTofuGandlem.this.posX);
 
 

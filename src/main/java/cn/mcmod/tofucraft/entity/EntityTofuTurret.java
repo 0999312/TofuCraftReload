@@ -139,7 +139,7 @@ public class EntityTofuTurret extends EntityMob implements IRangedAttackMob {
 
         projectile.setLocationAndAngles(this.posX + vec3d.x * 1.3D, this.posY + this.getEyeHeight(), this.posZ + vec3d.z * 1.3D, this.rotationYaw, this.rotationPitch);
 
-        float d0 = (this.rand.nextFloat() * 16.0F) - 8.0F;
+//        float d0 = (this.rand.nextFloat() * 16.0F) - 8.0F;
 
         projectile.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
         this.world.spawnEntity(projectile);
