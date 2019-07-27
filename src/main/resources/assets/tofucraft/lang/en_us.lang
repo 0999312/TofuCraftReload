@@ -357,7 +357,7 @@ advancements.tofucraft.enter_tofuworld.title=Enter TofuWorld
 advancements.tofucraft.enter_tofuworld.description=Entered TofuWorld
 
 container.tofucraft.SaltFurnace=Salt Furnace
-container.tofucraft.TfStorage=TF Storage
+container.tofucraft.tfstorage=TF Storage
 container.tofucraft.TfAntenna=TF Antenna
 container.tofucraft.TfSaturator=TF Saturator
 container.tofucraft.TfCondenser=TF Condenser

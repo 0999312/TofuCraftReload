@@ -1,0 +1,427 @@
+{
+  "credit": "Made with Blockbench",
+  "textures": {
+    "side": "tofucraft:blocks/tfmachine_side",
+    "front": "tofucraft:blocks/tfstorage_front_lit",
+    "particle": "tofucraft:blocks/tfmachine_side"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        11,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            11
+          ],
+          "texture": "#front"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            11
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            11
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            11
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        }
+      }
+    },
+    {
+      "name": "pipe",
+      "from": [
+        3,
+        11,
+        4
+      ],
+      "to": [
+        4,
+        16,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            1,
+            5
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            4,
+            5,
+            12,
+            10
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            1,
+            5
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            4,
+            6,
+            12,
+            11
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            1,
+            8
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            1,
+            8
+          ],
+          "texture": "#side"
+        }
+      }
+    },
+    {
+      "name": "pipe3",
+      "from": [
+        12,
+        11,
+        4
+      ],
+      "to": [
+        13,
+        16,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            1,
+            5
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            4,
+            5,
+            12,
+            10
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            1,
+            5
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            4,
+            6,
+            12,
+            11
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            1,
+            8
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            1,
+            8
+          ],
+          "texture": "#side"
+        }
+      }
+    },
+    {
+      "name": "pipe2",
+      "from": [
+        4,
+        11,
+        3
+      ],
+      "to": [
+        12,
+        16,
+        4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            5,
+            12,
+            10
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            1,
+            5
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            4,
+            5,
+            12,
+            10
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            4,
+            6,
+            12,
+            11
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8,
+            1
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8,
+            1
+          ],
+          "texture": "#side"
+        }
+      }
+    },
+    {
+      "name": "pipe4",
+      "from": [
+        4,
+        11,
+        12
+      ],
+      "to": [
+        12,
+        16,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            5,
+            12,
+            10
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            1,
+            5
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            4,
+            6,
+            12,
+            11
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            4,
+            6,
+            12,
+            11
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8,
+            1
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8,
+            1
+          ],
+          "texture": "#side"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "scale": [
+        0.31,
+        0.31,
+        0.31
+      ]
+    },
+    "thirdperson_lefthand": {
+      "scale": [
+        0.31,
+        0.31,
+        0.31
+      ]
+    },
+    "firstperson_righthand": {
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.31,
+        0.31,
+        0.31
+      ]
+    },
+    "firstperson_lefthand": {
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.31,
+        0.31,
+        0.31
+      ]
+    },
+    "ground": {
+      "scale": [
+        0.31,
+        0.31,
+        0.31
+      ]
+    },
+    "gui": {
+      "rotation": [
+        30,
+        134,
+        0
+      ],
+      "scale": [
+        0.39,
+        0.39,
+        0.39
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        4,
+        0
+      ]
+    },
+    "fixed": {
+      "scale": [
+        0.39,
+        0.39,
+        0.39
+      ]
+    }
+  }
+}

@@ -17,13 +17,13 @@
     "sounds": [
       "tofucraft:tofunian/tofunian_yes"
     ],
-    "subtitle": "subtitles.entity.tofunian.idle"
+    "subtitle": "subtitles.entity.tofunian.yes"
   },
   "mob.tofunian.ambient": {
     "category": "neutral",
     "sounds": [
       "tofucraft:tofunian/tofunian_ambient"
     ],
-    "subtitle": "subtitles.entity.tofunian.yes"
+    "subtitle": "subtitles.entity.tofunian.idle"
   }
 }

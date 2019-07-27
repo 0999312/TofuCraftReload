@@ -362,7 +362,7 @@ advancements.tofucraft.caringshooting.description=ずんだアローを射てmob
 
 container.tofucraft.SaltFurnace=製塩かまど
 container.tofucraft.TfAntenna=TFアンテナ
-container.tofucraft.TfStorage=TFストレージマシン
+container.tofucraft.tfstorage=TFストレージマシン
 container.tofucraft.TfSaturator=TFサチュレーター
 container.tofucraft.TfCondenser=TFコンデンスマシン
 container.tofucraft.TfOven=TFオーブン
