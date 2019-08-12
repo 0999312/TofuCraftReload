@@ -2,7 +2,7 @@ package cn.mcmod.tofucraft.tileentity;
 
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.mecha.BlockTFStorage;
-import cn.mcmod.tofucraft.item.ItemLoader;
+import cn.mcmod.tofucraft.item.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -20,6 +20,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -29,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityTFStorage extends TileEntity implements ITickable, IInventory {
+public class TileEntityTFStorage extends TileEntity implements ITickable, IInventory, IEnergyStorage {
     public FluidTank tank = new FluidTank(BlockLoader.SOYMILK_FLUID, 0, 2000) {
         @Override
         protected void onContentsChanged() {
@@ -38,9 +40,9 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
     };
 
     private int prosseceTime;
-    public float tfAmount = 0;
+    public int tfAmount = 0;
 
-    public float tfCapacity = 5000;
+    public int tfCapacity = 5000;
 
     @Override
     public void update() {
@@ -66,8 +68,27 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
                 processStack.shrink(1);
                 prosseceTime = 1;
             }
+        }
+
+        if (this.tfAmount >= 50) {
+            ItemStack processStack = this.inventory.get(0);
+            if (processStack.getItem() instanceof ItemAxeBasic || processStack.getItem() instanceof ItemPickaxeBasic || processStack.getItem() instanceof ItemShovelBasic || processStack.getItem() instanceof ItemSwordBasic) {
+                if (this.world.getWorldTime() % 100 == 0) {
+                    final IBlockState state = this.world.getBlockState(this.pos);
 
 
+                    if (processStack.getItemDamage() < processStack.getMaxDamage()) {
+                        processStack.setItemDamage(processStack.getItemDamage() - 1);
+                        tfAmount -= 50;
+                        this.markDirty();
+
+                        this.world.setBlockState(this.pos, state.withProperty(BlockTFStorage.LIT, this.isProsseced()));
+
+                        this.validate();
+                        this.world.setTileEntity(this.pos, this);
+                    }
+                }
+            }
         }
 
         final IBlockState state = this.world.getBlockState(this.pos);
@@ -257,7 +278,7 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
+        return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || capability == CapabilityEnergy.ENERGY || super.hasCapability(capability, facing);
     }
 
 
@@ -266,6 +287,8 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
         if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
             return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(tank);
+        } else if (capability == CapabilityEnergy.ENERGY) {
+            return (T) this;
         }
 
         return super.getCapability(capability, facing);
@@ -331,4 +354,37 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
         readPacketNBT(packet.getNbtCompound());
     }
 
+    @Override
+    public int receiveEnergy(int maxReceive, boolean simulate) {
+        return 0;
+    }
+
+    @Override
+    public int extractEnergy(int maxExtract, boolean simulate) {
+        if (!simulate) {
+            return 20;
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public int getEnergyStored() {
+        return this.tfAmount;
+    }
+
+    @Override
+    public int getMaxEnergyStored() {
+        return this.tfCapacity;
+    }
+
+    @Override
+    public boolean canExtract() {
+        return true;
+    }
+
+    @Override
+    public boolean canReceive() {
+        return false;
+    }
 }

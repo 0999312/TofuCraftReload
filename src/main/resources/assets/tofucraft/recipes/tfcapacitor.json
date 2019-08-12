@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "R#R",
+    " T "
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "#": {
+      "item": "tofucraft:material",
+      "data": 18
+    },
+    "T": {
+      "item": "tofucraft:tofu_material",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "tofucraft:material",
+    "data": 21
+  }
+}
