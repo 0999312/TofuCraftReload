@@ -516,9 +516,18 @@ potion.filling.postfix=饱腹药水
 enchantment.batch=范围采掘
 enchantment.drain=吸收
 
-entity.TofuSlime.name=豆腐史莱姆
-entity.TofuCreeper.name=豆腐苦力怕
-entity.Tofunian.name=豆腐村民
+entity.tofucraft.TofuCow.name=豆腐牛
+entity.tofucraft.TofuSlime.name=豆腐史莱姆
+entity.tofucraft.TofuCreeper.name=豆腐苦力怕
+entity.tofucraft.Tofunian.name=豆腐村民
+entity.tofucraft.TofuChinger.name=豆腐咬咬怪
+entity.Villager.tofu_trader=商人
+entity.tofucraft.TofuSpider.name=豆腐蜘蛛
+entity.tofucraft.Fukumame.name=福豆
+entity.tofucraft.TofuFish.name=豆腐鱼
+entity.tofucraft.TofuTurret.name=豆腐无人机
+entity.tofucraft.TofuMindCore.name=豆腐战士
+entity.tofucraft.TofuGandlem.name=豆腐战神
 
 commands.tofuslimecheck.found=这个区块似乎有豆腐史莱姆的踪迹。
 commands.tofuslimecheck.notFound=这个区块没有豆腐史莱姆的踪迹。
@@ -562,8 +571,6 @@ item.tofucraft.nanban.name=南蛮鸡
 item.tofucraft.nanbantofu.name=南蛮豆腐
 
 item.tofucraft.mayonnaise.name=蛋黄酱
-
-entity.Villager.tofu_trader=商人
 
 tofucraft.radar.result.success=在这个区块里发现了豆腐史莱姆的存在。
 tofucraft.radar.result.failed=在这个区块里无法发现豆腐史莱姆。
