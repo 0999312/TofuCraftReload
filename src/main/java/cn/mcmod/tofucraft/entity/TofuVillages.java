@@ -38,7 +38,15 @@ public class TofuVillages {
                 .addTrade(2, new TradeListTCookLv2())
                 .addTrade(3, new TradeListTCookLv4());
         ForgeRegistries.VILLAGER_PROFESSIONS.register((TofuVillages.ProfessionTofuCook));
+        VillagerRegistry.getById(0).getCareer(0).addTrade(2, new TradeListFarmerLv2());
+    }
 
+    public static class TradeListFarmerLv2 implements EntityVillager.ITradeList {
+        @Override
+        public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+            //Buy
+            recipeList.add(new MerchantRecipe(new ItemStack(ItemLoader.rice, 16 + random.nextInt(8)), new ItemStack(Items.EMERALD)));
+        }
     }
 
 

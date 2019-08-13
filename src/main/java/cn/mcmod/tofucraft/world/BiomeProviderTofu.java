@@ -14,6 +14,7 @@ import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraft.world.storage.WorldInfo;
+
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +22,6 @@ import java.util.List;
 import java.util.Random;
 
 public class BiomeProviderTofu extends BiomeProvider {
-    //RemiliaMarine氏のbiome
 
     public static ArrayList<Biome> allowedBiomes = new ArrayList<Biome>(Arrays.asList(
             TofuBiomes.TOFU_PLAINS,

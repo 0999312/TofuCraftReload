@@ -1,0 +1,41 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "uvlock": true
+  },
+  "variants": {
+    "facing=north,lit=false": {
+      "model": "tofucraft:tfstorage",
+      "y": 180
+    },
+    "facing=south,lit=false": {
+      "model": "tofucraft:tfstorage"
+    },
+    "facing=west,lit=false": {
+      "model": "tofucraft:tfstorage",
+      "y": 90
+    },
+    "facing=east,lit=false": {
+      "model": "tofucraft:tfstorage",
+      "y": 270
+    },
+    "facing=north,lit=true": {
+      "model": "tofucraft:tfstorage_lit",
+      "y": 180
+    },
+    "facing=south,lit=true": {
+      "model": "tofucraft:tfstorage_lit"
+    },
+    "facing=west,lit=true": {
+      "model": "tofucraft:tfstorage_lit",
+      "y": 90
+    },
+    "facing=east,lit=true": {
+      "model": "tofucraft:tfstorage_lit",
+      "y": 270
+    },
+    "inventory": {
+      "model": "tofucraft:tfstorage"
+    }
+  }
+}

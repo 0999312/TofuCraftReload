@@ -233,6 +233,11 @@ public class ItemLoader {
 	public static ItemArmorBase metalleggins = new ItemArmorBase(TofuArmorMaterial.METAL, EntityEquipmentSlot.LEGS,"armormetalleggins").setArmorTexture("tofucraft:textures/armor/armor_metal_2.png");
 	public static ItemArmorBase metalboots = new ItemArmorBase(TofuArmorMaterial.METAL, EntityEquipmentSlot.FEET,"armormetalboots").setArmorTexture("tofucraft:textures/armor/armor_metal_1.png");
 
+    public static ItemArmorBase diamondhelmet = new ItemArmorBase(TofuArmorMaterial.DIAMOND, EntityEquipmentSlot.HEAD, "armordiamondhelmet").setArmorTexture("tofucraft:textures/armor/armor_diamond_1.png");
+    public static ItemArmorBase diamondchestplate = new ItemArmorBase(TofuArmorMaterial.DIAMOND, EntityEquipmentSlot.CHEST, "armordiamondchestplate").setArmorTexture("tofucraft:textures/armor/armor_diamond_1.png");
+    public static ItemArmorBase diamondleggins = new ItemArmorBase(TofuArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, "armordiamondleggins").setArmorTexture("tofucraft:textures/armor/armor_diamond_2.png");
+    public static ItemArmorBase diamondboots = new ItemArmorBase(TofuArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, "armordiamondboots").setArmorTexture("tofucraft:textures/armor/armor_diamond_1.png");
+
 	public static ItemSoybeans soybeans = new ItemSoybeans();
 	public static ItemSoybeansNether soybeansHell = new ItemSoybeansNether();
 
@@ -388,6 +393,12 @@ public class ItemLoader {
 		register(metalchestplate);
 		register(metalleggins);
 		register(metalboots);
+
+        register(diamondhelmet);
+        register(diamondchestplate);
+        register(diamondleggins);
+        register(diamondboots);
+
 		register(zundaBow);
 		register(zundaArrow.setUnlocalizedName(TofuMain.MODID+"."+"zundaarrow"));
 
@@ -496,6 +507,11 @@ public class ItemLoader {
         registerRender(metalchestplate);
         registerRender(metalleggins);
         registerRender(metalboots);
+
+        registerRender(diamondhelmet);
+        registerRender(diamondchestplate);
+        registerRender(diamondleggins);
+        registerRender(diamondboots);
 
         registerRender(zundaBow);
         registerRender(zundaArrow);
