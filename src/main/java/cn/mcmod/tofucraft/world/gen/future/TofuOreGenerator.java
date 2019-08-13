@@ -20,7 +20,6 @@ public class TofuOreGenerator implements IWorldGenerator {
         }
     }
     private void generateOre(World world, Random random, int x, int z) {
-        //1チャンクで生成したい回数だけ繰り返す。
         if (world.provider instanceof WorldProviderSurface) {
             for (int i = 0; i < 9; i++) {
                 int genX = x + random.nextInt(16);

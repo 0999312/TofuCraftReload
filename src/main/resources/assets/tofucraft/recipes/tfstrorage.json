@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "T#T",
+    "#G#"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "#": {
+      "item": "tofucraft:blocktofumetal"
+    },
+    "T": {
+      "item": "tofucraft:material",
+      "data": 21
+    }
+  },
+  "result": {
+    "item": "tofucraft:tfstorage"
+  }
+}

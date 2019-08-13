@@ -8,9 +8,8 @@
       "data": 4
     },
     {
-      "item": "tofucraft:foodset",
-      "data": 2
+      "item": "#CROPRICE"
     }
   ],
-  "type": "minecraft:crafting_shapeless"
+  "type": "forge:ore_shapeless"
 }
