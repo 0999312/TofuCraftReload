@@ -19,10 +19,11 @@ public class RenderTofuGandlem extends RenderLiving<EntityTofuGandlem> {
     private static final ResourceLocation LOCATION = new ResourceLocation(TofuMain.MODID, "textures/mob/tofugandlem/tofugandlem.png");
     private static final ResourceLocation SLEEP_LOCATION = new ResourceLocation(TofuMain.MODID, "textures/mob/tofugandlem/tofugandlem_sleep.png");
 
-    public RenderTofuGandlem(RenderManager p_i48864_1_) {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public RenderTofuGandlem(RenderManager p_i48864_1_) {
         super(p_i48864_1_, new ModelTofuGandlem(), 0.5F);
         this.addLayer(new LayerGlowEye(this, "textures/mob/tofugandlem/tofugandlem_eye.png") {
-            @Override
+			@Override
             public void doRenderLayer(EntityLiving entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
                 if (entitylivingbaseIn instanceof EntityTofuGandlem) {
                     if (!((EntityTofuGandlem) entitylivingbaseIn).isSleep()) {
