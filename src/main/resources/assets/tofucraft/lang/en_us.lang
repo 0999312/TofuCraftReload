@@ -141,8 +141,11 @@ tile.tofucraft.tofulog.name=Tofu Log
 tile.tofucraft.yubagrass.name=Yuba Grass
 tile.tofucraft.yuba_noren.name=Yuba Noren
 
+tile.tofucraft.ricecrop.name=Rice Crop
+tile.tofucraft.saltfurnace_lit.name=Lit Saltfurnace
+
 item.tofucraft.seeds_soybeans.name=Soybeans
-item.tofucraft.seeds_soybeansHell.name=Hell Soybeans
+item.tofucraft.seeds_soybeans_hell.name=Hell Soybeans
 item.tofucraft.tofukinu.name=Kinugoshi Tofu
 item.tofucraft.tofumomen.name=Momen Tofu
 item.tofucraft.tofuishi.name=Solid Tofu
@@ -368,7 +371,7 @@ container.tofucraft.tofuchest=Tofu Chest
 
 fluid.soymilk=Soy Milk
 fluid.zunda_soymilk=Zunda SoyMilk
-fluid.soymilkHell=Hell Soy Milk
+fluid.soymilk_hell=Hell Soy Milk
 fluid.soysauce=Soy Sauce
 fluid.nigari=Bittern
 fluid.tofucraft.mineralSoymilk=Mineral Soy Milk
