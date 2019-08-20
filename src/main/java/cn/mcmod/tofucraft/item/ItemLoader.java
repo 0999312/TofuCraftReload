@@ -101,30 +101,30 @@ public class ItemLoader {
             TofuMain.MODID + "." + "soybeansparched",//6
             TofuMain.MODID + "." + "kinako",//7
             TofuMain.MODID + "." + "natto",//8
-			TofuMain.MODID+"."+"apricotseed",
-			TofuMain.MODID+"."+"filtercloth",
-			TofuMain.MODID+"."+"okara",
-			TofuMain.MODID+"."+"mincedpotato",
-			TofuMain.MODID+"."+"starchraw",
-			TofuMain.MODID+"."+"starch",
-			TofuMain.MODID+"."+"kyoninso",
-			TofuMain.MODID+"."+"leek",
-			TofuMain.MODID+"."+"zundama",
-			TofuMain.MODID+"."+"tofugem",
-			TofuMain.MODID+"."+"tofudiamondnugget",
-			TofuMain.MODID+"."+"tofuhamburgraw",
-			TofuMain.MODID+"."+"tfcapacitor",
-			TofuMain.MODID+"."+"tfcircuit",
-			TofuMain.MODID+"."+"tfcoil",
-			TofuMain.MODID+"."+"tfoscillator",
-			TofuMain.MODID+"."+"advtofugem",
-			TofuMain.MODID+"."+"activatedtofugem",
-			TofuMain.MODID+"."+"activatedhelltofu",
-			TofuMain.MODID+"."+"tofusomen",
-			TofuMain.MODID+"."+"glassbowl",
-			TofuMain.MODID+"."+"lemon",
+			TofuMain.MODID+"."+"apricotseed",//9
+			TofuMain.MODID+"."+"filtercloth",//10
+			TofuMain.MODID+"."+"okara",//11
+			TofuMain.MODID+"."+"mincedpotato",//12
+			TofuMain.MODID+"."+"starchraw",//13
+			TofuMain.MODID+"."+"starch",//14
+			TofuMain.MODID+"."+"kyoninso",//15
+			TofuMain.MODID+"."+"leek",//16
+			TofuMain.MODID+"."+"zundama",//17
+			TofuMain.MODID+"."+"tofugem",//18
+			TofuMain.MODID+"."+"tofudiamondnugget",//19
+			TofuMain.MODID+"."+"tofuhamburgraw",//20
+			TofuMain.MODID+"."+"tfcapacitor",//21
+			TofuMain.MODID+"."+"tfcircuit",//22
+			TofuMain.MODID+"."+"tfcoil",//23
+			TofuMain.MODID+"."+"tfoscillator",//24
+			TofuMain.MODID+"."+"advtofugem",//25
+			TofuMain.MODID+"."+"activatedtofugem",//26
+			TofuMain.MODID+"."+"activatedhelltofu",//27
+			TofuMain.MODID+"."+"tofusomen",//28
+			TofuMain.MODID+"."+"glassbowl",//29
+			TofuMain.MODID+"."+"lemon",//30
 			TofuMain.MODID+"."+"chill",//31
-			TofuMain.MODID+"."+"yuba"
+			TofuMain.MODID+"."+"yuba"//32
 	});
 	public static Item koujiBase = new ItemKoujiBase();
 	public static Item RollingPin = new ItemRolling();

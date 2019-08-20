@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft;
 
+import cn.mcmod.tofucraft.api.recipes.TofuEnergyMap;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TofuParticleType;
 import cn.mcmod.tofucraft.entity.TofuEntityRegister;
@@ -38,6 +39,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
+        TofuEnergyMap.init();
         TileEntityRegistry.init();
         VillagerTofu1.registerVillager();
         NetworkRegistry.INSTANCE.registerGuiHandler(TofuMain.instance, new TofuGuiHandler());

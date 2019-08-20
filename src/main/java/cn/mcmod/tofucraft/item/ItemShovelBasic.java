@@ -7,6 +7,6 @@ import net.minecraft.item.ItemSpade;
 public class ItemShovelBasic extends ItemSpade {
     public ItemShovelBasic(Item.ToolMaterial material, String name) {
         super(material);
-        this.setUnlocalizedName(TofuMain.MODID+"."+name);
+        this.setUnlocalizedName(TofuMain.MODID + "." + name);
     }
 }

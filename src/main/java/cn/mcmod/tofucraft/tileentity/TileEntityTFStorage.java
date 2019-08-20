@@ -1,8 +1,10 @@
 package cn.mcmod.tofucraft.tileentity;
 
+import cn.mcmod.tofucraft.api.recipes.TofuEnergyMap;
+import cn.mcmod.tofucraft.base.item.EnergyItem.IEnergyExtractable;
 import cn.mcmod.tofucraft.block.BlockLoader;
+import cn.mcmod.tofucraft.base.tileentity.TileEntityEnergyBase;
 import cn.mcmod.tofucraft.block.mecha.BlockTFStorage;
-import cn.mcmod.tofucraft.item.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -11,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
@@ -21,7 +22,6 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class TileEntityTFStorage extends TileEntity implements ITickable, IInventory, IEnergyStorage {
+public class TileEntityTFStorage extends TileEntityEnergyBase implements ITickable, IInventory {
     public FluidTank tank = new FluidTank(BlockLoader.SOYMILK_FLUID, 0, 2000) {
         @Override
         protected void onContentsChanged() {
@@ -39,84 +39,63 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
         }
     };
 
-    private int prosseceTime;
-    public int tfAmount = 0;
+    private int workload = 0;
+    private int current_workload = 0;
+    private static final int POWER = 10;
 
-    public int tfCapacity = 5000;
+    private static final int PARTIAL_AMOUNT = 100;
+    private static final int SOYMILK_POWER = 100;
+
+    public TileEntityTFStorage() {
+        super(5000);
+    }
 
     @Override
     public void update() {
-        if (this.world.isRemote) {
-            return;
-        }
+        if (this.world.isRemote) return;
 
-        if (0 < prosseceTime && prosseceTime < 200) {
-            ++prosseceTime;
-        }
-
-        if (prosseceTime == 0 && tfAmount < tfCapacity) {
-            ItemStack processStack = this.inventory.get(0);
-            FluidStack fluidStack = getTank().getFluid();
-
-
-            if (fluidStack != null && fluidStack.amount >= 100) {
-                this.tank.drain(100, true);
-                prosseceTime = 1;
+        //Consume beans inside machine
+        ItemStack from = this.inventory.get(0);
+        FluidStack milk = getTank().getFluid();
+        if (workload == 0){
+            if (from.getItem() instanceof IEnergyExtractable){
+                IEnergyExtractable symbol = (IEnergyExtractable) from.getItem();
+                workload += symbol.drain(from, POWER * 20, false);
+            }else if (TofuEnergyMap.getFuel(from) != -1){
+                workload += TofuEnergyMap.getFuel(from);
+                from.shrink(1);
             }
 
-            if (processStack.getItem() == ItemLoader.tofu_food) {
-                processStack.shrink(1);
-                prosseceTime = 1;
+            if (milk != null && milk.amount >= PARTIAL_AMOUNT){
+                tank.drain(PARTIAL_AMOUNT,true);
+                workload += SOYMILK_POWER;
             }
+            current_workload = workload;
         }
 
-        if (this.tfAmount >= 50) {
-            ItemStack processStack = this.inventory.get(0);
-            if (processStack.getItem() instanceof ItemAxeBasic || processStack.getItem() instanceof ItemPickaxeBasic || processStack.getItem() instanceof ItemShovelBasic || processStack.getItem() instanceof ItemSwordBasic) {
-                if (this.world.getWorldTime() % 100 == 0) {
-                    final IBlockState state = this.world.getBlockState(this.pos);
+        //Transform workload to power
+        final IBlockState state = world.getBlockState(pos);
+        if(workload > 0 && getEnergyStored() < getMaxEnergyStored()) {
+            workload -= receive(Math.min(workload, POWER), false);
+            if (world.getWorldTime()%100==0)
+                world.setBlockState(pos,state.withProperty(BlockTFStorage.LIT, true));
+        }else if (world.getWorldTime()%100==0)
+            world.setBlockState(pos,state.withProperty(BlockTFStorage.LIT,false));
 
+        this.markDirty();
 
-                    if (processStack.getItemDamage() < processStack.getMaxDamage()) {
-                        processStack.setItemDamage(processStack.getItemDamage() - 1);
-                        tfAmount -= 50;
-                        this.markDirty();
+        /*
+        * Program logic:
+        * 1. Check if the machine's workload still has space to add power to.
+        * 2. If true, then check if there's proper material to consume, then add to workload.
+        * 3. If false, work and give out energy
+        *
+        * Unsolved bugs:
+        * 1. Unknown sync problem
+        * */
 
-                        this.world.setBlockState(this.pos, state.withProperty(BlockTFStorage.LIT, this.isProsseced()));
-
-                        this.validate();
-                        this.world.setTileEntity(this.pos, this);
-                    }
-                }
-            }
-        }
-
-        final IBlockState state = this.world.getBlockState(this.pos);
-
-        if (state.getBlock() instanceof BlockTFStorage && state.getValue(BlockTFStorage.LIT) != this.isProsseced()) {
-            this.markDirty();
-
-            this.world.setBlockState(this.pos, state.withProperty(BlockTFStorage.LIT, this.isProsseced()));
-
-            this.validate();
-            this.world.setTileEntity(this.pos, this);
-        }
-
-        if (prosseceTime >= 200) {
-            prosseceTime = 0;
-            if (tfAmount < tfCapacity) {
-                tfAmount += 100;
-            }
-        }
     }
 
-    public boolean isProsseced() {
-        return this.prosseceTime > 0;
-    }
-
-    public int getProsseceTime() {
-        return this.prosseceTime;
-    }
 
     @SideOnly(Side.CLIENT)
     public FluidTank getClientTank() {
@@ -133,11 +112,6 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
 
             world.markAndNotifyBlock(pos, world.getChunkFromBlockCoords(pos), state, state, 11);
         }
-    }
-
-    @Override
-    public void markDirty() {
-        super.markDirty();
     }
 
     @Override
@@ -216,14 +190,14 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
 
     @SideOnly(Side.CLIENT)
     public int getProgressScaled(int par1) {
-        return this.prosseceTime * par1 / 200;
+        return this.current_workload==0?0:((this.current_workload-this.workload) * par1 / this.current_workload);
     }
 
     public int getField(int id) {
 
         switch (id) {
             case 0:
-                return this.prosseceTime;
+                return getEnergyStored();
             default:
                 return 0;
 
@@ -234,7 +208,7 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
     public void setField(int id, int value) {
         switch (id) {
             case 0:
-                this.prosseceTime = value;
+                this.energy = value;
                 break;
         }
     }
@@ -321,9 +295,8 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
 
     public void writePacketNBT(NBTTagCompound cmp) {
         ItemStackHelper.saveAllItems(cmp, this.inventory);
-        cmp.setInteger("ProsseceTime", (short) this.prosseceTime);
-
-        cmp.setInteger("TFAmount", (short) this.tfAmount);
+        cmp.setInteger("workload", this.workload);
+        cmp.setInteger("current", this.current_workload);
 
         NBTTagCompound tankTag = this.tank.writeToNBT(new NBTTagCompound());
 
@@ -335,8 +308,8 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
                 NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(cmp, this.inventory);
 
-        this.prosseceTime = cmp.getInteger("ProsseceTime");
-        this.tfAmount = cmp.getInteger("TFAmount");
+        this.workload = cmp.getInteger("workload");
+        this.current_workload = cmp.getInteger("current");
 
         this.tank.readFromNBT(cmp.getCompoundTag("Tank"));
     }
@@ -354,37 +327,4 @@ public class TileEntityTFStorage extends TileEntity implements ITickable, IInven
         readPacketNBT(packet.getNbtCompound());
     }
 
-    @Override
-    public int receiveEnergy(int maxReceive, boolean simulate) {
-        return 0;
-    }
-
-    @Override
-    public int extractEnergy(int maxExtract, boolean simulate) {
-        if (!simulate) {
-            return 20;
-        } else {
-            return 0;
-        }
-    }
-
-    @Override
-    public int getEnergyStored() {
-        return this.tfAmount;
-    }
-
-    @Override
-    public int getMaxEnergyStored() {
-        return this.tfCapacity;
-    }
-
-    @Override
-    public boolean canExtract() {
-        return true;
-    }
-
-    @Override
-    public boolean canReceive() {
-        return false;
-    }
 }
