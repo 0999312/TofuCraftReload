@@ -20,6 +20,8 @@ public class TileEntityRegistry {
         registerTileEntity(TileEntityTofuChest.class, "tofuchest");
         registerTileEntity(TileEntitySaltPan.class, "saltpan");
         registerTileEntity(TileEntityTFStorage.class, "storagemachine");
+
+        registerTileEntity(TileEntityReceiver.class, "test");
     }
     @SideOnly(Side.CLIENT)
     public static void render() {

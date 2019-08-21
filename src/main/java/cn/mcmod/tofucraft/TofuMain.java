@@ -36,6 +36,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION)
 public class TofuMain {
@@ -52,6 +53,8 @@ public class TofuMain {
     public static DimensionType TOFU_DIMENSION;
 
     public static DamageSource zunda;
+
+    public static Logger logger;
 
     @EventHandler
     public void construct(FMLConstructionEvent event) {
@@ -71,6 +74,8 @@ public class TofuMain {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+
+        logger = event.getModLog();
 
         TofuEntityRegister.entitySpawn();
 

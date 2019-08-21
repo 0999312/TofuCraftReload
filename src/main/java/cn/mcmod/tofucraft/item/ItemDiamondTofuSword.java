@@ -31,7 +31,7 @@ public class ItemDiamondTofuSword extends ItemSwordBasic implements IEnergyExtra
 
     @Override
     public int drain(ItemStack inst, int amount, boolean simulate) {
-        if (!simulate) ItemUtils.damageItemStack(inst, 1);
+        if (!simulate) ItemUtils.damageItemStack(inst, 50);
         return 50;
     }
 }
