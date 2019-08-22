@@ -445,3 +445,6 @@ tofucraft.config.dimension_id=トーフワールドのDimensionID
 item.tofucraft.nanban.name=チキン南蛮
 item.tofucraft.nanbantofu.name=豆腐南蛮
 
+tooltip.tofucraft.tofuforce_core1=inventoryの中にあると耐久度を消費して自分のhealthを回復する
+tooltip.tofucraft.tofuforce_core2=破損した場合は、tofuforce（TF）で充電して再度使用できます
+tooltip.tofucraft.tofuforce_core.broken=破損

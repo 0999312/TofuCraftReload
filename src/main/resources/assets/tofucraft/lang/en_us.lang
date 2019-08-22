@@ -460,5 +460,9 @@ item.tofucraft.nanbantofu.name=Tofu Nanban
 subtitles.entity.tofunian.idle=Tofunian mutters
 subtitles.entity.tofunian.yes=Tofunian agrees
 
+tooltip.tofucraft.tofuforce_core1=If it is in the inventory, it will consume durability and restore your health.
+tooltip.tofucraft.tofuforce_core2=If it breaks, you can use it again by charging with tofuforce (TF)
+tooltip.tofucraft.tofuforce_core.broken=Broken
+
 tofucraft.radar.result.success=Found Tofu Slime's existence in this chuck.
 tofucraft.radar.result.failed=Can't find Tofu Slime in this chuck.

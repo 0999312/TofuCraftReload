@@ -315,7 +315,7 @@ public class ItemLoader {
 	public static Item tofu_slime_radar = new ItemTofuSlimeRadar().setUnlocalizedName(TofuMain.MODID+"."+"tofuradar");
 	public static Item anninApple = new ItemAnninApple();
 
-	public static Item tofuforce_core = new Item().setUnlocalizedName(TofuMain.MODID + "." + "tofuforce_core");
+	public static Item tofuforce_core = new ItemTofuForceCore();
 	public static Item tofuishi_shield = new ItemTofuShield(360);
 	public static Item tofumetal_shield = new ItemTofuShield(560);
 	public static Item tofumetalforce_shield = new ItemTofuForceShield(560);

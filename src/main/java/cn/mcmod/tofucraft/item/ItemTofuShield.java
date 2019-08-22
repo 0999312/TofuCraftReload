@@ -1,7 +1,5 @@
 package cn.mcmod.tofucraft.item;
 
-import cn.mcmod.tofucraft.base.item.EnergyItem.IEnergyExtractable;
-import cn.mcmod.tofucraft.util.ItemUtils;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-public class ItemTofuShield extends Item implements IEnergyExtractable {
+public class ItemTofuShield extends Item {
     public ItemTofuShield(int damage) {
         super();
         this.setMaxStackSize(1);
@@ -41,13 +39,6 @@ public class ItemTofuShield extends Item implements IEnergyExtractable {
 
     public int getMaxItemUseDuration(ItemStack stack) {
         return 72000;
-    }
-
-
-    @Override
-    public int drain(ItemStack inst, int amount, boolean simulate) {
-        if (!simulate) ItemUtils.damageItemStack(inst, 1);
-        return 50;
     }
 
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
