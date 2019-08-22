@@ -42,9 +42,6 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
      * 2. If true, then check if there's proper material to consume, then add to workload.
      * 3. If false, work and give out energy
      *
-     * Unsolved bugs:
-     * 1. Unknown desync problem
-     * 2. GUI was refreshed after the work is done
      * */
 
     private static final int POWER = 10;
@@ -199,7 +196,11 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
 
         switch (id) {
             case 0:
-                return getEnergyStored();
+                return energy;
+            case 1:
+                return workload;
+            case 2:
+                return current_workload;
             default:
                 return 0;
 
@@ -210,6 +211,12 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
         switch (id) {
             case 0:
                 this.energy = value;
+                break;
+            case 1:
+                this.workload = value;
+                break;
+            case 2:
+                this.current_workload = value;
                 break;
         }
     }

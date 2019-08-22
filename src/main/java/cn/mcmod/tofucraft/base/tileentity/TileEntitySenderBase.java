@@ -33,17 +33,22 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
     //Notify all the registered TileEntitySenderBase instance on network change
     @SubscribeEvent
     public static void onLoaded(TofuNetworkChangedEvent.NetworkLoaded event) {
-        List<TileEntity> tes = TofuNetwork.toTiles(
-                TofuNetwork.Instance.getReference()
-                        .entrySet()
-                        .stream()
-                        .filter(entry -> entry.getValue() instanceof TileEntitySenderBase &&
-                                ((TileEntitySenderBase) entry.getValue()).isValid()));
-        tes.forEach(te -> ((TileEntitySenderBase) te).onCache());
+        if (event.getTE() instanceof TileEntitySenderBase && ((TileEntitySenderBase) event.getTE()).isValid()) {
+            ((TileEntitySenderBase) event.getTE()).onCache();
+        } else {
+            List<TileEntity> tes = TofuNetwork.toTiles(
+                    TofuNetwork.Instance.getReference()
+                            .entrySet()
+                            .stream()
+                            .filter(entry -> entry.getValue() instanceof TileEntitySenderBase &&
+                                    ((TileEntitySenderBase) entry.getValue()).isValid()));
+            tes.forEach(te -> ((TileEntitySenderBase) te).onCache());
+        }
     }
 
     @SubscribeEvent
     public static void onRemoved(TofuNetworkChangedEvent.NetworkRemoved event) {
+        if (event.getTE() instanceof TileEntitySenderBase) return;
         List<TileEntity> tes = TofuNetwork.toTiles(
                 TofuNetwork.Instance.getReference()
                         .entrySet()
