@@ -318,7 +318,6 @@ public class ItemLoader {
 	public static Item tofuforce_core = new ItemTofuForceCore();
 	public static Item tofuishi_shield = new ItemTofuShield(360);
 	public static Item tofumetal_shield = new ItemTofuShield(560);
-	public static Item tofumetalforce_shield = new ItemTofuForceShield(560);
 
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
@@ -409,7 +408,6 @@ public class ItemLoader {
 		register(tofuforce_core);
 		register(tofuishi_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofuishi_shield"));
 		register(tofumetal_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofumetal_shield"));
-		register(tofumetalforce_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofumetalforce_shield"));
 
 		register(zundaBow);
 		register(zundaArrow.setUnlocalizedName(TofuMain.MODID+"."+"zundaarrow"));
@@ -439,7 +437,6 @@ public class ItemLoader {
 		TileEntityRenderHelper TESR = new TileEntityRenderHelper();
 		tofuishi_shield.setTileEntityItemStackRenderer(TESR);
 		tofumetal_shield.setTileEntityItemStackRenderer(TESR);
-		tofumetalforce_shield.setTileEntityItemStackRenderer(TESR);
 	}
 
     @SideOnly(Side.CLIENT)
@@ -535,7 +532,6 @@ public class ItemLoader {
 		registerRender(tofuforce_core);
 		registerRender(tofuishi_shield);
 		registerRender(tofumetal_shield);
-		registerRender(tofumetalforce_shield);
     }
 
     private static void register(Item item) {

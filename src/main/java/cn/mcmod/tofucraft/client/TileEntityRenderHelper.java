@@ -20,8 +20,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TileEntityRenderHelper extends TileEntityItemStackRenderer {
     public static final ResourceLocation SHIELD_ISHI_TEXTURE = new ResourceLocation(TofuMain.MODID, "textures/entity/tofuishi_shield.png");
     public static final ResourceLocation SHIELD_METAL_TEXTURE = new ResourceLocation(TofuMain.MODID, "textures/entity/tofumetal_shield.png");
-    public static final ResourceLocation SHIELD_METALFORCE_TEXTURE = new ResourceLocation(TofuMain.MODID, "textures/entity/tofumetalforce_shield.png");
-
 
     private TileEntityTofuChest chestRender = new TileEntityTofuChest();
     private final ModelShield modelShield = new ModelShield();
@@ -30,13 +28,7 @@ public class TileEntityRenderHelper extends TileEntityItemStackRenderer {
     public void renderByItem(ItemStack itemStack) {
         Block block = Block.getBlockFromItem(itemStack.getItem());
         Item item = itemStack.getItem();
-        if (item == ItemLoader.tofumetalforce_shield) {
-            Minecraft.getMinecraft().getTextureManager().bindTexture(SHIELD_METALFORCE_TEXTURE);
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(1.0F, -1.0F, -1.0F);
-            this.modelShield.render();
-            GlStateManager.popMatrix();
-        } else if (item == ItemLoader.tofumetal_shield) {
+        if (item == ItemLoader.tofumetal_shield) {
             Minecraft.getMinecraft().getTextureManager().bindTexture(SHIELD_METAL_TEXTURE);
             GlStateManager.pushMatrix();
             GlStateManager.scale(1.0F, -1.0F, -1.0F);
