@@ -46,6 +46,7 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
 
     @Override
     public int receive(int toReceive, boolean simulate) {
+        if (energy > energyMax) return 0;
         int calculated = Math.min(toReceive, energyMax - energy);
         if (!simulate) energy += calculated;
         return calculated;
