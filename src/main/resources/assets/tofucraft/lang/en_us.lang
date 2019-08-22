@@ -345,7 +345,7 @@ item.tofucraft.tooldiamondpickaxe.name=Diamond Tofu Pickaxe
 item.tofucraft.tooldiamondaxe.name=Diamond Tofu Axe
 item.tofucraft.tofuishi_shield.name=TofuIshi Shield
 item.tofucraft.tofumetal_shield.name=TofuMetal Shield
-item.tofucraft.tofumetalforce_shield.name=TofuMetal ForceShield
+item.tofucraft.tofumetalforce_shield.name=TofuMetal ForceShield(Unused)
 item.tofucraft.tofuforce_core.name=TofuForce Core
 
 advancements.tofucraft.root.title=TofuCraft
