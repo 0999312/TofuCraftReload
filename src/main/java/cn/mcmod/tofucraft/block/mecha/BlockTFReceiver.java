@@ -16,10 +16,12 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.Map;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class BlockTFReceiver extends Block {
+    /*
+    * Comment:
+    * This is a block only for test, it doesn't have any function usage other than debugging and testing.*/
     public BlockTFReceiver() {
         super(Material.IRON);
         this.setCreativeTab(CommonProxy.tab);
