@@ -5,6 +5,7 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
 import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.half.BlockTofuSlab;
+import cn.mcmod.tofucraft.block.mecha.BlockTFReceiver;
 import cn.mcmod.tofucraft.block.mecha.BlockTFStorage;
 import cn.mcmod.tofucraft.block.ore.BlockTofuGemOre;
 import cn.mcmod.tofucraft.block.ore.BlockTofuOreDiamond;
@@ -129,6 +130,8 @@ public class BlockLoader {
 			new ItemStack(ItemLoader.tofu_food,3,1),new ItemStack(ItemLoader.material,3,2)
 	}).setDrain(3);
     public static Block TOFUSTORAGEMACHINE = new BlockTFStorage();
+
+    public static Block TEST = new BlockTFReceiver();
 	
 	public static BlockYuba YUBA_FLOW = new BlockYuba();
 	public BlockLoader(FMLPreInitializationEvent event) {
@@ -154,6 +157,7 @@ public class BlockLoader {
 		register(SALTFURNACE, new ItemBlock(SALTFURNACE), "saltfurnace");
 		register(SALTFURNACE_LIT, new ItemBlock(SALTFURNACE_LIT), "saltfurnace_lit");
         register(TOFUSTORAGEMACHINE, new ItemBlock(TOFUSTORAGEMACHINE), "tfstorage");
+        register(TEST, new ItemBlock(TEST), "test");
 		register(SALTPAN, new ItemBlock(SALTPAN), "blocksaltpan");
 		register(KINUTOFU, new ItemBlock(KINUTOFU), "blocktofukinu");
 		register(MOMENTOFU, new ItemBlock(MOMENTOFU), "blocktofumomen");
@@ -270,6 +274,7 @@ public class BlockLoader {
 		registerRender(SALTFURNACE);
 		registerRender(SALTFURNACE_LIT);
         registerRender(TOFUSTORAGEMACHINE);
+        registerRender(TEST);
 		registerRender(KINUTOFU);
 		registerRender(MOMENTOFU);
 		registerRender(ISHITOFU);
