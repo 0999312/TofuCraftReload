@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "tofucraft:tofumetalforce_shield",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "tofucraft:tofuforce_core"
+    },
+    {
+      "item": "tofucraft:tofumetal_shield"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}
