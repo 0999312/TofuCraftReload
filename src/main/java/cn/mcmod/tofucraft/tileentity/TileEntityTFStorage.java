@@ -42,15 +42,11 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
      * 2. If true, then check if there's proper material to consume, then add to workload.
      * 3. If false, work and give out energy
      *
-     * Unsolved bugs:
-     * 1. Unknown desync problem
-     * 2. GUI was refreshed after the work is done
      * */
 
     private static final int POWER = 10;
     public FluidTank tank = new TFStorageTank(2000);
     protected NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
-    private boolean isWorking;
     private int workload = 0;
     private int current_workload = 0;
 
@@ -60,6 +56,8 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
 
     @Override
     public void update() {
+        boolean wasWorking = workload > 0 && getEnergyStored() < getMaxEnergyStored();
+
         //Update energy sender logic
         super.update();
 
@@ -88,15 +86,14 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
         }
 
         //Transform workload to power
-        final IBlockState state = world.getBlockState(pos);
         if (workload > 0 && getEnergyStored() < getMaxEnergyStored()) {
             workload -= receive(Math.min(workload, POWER), false);
-            if (!isWorking)
-                world.setBlockState(pos, state.withProperty(BlockTFStorage.LIT, true));
-        } else
-            world.setBlockState(pos, state.withProperty(BlockTFStorage.LIT, false));
+        }
 
-        isWorking = workload > 0 && getEnergyStored() < getMaxEnergyStored();
+        if (wasWorking != (workload > 0 && getEnergyStored() < getMaxEnergyStored())) {
+            final IBlockState state = world.getBlockState(pos);
+            world.setBlockState(pos, state.withProperty(BlockTFStorage.LIT, !wasWorking));
+        }
         this.markDirty();
     }
 
@@ -199,7 +196,11 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
 
         switch (id) {
             case 0:
-                return getEnergyStored();
+                return energy;
+            case 1:
+                return workload;
+            case 2:
+                return current_workload;
             default:
                 return 0;
 
@@ -210,6 +211,12 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
         switch (id) {
             case 0:
                 this.energy = value;
+                break;
+            case 1:
+                this.workload = value;
+                break;
+            case 2:
+                this.current_workload = value;
                 break;
         }
     }
