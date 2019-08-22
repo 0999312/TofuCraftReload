@@ -14,7 +14,8 @@ public class TileEntityReceiver extends TileEntityEnergyBase implements ITickabl
 
     @Override
     public void update() {
-        if (world.isRemote) return;
+        if (this.world.isRemote) return;
+        drain(1, false);
     }
 
     @Override

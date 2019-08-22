@@ -1,20 +1,28 @@
 package cn.mcmod.tofucraft.api.tfenergy;
 
+import net.minecraft.tileentity.TileEntity;
+
 public interface ITofuEnergy {
 
     int getEnergyStored();
+
     int getMaxEnergyStored();
 
     int receive(int energy, boolean simulate);
+
     int drain(int energy, boolean simulate);
 
-    int getPriority();
-    void setPriority(int priority);
-
     //Can the machine gets energy
-    boolean canReceive(int priority);
+    boolean canReceive(TileEntity from);
+
     //Can the machine gives out energy
-    boolean canDrain(int priority);
+    boolean canDrain(TileEntity to);
 
+    default boolean isFull() {
+        return getEnergyStored() == getMaxEnergyStored();
+    }
 
+    default boolean isEmpty() {
+        return getEnergyStored() == 0;
+    }
 }

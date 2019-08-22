@@ -12,6 +12,13 @@ import java.util.UUID;
 
 public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEnergy {
 
+    /*
+     * Comment:
+     * This is the very basis of the Tofu Energy Storage Tile Entity (TESTE), which means that it's the lowest level of tile
+     * that will be registered to the Tofu Energy Network instantiated in the TofuNetwork class.
+     * It's highly configurable, and you can override most part of its function if you want.
+     * */
+
     public static final String TAG_ENERGY = "tf_energy";
     public static final String TAG_ENERGY_MAX = "tf_energy_max";
     public static final String TAG_UUID = "tf_uuid";
@@ -21,8 +28,6 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
 
     protected int energy;
     protected int energyMax;
-
-    protected int priority;
 
     public TileEntityEnergyBase(int energyMax) {
         this.energyMax = energyMax;
@@ -41,14 +46,16 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
 
     @Override
     public int receive(int toReceive, boolean simulate) {
-        if (!simulate) energy = Math.min(energy + toReceive, energyMax);
-        return Math.min(toReceive, energyMax - energy);
+        int calculated = Math.min(toReceive, energyMax - energy);
+        if (!simulate) energy += calculated;
+        return calculated;
     }
 
     @Override
     public int drain(int toDrain, boolean simulate) {
-        if (!simulate) energy = Math.max(energy - toDrain, 0);
-        return Math.min(toDrain, energy);
+        int calculated = Math.min(toDrain, energy);
+        if (!simulate) energy -= calculated;
+        return calculated;
     }
 
     @Override
@@ -57,7 +64,6 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
         compound.setInteger(TAG_ENERGY, energy);
         compound.setString(TAG_UUID, uuid);
         compound.setInteger(TAG_ENERGY_MAX, energyMax);
-        compound.setInteger(TAG_PRIOR, priority);
         return compound;
     }
 
@@ -67,27 +73,18 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
         this.energyMax = compound.getInteger(TAG_ENERGY_MAX);
         this.energy = compound.getInteger(TAG_ENERGY);
         this.uuid = compound.getString(TAG_UUID);
-        this.priority = compound.getInteger(TAG_PRIOR);
     }
 
     @Override
-    public int getPriority() {
-        return priority;
+    public boolean canReceive(TileEntity from) {
+        if (!(from instanceof ITofuEnergy)) throw new IllegalArgumentException("It must be a instance of ITofuEnergy!");
+        return true;
     }
 
     @Override
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
-    @Override
-    public boolean canReceive(int priority) {
-        return this.priority < priority &&  energy < energyMax;
-    }
-
-    @Override
-    public boolean canDrain(int priority) {
-        return this.priority > priority && energy>0;
+    public boolean canDrain(TileEntity to) {
+        if (!(to instanceof ITofuEnergy)) throw new IllegalArgumentException("It must be a instance of ITofuEnergy!");
+        return true;
     }
 
     @Override
@@ -112,9 +109,9 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
     public void validate() {
         super.validate();
         readFromNBT(getUpdateTag());
-        if (!world.isRemote){
+        if (!world.isRemote) {
             if (uuid.isEmpty()) uuid = UUID.randomUUID().toString();
-            TofuNetwork.Instance.register(uuid, this);
+            TofuNetwork.Instance.register(uuid, this, false);
         }
     }
 
@@ -122,6 +119,6 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
     public void invalidate() {
         super.invalidate();
         if (!world.isRemote)
-            TofuNetwork.Instance.unload(uuid);
+            TofuNetwork.Instance.unload(uuid, false);
     }
 }

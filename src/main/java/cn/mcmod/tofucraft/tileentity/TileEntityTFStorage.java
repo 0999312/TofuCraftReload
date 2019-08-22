@@ -2,8 +2,7 @@ package cn.mcmod.tofucraft.tileentity;
 
 import cn.mcmod.tofucraft.api.recipes.TofuEnergyMap;
 import cn.mcmod.tofucraft.base.item.EnergyItem.IEnergyExtractable;
-import cn.mcmod.tofucraft.base.tileentity.TileEntityEnergyBase;
-import cn.mcmod.tofucraft.block.BlockLoader;
+import cn.mcmod.tofucraft.base.tileentity.TileEntitySenderBase;
 import cn.mcmod.tofucraft.block.mecha.BlockTFStorage;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +13,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -30,18 +28,29 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Map;
 
-public class TileEntityTFStorage extends TileEntityEnergyBase implements ITickable, IInventory {
+public class TileEntityTFStorage extends TileEntitySenderBase implements IInventory {
+
+    /*
+     * Comment:
+     * This is a rewritten version of Tofu Force Storage, to fix some bugs and make it fit to the bigger skeleton.
+     * Most part of working mechanism is rewritten, but there are codes that I can't even understand...
+     *
+     * Program logic:
+     * 1. Check if the machine is idle.
+     * 2. If true, then check if there's proper material to consume, then add to workload.
+     * 3. If false, work and give out energy
+     *
+     * Unsolved bugs:
+     * 1. Unknown desync problem
+     * 2. GUI was refreshed after the work is done
+     * */
+
     private static final int POWER = 10;
-    private static final int PARTIAL_AMOUNT = 100;
-    private static final int SOYMILK_POWER = 100;
-    public FluidTank tank = new FluidTank(BlockLoader.SOYMILK_FLUID, 0, 2000) {
-        @Override
-        protected void onContentsChanged() {
-            TileEntityTFStorage.this.refresh();
-        }
-    };
+    public FluidTank tank = new TFStorageTank(2000);
     protected NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+    private boolean isWorking;
     private int workload = 0;
     private int current_workload = 0;
 
@@ -51,6 +60,9 @@ public class TileEntityTFStorage extends TileEntityEnergyBase implements ITickab
 
     @Override
     public void update() {
+        //Update energy sender logic
+        super.update();
+
         if (this.world.isRemote) return;
 
         //Consume beans inside machine
@@ -65,9 +77,12 @@ public class TileEntityTFStorage extends TileEntityEnergyBase implements ITickab
                 from.shrink(1);
             }
 
-            if (milk != null && milk.amount >= PARTIAL_AMOUNT) {
-                tank.drain(PARTIAL_AMOUNT, true);
-                workload += SOYMILK_POWER;
+            if (milk != null) {
+                Map.Entry<FluidStack, Integer> recipe = TofuEnergyMap.getLiquidFuel(milk);
+                if (recipe != null) {
+                    tank.drain(recipe.getKey().amount, true);
+                    workload += recipe.getValue();
+                }
             }
             current_workload = workload;
         }
@@ -76,33 +91,13 @@ public class TileEntityTFStorage extends TileEntityEnergyBase implements ITickab
         final IBlockState state = world.getBlockState(pos);
         if (workload > 0 && getEnergyStored() < getMaxEnergyStored()) {
             workload -= receive(Math.min(workload, POWER), false);
-            if (world.getWorldTime() % 100 == 0)
+            if (!isWorking)
                 world.setBlockState(pos, state.withProperty(BlockTFStorage.LIT, true));
-        } else if (world.getWorldTime() % 100 == 0)
+        } else
             world.setBlockState(pos, state.withProperty(BlockTFStorage.LIT, false));
 
+        isWorking = workload > 0 && getEnergyStored() < getMaxEnergyStored();
         this.markDirty();
-
-        /*
-         * Program logic:
-         * 1. Check if the machine's workload still has space to add power to.
-         * 2. If true, then check if there's proper material to consume, then add to workload.
-         * 3. If false, work and give out energy
-         *
-         * Unsolved bugs:
-         * 1. Unknown sync problem
-         * */
-
-    }
-
-    @Override
-    public boolean canDrain(int priority) {
-        return energy > 0;
-    }
-
-    @Override
-    public boolean canReceive(int priority) {
-        return false;
     }
 
     @SideOnly(Side.CLIENT)
@@ -117,7 +112,6 @@ public class TileEntityTFStorage extends TileEntityEnergyBase implements ITickab
     protected void refresh() {
         if (hasWorld() && !world.isRemote) {
             IBlockState state = world.getBlockState(pos);
-
             world.markAndNotifyBlock(pos, world.getChunkFromBlockCoords(pos), state, state, 11);
         }
     }
@@ -260,7 +254,6 @@ public class TileEntityTFStorage extends TileEntityEnergyBase implements ITickab
         return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || capability == CapabilityEnergy.ENERGY || super.hasCapability(capability, facing);
     }
 
-
     @Override
     @Nullable
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
@@ -330,6 +323,22 @@ public class TileEntityTFStorage extends TileEntityEnergyBase implements ITickab
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
         super.onDataPacket(net, packet);
         readPacketNBT(packet.getNbtCompound());
+    }
+
+    private class TFStorageTank extends FluidTank {
+        TFStorageTank(int capacity) {
+            super(capacity);
+        }
+
+        @Override
+        public boolean canFillFluidType(FluidStack fluid) {
+            return super.canFillFluidType(fluid) && TofuEnergyMap.getLiquidFuel(fluid) != null;
+        }
+
+        @Override
+        protected void onContentsChanged() {
+            TileEntityTFStorage.this.refresh();
+        }
     }
 
 }
