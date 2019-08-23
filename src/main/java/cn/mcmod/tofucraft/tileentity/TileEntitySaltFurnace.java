@@ -29,13 +29,12 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.datafix.FixTypes;
 import net.minecraft.util.datafix.walkers.ItemStackDataLists;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
-import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -99,24 +98,6 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
         return inventory.getField(0) > 0;
     }
 
-    @SuppressWarnings("deprecation")
-    public static int getCauldronStatus(BlockPos pos, World worldIn) {
-        IBlockState stateUp = worldIn.getBlockState(pos.up());
-        if (stateUp.getBlock() == Blocks.CAULDRON)
-            return stateUp.getValue(BlockCauldron.LEVEL);
-        else {
-            Block block = stateUp.getBlock();
-            if (block.isAir(stateUp, worldIn, pos.up())) return -1;
-            else if (!block.getMaterial(stateUp).getCanBurn()) return -3;
-            else {
-                IBlockState state2Up = worldIn.getBlockState(pos.up(2));
-                Block block2Up = state2Up.getBlock();
-                if (block2Up.isAir(state2Up, worldIn, pos.up(2))) return -2;
-                else return -3;
-            }
-        }
-    }
-
     /**
      * Like the old updateEntity(), except more generic.
      */
@@ -166,9 +147,7 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
             }
 
             // Output nigari
-            if (this.canOutputNigari()) {
-                this.outputNigari();
-            }
+            this.outputNigari();
         }
 
         updateCauldronStatus();
@@ -205,10 +184,10 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
 
     @Override
     public void setInventorySlotContents(int index, ItemStack stack) {
-        boolean flag = stack != null && stack.isItemEqual(this.furnaceItemStacks.get(index)) && ItemStack.areItemStackTagsEqual(stack, this.furnaceItemStacks.get(index));
+        boolean flag = stack.isItemEqual(this.furnaceItemStacks.get(index)) && ItemStack.areItemStackTagsEqual(stack, this.furnaceItemStacks.get(index));
         this.furnaceItemStacks.set(index, stack);
 
-        if (stack != null && stack.getCount() > this.getInventoryStackLimit()) {
+        if (stack.getCount() > this.getInventoryStackLimit()) {
             stack.setCount(this.getInventoryStackLimit());
         }
 
@@ -248,7 +227,8 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
             case 0:
                 return TileEntityFurnace.isItemFuel(itemstack);
             case 2:
-                return itemstack.isItemEqual(new ItemStack(Items.GLASS_BOTTLE, 1));
+                return itemstack.isItemEqual(new ItemStack(Items.GLASS_BOTTLE, 1)) ||
+                        itemstack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
         }
         return false;
     }
@@ -468,40 +448,93 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
         }
     }
 
-    private boolean canOutputNigari() {
-        ItemStack containerStack = this.furnaceItemStacks.get(2);
+    private int canOutputNigari() {
+        ItemStack input = furnaceItemStacks.get(2);
+        ItemStack output = furnaceItemStacks.get(3);
 
-        if (containerStack.getCount() > 0) {
-            ItemStack filledStack = new ItemStack(Items.GLASS_BOTTLE);
+        ItemStack nigari = new ItemStack(ItemLoader.nigari);
+        ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE);
 
-            if (containerStack.isItemEqual(filledStack)) {
-                if (this.nigariTank.getFluidAmount() <= 10) return false;
-                if (furnaceItemStacks.get(3).isEmpty()) return true;
-                int result = furnaceItemStacks.get(3).getCount() + filledStack.getCount();
-                return result <= getInventoryStackLimit() && result <= filledStack.getMaxStackSize();
+        /*
+         * If output is empty, then check if there's bottle or fluid container in the input slot.
+         * Else, then check if the output is Bitter, which will restrain the input to glass bottle,
+         * If none of the above is met, then check if the output is a fluid container.
+         * Return value: 0->invalid, 1->bottle, 2->container(input), 3->container(output), 4->bottle(with nigari in output)
+         * */
+
+        if (nigariTank.getFluidAmount() == 0) return 0;
+
+        if (output.isEmpty()) {
+            if (input.isItemEqual(bottle)) return 1;
+            if (isFluidContainer(input)) {
+                IFluidHandlerItem handler = input.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+                if (handler != null && handler.fill(new FluidStack(BlockLoader.NIGARI_FLUID, 1), false) > 0) return 2;
+            }
+        } else {
+            if (output.isItemEqual(nigari) && output.getCount() < 64 && input.isItemEqual(bottle) && input.getCount() > 0)
+                return 4;
+            if (isFluidContainer(output)) {
+                IFluidHandlerItem handler = output.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+                if (handler != null && handler.fill(new FluidStack(BlockLoader.NIGARI_FLUID, 1), false) > 0)
+                    return 3;
             }
         }
-        return false;
+        return 0;
+    }
+
+    private boolean isFluidContainer(ItemStack stack) {
+        return stack.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
     }
 
     public void outputNigari() {
-        ItemStack filledStack = new ItemStack(ItemLoader.nigari, 1);
-        if (this.furnaceItemStacks.get(3).isEmpty()) {
-            this.furnaceItemStacks.set(3, filledStack.copy());
-        } else if (this.furnaceItemStacks.get(3).isItemEqual(filledStack)) {
-            int count = furnaceItemStacks.get(3).getCount() + filledStack.getCount();
-            furnaceItemStacks.get(3).setCount(count);
+        ItemStack input = furnaceItemStacks.get(2);
+        ItemStack output = furnaceItemStacks.get(3);
+
+        ItemStack nigari = new ItemStack(ItemLoader.nigari, 1);
+        ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE, 1);
+
+        int state = canOutputNigari();
+        if (state == 0) return;
+
+        sendTankChangeToClients();
+
+        if (state == 2) {
+            output = input.copy();
+            output.setCount(1);
+            input.shrink(1);
+            IFluidHandlerItem handler = output.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+
+            int returned = handler != null ? handler.fill(nigariTank.getFluid(), true) : 0;
+            nigariTank.drain(returned, true);
+            furnaceItemStacks.set(3, output);
         }
 
-        this.nigariTank.drain(20, true);
-        this.sendTankChangeToClients();
-
-        int count = furnaceItemStacks.get(2).getCount() - 1;
-
-        furnaceItemStacks.get(2).setCount(count);
-        if (furnaceItemStacks.get(2).getCount() == 0) {
-            furnaceItemStacks.set(2, ItemStack.EMPTY);
+        if (state == 3) {
+            IFluidHandlerItem handler = output.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY, null);
+            int returned = handler != null ? handler.fill(nigariTank.getFluid(), true): 0;
+            nigariTank.drain(returned, true);
+            furnaceItemStacks.set(3, output);
         }
+
+        if (nigariTank.getFluidAmount() < 20) return;
+
+        if (state == 1) {
+            int calculated = Math.min(nigariTank.getFluidAmount() / 20, input.getCount());
+            input.shrink(calculated);
+            nigariTank.drain(calculated * 20, true);
+            furnaceItemStacks.set(3, new ItemStack(ItemLoader.nigari, calculated));
+        }
+
+        if (state == 4) {
+            int calculated = Math.min(nigariTank.getFluidAmount() / 20, input.getCount());
+            input.shrink(calculated);
+            nigariTank.drain(calculated * 20, true);
+            output.setCount(output.getCount() + calculated);
+            furnaceItemStacks.set(3, output);
+        }
+
+
+
     }
 
     @SuppressWarnings("unchecked")
