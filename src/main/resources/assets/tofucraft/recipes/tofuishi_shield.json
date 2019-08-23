@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#T#",
+    "###",
+    " # "
+  ],
+  "key": {
+    "T": {
+      "item": "tofucraft:tofu_material",
+      "data": 0
+    },
+    "#": {
+      "item": "tofucraft:tofuishi_brick"
+    }
+  },
+  "result": {
+    "item": "tofucraft:tofuishi_shield"
+  }
+}
