@@ -31,7 +31,7 @@ public class ItemDiamondTofuPickaxe extends ItemPickaxeBasic implements IEnergyE
 
     @Override
     public int drain(ItemStack inst, int amount, boolean simulate) {
-        if (!simulate) ItemUtils.damageItemStack(inst, 50);
+        if (!simulate) ItemUtils.damageItemStack(inst,50);
         return 50;
     }
 }
