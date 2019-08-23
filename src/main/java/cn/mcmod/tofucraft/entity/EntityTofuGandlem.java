@@ -57,7 +57,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         this.setSize(0.7F, 2.05F);
         this.isImmuneToFire = true;
         this.moveHelper = new EntityTofuFlyHelper(this);
-        this.experienceValue = 60;
+        this.experienceValue = 65;
     }
 
     @Override

@@ -343,6 +343,10 @@ item.tofucraft.toolmetalaxe.name=鋼豆腐斧
 item.tofucraft.tooldiamondshovel.name=金剛豆腐シャベル
 item.tofucraft.tooldiamondpickaxe.name=金剛豆腐ツルハシ
 item.tofucraft.tooldiamondaxe.name=金剛豆腐斧
+item.tofucraft.tofuishi_shield.name=石豆腐レンガのシールド
+item.tofucraft.tofumetal_shield.name=鋼豆腐のシールド
+item.tofucraft.tofumetalforce_shield.name=鋼豆腐のフォースシールド(未使用)
+item.tofucraft.tofuforce_core.nameトーフフォースコア
 
 advancements.tofucraft.root.title=豆腐クラフト
 advancements.tofucraft.root.description=豆腐の技術や豆腐の食材
@@ -441,3 +445,6 @@ tofucraft.config.dimension_id=トーフワールドのDimensionID
 item.tofucraft.nanban.name=チキン南蛮
 item.tofucraft.nanbantofu.name=豆腐南蛮
 
+tooltip.tofucraft.tofuforce_core1=inventoryの中にあると耐久度を消費して自分のhealthを回復する
+tooltip.tofucraft.tofuforce_core2=破損した場合は、tofuforce（TF）で充電して再度使用できます
+tooltip.tofucraft.tofuforce_core.broken=破損

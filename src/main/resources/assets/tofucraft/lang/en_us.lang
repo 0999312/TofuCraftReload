@@ -141,8 +141,11 @@ tile.tofucraft.tofulog.name=Tofu Log
 tile.tofucraft.yubagrass.name=Yuba Grass
 tile.tofucraft.yuba_noren.name=Yuba Noren
 
+tile.tofucraft.ricecrop.name=Rice Crop
+tile.tofucraft.saltfurnace_lit.name=Lit Saltfurnace
+
 item.tofucraft.seeds_soybeans.name=Soybeans
-item.tofucraft.seeds_soybeansHell.name=Hell Soybeans
+item.tofucraft.seeds_soybeans_hell.name=Hell Soybeans
 item.tofucraft.tofukinu.name=Kinugoshi Tofu
 item.tofucraft.tofumomen.name=Momen Tofu
 item.tofucraft.tofuishi.name=Solid Tofu
@@ -340,6 +343,10 @@ item.tofucraft.toolmetalaxe.name=Metal Tofu Axe
 item.tofucraft.tooldiamondshovel.name=Diamond Tofu Shovel
 item.tofucraft.tooldiamondpickaxe.name=Diamond Tofu Pickaxe
 item.tofucraft.tooldiamondaxe.name=Diamond Tofu Axe
+item.tofucraft.tofuishi_shield.name=TofuIshi Shield
+item.tofucraft.tofumetal_shield.name=TofuMetal Shield
+item.tofucraft.tofumetalforce_shield.name=TofuMetal ForceShield(Unused)
+item.tofucraft.tofuforce_core.name=TofuForce Core
 
 advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
@@ -368,7 +375,7 @@ container.tofucraft.tofuchest=Tofu Chest
 
 fluid.soymilk=Soy Milk
 fluid.zunda_soymilk=Zunda SoyMilk
-fluid.soymilkHell=Hell Soy Milk
+fluid.soymilk_hell=Hell Soy Milk
 fluid.soysauce=Soy Sauce
 fluid.nigari=Bittern
 fluid.tofucraft.mineralSoymilk=Mineral Soy Milk
@@ -452,6 +459,10 @@ item.tofucraft.nanbantofu.name=Tofu Nanban
 
 subtitles.entity.tofunian.idle=Tofunian mutters
 subtitles.entity.tofunian.yes=Tofunian agrees
+
+tooltip.tofucraft.tofuforce_core1=If it is in the inventory, it will consume durability and restore your health.
+tooltip.tofucraft.tofuforce_core2=If it breaks, you can use it again by charging with tofuforce (TF)
+tooltip.tofucraft.tofuforce_core.broken=Broken
 
 tofucraft.radar.result.success=Found Tofu Slime's existence in this chuck.
 tofucraft.radar.result.failed=Can't find Tofu Slime in this chuck.

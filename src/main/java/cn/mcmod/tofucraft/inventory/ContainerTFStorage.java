@@ -12,7 +12,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerTFStorage extends Container {
     private final IInventory tileStorageMachine;
-    private int progressTime;
 
     public ContainerTFStorage(InventoryPlayer playerInventory, IInventory machineInventory) {
         this.tileStorageMachine = machineInventory;
@@ -46,14 +45,12 @@ public class ContainerTFStorage extends Container {
         super.detectAndSendChanges();
 
         for (int i = 0; i < this.listeners.size(); ++i) {
-            IContainerListener icontainerlistener = (IContainerListener) this.listeners.get(i);
-
-            if (this.progressTime != this.tileStorageMachine.getField(0)) {
+            IContainerListener icontainerlistener = this.listeners.get(i);
                 icontainerlistener.sendWindowProperty(this, 0, this.tileStorageMachine.getField(0));
-            }
+                icontainerlistener.sendWindowProperty(this, 2, this.tileStorageMachine.getField(2));
+                icontainerlistener.sendWindowProperty(this, 1, this.tileStorageMachine.getField(1));
         }
 
-        this.progressTime = this.tileStorageMachine.getField(0);
     }
 
     @SideOnly(Side.CLIENT)
