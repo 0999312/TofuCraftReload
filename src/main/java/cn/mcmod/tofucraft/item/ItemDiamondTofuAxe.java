@@ -19,10 +19,8 @@ public class ItemDiamondTofuAxe extends ItemAxeBasic implements IEnergyExtractab
 
     @Override
     public boolean onBlockStartBreak(ItemStack stack, BlockPos pos, EntityPlayer owner) {
-        if (owner.world.isRemote) {
-            Block blockDestroyed = owner.getEntityWorld().getBlockState(pos).getBlock();
-            this.impl.onBlockStartBreak(stack, owner.world, blockDestroyed, pos, owner);
-        }
+        Block blockDestroyed = owner.getEntityWorld().getBlockState(pos).getBlock();
+        this.impl.onBlockStartBreak(stack, owner.world, blockDestroyed, pos, owner);
         return super.onBlockStartBreak(stack, pos, owner);
     }
 
