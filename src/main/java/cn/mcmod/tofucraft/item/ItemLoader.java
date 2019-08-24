@@ -269,6 +269,8 @@ public class ItemLoader {
 	public static Item defatting_potion = new ItemDefattingPotion();
 
 	public static Item apricotjerry_bread = new ItemFood(5, 0.7f, false);
+
+	public static Item wrench = new ItemWrench();
 	
 	public static DrinkSoymilk soymilk_drink = new DrinkSoymilk("soymilk_drink",
 			new int[]{2,2,2,2,2,2,2,2,2,2,2},

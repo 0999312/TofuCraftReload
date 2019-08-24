@@ -25,6 +25,6 @@ public class BlockTFRadiator extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileEntityRadiator(5000);
+        return new TileEntityRadiator();
     }
 }

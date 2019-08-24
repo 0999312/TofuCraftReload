@@ -266,8 +266,6 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
         if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
             return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(tank);
-        } else if (capability == CapabilityEnergy.ENERGY) {
-            return (T) this;
         }
 
         return super.getCapability(capability, facing);
