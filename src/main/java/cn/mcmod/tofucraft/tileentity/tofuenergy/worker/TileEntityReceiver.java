@@ -1,6 +1,5 @@
-package cn.mcmod.tofucraft.tileentity;
+package cn.mcmod.tofucraft.tileentity.tofuenergy.worker;
 
-import cn.mcmod.tofucraft.api.tfenergy.TofuNetwork;
 import cn.mcmod.tofucraft.base.tileentity.TileEntityEnergyBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;

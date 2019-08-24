@@ -3,7 +3,7 @@ package cn.mcmod.tofucraft.gui;
 import cn.mcmod.tofucraft.inventory.ContainerSaltFurnace;
 import cn.mcmod.tofucraft.inventory.ContainerTFStorage;
 import cn.mcmod.tofucraft.tileentity.TileEntitySaltFurnace;
-import cn.mcmod.tofucraft.tileentity.TileEntityTFStorage;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

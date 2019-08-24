@@ -3,7 +3,7 @@ package cn.mcmod.tofucraft.block.mecha;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.api.tfenergy.TofuNetwork;
-import cn.mcmod.tofucraft.tileentity.TileEntityReceiver;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityReceiver;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
