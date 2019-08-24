@@ -191,7 +191,8 @@ public class DiamondTofuToolHandler {
 
 
     public void breakExtraBlock(ItemStack stack, World world, EntityPlayer player, BlockPos pos, BlockPos refPos) {
-        if (!canBreakExtraBlock(stack, world, player, pos, refPos)) {
+        if (!canBreakExtraBlock(stack, world, player, pos, refPos) ||
+                world.getBlockState(pos).getBlock() != world.getBlockState(refPos).getBlock()) {
             return;
         }
 
