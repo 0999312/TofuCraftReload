@@ -3,7 +3,7 @@ package cn.mcmod.tofucraft.block.mecha;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
-import cn.mcmod.tofucraft.tileentity.TileEntityTFStorage;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;

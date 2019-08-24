@@ -68,7 +68,7 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
                     int packSize = Math.max(Math.min(getTransferPower(), this.energy) / cache.size(), 1);
                     cache.forEach(te -> this.drain(((ITofuEnergy) te).receive(Math.min(packSize, this.energy), false), false));
                 }
-            } else if (cache.size() > 0) {
+            } else {
                 cache.clear();
                 isCached = false;
             }
@@ -81,11 +81,11 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
 
     //The onCache decides what TileEntities will be cached into the function and be send energy to.
     public void onCache() {
-        cache = TofuNetwork.toTiles(TofuNetwork.Instance.getInsertableWithinRadius(this, ((IAnntena) antenna).getRadius(pos.up())));
+        cache = TofuNetwork.toTiles(TofuNetwork.Instance.getInsertableWithinRadius(this, ((IAnntena) antenna).getRadius(pos.up(), world)));
     }
 
     public int getTransferPower() {
-        return isValid() ? ((IAnntena) world.getBlockState(pos.up()).getBlock()).getPower(pos.up()) : 0;
+        return isValid() ? ((IAnntena) world.getBlockState(pos.up()).getBlock()).getPower(pos.up(), world) : 0;
     }
 
     @Override

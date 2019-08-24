@@ -5,6 +5,9 @@ import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
 import cn.mcmod.tofucraft.client.render.tileentity.RenderSaltPan;
 import cn.mcmod.tofucraft.client.render.tileentity.RenderTofuChest;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityRadiator;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityReceiver;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +23,7 @@ public class TileEntityRegistry {
         registerTileEntity(TileEntityTofuChest.class, "tofuchest");
         registerTileEntity(TileEntitySaltPan.class, "saltpan");
         registerTileEntity(TileEntityTFStorage.class, "storagemachine");
-
+        registerTileEntity(TileEntityRadiator.class, "radiator");
         registerTileEntity(TileEntityReceiver.class, "test");
     }
     @SideOnly(Side.CLIENT)

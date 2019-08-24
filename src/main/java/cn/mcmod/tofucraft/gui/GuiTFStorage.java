@@ -1,7 +1,7 @@
 package cn.mcmod.tofucraft.gui;
 
 import cn.mcmod.tofucraft.inventory.ContainerTFStorage;
-import cn.mcmod.tofucraft.tileentity.TileEntityTFStorage;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
 import cn.mcmod.tofucraft.util.ClientUtils;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.TextureManager;

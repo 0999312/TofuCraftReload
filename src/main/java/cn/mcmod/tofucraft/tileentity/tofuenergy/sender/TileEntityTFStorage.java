@@ -1,4 +1,4 @@
-package cn.mcmod.tofucraft.tileentity;
+package cn.mcmod.tofucraft.tileentity.tofuenergy.sender;
 
 import cn.mcmod.tofucraft.api.recipes.TofuEnergyMap;
 import cn.mcmod.tofucraft.base.item.EnergyItem.IEnergyExtractable;
