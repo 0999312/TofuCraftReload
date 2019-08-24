@@ -5,6 +5,7 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
 import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.half.BlockTofuSlab;
+import cn.mcmod.tofucraft.block.mecha.BlockTFBattery;
 import cn.mcmod.tofucraft.block.mecha.BlockTFRadiator;
 import cn.mcmod.tofucraft.block.mecha.BlockTFReceiver;
 import cn.mcmod.tofucraft.block.mecha.BlockTFStorage;
@@ -136,6 +137,7 @@ public class BlockLoader {
     public static Block TEST = new BlockTFReceiver();
     public static Block ANTENNA_BASIC = new BlockAntennaBasic();
     public static Block RADIATOR = new BlockTFRadiator();
+    public static Block BATTERY = new BlockTFBattery();
 	
 	public static BlockYuba YUBA_FLOW = new BlockYuba();
 	public BlockLoader(FMLPreInitializationEvent event) {
@@ -163,6 +165,7 @@ public class BlockLoader {
         register(TEST, new ItemBlock(TEST), "test");
         register(ANTENNA_BASIC, new ItemBlock(ANTENNA_BASIC), "antenna_basic");
         register(RADIATOR, new ItemBlock(RADIATOR), "radiator");
+        register(BATTERY, new ItemBlock(BATTERY), "battery");
 		register(SALTFURNACE, new ItemBlock(SALTFURNACE), "saltfurnace");
 		register(SALTFURNACE_LIT, new ItemBlock(SALTFURNACE_LIT), "saltfurnace_lit");
 		register(SALTPAN, new ItemBlock(SALTPAN), "blocksaltpan");
@@ -284,6 +287,7 @@ public class BlockLoader {
         registerRender(TEST);
         registerRender(ANTENNA_BASIC);
         registerRender(RADIATOR);
+        registerRender(BATTERY);
 		registerRender(KINUTOFU);
 		registerRender(MOMENTOFU);
 		registerRender(ISHITOFU);

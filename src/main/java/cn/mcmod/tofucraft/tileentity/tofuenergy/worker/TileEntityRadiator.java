@@ -11,8 +11,8 @@ public class TileEntityRadiator extends TileEntityWorkerBase implements ITickabl
     protected static final int WORKING_RADIUS = 4;
     private static final Random rnd = new Random();
 
-    public TileEntityRadiator(int energyMax) {
-        super(energyMax);
+    public TileEntityRadiator() {
+        super(500);
     }
 
     @Override

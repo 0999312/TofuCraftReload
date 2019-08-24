@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public abstract class TileEntitySenderBase extends TileEntityEnergyBase implements ITickable {
@@ -23,7 +24,8 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
      * */
 
     protected List<TileEntity> cache = new ArrayList<>();
-    protected boolean isCached = true;
+    protected boolean isCached = false;
+
     private Block antenna;
 
     public TileEntitySenderBase(int energyMax) {
@@ -33,22 +35,18 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
     //Notify all the registered TileEntitySenderBase instance on network change
     @SubscribeEvent
     public static void onLoaded(TofuNetworkChangedEvent.NetworkLoaded event) {
-        if (event.getTE() instanceof TileEntitySenderBase && ((TileEntitySenderBase) event.getTE()).isValid()) {
-            ((TileEntitySenderBase) event.getTE()).onCache();
-        } else {
-            List<TileEntity> tes = TofuNetwork.toTiles(
-                    TofuNetwork.Instance.getReference()
-                            .entrySet()
-                            .stream()
-                            .filter(entry -> entry.getValue() instanceof TileEntitySenderBase &&
-                                    ((TileEntitySenderBase) entry.getValue()).isValid()));
-            tes.forEach(te -> ((TileEntitySenderBase) te).onCache());
-        }
+        List<TileEntity> tes = TofuNetwork.toTiles(
+                TofuNetwork.Instance.getReference()
+                        .entrySet()
+                        .stream()
+                        .filter(entry -> entry.getValue() instanceof TileEntitySenderBase &&
+                                ((TileEntitySenderBase) entry.getValue()).isValid()));
+        tes.forEach(te -> ((TileEntitySenderBase) te).onCache());
+
     }
 
     @SubscribeEvent
     public static void onRemoved(TofuNetworkChangedEvent.NetworkRemoved event) {
-        if (event.getTE() instanceof TileEntitySenderBase) return;
         List<TileEntity> tes = TofuNetwork.toTiles(
                 TofuNetwork.Instance.getReference()
                         .entrySet()
@@ -67,6 +65,7 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
                 if (cache.size() > 0) {
                     int packSize = Math.max(Math.min(getTransferPower(), this.energy) / cache.size(), 1);
                     cache.forEach(te -> this.drain(((ITofuEnergy) te).receive(Math.min(packSize, this.energy), false), false));
+                isCached = true;
                 }
             } else {
                 cache.clear();
