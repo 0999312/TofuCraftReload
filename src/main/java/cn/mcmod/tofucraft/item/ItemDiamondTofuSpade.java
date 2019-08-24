@@ -19,16 +19,14 @@ public class ItemDiamondTofuSpade extends ItemShovelBasic implements IEnergyExtr
 
     @Override
     public boolean onBlockStartBreak(ItemStack stack, BlockPos pos, EntityPlayer owner) {
-        if (!owner.world.isRemote) {
-            Block blockDestroyed = owner.getEntityWorld().getBlockState(pos).getBlock();
-            this.impl.onBlockStartBreak(stack, owner.world, blockDestroyed, pos, owner);
-        }
+        Block blockDestroyed = owner.getEntityWorld().getBlockState(pos).getBlock();
+        this.impl.onBlockStartBreak(stack, owner.world, blockDestroyed, pos, owner);
         return false;
     }
 
     @Override
     public int drain(ItemStack inst, int amount, boolean simulate) {
-        if (!simulate) ItemUtils.damageItemStack(inst,50);
+        if (!simulate) ItemUtils.damageItemStack(inst, 50);
         return 50;
     }
 }

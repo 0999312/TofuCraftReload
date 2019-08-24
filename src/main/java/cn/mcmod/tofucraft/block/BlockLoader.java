@@ -5,8 +5,10 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.door.BlockTofuDoor;
 import cn.mcmod.tofucraft.block.fluid.*;
 import cn.mcmod.tofucraft.block.half.BlockTofuSlab;
+import cn.mcmod.tofucraft.block.mecha.BlockTFRadiator;
 import cn.mcmod.tofucraft.block.mecha.BlockTFReceiver;
 import cn.mcmod.tofucraft.block.mecha.BlockTFStorage;
+import cn.mcmod.tofucraft.block.mecha.antennas.BlockAntennaBasic;
 import cn.mcmod.tofucraft.block.ore.BlockTofuGemOre;
 import cn.mcmod.tofucraft.block.ore.BlockTofuOreDiamond;
 import cn.mcmod.tofucraft.block.plants.*;
@@ -132,6 +134,8 @@ public class BlockLoader {
     public static Block TOFUSTORAGEMACHINE = new BlockTFStorage();
 
     public static Block TEST = new BlockTFReceiver();
+    public static Block ANTENNA_BASIC = new BlockAntennaBasic();
+    public static Block RADIATOR = new BlockTFRadiator();
 	
 	public static BlockYuba YUBA_FLOW = new BlockYuba();
 	public BlockLoader(FMLPreInitializationEvent event) {
@@ -154,10 +158,13 @@ public class BlockLoader {
 		FluidRegistry.addBucketForFluid(SOYSAUCE_FLUID);
 		SOYSAUCE = registerFluidBlock(SOYSAUCE_FLUID, new BlockSoySauce(SOYSAUCE_FLUID), "soysauce");
 
-		register(SALTFURNACE, new ItemBlock(SALTFURNACE), "saltfurnace");
-		register(SALTFURNACE_LIT, new ItemBlock(SALTFURNACE_LIT), "saltfurnace_lit");
+
         register(TOFUSTORAGEMACHINE, new ItemBlock(TOFUSTORAGEMACHINE), "tfstorage");
         register(TEST, new ItemBlock(TEST), "test");
+        register(ANTENNA_BASIC, new ItemBlock(ANTENNA_BASIC), "antenna_basic");
+        register(RADIATOR, new ItemBlock(RADIATOR), "radiator");
+		register(SALTFURNACE, new ItemBlock(SALTFURNACE), "saltfurnace");
+		register(SALTFURNACE_LIT, new ItemBlock(SALTFURNACE_LIT), "saltfurnace_lit");
 		register(SALTPAN, new ItemBlock(SALTPAN), "blocksaltpan");
 		register(KINUTOFU, new ItemBlock(KINUTOFU), "blocktofukinu");
 		register(MOMENTOFU, new ItemBlock(MOMENTOFU), "blocktofumomen");
@@ -275,6 +282,8 @@ public class BlockLoader {
 		registerRender(SALTFURNACE_LIT);
         registerRender(TOFUSTORAGEMACHINE);
         registerRender(TEST);
+        registerRender(ANTENNA_BASIC);
+        registerRender(RADIATOR);
 		registerRender(KINUTOFU);
 		registerRender(MOMENTOFU);
 		registerRender(ISHITOFU);

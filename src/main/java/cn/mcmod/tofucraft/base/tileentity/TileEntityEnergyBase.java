@@ -15,14 +15,13 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
     /*
      * Comment:
      * This is the very basis of the Tofu Energy Storage Tile Entity (TESTE), which means that it's the lowest level of tile
-     * that will be registered to the Tofu Energy Network instantiated in the TofuNetwork class.
+     * which will be registered to the Tofu Energy Network instantiated in the TofuNetwork class.
      * It's highly configurable, and you can override most part of its function if you want.
      * */
 
     public static final String TAG_ENERGY = "tf_energy";
     public static final String TAG_ENERGY_MAX = "tf_energy_max";
     public static final String TAG_UUID = "tf_uuid";
-    public static final String TAG_PRIOR = "tf_priority";
 
     protected String uuid = "";
 
