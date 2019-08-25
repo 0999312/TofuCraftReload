@@ -1,6 +1,16 @@
 {
   "pools": [
     {
+      "name": "core",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "tofucraft:tofuforce_core"
+        }
+      ]
+    },
+    {
       "name": "main",
       "rolls": 1,
       "entries": [

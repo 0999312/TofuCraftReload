@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.item;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
+import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
 import cn.mcmod.tofucraft.material.TofuArmorMaterial;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
@@ -314,7 +315,12 @@ public class ItemLoader {
 			}
 			);
 	public static Item tofu_slime_radar = new ItemTofuSlimeRadar().setUnlocalizedName(TofuMain.MODID+"."+"tofuradar");
-	   public static Item anninApple = new ItemAnninApple();
+	public static Item anninApple = new ItemAnninApple();
+
+	public static Item tofuforce_core = new ItemTofuForceCore();
+	public static Item tofuishi_shield = new ItemTofuShield(360);
+	public static Item tofumetal_shield = new ItemTofuShield(560);
+
 	public ItemLoader(FMLPreInitializationEvent event) {
 		register(material);
 		register(tofu_slime_radar);
@@ -401,6 +407,10 @@ public class ItemLoader {
         register(diamondleggins);
         register(diamondboots);
 
+		register(tofuforce_core);
+		register(tofuishi_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofuishi_shield"));
+		register(tofumetal_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofumetal_shield"));
+
 		register(zundaBow);
 		register(zundaArrow.setUnlocalizedName(TofuMain.MODID+"."+"zundaarrow"));
 
@@ -425,7 +435,10 @@ public class ItemLoader {
 		tofuItemRegister(TofuType.strawberry,new ItemStack(tofu_food,1,10));
 		tofuItemRegister(TofuType.miso,new ItemStack(tofu_food,1,11));
 		tofuItemRegister(TofuType.hell,new ItemStack(tofu_hell,1));
-		
+
+		TileEntityRenderHelper TESR = new TileEntityRenderHelper();
+		tofuishi_shield.setTileEntityItemStackRenderer(TESR);
+		tofumetal_shield.setTileEntityItemStackRenderer(TESR);
 	}
 
     @SideOnly(Side.CLIENT)
@@ -518,6 +531,9 @@ public class ItemLoader {
         registerRender(zundaBow);
         registerRender(zundaArrow);
         registerRender(anninApple);
+		registerRender(tofuforce_core);
+		registerRender(tofuishi_shield);
+		registerRender(tofumetal_shield);
     }
 
     private static void register(Item item) {

@@ -8,8 +8,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 
-public class ItemDiamondTofuPickaxe extends ItemPickaxeBasic implements IEnergyExtractable {
-
+public class ItemDiamondTofuPickaxe extends ItemPickaxeBasic implements IEnergyExtractable
+{
     private DiamondTofuToolHandler impl;
 
     public ItemDiamondTofuPickaxe()

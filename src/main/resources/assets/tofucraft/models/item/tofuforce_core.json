@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tofucraft:items/tofuforce_core"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "broken": 1
+      },
+      "model": "tofucraft:item/tofuforce_core_broken"
+    }
+  ]
+}
