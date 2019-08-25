@@ -18,11 +18,11 @@ public interface ITofuEnergy {
     //Can the machine gives out energy
     boolean canDrain(TileEntity to);
 
-    default boolean isFull() {
+    default boolean isEnergyFull() {
         return getEnergyStored() == getMaxEnergyStored();
     }
 
-    default boolean isEmpty() {
+    default boolean isEnergyEmpty() {
         return getEnergyStored() == 0;
     }
 }
