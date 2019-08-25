@@ -63,6 +63,17 @@ public class BlockTofuPortal extends Block {
 
     }
 
+    public static int getMetaForAxis(EnumFacing.Axis axis) {
+
+        if (axis == EnumFacing.Axis.X) {
+
+            return 1;
+
+        }
+
+        return axis == EnumFacing.Axis.Z ? 2 : 0;
+
+    }
 
     public boolean trySpawnPortal(World worldIn, BlockPos pos) {
 
@@ -164,18 +175,6 @@ public class BlockTofuPortal extends Block {
     public int getMetaFromState(IBlockState state) {
 
         return getMetaForAxis(state.getValue(AXIS));
-
-    }
-
-    public static int getMetaForAxis(EnumFacing.Axis axis) {
-
-        if (axis == EnumFacing.Axis.X) {
-
-            return 1;
-
-        }
-
-        return axis == EnumFacing.Axis.Z ? 2 : 0;
 
     }
 
@@ -318,7 +317,7 @@ public class BlockTofuPortal extends Block {
                 d5 = (double) (rand.nextFloat() * 2.0F * (float) j);
             }
 
-            TofuMain.proxy.spawnParticle(worldIn, TofuParticleType.TOFUPORTAL,d0,d1,d2,d3,d4,d5);
+            TofuMain.proxy.spawnParticle(worldIn, TofuParticleType.TOFUPORTAL, d0, d1, d2, d3, d4, d5);
         }
 
     }
@@ -390,55 +389,29 @@ public class BlockTofuPortal extends Block {
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
 
         if (!entityIn.isRiding() && !entityIn.isBeingRidden() && entityIn.isNonBoss()) {
-
             MinecraftServer server = worldIn.getMinecraftServer();
-
             if (server != null && entityIn.timeUntilPortal <= 0) {
-
                 PlayerList playerList = server.getPlayerList();
-
-                int i = entityIn.dimension == DimensionType.OVERWORLD.getId() ? TofuMain.TOFU_DIMENSION.getId() : DimensionType.OVERWORLD.getId();
-
+                int i = entityIn.dimension == DimensionType.OVERWORLD.getId() ?
+                        TofuMain.TOFU_DIMENSION.getId() : DimensionType.OVERWORLD.getId();
                 TofuTeleporter teleporter = new TofuTeleporter(server.getWorld(i));
-
-                entityIn.timeUntilPortal = entityIn.getPortalCooldown() * 2;
-
-                if (entityIn.timeUntilPortal > 0) {
-
-
-
-                    entityIn.timeUntilPortal = entityIn.getPortalCooldown();
-
-
-
-                }
+                entityIn.timeUntilPortal = 100;
 
                 if (entityIn instanceof EntityPlayerMP) {
-
                     playerList.transferPlayerToDimension((EntityPlayerMP) entityIn, i, teleporter);
-
                 } else {
-
                     int origin = entityIn.dimension;
-
                     entityIn.dimension = i;
-
                     worldIn.removeEntityDangerously(entityIn);
-
-
                     entityIn.isDead = false;
-
-
                     playerList.transferEntityToWorld(entityIn, origin, server.getWorld(origin), server.getWorld(i),
                             teleporter);
 
                 }
 
 
-            } else {
+            } else
                 entityIn.timeUntilPortal = Math.max(entityIn.getPortalCooldown(), 100);
-            }
-
         }
 
     }
@@ -549,6 +522,48 @@ public class BlockTofuPortal extends Block {
 
     }
 
+    @SuppressWarnings("unused")
+    private boolean changeDim(EntityPlayer playerIn) {
+
+        MinecraftServer server = playerIn.world.getMinecraftServer();
+
+        if (server != null) {
+
+            PlayerList playerList = server.getPlayerList();
+
+            int i = playerIn.dimension == DimensionType.OVERWORLD.getId() ? TofuMain.TOFU_DIMENSION.getId() :
+
+                    DimensionType.OVERWORLD.getId();
+
+
+            Teleporter teleporter = new TofuTeleporter(server.getWorld(i));
+
+
+            if (playerIn instanceof EntityPlayerMP) {
+
+                playerList.transferPlayerToDimension((EntityPlayerMP) playerIn, i, teleporter);
+
+            } else {
+
+                int origin = playerIn.dimension;
+
+                playerIn.dimension = i;
+
+                playerIn.world.removeEntityDangerously(playerIn);
+
+                playerIn.isDead = false;
+
+                playerList.transferEntityToWorld(playerIn, origin, server.getWorld(origin), server.getWorld(i),
+
+                        teleporter);
+
+            }
+
+        }
+
+        return true;
+
+    }
 
     public static class Size {
 
@@ -769,7 +784,7 @@ public class BlockTofuPortal extends Block {
 
 
         public boolean isValid() {
-            return this.bottomLeft != null && this.width >= 2 && this.width <= 21 && this.height >= 3 &&this.height <= 21;
+            return this.bottomLeft != null && this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21;
         }
 
         public void placePortalBlocks() {
@@ -786,49 +801,6 @@ public class BlockTofuPortal extends Block {
             }
 
         }
-
-    }
-
-    @SuppressWarnings("unused")
-    private boolean changeDim(EntityPlayer playerIn) {
-
-        MinecraftServer server = playerIn.world.getMinecraftServer();
-
-        if (server != null) {
-
-            PlayerList playerList = server.getPlayerList();
-
-            int i = playerIn.dimension == DimensionType.OVERWORLD.getId() ? TofuMain.TOFU_DIMENSION.getId() :
-
-                    DimensionType.OVERWORLD.getId();
-
-
-            Teleporter teleporter = new TofuTeleporter(server.getWorld(i));
-
-
-            if (playerIn instanceof EntityPlayerMP) {
-
-                playerList.transferPlayerToDimension((EntityPlayerMP) playerIn, i, teleporter);
-
-            } else {
-
-                int origin = playerIn.dimension;
-
-                playerIn.dimension = i;
-
-                playerIn.world.removeEntityDangerously(playerIn);
-
-                playerIn.isDead = false;
-
-                playerList.transferEntityToWorld(playerIn, origin, server.getWorld(origin), server.getWorld(i),
-
-                        teleporter);
-
-            }
-
-        }
-
-        return true;
 
     }
 
