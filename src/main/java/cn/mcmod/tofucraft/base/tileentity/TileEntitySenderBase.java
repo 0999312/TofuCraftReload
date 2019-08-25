@@ -87,6 +87,10 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
         return isValid() ? ((IAnntena) world.getBlockState(pos.up()).getBlock()).getPower(pos.up(), world) : 0;
     }
 
+    public double getRadius(){
+        return ((IAnntena) antenna).getRadius(pos, world);
+    }
+
     @Override
     public boolean canDrain(TileEntity to) {
         return true;

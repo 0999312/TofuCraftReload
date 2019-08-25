@@ -89,10 +89,20 @@ public class TofuNetwork {
                 .filter(entry -> entry.getValue().getWorld().provider.getDimension() == dimid);
     }
 
+    public Stream<Map.Entry<String, TileEntity>> getTEWithinRadius(World world, BlockPos pos, double radius) {
+        return getTEWithinDim(world.provider.getDimension())
+                .filter(entry -> entry.getValue().getPos().getDistance(pos.getX(), pos.getY(), pos.getZ()) <= radius);
+    }
+
     public Stream<Map.Entry<String, TileEntity>> getTEWithinRadius(TileEntity center, double radius) {
         BlockPos pos = center.getPos();
         return getTEWithinDim(center.getWorld().provider.getDimension())
                 .filter(entry -> entry.getValue().getPos().getDistance(pos.getX(), pos.getY(), pos.getZ()) <= radius);
+    }
+
+    public Stream<Map.Entry<String, TileEntity>> getExtractableWithinRadius(World world, BlockPos pos, double radius) {
+        return getTEWithinRadius(world, pos, radius)
+                .filter(entry -> ((ITofuEnergy) entry.getValue()).canDrain(null));
     }
 
     public Stream<Map.Entry<String, TileEntity>> getExtractableWithinRadius(TileEntity center, double radius) {
@@ -100,6 +110,11 @@ public class TofuNetwork {
             throw new IllegalArgumentException("The center tile is not able to transfer energy!");
         return getTEWithinRadius(center, radius)
                 .filter(entry -> ((ITofuEnergy) entry.getValue()).canDrain(center) && ((ITofuEnergy) center).canReceive(entry.getValue()));
+    }
+
+    public Stream<Map.Entry<String, TileEntity>> getInsertableWithinRadius(World world, BlockPos pos, double radius) {
+        return getTEWithinRadius(world, pos, radius)
+                .filter(entry -> ((ITofuEnergy) entry.getValue()).canReceive(null));
     }
 
     public Stream<Map.Entry<String, TileEntity>> getInsertableWithinRadius(TileEntity center, double radius) {

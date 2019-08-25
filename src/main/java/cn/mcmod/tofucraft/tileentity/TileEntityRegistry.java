@@ -9,6 +9,7 @@ import cn.mcmod.tofucraft.tileentity.tofuenergy.reservoir.TileEntityTofuBattery;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityRadiator;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityReceiver;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntitySoymilkAggregator;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -27,6 +28,7 @@ public class TileEntityRegistry {
         registerTileEntity(TileEntityRadiator.class, "radiator");
         registerTileEntity(TileEntityReceiver.class, "test");
         registerTileEntity(TileEntityTofuBattery.class, "battery");
+        registerTileEntity(TileEntitySoymilkAggregator.class, "aggregator");
     }
     @SideOnly(Side.CLIENT)
     public static void render() {

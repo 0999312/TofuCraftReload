@@ -2,13 +2,14 @@ package cn.mcmod.tofucraft.tileentity.tofuenergy.worker;
 
 import cn.mcmod.tofucraft.base.tileentity.TileEntityWorkerBase;
 import cn.mcmod.tofucraft.block.BlockTofu;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.Random;
 
 public class TileEntityRadiator extends TileEntityWorkerBase implements ITickable {
-    protected static final int WORKING_RADIUS = 4;
+    private static final int WORKING_RADIUS = 4;
     private static final Random rnd = new Random();
 
     public TileEntityRadiator() {

@@ -1,6 +1,7 @@
 package cn.mcmod.tofucraft.item;
 
 import cn.mcmod.tofucraft.TofuMain;
+import cn.mcmod.tofucraft.base.item.EnergyItem.ItemTofuEnergyContained;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -19,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemTofuForceCore extends Item {
+public class ItemTofuForceCore extends ItemTofuEnergyContained {
 
     public ItemTofuForceCore() {
         super();
@@ -38,6 +39,10 @@ public class ItemTofuForceCore extends Item {
         return stack.getItemDamage() < stack.getMaxDamage() - 1;
     }
 
+    @Override
+    public int getEnergyMax(ItemStack inst) {
+        return 10000;
+    }
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
@@ -48,7 +53,10 @@ public class ItemTofuForceCore extends Item {
 
             if (entityLivingBase.ticksExisted % 400 == 0 && isUsable(stack)) {
                 if (entityLivingBase.getHealth() < entityLivingBase.getMaxHealth()) {
-                    stack.damageItem(1, entityLivingBase);
+                    if (getEnergy(stack) >= 5)
+                        drain(stack, 5, false);
+                    else
+                        stack.damageItem(1, entityLivingBase);
 
                     entityLivingBase.heal(1);
                 }
@@ -64,6 +72,7 @@ public class ItemTofuForceCore extends Item {
         if (!isUsable(stack)) {
             tooltip.add(TextFormatting.ITALIC + I18n.translateToLocal("tooltip.tofucraft.tofuforce_core.broken"));
         }
+        tooltip.add(String.format(I18n.translateToLocal("tooltip.tofucraft.energy"), getEnergy(stack), getEnergyMax(stack)));
     }
 
     @Override
