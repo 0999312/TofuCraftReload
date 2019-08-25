@@ -5,6 +5,7 @@ import cn.mcmod.tofucraft.api.tfenergy.TofuNetwork;
 import cn.mcmod.tofucraft.base.tileentity.TileEntitySenderBase;
 import cn.mcmod.tofucraft.util.NBTUtil;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -59,6 +60,12 @@ public abstract class ItemTofuEnergyContained extends Item implements IEnergyExt
     @Override
     public void setEnergyMax(ItemStack inst, int amount) {
         inst.setTagCompound(NBTUtil.setInteger(inst.getTagCompound(), TAG_TFMAX, amount));
+    }
+
+    @Override
+    public boolean onEntityItemUpdate(EntityItem entityItem) {
+        this.onUpdate(entityItem.getItem(), entityItem.getEntityWorld(), entityItem, 0, false);
+        return super.onEntityItemUpdate(entityItem);
     }
 
     //Items will recharge overtime if there are TileEntitySender nearby.
