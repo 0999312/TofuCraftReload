@@ -53,11 +53,12 @@ public class ItemTofuForceCore extends ItemTofuEnergyContained {
 
             if (entityLivingBase.ticksExisted % 400 == 0 && isUsable(stack)) {
                 if (entityLivingBase.getHealth() < entityLivingBase.getMaxHealth()) {
-                    if (getEnergy(stack) >= 5)
+                    if (getEnergy(stack) >= 5) {
                         drain(stack, 5, false);
-                    else
-                        stack.damageItem(1, entityLivingBase);
 
+                    } else {
+                        stack.damageItem(1, (EntityLivingBase) entityIn);
+                    }
                     entityLivingBase.heal(1);
                 }
             }
@@ -81,6 +82,6 @@ public class ItemTofuForceCore extends ItemTofuEnergyContained {
     }
 
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Item.getItemFromBlock(BlockLoader.METALTOFU) ? true : super.getIsRepairable(toRepair, repair);
+        return repair.getItem() == Item.getItemFromBlock(BlockLoader.METALTOFU) || super.getIsRepairable(toRepair, repair);
     }
 }
