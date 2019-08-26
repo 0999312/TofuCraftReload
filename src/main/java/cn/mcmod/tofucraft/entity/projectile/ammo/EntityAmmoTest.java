@@ -23,7 +23,7 @@ public class EntityAmmoTest extends EntityAmmoBase {
 
     @Override
     public float getVelocity() {
-        return 0.2f;
+        return 0.4f;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class EntityAmmoTest extends EntityAmmoBase {
         if (result.entityHit != null){
             result.entityHit.setDead();
         }
-        //super.onHit(result);
+        super.onHit(result);
     }
 
 }
