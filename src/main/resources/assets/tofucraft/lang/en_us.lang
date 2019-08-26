@@ -347,6 +347,8 @@ item.tofucraft.tofuishi_shield.name=TofuIshi Shield
 item.tofucraft.tofumetal_shield.name=TofuMetal Shield
 item.tofucraft.tofumetalforce_shield.name=TofuMetal ForceShield(Unused)
 item.tofucraft.tofuforce_core.name=TofuForce Core
+item.tofucraft.growing_tofu.name=Growing tofu
+item.tofucraft.fulintlock.name=Fulintlock
 
 advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
@@ -460,9 +462,12 @@ item.tofucraft.nanbantofu.name=Tofu Nanban
 subtitles.entity.tofunian.idle=Tofunian mutters
 subtitles.entity.tofunian.yes=Tofunian agrees
 
-tooltip.tofucraft.tofuforce_core1=If it is in the inventory, it will consume durability and restore your health.
-tooltip.tofucraft.tofuforce_core2=If it breaks, you can use it again by charging with tofuforce (TF)
+tooltip.tofucraft.tofuforce_core1=If it is in the inventory, it will consume durability or energy to restore your health.
+tooltip.tofucraft.tofuforce_core2=If it was broken, you can use it again by repairing it and charging it with TF.
 tooltip.tofucraft.tofuforce_core.broken=Broken
+
+tooltip.tofucraft.growing_tofu1=A clump of tofu that will grow overtime in the cost of TF.
+tooltip.tofucraft.growing_tofu2=At least it was not infected by some strange bacteria...
 
 tofucraft.radar.result.success=Found Tofu Slime's existence in this chuck.
 tofucraft.radar.result.failed=Can't find Tofu Slime in this chuck.
