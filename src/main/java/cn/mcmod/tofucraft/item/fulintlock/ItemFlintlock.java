@@ -164,7 +164,7 @@ public class ItemFlintlock extends Item {
     public int getMaxItemUseDuration(ItemStack stack) {
         switch (NBTUtil.getInteger(stack.getTagCompound(), "state", 0)) {
             case 0:
-                return 80;
+                return 40;
             case 1:
                 return 320;
             default:
