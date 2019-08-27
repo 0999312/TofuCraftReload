@@ -1,4 +1,4 @@
-package cn.mcmod.tofucraft.item;
+package cn.mcmod.tofucraft.item.tfitem;
 
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.base.item.EnergyItem.ItemTofuEnergyContained;
@@ -36,7 +36,7 @@ public class ItemTofuForceCore extends ItemTofuEnergyContained {
     }
 
     public static boolean isUsable(ItemStack stack) {
-        return stack.getItemDamage() < stack.getMaxDamage() - 1;
+        return stack.getItemDamage() <= stack.getMaxDamage();
     }
 
     @Override
@@ -53,11 +53,12 @@ public class ItemTofuForceCore extends ItemTofuEnergyContained {
 
             if (entityLivingBase.ticksExisted % 400 == 0 && isUsable(stack)) {
                 if (entityLivingBase.getHealth() < entityLivingBase.getMaxHealth()) {
-                    if (getEnergy(stack) >= 5)
+                    if (getEnergy(stack) >= 5) {
                         drain(stack, 5, false);
-                    else
-                        stack.damageItem(1, entityLivingBase);
 
+                    } else {
+                        stack.damageItem(1, (EntityLivingBase) entityIn);
+                    }
                     entityLivingBase.heal(1);
                 }
             }
@@ -72,7 +73,7 @@ public class ItemTofuForceCore extends ItemTofuEnergyContained {
         if (!isUsable(stack)) {
             tooltip.add(TextFormatting.ITALIC + I18n.translateToLocal("tooltip.tofucraft.tofuforce_core.broken"));
         }
-        tooltip.add(String.format(I18n.translateToLocal("tooltip.tofucraft.energy"), getEnergy(stack), getEnergyMax(stack)));
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     @Override
@@ -81,6 +82,6 @@ public class ItemTofuForceCore extends ItemTofuEnergyContained {
     }
 
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return repair.getItem() == Item.getItemFromBlock(BlockLoader.METALTOFU) ? true : super.getIsRepairable(toRepair, repair);
+        return repair.getItem() == Item.getItemFromBlock(BlockLoader.METALTOFU) || super.getIsRepairable(toRepair, repair);
     }
 }

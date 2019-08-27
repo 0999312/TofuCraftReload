@@ -4,14 +4,19 @@ import cn.mcmod.tofucraft.api.tfenergy.ITofuEnergy;
 import cn.mcmod.tofucraft.api.tfenergy.TofuNetwork;
 import cn.mcmod.tofucraft.base.tileentity.TileEntitySenderBase;
 import cn.mcmod.tofucraft.util.NBTUtil;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+import java.awt.*;
 import java.util.List;
 
 public abstract class ItemTofuEnergyContained extends Item implements IEnergyExtractable, IEnergyInsertable, IEnergyContained {
@@ -25,6 +30,32 @@ public abstract class ItemTofuEnergyContained extends Item implements IEnergyExt
 
     public static final String TAG_TF = "tf_energy";
     public static final String TAG_TFMAX = "tf_energymax";
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        tooltip.add(String.format(I18n.translateToLocal("tooltip.tofucraft.energy"), getEnergy(stack), getEnergyMax(stack)));
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+    }
+
+    private boolean getShowState(ItemStack stack) {
+        return !Minecraft.getMinecraft().player.isSneaking() && getEnergy(stack) != 0;
+    }
+
+    @Override
+    public boolean showDurabilityBar(ItemStack stack) {
+        return getShowState(stack) || super.showDurabilityBar(stack);
+    }
+
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return getShowState(stack) ?
+                1.0 - (double) getEnergy(stack) / (double) getEnergyMax(stack) : super.getDurabilityForDisplay(stack);
+    }
+
+    @Override
+    public int getRGBDurabilityForDisplay(ItemStack stack) {
+        return getShowState(stack) ? Color.white.getRGB() : super.getRGBDurabilityForDisplay(stack);
+    }
 
     @Override
     public int drain(ItemStack inst, int amount, boolean simulate) {

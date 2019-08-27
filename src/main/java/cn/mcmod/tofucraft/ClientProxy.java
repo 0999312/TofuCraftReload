@@ -25,107 +25,103 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy {
-	 	@Override
-	    public void preInit(FMLPreInitializationEvent event)
-	    {
-	        super.preInit(event);
-			BlockLoader.registerRenders();
-	        ItemLoader.registerRenders();
-			TofuEntityRegister.entityRender();
-			TileEntityRegistry.render();
-	    }
+    @Override
+    public void preInit(FMLPreInitializationEvent event) {
+        super.preInit(event);
+        BlockLoader.registerRenders();
+        ItemLoader.registerRenders();
+        TofuEntityRegister.entityRender();
+        TileEntityRegistry.render();
+    }
 
-	    @Override
-	    public void init(FMLInitializationEvent event)
-	    {
-	        super.init(event);
-	        
-			Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor() {
-				@Override
-				public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex)
-				{
-					 int metadata = state.getValue(BlockBarrel.FERM);
-					 return metadata >= 7 ? 0x885511 : ((BlockBarrel) state.getBlock()).isUnderWeight((World) worldIn, pos) ? 0xffd399 : 0xffffff ;
-				}
-			}, BlockLoader.MISOBARREL);
-	    }
+    @Override
+    public void init(FMLInitializationEvent event) {
+        super.init(event);
 
-	    @Override
-	    public void postInit(FMLPostInitializationEvent event)
-	    {
-	        super.postInit(event);
+        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor() {
+            @Override
+            public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
+                int metadata = state.getValue(BlockBarrel.FERM);
+                return metadata >= 7 ? 0x885511 : ((BlockBarrel) state.getBlock()).isUnderWeight((World) worldIn, pos) ? 0xffd399 : 0xffffff;
+            }
+        }, BlockLoader.MISOBARREL);
+    }
 
-	    }
+    @Override
+    public void postInit(FMLPostInitializationEvent event) {
+        super.postInit(event);
 
-	@Override
-	public void registerFluidBlockRendering(Block block, String name) {
+    }
 
-		final ModelResourceLocation fluidLocation = new ModelResourceLocation(TofuMain.MODID.toLowerCase() + ":fluids", name);
+    @Override
+    public void registerFluidBlockRendering(Block block, String name) {
 
-		// use a custom state mapper which will ignore the LEVEL property
-		ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
+        final ModelResourceLocation fluidLocation = new ModelResourceLocation(TofuMain.MODID.toLowerCase() + ":fluids", name);
 
-			@Override
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+        // use a custom state mapper which will ignore the LEVEL property
+        ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
 
-				return fluidLocation;
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
 
-			}
-		});
-	}
+                return fluidLocation;
 
-	@Override
-	public World getClientWorld() {
+            }
+        });
+    }
 
-		return FMLClientHandler.instance().getClient().world;
+    @Override
+    public World getClientWorld() {
 
-	}
+        return FMLClientHandler.instance().getClient().world;
 
-	@Override
-	public void spawnParticle(World world, TofuParticleType particleType, double x, double y, double z, double velX, double velY, double velZ) {
+    }
 
-		Minecraft mc = Minecraft.getMinecraft();
+    @Override
+    public void spawnParticle(World world, TofuParticleType particleType, double x, double y, double z, double velX, double velY, double velZ) {
 
-		Entity entity = mc.getRenderViewEntity();
+        Minecraft mc = Minecraft.getMinecraft();
+
+        Entity entity = mc.getRenderViewEntity();
 
 
-		// ignore the passed-in world, since on SP we get the integrated server world, which is not really what we want
+        // ignore the passed-in world, since on SP we get the integrated server world, which is not really what we want
 
-		world = this.getClientWorld();
+        world = this.getClientWorld();
 
 
-		if (entity != null && mc.effectRenderer != null) {
+        if (entity != null && mc.effectRenderer != null) {
 
-			int i = mc.gameSettings.particleSetting;
+            int i = mc.gameSettings.particleSetting;
 
-			if (i == 1 && world.rand.nextInt(3) == 0) {
+            if (i == 1 && world.rand.nextInt(3) == 0) {
 
-				i = 2;
+                i = 2;
 
-			}
+            }
 
-			double d0 = entity.posX - x;
+            double d0 = entity.posX - x;
 
-			double d1 = entity.posY - y;
+            double d1 = entity.posY - y;
 
-			double d2 = entity.posZ - z;
+            double d2 = entity.posZ - z;
 
-			if (d0 * d0 + d1 * d1 + d2 * d2 <= 1024D && i <= 1) {
+            if (d0 * d0 + d1 * d1 + d2 * d2 <= 1024D && i <= 1) {
 
-				Particle particle = null;
+                Particle particle = null;
 
-				switch (particleType) {
-					case TOFUPORTAL:
-						particle = new ParticleTofuPortal(world, x, y, z, velX, velY, velZ);
-						break;
+                switch (particleType) {
+                    case TOFUPORTAL:
+                        particle = new ParticleTofuPortal(world, x, y, z, velX, velY, velZ);
+                        break;
 
-				}
+                }
 
-				if (particle != null) {
-					mc.effectRenderer.addEffect(particle);
-				}
-			}
-		}
-	}
+                if (particle != null) {
+                    mc.effectRenderer.addEffect(particle);
+                }
+            }
+        }
+    }
 
 }
