@@ -17,9 +17,4 @@ public class WarheadSoybean extends Warhead {
         return soy;
     }
 
-
-    @Override
-    public float getSize() {
-        return 2;
-    }
 }

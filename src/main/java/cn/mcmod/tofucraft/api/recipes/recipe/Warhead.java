@@ -11,8 +11,6 @@ public abstract class Warhead {
     public void onHit(RayTraceResult result, EntityAmmoBase bullet) {
         if (result.entityHit != null) {
             result.entityHit.attackEntityFrom(DamageSource.GENERIC, getDamage());
-        }else {
-            bullet.world.createExplosion(null, bullet.posX, bullet.posY, bullet.posZ,25,false);
         }
         bullet.setDead();
     }
@@ -31,5 +29,4 @@ public abstract class Warhead {
         return nbt;
     }
 
-    public abstract float getSize();
 }

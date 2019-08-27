@@ -63,7 +63,7 @@ public class ItemFlintlock extends Item {
                     String pro = NBTUtil.getString(stack.getTagCompound(), "propellant", Strings.EMPTY);
                     EntityAmmoBase bullet = new EntityAmmoBase(worldIn, playerIn, wh, pro);
                     bullet.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw);
-                    bullet.setPosition(playerIn.posX, playerIn.posY + playerIn.eyeHeight - 0.04, playerIn.posZ);
+                    bullet.setPosition(playerIn.posX, playerIn.posY + (double) playerIn.eyeHeight - 0.10000000149011612D, playerIn.posZ);
                     worldIn.spawnEntity(bullet);
 
                     NBTTagCompound tag = stack.getTagCompound();

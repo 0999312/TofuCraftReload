@@ -2,7 +2,9 @@ package cn.mcmod.tofucraft.api.recipes;
 
 import cn.mcmod.tofucraft.api.recipes.recipe.Propellant;
 import cn.mcmod.tofucraft.api.recipes.recipe.Warhead;
+import cn.mcmod.tofucraft.item.fulintlock.propellants.PropellantBlaze;
 import cn.mcmod.tofucraft.item.fulintlock.propellants.PropellantGunpowder;
+import cn.mcmod.tofucraft.item.fulintlock.warheads.WarheadBlazeRod;
 import cn.mcmod.tofucraft.item.fulintlock.warheads.WarheadSoybean;
 import net.minecraft.item.ItemStack;
 
@@ -19,6 +21,8 @@ public class FlintLockAmmoMap {
     public static void init() {
         registerPropellant("gunpowder", PropellantGunpowder.class);
         registerWarhead("soy", WarheadSoybean.class);
+        registerWarhead("blazerod", WarheadBlazeRod.class);
+        registerPropellant("blaze", PropellantBlaze.class);
     }
 
     public static HashMap<String, Class<? extends Propellant>> getPropellants() {

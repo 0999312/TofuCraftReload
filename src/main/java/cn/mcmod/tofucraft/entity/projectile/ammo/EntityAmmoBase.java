@@ -3,37 +3,25 @@ package cn.mcmod.tofucraft.entity.projectile.ammo;
 import cn.mcmod.tofucraft.api.recipes.FlintLockAmmoMap;
 import cn.mcmod.tofucraft.api.recipes.recipe.Propellant;
 import cn.mcmod.tofucraft.api.recipes.recipe.Warhead;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-import java.util.List;
-
 public class EntityAmmoBase extends Entity implements IProjectile {
-    private static final Predicate<Entity> ARROW_TARGETS =
-            Predicates.and(EntitySelectors.NOT_SPECTATING, EntitySelectors.IS_ALIVE,
-                    Entity::canBeCollidedWith);
-
-    protected int ticksInAir = 0; //A timer to terminate bullet calculation.
     public String warhead;
     public String propellant;
-
     public Warhead warheadInst;
     public Propellant propellantInst;
-
+    protected int ticksInAir = 0; //A timer to terminate bullet calculation.
     protected Entity shootingEntity;
 
-    private EntityAmmoBase(World worldIn) {
+    public EntityAmmoBase(World worldIn) {
         super(worldIn);
+        setSize(0.3f, 0.3f);
     }
 
     public EntityAmmoBase(World world, Entity shootingEntity, String warhead, String propellant) {
@@ -48,14 +36,13 @@ public class EntityAmmoBase extends Entity implements IProjectile {
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-
-        setSize(warheadInst.getSize(), warheadInst.getSize());
     }
 
     @Override
     protected void entityInit() {
 
     }
+
 
     @Override
     protected void readEntityFromNBT(NBTTagCompound nbtTagCompound) {
@@ -96,7 +83,6 @@ public class EntityAmmoBase extends Entity implements IProjectile {
         if (propellantInst == null || warheadInst == null)
             return;
 
-        if (ticksInAir >= 64) this.setDead();
         ticksInAir++;
 
         propellantInst.onTicking(this);
@@ -146,32 +132,4 @@ public class EntityAmmoBase extends Entity implements IProjectile {
         this.motionZ = z;
     }
 
-    @Nullable
-    public Entity findEntityOnPath(Vec3d start, Vec3d end) {
-        Entity entity = null;
-        List<Entity> list = this.world.getEntitiesInAABBexcluding(this,
-                this.getEntityBoundingBox().expand(this.motionX, this.motionY, this.motionZ).grow(1.0D),
-                ARROW_TARGETS::test);
-        double d0 = 0.0D;
-
-        for (int i = 0; i < list.size(); ++i) {
-            Entity entity1 = list.get(i);
-
-            if (entity1 != this.shootingEntity || this.ticksInAir > 0) {
-                AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().grow(0.30000001192092896D);
-                RayTraceResult raytraceresult = axisalignedbb.calculateIntercept(start, end);
-
-                if (raytraceresult != null) {
-                    double d1 = start.squareDistanceTo(raytraceresult.hitVec);
-
-                    if (d1 < d0 || d0 == 0.0D) {
-                        entity = entity1;
-                        d0 = d1;
-                    }
-                }
-            }
-        }
-
-        return entity;
-    }
 }
