@@ -1,8 +1,10 @@
 package cn.mcmod.tofucraft.gui;
 
 import cn.mcmod.tofucraft.inventory.ContainerSaltFurnace;
+import cn.mcmod.tofucraft.inventory.ContainerTFBattery;
 import cn.mcmod.tofucraft.inventory.ContainerTFStorage;
 import cn.mcmod.tofucraft.tileentity.TileEntitySaltFurnace;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.reservoir.TileEntityTofuBattery;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -13,6 +15,7 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 public class TofuGuiHandler implements IGuiHandler {
     public static final int ID_SALTFURNACE_Gui = 0;
     public static final int ID_STORAGE_MACHINE_GUI = 1;
+    public static final int ID_BATTERY_GUI = 2;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -29,6 +32,14 @@ public class TofuGuiHandler implements IGuiHandler {
 
             if (entity instanceof TileEntityTFStorage) {
                 return new ContainerTFStorage(player.inventory, (TileEntityTFStorage) entity);
+            }
+        }
+
+        if (ID == ID_BATTERY_GUI) {
+            TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+
+            if (entity instanceof TileEntityTofuBattery) {
+                return new ContainerTFBattery(player.inventory, (TileEntityTofuBattery) entity);
             }
         }
         return null;
@@ -52,6 +63,13 @@ public class TofuGuiHandler implements IGuiHandler {
             }
         }
 
+        if (ID == ID_BATTERY_GUI) {
+            TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+
+            if (entity instanceof TileEntityTofuBattery) {
+                return new GuiTFBattery(player.inventory, (TileEntityTofuBattery) entity);
+            }
+        }
         return null;
     }
 }
