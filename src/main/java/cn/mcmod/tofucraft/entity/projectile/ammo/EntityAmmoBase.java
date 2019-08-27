@@ -1,10 +1,12 @@
 package cn.mcmod.tofucraft.entity.projectile.ammo;
 
+import cn.mcmod.tofucraft.api.recipes.FlintLockAmmoMap;
+import cn.mcmod.tofucraft.api.recipes.recipe.Propellant;
+import cn.mcmod.tofucraft.api.recipes.recipe.Warhead;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -16,21 +18,38 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class EntityAmmoBase extends Entity implements IProjectile {
+public class EntityAmmoBase extends Entity implements IProjectile {
     private static final Predicate<Entity> ARROW_TARGETS =
             Predicates.and(EntitySelectors.NOT_SPECTATING, EntitySelectors.IS_ALIVE,
                     Entity::canBeCollidedWith);
 
     protected int ticksInAir = 0; //A timer to terminate bullet calculation.
+    public String warhead;
+    public String propellant;
+
+    public Warhead warheadInst;
+    public Propellant propellantInst;
+
     protected Entity shootingEntity;
 
-    public EntityAmmoBase(World worldIn) {
+    private EntityAmmoBase(World worldIn) {
         super(worldIn);
     }
 
-    public EntityAmmoBase(World world, Entity shootingEntity) {
+    public EntityAmmoBase(World world, Entity shootingEntity, String warhead, String propellant) {
         this(world);
         this.shootingEntity = shootingEntity;
+        this.warhead = warhead;
+        this.propellant = propellant;
+
+        try {
+            this.warheadInst = FlintLockAmmoMap.getWarheads().get(warhead).newInstance();
+            this.propellantInst = FlintLockAmmoMap.getPropellants().get(propellant).newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        setSize(warheadInst.getSize(), warheadInst.getSize());
     }
 
     @Override
@@ -38,73 +57,76 @@ public abstract class EntityAmmoBase extends Entity implements IProjectile {
 
     }
 
-    public abstract EntityAmmoBase create(World world, Entity shooter);
-
     @Override
     protected void readEntityFromNBT(NBTTagCompound nbtTagCompound) {
         this.ticksInAir = nbtTagCompound.getInteger("inAir");
+        this.warhead = nbtTagCompound.getString("warhead");
+        this.propellant = nbtTagCompound.getString("propellant");
+
+        try {
+            this.warheadInst = FlintLockAmmoMap.getWarheads().get(warhead).newInstance();
+            this.propellantInst = FlintLockAmmoMap.getPropellants().get(propellant).newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        if (warheadInst != null)
+            warheadInst.readFromNBT(nbtTagCompound);
+        if (propellantInst != null)
+            propellantInst.readFromNBT(nbtTagCompound);
+
     }
 
     @Override
     protected void writeEntityToNBT(NBTTagCompound nbtTagCompound) {
         nbtTagCompound.setInteger("inAir", this.ticksInAir);
+        nbtTagCompound.setString("warhead", warhead);
+        nbtTagCompound.setString("propellant", propellant);
+
+        if (warheadInst != null)
+            warheadInst.writeToNBT(nbtTagCompound);
+        if (propellantInst != null)
+            propellantInst.writeToNBT(nbtTagCompound);
     }
 
     @Override
     public void onUpdate() {
         super.onUpdate();
 
+        if (propellantInst == null || warheadInst == null)
+            return;
+
         if (ticksInAir >= 64) this.setDead();
         ticksInAir++;
 
-        Vec3d vec3d1 = new Vec3d(this.posX, this.posY, this.posZ);
-        Vec3d vec3d = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-        RayTraceResult raytraceresult = this.world.rayTraceBlocks(vec3d1, vec3d, false, true, false);
-        vec3d1 = new Vec3d(this.posX, this.posY, this.posZ);
-        vec3d = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+        propellantInst.onTicking(this);
+        warheadInst.onTicking(this);
 
-        if (raytraceresult != null)
-            vec3d = new Vec3d(raytraceresult.hitVec.x, raytraceresult.hitVec.y, raytraceresult.hitVec.z);
-
-
-        Entity entity = this.findEntityOnPath(vec3d1, vec3d);
-
-        if (entity != null)
-            raytraceresult = new RayTraceResult(entity);
-
-
-        if (raytraceresult != null && raytraceresult.entityHit instanceof EntityPlayer) {
-            raytraceresult = null;
-        }
+        RayTraceResult raytraceresult = propellantInst.checkHit(this);
 
         if (raytraceresult != null && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, raytraceresult)) {
-            this.onHit(raytraceresult);
+            propellantInst.onHit(raytraceresult, this);
+            warheadInst.onHit(raytraceresult, this);
         }
 
-        this.posX += this.motionX;
-        this.posY += this.motionY;
-        this.posZ += this.motionZ;
+        propellantInst.updateMotion(this);
     }
 
-    public float getVelocity() {
-        return 4;
-    }
-
-    public float getInaccuracy() {
-        return 0;
-    }
-
-    public void shoot(Entity shooter, float pitch, float yaw, float velocity, float inaccuracy) {
+    public void shoot(Entity shooter, float pitch, float yaw) {
         float f = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
         float f1 = -MathHelper.sin(pitch * 0.017453292F);
         float f2 = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-        this.shoot((double) f, (double) f1, (double) f2, velocity, inaccuracy);
+        this.shoot((double) f, (double) f1, (double) f2, propellantInst.getPropellantForce(), propellantInst.getPropellantInaccuracy());
         this.motionX += shooter.motionX;
         this.motionZ += shooter.motionZ;
 
         if (!shooter.onGround) {
             this.motionY += shooter.motionY;
         }
+    }
+
+    public int getTicksInAir() {
+        return ticksInAir;
     }
 
     @Override
@@ -124,12 +146,8 @@ public abstract class EntityAmmoBase extends Entity implements IProjectile {
         this.motionZ = z;
     }
 
-    public void onHit(RayTraceResult result) {
-        this.setDead();
-    }
-
     @Nullable
-    protected Entity findEntityOnPath(Vec3d start, Vec3d end) {
+    public Entity findEntityOnPath(Vec3d start, Vec3d end) {
         Entity entity = null;
         List<Entity> list = this.world.getEntitiesInAABBexcluding(this,
                 this.getEntityBoundingBox().expand(this.motionX, this.motionY, this.motionZ).grow(1.0D),
