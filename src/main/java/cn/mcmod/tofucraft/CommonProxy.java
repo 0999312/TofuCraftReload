@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft;
 
+import cn.mcmod.tofucraft.api.recipes.FlintLockAmmoMap;
 import cn.mcmod.tofucraft.api.recipes.SoymilkAggregationMap;
 import cn.mcmod.tofucraft.api.recipes.TofuEnergyMap;
 import cn.mcmod.tofucraft.api.recipes.TofuEnergyStoragedFluidMap;
@@ -44,6 +45,7 @@ public class CommonProxy {
         TofuEnergyMap.init();
         TofuEnergyStoragedFluidMap.init();
         SoymilkAggregationMap.init();
+        FlintLockAmmoMap.init();
 
         TileEntityRegistry.init();
         VillagerTofu1.registerVillager();

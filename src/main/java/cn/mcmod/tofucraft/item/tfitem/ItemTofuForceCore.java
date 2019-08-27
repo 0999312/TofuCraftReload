@@ -1,4 +1,4 @@
-package cn.mcmod.tofucraft.item;
+package cn.mcmod.tofucraft.item.tfitem;
 
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.base.item.EnergyItem.ItemTofuEnergyContained;
@@ -36,7 +36,7 @@ public class ItemTofuForceCore extends ItemTofuEnergyContained {
     }
 
     public static boolean isUsable(ItemStack stack) {
-        return stack.getItemDamage() < stack.getMaxDamage() - 1;
+        return stack.getItemDamage() <= stack.getMaxDamage();
     }
 
     @Override
@@ -73,7 +73,7 @@ public class ItemTofuForceCore extends ItemTofuEnergyContained {
         if (!isUsable(stack)) {
             tooltip.add(TextFormatting.ITALIC + I18n.translateToLocal("tooltip.tofucraft.tofuforce_core.broken"));
         }
-        tooltip.add(String.format(I18n.translateToLocal("tooltip.tofucraft.energy"), getEnergy(stack), getEnergyMax(stack)));
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     @Override
