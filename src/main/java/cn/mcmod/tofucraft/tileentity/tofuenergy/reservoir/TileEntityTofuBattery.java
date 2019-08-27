@@ -66,12 +66,18 @@ public class TileEntityTofuBattery extends TileEntityReservoirBase {
         return super.writeToNBT(compound);
     }
 
+    @Override
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+        return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
+    }
+
     @Nullable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
         if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
             if (facing == null) return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(inputTank);
             switch (facing) {
+                case UP:
                 case EAST:
                 case WEST:
                 case NORTH:
