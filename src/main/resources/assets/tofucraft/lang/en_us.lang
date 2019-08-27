@@ -143,6 +143,8 @@ tile.tofucraft.yuba_noren.name=Yuba Noren
 
 tile.tofucraft.ricecrop.name=Rice Crop
 tile.tofucraft.saltfurnace_lit.name=Lit Saltfurnace
+tile.tofucraft.battery.name=TFBattery
+tile.tofucraft.antenna_basic.name=TFAntenna Basic
 
 item.tofucraft.seeds_soybeans.name=Soybeans
 item.tofucraft.seeds_soybeans_hell.name=Hell Soybeans
