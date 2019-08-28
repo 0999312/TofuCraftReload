@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "T#T",
+    "#M#"
+  ],
+  "key": {
+    "M": {
+      "item": "tofucraft:material",
+      "data": 22
+    },
+    "#": {
+      "item": "tofucraft:blocktofumetal"
+    },
+    "T": {
+      "item": "tofucraft:material",
+      "data": 21
+    }
+  },
+  "result": {
+    "item": "tofucraft:tfstorage"
+  }
+}
