@@ -140,6 +140,8 @@ tile.tofucraft.tofulog.name=豆腐の原木
 tile.tofucraft.yubagrass.name=湯葉草
 tile.tofucraft.blocksaltpan.name=塩田
 tile.tofucraft.yuba_noren.name=湯葉ののれん
+tile.tofucraft.battery.name=TFバッテリー
+tile.tofucraft.antenna_basic.name=TFアンテナベーシック
 
 item.tofucraft.seeds_soybeans.name=大豆
 item.tofucraft.seeds_soybeansHell.name=地獄大豆

@@ -1,14 +1,23 @@
 package cn.mcmod.tofucraft.world;
 
 import cn.mcmod.tofucraft.TofuMain;
+import cn.mcmod.tofucraft.client.sky.TofuWeatherRenderer;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.storage.DerivedWorldInfo;
 import net.minecraft.world.storage.WorldInfo;
+import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class WorldProviderTofu extends WorldProvider {
+
+    @SideOnly(Side.CLIENT)
+    private static TofuWeatherRenderer weatherRenderer;
 
     @Override
     public void init(){
@@ -50,5 +59,17 @@ public class WorldProviderTofu extends WorldProvider {
         return true;
     }
 
+    @SideOnly(Side.CLIENT)
+    public static TofuWeatherRenderer getTofuWeatherRenderer() {
+        if (weatherRenderer == null) {
+            weatherRenderer = new TofuWeatherRenderer();
+        }
+        return weatherRenderer;
+    }
 
+    @Nullable
+    @Override
+    public IRenderHandler getWeatherRenderer() {
+        return getTofuWeatherRenderer();
+    }
 }
