@@ -38,6 +38,8 @@ public abstract class TileEntityProcessorBase extends TileEntityWorkerBase imple
 
     public abstract void done();
 
+    public void general(){};
+
     @Override
     public void update() {
         if (canWork()) {
@@ -49,7 +51,7 @@ public abstract class TileEntityProcessorBase extends TileEntityWorkerBase imple
         } else
             failed();
 
-
+        general();
     }
 
     @Override
