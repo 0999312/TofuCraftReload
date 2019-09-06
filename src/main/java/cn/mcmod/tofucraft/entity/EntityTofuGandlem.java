@@ -57,7 +57,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         this.setSize(0.7F, 2.05F);
         this.isImmuneToFire = true;
         this.moveHelper = new EntityTofuFlyHelper(this);
-        this.experienceValue = 65;
+        this.experienceValue = 80;
     }
 
     @Override
@@ -68,7 +68,6 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     @Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new AIDoNothing());
-        this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(3, new AIHealSpell());
         this.tasks.addTask(4, new AITofuShoot());
         this.tasks.addTask(5, new AISummonSpell());
