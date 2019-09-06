@@ -36,7 +36,7 @@ public class RenderTofuGandlem extends RenderLiving<EntityTofuGandlem> {
 
     @Nullable
     protected ResourceLocation getEntityTexture(EntityTofuGandlem entity) {
-        if (entity.isSleep()) {
+        if (entity.isSleep() || !entity.isEntityAlive()) {
             return SLEEP_LOCATION;
         } else {
             return LOCATION;
