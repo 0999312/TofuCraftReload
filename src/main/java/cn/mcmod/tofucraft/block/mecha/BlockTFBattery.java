@@ -26,6 +26,8 @@ public class BlockTFBattery extends Block {
     public BlockTFBattery() {
         super(Material.IRON);
         setCreativeTab(CommonProxy.tab);
+        this.setHardness(5.0F);
+        this.setResistance(12.0F);
     }
 
     @Override
