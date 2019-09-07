@@ -10,6 +10,7 @@ import cn.mcmod.tofucraft.util.TofuLootTables;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,6 +25,7 @@ import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -49,6 +51,9 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     private float clientSideSpellCastingAnimation;
     private float prevClientSideAttackingAnimation;
     private float clientSideAttackingAnimation;
+    private float prevClientSideDeadAnimation;
+    private float clientSideDeadAnimation;
+    public int deathTicks;
 
     public final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.WHITE, BossInfo.Overlay.PROGRESS));
 
@@ -57,7 +62,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         this.setSize(0.7F, 2.05F);
         this.isImmuneToFire = true;
         this.moveHelper = new EntityTofuFlyHelper(this);
-        this.experienceValue = 65;
+        this.experienceValue = 80;
     }
 
     @Override
@@ -68,7 +73,6 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     @Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new AIDoNothing());
-        this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(3, new AIHealSpell());
         this.tasks.addTask(4, new AITofuShoot());
         this.tasks.addTask(5, new AISummonSpell());
@@ -249,6 +253,41 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
             } else {
                 this.clientSideAttackingAnimation = MathHelper.clamp(this.clientSideAttackingAnimation - 1.0F, 0.0F, 6.0F);
             }
+
+            this.prevClientSideDeadAnimation = this.clientSideAttackingAnimation;
+            if (!this.isEntityAlive()) {
+                this.clientSideDeadAnimation = MathHelper.clamp(this.clientSideDeadAnimation + 0.5F, 0.0F, 6.0F);
+            } else {
+                this.clientSideDeadAnimation = 0.0F;
+            }
+        }
+    }
+
+    @Override
+    protected void onDeathUpdate() {
+        this.renderYawOffset = this.rotationYaw;
+
+        ++this.deathTicks;
+
+        if (this.deathTicks >= 60 && this.deathTicks <= 80) {
+            float f = (this.rand.nextFloat() - 0.5F) * 4.0F;
+            float f1 = (this.rand.nextFloat() - 0.5F) * 2.0F;
+            float f2 = (this.rand.nextFloat() - 0.5F) * 4.0F;
+            this.world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.posX + (double) f, this.posY + 2.0D + (double) f1, this.posZ + (double) f2, 0.0D, 0.0D, 0.0D);
+        }
+
+        if (this.deathTicks == 80) {
+            if (!this.world.isRemote && (this.isPlayer() || this.recentlyHit > 0 && this.canDropLoot() && this.world.getGameRules().getBoolean("doMobLoot"))) {
+                int i = this.getExperiencePoints(this.attackingPlayer);
+                i = net.minecraftforge.event.ForgeEventFactory.getExperienceDrop(this, this.attackingPlayer, i);
+                while (i > 0) {
+                    int j = EntityXPOrb.getXPSplit(i);
+                    i -= j;
+                    this.world.spawnEntity(new EntityXPOrb(this.world, this.posX, this.posY, this.posZ, j));
+                }
+            }
+
+            this.setDead();
         }
     }
 
@@ -260,6 +299,11 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     @SideOnly(Side.CLIENT)
     public float getAttackingAnimationScale(float p_189795_1_) {
         return (this.prevClientSideAttackingAnimation + (this.clientSideAttackingAnimation - this.prevClientSideAttackingAnimation) * p_189795_1_) / 6.0F;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public float getDeadAnimationScale(float p_189795_1_) {
+        return (this.prevClientSideDeadAnimation + (this.clientSideDeadAnimation - this.prevClientSideDeadAnimation) * p_189795_1_) / 6.0F;
     }
 
 
