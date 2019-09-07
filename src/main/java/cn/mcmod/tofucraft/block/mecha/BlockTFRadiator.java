@@ -3,7 +3,6 @@ package cn.mcmod.tofucraft.block.mecha;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityRadiator;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;

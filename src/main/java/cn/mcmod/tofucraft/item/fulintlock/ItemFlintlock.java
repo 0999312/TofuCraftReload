@@ -157,7 +157,7 @@ public class ItemFlintlock extends Item {
 
     @Override
     public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.BOW;
+        return EnumAction.NONE;
     }
 
     @Override

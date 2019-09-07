@@ -436,14 +436,14 @@ public class ItemLoader {
         tofuItemRegister(TofuType.strawberry, new ItemStack(tofu_food, 1, 10));
         tofuItemRegister(TofuType.miso, new ItemStack(tofu_food, 1, 11));
         tofuItemRegister(TofuType.hell, new ItemStack(tofu_hell, 1));
-
-        TileEntityRenderHelper TESR = new TileEntityRenderHelper();
-        tofuishi_shield.setTileEntityItemStackRenderer(TESR);
-        tofumetal_shield.setTileEntityItemStackRenderer(TESR);
+// STOP USE CLIENT VOID IN COMMON VOID PLEASE!!!
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
+        TileEntityRenderHelper TESR = new TileEntityRenderHelper();
+        tofuishi_shield.setTileEntityItemStackRenderer(TESR);
+        tofumetal_shield.setTileEntityItemStackRenderer(TESR);
         registerRender(soybeansHell);
         registerRender(tofu_slime_radar);
         registerRender(soymilk_ramune);

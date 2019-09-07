@@ -1,6 +1,5 @@
 package cn.mcmod.tofucraft.api.recipes.recipe;
 
-import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.entity.projectile.ammo.EntityAmmoBase;
 import cn.mcmod.tofucraft.util.MathUtil;
 import net.minecraft.item.ItemStack;

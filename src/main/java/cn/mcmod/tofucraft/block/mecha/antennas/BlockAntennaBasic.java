@@ -21,6 +21,8 @@ public class BlockAntennaBasic extends Block implements IAnntena {
     public BlockAntennaBasic() {
         super(Material.IRON);
         this.setCreativeTab(CommonProxy.tab);
+        this.setHardness(5.0F);
+        this.setResistance(10.0F);
     }
 
     @Override

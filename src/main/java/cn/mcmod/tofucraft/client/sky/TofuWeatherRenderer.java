@@ -35,8 +35,6 @@ public class TofuWeatherRenderer extends IRenderHandler {
     private final float[] rainXCoords = new float[1024];
     private final float[] rainYCoords = new float[1024];
 
-    private int soundCounter;
-
     private final Random random = new Random();
     private int rainSoundCounter;
 
@@ -61,7 +59,7 @@ public class TofuWeatherRenderer extends IRenderHandler {
     public void render(float partialTicks, WorldClient world, Minecraft mc) {
         ++this.rendererUpdateTick;
 
-        float f = mc.world.getRainStrength(partialTicks);
+        mc.world.getRainStrength(partialTicks);
 
         renderNormalWeather(partialTicks, world, mc);
 
@@ -82,7 +80,6 @@ public class TofuWeatherRenderer extends IRenderHandler {
                 Entity entity = mc.getRenderViewEntity();
                 World world = mc.world;
                 BlockPos blockpos = new BlockPos(entity);
-                int i = 10;
                 double d0 = 0.0D;
                 double d1 = 0.0D;
                 double d2 = 0.0D;
@@ -201,7 +198,7 @@ public class TofuWeatherRenderer extends IRenderHandler {
                         if (k2 != l2) {
                             world.rand.setSeed((long) (l1 * l1 * 3121 + l1 * 45238971 ^ k1 * k1 * 418711 + k1 * 13761));
                             blockpos$mutableblockpos.setPos(l1, k2, k1);
-                            float f2 = biome.getTemperature(blockpos$mutableblockpos);
+                            biome.getTemperature(blockpos$mutableblockpos);
 
 
                             if (j1 != 1) {

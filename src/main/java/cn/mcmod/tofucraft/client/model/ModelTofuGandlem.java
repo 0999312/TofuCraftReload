@@ -127,7 +127,9 @@ public class ModelTofuGandlem extends ModelBase {
     public void setLivingAnimations(EntityLivingBase entity, float limbSwing, float limbSwingAmount, float partialTicks) {
         float tick = entity.ticksExisted + partialTicks;
 
-        GlStateManager.translate(0F, -0.2F - MathHelper.sin(tick * 0.12F) * 0.1F, 0F);
+        if (entity.isEntityAlive()) {
+            GlStateManager.translate(0F, -0.2F - MathHelper.sin(tick * 0.12F) * 0.1F, 0F);
+        }
     }
 
     public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {

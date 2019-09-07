@@ -62,7 +62,7 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
     private static final int[] SLOTS_TOP = new int[]{0, 2};
     private static final int[] SLOTS_SIDE = new int[]{0, 1, 2, 3};
     private static final int[] SLOTS_BOTTOM = new int[]{1, 3};
-    private static final FluidStack nigari = new FluidStack(BlockLoader.NIGARI_FLUID, 10);
+//    private static final FluidStack nigari = new FluidStack(BlockLoader.NIGARI_FLUID, 10);
 
     public FluidTank nigariTank = new FluidTank(BlockLoader.NIGARI_FLUID, 0, 120);
     net.minecraftforge.items.IItemHandler handlerTop = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.UP);
@@ -490,8 +490,8 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
         ItemStack input = furnaceItemStacks.get(2);
         ItemStack output = furnaceItemStacks.get(3);
 
-        ItemStack nigari = new ItemStack(ItemLoader.nigari, 1);
-        ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE, 1);
+//        ItemStack nigari = new ItemStack(ItemLoader.nigari, 1);
+//        ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE, 1);
 
         int state = canOutputNigari();
         if (state == 0) return;

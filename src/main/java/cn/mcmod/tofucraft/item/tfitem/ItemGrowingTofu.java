@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.item.tfitem;
 
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.base.item.EnergyItem.ItemTofuEnergyContained;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -75,8 +75,8 @@ public class ItemGrowingTofu extends ItemTofuEnergyContained {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(I18n.translateToLocal("tooltip.tofucraft.growing_tofu1"));
-        tooltip.add(I18n.translateToLocal("tooltip.tofucraft.growing_tofu2"));
+        tooltip.add(I18n.format("tooltip.tofucraft.growing_tofu1"));
+        tooltip.add(I18n.format("tooltip.tofucraft.growing_tofu2"));
 
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }
