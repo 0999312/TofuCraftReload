@@ -50,6 +50,7 @@ public class CommonProxy {
         TileEntityRegistry.init();
         VillagerTofu1.registerVillager();
         NetworkRegistry.INSTANCE.registerGuiHandler(TofuMain.instance, new TofuGuiHandler());
+     
     }
 
     public void postInit(FMLPostInitializationEvent event) {

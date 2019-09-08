@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "tofucraft:bottlesoysause"
+  },
+  "ingredients": [
+    {
+      "nbt": "{FluidName:\"soysauce\",Amount:1000}",
+      "item": "forge:bucketfilled",
+      "type": "minecraft:item_nbt"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

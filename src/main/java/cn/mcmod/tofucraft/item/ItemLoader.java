@@ -4,7 +4,6 @@ import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
-import cn.mcmod.tofucraft.item.fulintlock.ItemFlintlock;
 import cn.mcmod.tofucraft.item.tfitem.ItemGrowingTofu;
 import cn.mcmod.tofucraft.item.tfitem.ItemTofuForceCore;
 import cn.mcmod.tofucraft.material.TofuArmorMaterial;
@@ -320,6 +319,9 @@ public class ItemLoader {
 //    WIP Remaking.
 //    public static Item fulintlock = new ItemFlintlock();
 
+    public static Item tofuchinger_tooth = new Item();
+    public static Item tofuchinger_tootharrow = new ItemChingerToothArrow();
+
     public ItemLoader(FMLPreInitializationEvent event) {
         register(material);
         register(tofu_slime_radar);
@@ -420,6 +422,9 @@ public class ItemLoader {
         register(TOFUMOMEN_DOOR.setUnlocalizedName(TofuMain.MODID + "." + "tofudoor_momen"));
         register(TOFUISHI_DOOR.setUnlocalizedName(TofuMain.MODID + "." + "tofudoor_ishi"));
         register(TOFUMETAL_DOOR.setUnlocalizedName(TofuMain.MODID + "." + "tofudoor_metal"));
+
+        register(tofuchinger_tooth.setUnlocalizedName(TofuMain.MODID + "." + "tofuchinger_tooth"));
+        register(tofuchinger_tootharrow.setUnlocalizedName(TofuMain.MODID + "." + "tofuchinger_tootharrow"));
 
         tofuItemRegister(TofuType.kinu, new ItemStack(tofu_food));
         tofuItemRegister(TofuType.momen, new ItemStack(tofu_food, 1, 1));
@@ -537,8 +542,9 @@ public class ItemLoader {
         registerRender(growing_tofu);
         registerRender(tofuishi_shield);
         registerRender(tofumetal_shield);
-
 //        registerRender(fulintlock);
+        registerRender(tofuchinger_tooth);
+        registerRender(tofuchinger_tootharrow);
     }
 
     private static void register(Item item) {
