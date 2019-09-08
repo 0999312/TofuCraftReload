@@ -317,7 +317,8 @@ public class ItemLoader {
     public static Item growing_tofu = new ItemGrowingTofu();
     public static Item tofuishi_shield = new ItemTofuShield(360);
     public static Item tofumetal_shield = new ItemTofuShield(560);
-    public static Item fulintlock = new ItemFlintlock();
+//    WIP Remaking.
+//    public static Item fulintlock = new ItemFlintlock();
 
     public ItemLoader(FMLPreInitializationEvent event) {
         register(material);
@@ -410,7 +411,7 @@ public class ItemLoader {
 
         register(tofuishi_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofuishi_shield"));
         register(tofumetal_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofumetal_shield"));
-        register(fulintlock);
+//        register(fulintlock);
 
         register(zundaBow);
         register(zundaArrow.setUnlocalizedName(TofuMain.MODID + "." + "zundaarrow"));
@@ -537,7 +538,7 @@ public class ItemLoader {
         registerRender(tofuishi_shield);
         registerRender(tofumetal_shield);
 
-        registerRender(fulintlock);
+//        registerRender(fulintlock);
     }
 
     private static void register(Item item) {
