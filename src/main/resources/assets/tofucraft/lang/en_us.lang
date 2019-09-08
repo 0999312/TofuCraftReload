@@ -351,6 +351,8 @@ item.tofucraft.tofumetalforce_shield.name=TofuMetal ForceShield(Unused)
 item.tofucraft.tofuforce_core.name=TofuForce Core
 item.tofucraft.growing_tofu.name=Growing tofu
 item.tofucraft.fulintlock.name=Fulintlock
+item.tofucraft.tofuchinger_tooth.name=TofuChinger Tooth
+item.tofucraft.tofuchinger_tootharrow.name=TofuChinger ToothArrow
 
 advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
@@ -366,6 +368,8 @@ advancements.tofucraft.caringshooting.title=Caring Shooting
 advancements.tofucraft.caringshooting.description=Shoot ZundaArrow on mob and healing mob
 advancements.tofucraft.enter_tofuworld.title=Enter TofuWorld
 advancements.tofucraft.enter_tofuworld.description=Entered TofuWorld
+advancements.tofucraft.tofugandlem.title=Ancient Tofu Guardian
+advancements.tofucraft.tofugandlem.description=Defeat TofuGandlem and get Tofu Force Core
 
 container.tofucraft.SaltFurnace=Salt Furnace
 container.tofucraft.tfstorage=TF Storage

@@ -20,6 +20,8 @@ public class TofuEnergyMap {
         register(new ItemStack(ItemLoader.material, 1, 25), 200);
         register(new ItemStack(ItemLoader.material, 1, 26), 200);
         register(new ItemStack(ItemLoader.material, 1, 27), 250);
+        register(new ItemStack(ItemLoader.material, 1, 32), 50);
+        register(new ItemStack(ItemLoader.tofuchinger_tooth, 1), 400);
 
         register(new FluidStack(BlockLoader.SOYMILK_FLUID, 100), 100);
         register(new FluidStack(BlockLoader.SOYMILKHELL_FLUID, 70), 200);

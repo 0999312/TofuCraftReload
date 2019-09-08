@@ -348,7 +348,9 @@ item.tofucraft.tooldiamondaxe.name=金剛豆腐斧
 item.tofucraft.tofuishi_shield.name=石豆腐レンガのシールド
 item.tofucraft.tofumetal_shield.name=鋼豆腐のシールド
 item.tofucraft.tofumetalforce_shield.name=鋼豆腐のフォースシールド(未使用)
-item.tofucraft.tofuforce_core.nameトーフフォースコア
+item.tofucraft.tofuforce_core.name=トーフフォースコア
+item.tofucraft.tofuchinger_tooth.name=豆腐の捕食獣の歯
+item.tofucraft.tofuchinger_tootharrow.name=豆腐の捕食獣の歯の矢
 
 advancements.tofucraft.root.title=豆腐クラフト
 advancements.tofucraft.root.description=豆腐の技術や豆腐の食材
@@ -365,6 +367,8 @@ advancements.tofucraft.enter_tofuworld.description=豆腐ワールドに入る
 
 advancements.tofucraft.caringshooting.title=愛の射撃
 advancements.tofucraft.caringshooting.description=ずんだアローを射てmobを回復させる
+advancements.tofucraft.tofugandlem.title=トーフのガーディアン
+advancements.tofucraft.tofugandlem.description=トーフガンドレムを倒し、トーフフォースコアを手に入れる
 
 container.tofucraft.SaltFurnace=製塩かまど
 container.tofucraft.TfAntenna=TFアンテナ
