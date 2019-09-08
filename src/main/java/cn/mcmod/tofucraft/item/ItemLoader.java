@@ -318,6 +318,8 @@ public class ItemLoader {
     public static Item tofuishi_shield = new ItemTofuShield(360);
     public static Item tofumetal_shield = new ItemTofuShield(560);
     public static Item fulintlock = new ItemFlintlock();
+    public static Item tofuchinger_tooth = new Item();
+    public static Item tofuchinger_tootharrow = new ItemChingerToothArrow();
 
     public ItemLoader(FMLPreInitializationEvent event) {
         register(material);
@@ -419,6 +421,9 @@ public class ItemLoader {
         register(TOFUMOMEN_DOOR.setUnlocalizedName(TofuMain.MODID + "." + "tofudoor_momen"));
         register(TOFUISHI_DOOR.setUnlocalizedName(TofuMain.MODID + "." + "tofudoor_ishi"));
         register(TOFUMETAL_DOOR.setUnlocalizedName(TofuMain.MODID + "." + "tofudoor_metal"));
+
+        register(tofuchinger_tooth.setUnlocalizedName(TofuMain.MODID + "." + "tofuchinger_tooth"));
+        register(tofuchinger_tootharrow.setUnlocalizedName(TofuMain.MODID + "." + "tofuchinger_tootharrow"));
 
         tofuItemRegister(TofuType.kinu, new ItemStack(tofu_food));
         tofuItemRegister(TofuType.momen, new ItemStack(tofu_food, 1, 1));
@@ -538,6 +543,9 @@ public class ItemLoader {
         registerRender(tofumetal_shield);
 
         registerRender(fulintlock);
+
+        registerRender(tofuchinger_tooth);
+        registerRender(tofuchinger_tootharrow);
     }
 
     private static void register(Item item) {

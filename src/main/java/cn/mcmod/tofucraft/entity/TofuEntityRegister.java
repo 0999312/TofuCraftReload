@@ -4,6 +4,7 @@ import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.client.render.*;
 import cn.mcmod.tofucraft.entity.projectile.EntityBeam;
 import cn.mcmod.tofucraft.entity.projectile.EntityFukumame;
+import cn.mcmod.tofucraft.entity.projectile.EntityTippedChingerArrow;
 import cn.mcmod.tofucraft.entity.projectile.EntityZundaArrow;
 import cn.mcmod.tofucraft.entity.projectile.ammo.EntityAmmoBase;
 import net.minecraft.entity.EntityLiving;
@@ -43,6 +44,7 @@ public class TofuEntityRegister {
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "tofugandlem"), EntityTofuGandlem.class, prefix("TofuGandlem"), 12, TofuMain.instance, 120, 3, true, 0xe5e0bd, 0x9cd6f5);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "falltofu"), EntityFallTofu.class, prefix("FallTofu"), 13, TofuMain.instance, 120, 2, true);
         EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "bullet"), EntityAmmoBase.class, prefix("TofuBullet"), 14, TofuMain.instance, 100, 1,true);
+        EntityRegistry.registerModEntity(new ResourceLocation(TofuMain.MODID, "chingerarrow"), EntityTippedChingerArrow.class, prefix("TippedChingerArrow"), 15, TofuMain.instance, 100, 1, true);
         EntitySpawnPlacementRegistry.setPlacementType(EntityTofuFish.class, EntityLiving.SpawnPlacementType.IN_WATER);
     }
 
@@ -68,6 +70,7 @@ public class TofuEntityRegister {
         RenderingRegistry.registerEntityRenderingHandler(EntityTofuGandlem.class, RenderTofuGandlem::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityFallTofu.class, RenderFallTofu::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityAmmoBase.class, RenderBullet::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTippedChingerArrow.class, RenderTippedChingerArrow::new);
     }
 
     public static void entitySpawn() {

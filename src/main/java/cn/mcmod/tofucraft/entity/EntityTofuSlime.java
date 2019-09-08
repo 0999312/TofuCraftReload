@@ -47,7 +47,7 @@ public class EntityTofuSlime extends EntitySlime {
     public static boolean isSpawnChunk(World world, double x, double z) {
         BlockPos blockpos = new BlockPos(MathHelper.floor(x), 0, MathHelper.floor(z));
         Chunk var1 = world.getChunkFromBlockCoords(blockpos);
-        return var1.getRandomWithSeed(987234911L).nextInt(10) == 0;
+        return var1.getRandomWithSeed(987234911L).nextInt(8) == 0;
     }
     
     /**
@@ -72,6 +72,4 @@ public class EntityTofuSlime extends EntitySlime {
     protected EnumParticleTypes getParticleType() {
         return EnumParticleTypes.SNOWBALL;
     }
-    
-    
 }

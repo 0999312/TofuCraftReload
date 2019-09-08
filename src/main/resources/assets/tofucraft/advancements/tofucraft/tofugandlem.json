@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "tofucraft:tofuforce_core"
+    },
+    "title": {
+      "translate": "advancements.tofucraft.tofugandlem.title"
+    },
+    "description": {
+      "translate": "advancements.tofucraft.tofugandlem.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "tofucraft:tofucraft/enter_tofuworld",
+  "criteria": {
+    "killed_tofugandlem": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "tofucraft:tofugandlem"
+        }
+      }
+    }
+  }
+}
