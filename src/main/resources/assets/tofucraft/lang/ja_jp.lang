@@ -142,6 +142,7 @@ tile.tofucraft.blocksaltpan.name=塩田
 tile.tofucraft.yuba_noren.name=湯葉ののれん
 tile.tofucraft.battery.name=TFバッテリー
 tile.tofucraft.antenna_basic.name=TFアンテナベーシック
+tile.tofucraft.tofuworkstation.name=トーフ加工台
 
 item.tofucraft.seeds_soybeans.name=大豆
 item.tofucraft.seeds_soybeansHell.name=地獄大豆
