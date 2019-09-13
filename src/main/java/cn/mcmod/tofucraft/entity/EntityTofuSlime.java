@@ -35,7 +35,7 @@ public class EntityTofuSlime extends EntitySlime {
                     && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(48.0D, 20.0D, 48.0D)).size() == 0) {
 
                 //It does not spawn when there is a light like a torch (spawns when there is no light like a torch even if there is light in the sky)
-                return this.world.getLightFor(EnumSkyBlock.BLOCK, getPosition()) < 10 && this.baseGetCanSpawnHere();
+                return this.world.getLightFor(EnumSkyBlock.BLOCK, getPosition()) < this.rand.nextInt(6) && this.baseGetCanSpawnHere();
             }
 
             if (this.dimension == 0
