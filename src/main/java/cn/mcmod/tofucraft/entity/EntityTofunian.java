@@ -374,8 +374,8 @@ public class EntityTofunian extends EntityVillager {
 
             addTradeForSingleRuby(list, new ItemStack(ItemLoader.foodset, 8 + rand.nextInt(3)),1);
             if (tofunianCareerLevel > 1) {
-                addTradeRubyForItem(list, new ItemStack(ItemLoader.soymilk_drink, 1, 1 + rand.nextInt(2)), 3 + rand.nextInt(2));
-                addTradeRubyForItem(list, new ItemStack(ItemLoader.soymilk_drink, 1, 5 + rand.nextInt(2)), 3 + rand.nextInt(2));
+                addTradeForSingleRuby(list, new ItemStack(ItemLoader.soymilk_drink, 1, 1 + rand.nextInt(2)), 3 + rand.nextInt(2));
+                addTradeForSingleRuby(list, new ItemStack(ItemLoader.soymilk_drink, 1, 5 + rand.nextInt(2)), 3 + rand.nextInt(2));
             }
         }else if (getTofuProfession() == TofuProfession.TOFUCOOK) {
             addTradeRubyForItem(list, new ItemStack(ItemLoader.tofu_food), 24 + rand.nextInt(6));
