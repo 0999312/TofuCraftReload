@@ -138,6 +138,7 @@ public class BlockLoader {
     public static Block AGGREGATOR = new BlockAggregator();
 
     public static BlockYuba YUBA_FLOW = new BlockYuba();
+    public static BlockTofuStation TOFUSTATION = new BlockTofuStation();
 
     public BlockLoader(FMLPreInitializationEvent event) {
         SOYMILK_FLUID = SoyMilkFluid.instance;
@@ -166,6 +167,8 @@ public class BlockLoader {
         register(RADIATOR, new ItemBlock(RADIATOR), "radiator");
         register(BATTERY, new ItemBlock(BATTERY), "battery");
         register(AGGREGATOR, new ItemBlock(AGGREGATOR), "aggregator");
+
+        register(TOFUSTATION, new ItemBlock(TOFUSTATION), "tofuworkstation");
 
         register(SALTFURNACE, new ItemBlock(SALTFURNACE), "saltfurnace");
         register(SALTFURNACE_LIT, new ItemBlock(SALTFURNACE_LIT), "saltfurnace_lit");
@@ -348,6 +351,7 @@ public class BlockLoader {
         registerRender(TOFUFARMLAND);
         registerRender(TOFUCHEST);
         registerRender(YUBA_NOREN);
+        registerRender(TOFUSTATION);
     }
 
     public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {

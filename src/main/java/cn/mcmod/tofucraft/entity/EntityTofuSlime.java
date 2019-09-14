@@ -9,6 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.storage.loot.LootTableList;
@@ -30,9 +31,11 @@ public class EntityTofuSlime extends EntitySlime {
         if (this.getSlimeSize() == 1 || this.world.getDifficulty() != EnumDifficulty.PEACEFUL) {
             int lightValue = this.world.getLightFromNeighbors(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY), MathHelper.floor(this.posZ)));
 
-            if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt(30) == 0
-                    && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(52.0D, 24.0D, 52.0D)).size() == 0) {
-                return this.baseGetCanSpawnHere();
+            if (this.dimension == TofuMain.TOFU_DIMENSION.getId() && this.rand.nextInt((int) (this.world.getLightBrightness(getPosition()) * 10 + 30)) == 0
+                    && this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(48.0D, 20.0D, 48.0D)).size() == 0) {
+
+                //It does not spawn when there is a light like a torch (spawns when there is no light like a torch even if there is light in the sky)
+                return this.world.getLightFor(EnumSkyBlock.BLOCK, getPosition()) < 2 + this.rand.nextInt(6) && this.baseGetCanSpawnHere();
             }
 
             if (this.dimension == 0
