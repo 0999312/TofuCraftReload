@@ -60,7 +60,7 @@ public class ItemZundaBow extends ItemBow {
         return 69000;
     }
 
-    private ItemStack findAmmo(EntityPlayer player)
+    protected ItemStack findAmmo(EntityPlayer player)
     {
         if (this.isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
         {

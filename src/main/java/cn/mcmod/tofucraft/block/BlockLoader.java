@@ -19,6 +19,7 @@ import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -116,6 +117,7 @@ public class BlockLoader {
 
     public static Block TOFUBEDROCK = new Block(Material.ROCK).setCreativeTab(CommonProxy.tab).setBlockUnbreakable().setResistance(1000000.0F);
     public static Block TOFUFARMLAND = new BlockTofuFarmLand();
+    public static BlockBush TOFUFLOWER = new BlockTofuFlower();
     public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
     public static Block TOFUGEM_ORE = new BlockTofuGemOre();
 
@@ -240,6 +242,7 @@ public class BlockLoader {
 
         register(TOFUBEDROCK, new ItemBlock(TOFUBEDROCK), "tofubedrock");
         register(TOFUFARMLAND, new ItemBlock(TOFUFARMLAND), "tofu_farmland");
+        register(TOFUFLOWER, new ItemBlock(TOFUFLOWER), "tofuflower");
         register(TOFUORE_DIAMOND, new ItemBlock(TOFUORE_DIAMOND), "ore_tofudiamond");
         register(TOFUGEM_ORE, new ItemBlock(TOFUGEM_ORE), "blockoretofu");
 
@@ -349,6 +352,7 @@ public class BlockLoader {
         registerRender(TOFUGEM_ORE);
 
         registerRender(TOFUFARMLAND);
+        registerRender(TOFUFLOWER);
         registerRender(TOFUCHEST);
         registerRender(YUBA_NOREN);
         registerRender(TOFUSTATION);

@@ -140,6 +140,7 @@ tile.tofucraft.tofu_farmland.name=Tofu FarmLand
 tile.tofucraft.tofulog.name=Tofu Log
 tile.tofucraft.yubagrass.name=Yuba Grass
 tile.tofucraft.yuba_noren.name=Yuba Noren
+tile.tofucraft.tofuflower.name=TofuFlower
 
 tile.tofucraft.ricecrop.name=Rice Crop
 tile.tofucraft.saltfurnace_lit.name=Lit Saltfurnace
@@ -481,3 +482,10 @@ tofucraft.radar.result.failed=Can't find Tofu Slime in this chuck.
 
 #energy
 tooltip.tofucraft.energy=TofuForce Energy: %d/%d
+
+#load
+tofucraft.terrain.wait=Generate TofuTerrain...
+tofucraft.terrain.load=Loading TofuWorld...
+
+#TCon
+material.tofumetal.name=TofuMetal
