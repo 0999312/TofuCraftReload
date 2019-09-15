@@ -33,10 +33,8 @@ import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import javax.annotation.Nullable;
-import java.lang.reflect.Field;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +45,8 @@ public class EntityTofunian extends EntityVillager {
     private int tofunianCareerLevel;
     private int tofunianTimeUntilReset;
     private boolean isWillingToMate;
+    private boolean needsInitilization;
+    private MerchantRecipeList buyingList;
     public EntityTofunian(World worldIn) {
         super(worldIn, 5);
         this.setSize(0.45F, 1.4F);
@@ -89,7 +89,22 @@ public class EntityTofunian extends EntityVillager {
 
             if (this.tofunianTimeUntilReset <= 0) {
                 //update TofunianTrade
-                this.initTrades();
+
+                if (this.tofunianCareerLevel != 0) {
+                    ++this.tofunianCareerLevel;
+                } else {
+                    this.tofunianCareerLevel = 2;
+                }
+
+                if (this.needsInitilization) {
+                    for (MerchantRecipe merchantrecipe : this.buyingList) {
+                        if (merchantrecipe.isRecipeDisabled()) {
+                            merchantrecipe.increaseMaxTradeUses(this.rand.nextInt(6) + this.rand.nextInt(6) + 2);
+                        }
+                    }
+                    this.initTrades();
+                    this.needsInitilization = false;
+                }
             }
         }
 
@@ -103,6 +118,7 @@ public class EntityTofunian extends EntityVillager {
 
         if (recipe.getToolUses() == 1 || this.rand.nextInt(5) == 0) {
             this.tofunianTimeUntilReset = 40;
+            this.needsInitilization = true;
         }
 
     }
@@ -136,6 +152,10 @@ public class EntityTofunian extends EntityVillager {
         compound.setInteger("tofu_profession", this.getDataManager().get(TOFUPROFESSION));
         compound.setInteger("CareerLevel", this.tofunianCareerLevel);
 
+        if (this.buyingList != null) {
+            compound.setTag("Offers", this.buyingList.getRecipiesAsTags());
+        }
+
         compound.setBoolean("Willing", this.isWillingToMate);
     }
 
@@ -144,6 +164,11 @@ public class EntityTofunian extends EntityVillager {
         this.getDataManager().set(TOFUPROFESSION, compound.getInteger("tofu_profession"));
         //Load villager's CarrierLevel and make it usable as tofunian CareerLevel
         this.tofunianCareerLevel = compound.getInteger("CareerLevel");
+
+        if (compound.hasKey("Offers", 10)) {
+            NBTTagCompound nbttagcompound = compound.getCompoundTag("Offers");
+            this.buyingList = new MerchantRecipeList(nbttagcompound);
+        }
 
         this.isWillingToMate = compound.getBoolean("Willing");
         this.updateEntityAI();
@@ -352,20 +377,30 @@ public class EntityTofunian extends EntityVillager {
         }
     }
 
-    private static final Field _buyingList = ReflectionHelper.findField(EntityVillager.class, "field_70963_i", "buyingList");
+    @Nullable
+    public MerchantRecipeList getRecipes(EntityPlayer player) {
+        if (this.buyingList == null) {
+            this.initTrades();
+        }
+
+        return net.minecraftforge.event.ForgeEventFactory.listTradeOffers(this, player, buyingList);
+    }
 
     public void initTrades() {
+        int j = this.tofunianCareerLevel;
+        MerchantRecipeList trades = this.settingTrade(j);
 
-        MerchantRecipeList list = new MerchantRecipeList();
-
-
-        if(this.tofunianCareerLevel != 0)
-        {
-            ++this.tofunianCareerLevel;
-        } else
-        {
-            this.tofunianCareerLevel = 1;
+        if (trades != null) {
+            if (this.buyingList == null) {
+                this.buyingList = trades;
+            } else {
+                this.buyingList = trades;
+            }
         }
+    }
+
+    private MerchantRecipeList settingTrade(int level) {
+        MerchantRecipeList list = new MerchantRecipeList();
 
         if (getTofuProfession() == TofuProfession.FISHERMAN) {
 
@@ -422,19 +457,15 @@ public class EntityTofunian extends EntityVillager {
                 addEnchantTradeForSingleRuby(list, new ItemStack(ItemLoader.metalchestplate, 1),7+ rand.nextInt(4));
             }
 
+            if (tofunianCareerLevel > 3) {
+                addEnchantTradeForSingleRuby(list, new ItemStack(ItemLoader.zundaBow, 1), 2 + rand.nextInt(2));
+                addEnchantTradeForSingleRuby(list, new ItemStack(ItemLoader.zundaArrow, 8 + rand.nextInt(4)), 1 + rand.nextInt(1));
+            }
+
             addTradeForSingleRuby(list, new ItemStack(ItemLoader.tofustick, 2),1+ rand.nextInt(2));
         }
 
-        try {
-
-            _buyingList.set(this, list);
-
-        } catch (Exception ex) {
-
-            ex.printStackTrace();
-
-        }
-
+        return list;
     }
 
     public void addTradeRubyForItem(MerchantRecipeList list, ItemStack buy,int cost) {

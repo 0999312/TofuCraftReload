@@ -143,6 +143,7 @@ tile.tofucraft.yuba_noren.name=湯葉ののれん
 tile.tofucraft.battery.name=TFバッテリー
 tile.tofucraft.antenna_basic.name=TFアンテナベーシック
 tile.tofucraft.tofuworkstation.name=トーフ加工台
+tile.tofucraft.tofuflower.name=トーフの花
 
 item.tofucraft.seeds_soybeans.name=大豆
 item.tofucraft.seeds_soybeansHell.name=地獄大豆
@@ -455,3 +456,12 @@ item.tofucraft.nanbantofu.name=豆腐南蛮
 tooltip.tofucraft.tofuforce_core1=inventoryの中にあると耐久度を消費して自分のhealthを回復する
 tooltip.tofucraft.tofuforce_core2=破損した場合は、tofuforce（TF）で充電して再度使用できます
 tooltip.tofucraft.tofuforce_core.broken=破損
+
+#load
+tofucraft.terrain.wait=トーフワールドを生成してます・・・
+tofucraft.terrain.load=トーフワールドを読み込んでます・・・
+
+#TCon
+material.tofumetal.name=金剛豆腐
+modifier.absorption.name=吸収
+modifier.absorption.desc=§o栄養としても良い§r\nこれがついたツールは攻撃するとたまに腹とsaturationを満たす（攻撃が高いほど腹を満たしやすい！）

@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft;
 
+import cn.mcmod.tofucraft.compat.TofuCompat;
 import cn.mcmod.tofucraft.entity.TofuEntityRegister;
 import cn.mcmod.tofucraft.entity.TofuVillages;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
@@ -38,7 +39,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION)
+@Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION, dependencies = "before:tconstruct;required-after:forge@[14.23.5.2847,);")
 public class TofuMain {
     public static final String MODID = "tofucraft";
     public static final String NAME = "TofuCraftReload";
@@ -79,6 +80,8 @@ public class TofuMain {
 
         TofuEntityRegister.entitySpawn();
 
+        TofuCompat.preInit();
+
         GameRegistry.registerWorldGenerator(new TofuOreGenerator(), 0);
 
         MapGenStructureIO.registerStructure(MapGenTofuVillage.Start.class,"TofuVillage");
@@ -110,6 +113,7 @@ public class TofuMain {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
+        TofuCompat.init();
     }
 
     @EventHandler

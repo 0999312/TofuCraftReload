@@ -1,7 +1,5 @@
 package cn.mcmod.tofucraft.event;
 
-import java.util.Random;
-
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.plants.BlockSoybeanNether;
@@ -23,6 +21,8 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+
+import java.util.Random;
 
 public class TofuEventLoader {
 

@@ -5,6 +5,7 @@ import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TofuParticleType;
 import cn.mcmod.tofucraft.client.particle.ParticleTofuPortal;
 import cn.mcmod.tofucraft.entity.TofuEntityRegister;
+import cn.mcmod.tofucraft.event.TofuClientEventLoader;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntityRegistry;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -32,6 +34,7 @@ public class ClientProxy extends CommonProxy {
         ItemLoader.registerRenders();
         TofuEntityRegister.entityRender();
         TileEntityRegistry.render();
+        MinecraftForge.EVENT_BUS.register(new TofuClientEventLoader());
     }
 
     @Override
