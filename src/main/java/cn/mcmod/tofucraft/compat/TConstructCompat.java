@@ -4,7 +4,6 @@ import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.materials.ArrowShaftMaterialStats;
 import slimeknights.tconstruct.library.materials.BowMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
@@ -19,10 +18,8 @@ public class TConstructCompat {
 
     public static void preInit() {
         TinkerRegistry.addMaterialStats(TConstructCompat.tofumetal,
-                new HeadMaterialStats(320, 8.0f, 4.0f, HarvestLevels.DIAMOND),
-                new BowMaterialStats(0.9f, 2f, 2f),
-                new ArrowShaftMaterialStats(1.15f, 40)
-
+                new HeadMaterialStats(320, 6.0f, 4.0f, HarvestLevels.DIAMOND),
+                new BowMaterialStats(0.9f, 2f, 2f)
         );
 
         TinkerRegistry.integrate(TConstructCompat.tofumetal).preInit();

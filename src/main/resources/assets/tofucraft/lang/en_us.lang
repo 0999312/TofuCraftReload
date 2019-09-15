@@ -489,3 +489,5 @@ tofucraft.terrain.load=Loading TofuWorld...
 
 #TCon
 material.tofumetal.name=TofuMetal
+modifier.absorption.name=Absorption
+modifier.absorption.desc=§oGood as Nutrition well§r\nTools with this will occasionally fill the belly and saturation when attacked (the higher the attack, the easier it is to fill the belly!)
