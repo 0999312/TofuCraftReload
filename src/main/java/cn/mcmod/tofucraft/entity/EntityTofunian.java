@@ -13,6 +13,7 @@ import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.AbstractIllager;
 import net.minecraft.entity.monster.EntityVex;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -130,10 +131,11 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
     protected void updateAITasks() {
         if (--this.randomTickDivider <= 0) {
             BlockPos blockpos = new BlockPos(this);
-            this.world.getVillageCollection().addToVillagerPositionList(blockpos);
-            this.randomTickDivider = 70 + this.rand.nextInt(50);
 
             String s = TofuVillageCollection.fileNameForProvider(this.world.provider);
+
+            ((TofuVillageCollection) Objects.requireNonNull(this.world.getPerWorldStorage().getOrLoadData(TofuVillageCollection.class, s))).addToVillagerPositionList(blockpos);
+            this.randomTickDivider = 70 + this.rand.nextInt(50);
 
             this.village = ((TofuVillageCollection) Objects.requireNonNull(this.world.getPerWorldStorage().getOrLoadData(TofuVillageCollection.class, s))).getNearestVillage(blockpos, 32);
 
@@ -370,6 +372,11 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
 
         return null;
     }
+
+    protected boolean canDespawn() {
+        return false;
+    }
+
 
     public TofuProfession getTofuProfession() {
 
@@ -786,7 +793,6 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
     }
 
     protected void updateEquipmentIfNeeded(EntityItem itemEntity) {
-        super.updateEquipmentIfNeeded(itemEntity);
         ItemStack itemstack = itemEntity.getItem();
         Item item = itemstack.getItem();
 
@@ -839,6 +845,28 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
                 this.playSound(TofuSounds.TOFUNIAN_YES, this.getSoundVolume(), this.getSoundPitch());
             }
         }
+    }
+
+    public void onDeath(DamageSource cause) {
+        if (this.village != null) {
+            Entity entity = cause.getTrueSource();
+
+            if (entity != null) {
+                if (entity instanceof EntityPlayer) {
+                    this.village.modifyPlayerReputation(entity.getUniqueID(), -2);
+                } else if (entity instanceof IMob) {
+                    this.village.endMatingSeason();
+                }
+            } else {
+                EntityPlayer entityplayer = this.world.getClosestPlayerToEntity(this, 16.0D);
+
+                if (entityplayer != null) {
+                    this.village.endMatingSeason();
+                }
+            }
+        }
+
+        super.onDeath(cause);
     }
 
     @Override

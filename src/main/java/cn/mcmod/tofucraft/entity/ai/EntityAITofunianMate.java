@@ -36,10 +36,6 @@ public class EntityAITofunianMate extends EntityAIBase {
 
             this.village = ((TofuVillageCollection) Objects.requireNonNull(this.world.getPerWorldStorage().getOrLoadData(TofuVillageCollection.class, s))).getNearestVillage(new BlockPos(this.villager), 0);
 
-            if (this.village != null) {
-
-            }
-
             if (this.village == null) {
                 return false;
             } else if (this.checkSufficientDoorsPresentForNewVillager() && this.villager.getIsWillingToMate(true)) {
