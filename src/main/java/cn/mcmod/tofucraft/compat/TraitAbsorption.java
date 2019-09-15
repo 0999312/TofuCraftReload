@@ -15,10 +15,10 @@ public class TraitAbsorption extends AbstractTrait {
     @Override
     public void onHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, boolean isCritical) {
         super.onHit(tool, player, target, damage, isCritical);
-        if (player instanceof EntityPlayer && player.world.rand.nextFloat() < 0.15F) {
+        if (player instanceof EntityPlayer && player.world.rand.nextFloat() < 0.4F) {
             FoodStats foodStats = ((EntityPlayer) player).getFoodStats();
 
-            foodStats.addStats(1, damage * 0.26F);
+            foodStats.addStats(1, damage * 0.3F);
         }
     }
 }

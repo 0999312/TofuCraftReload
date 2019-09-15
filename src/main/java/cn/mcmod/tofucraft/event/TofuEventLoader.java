@@ -5,6 +5,7 @@ import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.plants.BlockSoybeanNether;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.world.gen.future.WorldGenCrops;
+import cn.mcmod.tofucraft.world.village.TofuVillageCollection;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,11 +21,15 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class TofuEventLoader {
+    @Nullable
+    private TofuVillageCollection tofuVillageCollection = null;
 
 	@SubscribeEvent
 	public void onCrafting(PlayerEvent.ItemCraftedEvent event) {
@@ -75,6 +80,25 @@ public class TofuEventLoader {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public void worldTick(TickEvent.WorldTickEvent event) {
+        String s = TofuVillageCollection.fileNameForProvider(event.world.provider);
+
+        TofuVillageCollection tofuVillageCollection = (TofuVillageCollection) event.world.getPerWorldStorage().getOrLoadData(TofuVillageCollection.class, s);
+
+        if (tofuVillageCollection == null) {
+            tofuVillageCollection = new TofuVillageCollection(event.world);
+            event.world.getPerWorldStorage().setData(s, tofuVillageCollection);
+        } else {
+            tofuVillageCollection.tick();
+            this.tofuVillageCollection = tofuVillageCollection;
+        }
+    }
+
+    public TofuVillageCollection getVillageCollection() {
+        return this.tofuVillageCollection;
     }
     
 }
