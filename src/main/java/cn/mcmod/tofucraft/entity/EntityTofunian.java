@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.entity;
 import cn.mcmod.tofucraft.entity.ai.*;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.sound.TofuSounds;
+import cn.mcmod.tofucraft.util.WorldUtils;
 import cn.mcmod.tofucraft.world.village.TofuVillage;
 import cn.mcmod.tofucraft.world.village.TofuVillageCollection;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -449,12 +450,21 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityZombie.class, false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, AbstractIllager.class, false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityVex.class, false));
+
+            if (!this.isChild()) {
+                this.tasks.addTask(6, new EntityAIUseItemOnLeftHand<>(this, new ItemStack(ItemLoader.bugle), TofuSounds.TOFUBUGLE, (p_213736_1_) -> {
+                    return WorldUtils.isMorning(this.world) && this.world.rand.nextInt(350) == 0;
+                }));
+            }
         } else {
-            this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, EntityTofuChinger.class, 8.0F, 0.6D, 0.6D));
-            this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
-            this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, AbstractIllager.class, 8.0F, 0.8D, 0.8D));
-            this.tasks.addTask(2, new EntityAITofunianAvoidEntity<>(this, EntityVex.class, 8.0F, 0.6D, 0.6D));
+            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityTofuChinger.class, 8.0F, 0.6D, 0.6D));
+            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
+            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, AbstractIllager.class, 8.0F, 0.8D, 0.8D));
+            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityVex.class, 8.0F, 0.6D, 0.6D));
+
+            this.tasks.addTask(2, new EntityAIPanic(this, 0.75F));
         }
+
 
         if (canFarm() && !this.isChild()) {
             this.tasks.addTask(8, new EntityAIHarvestTofuFarmland(this, 0.6D));
@@ -465,6 +475,14 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
 
         if (this.getTofuProfession() == TofuProfession.TOFUCOOK) {
             this.tasks.addTask(8, new EntityAIHarvestTofuFarmland(this, 0.6D));
+        }
+
+        if (canSmish() || canFarm() || canFish()) {
+            if (!this.isChild()) {
+                this.tasks.addTask(6, new EntityAIUseItemOnLeftHand<>(this, new ItemStack(ItemLoader.bugle), TofuSounds.TOFUBUGLE, (p_213736_1_) -> {
+                    return WorldUtils.isMorning(this.world) && this.world.rand.nextInt(260) == 0;
+                }));
+            }
         }
 
         super.onGrowingAdult();
