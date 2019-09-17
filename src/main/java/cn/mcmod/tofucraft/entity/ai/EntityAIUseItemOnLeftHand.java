@@ -36,7 +36,7 @@ public class EntityAIUseItemOnLeftHand<T extends EntityLiving> extends EntityAIB
      * Returns whether an in-progress EntityAIBase should continue executing
      */
     public boolean shouldContinueExecuting() {
-        return this.field_220766_a.isHandActive() || this.tick < 60;
+        return this.field_220766_a.isHandActive() || this.tick < 40;
     }
 
     /**
@@ -59,7 +59,7 @@ public class EntityAIUseItemOnLeftHand<T extends EntityLiving> extends EntityAIB
     public void updateTask() {
         super.updateTask();
 
-        if (++tick < 60) {
+        if (++tick < 40) {
             this.field_220766_a.setActiveHand(EnumHand.OFF_HAND);
         }
 

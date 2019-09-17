@@ -40,7 +40,8 @@ public class EntityTofuSlime extends EntitySlime {
 
             if (this.dimension == 0 && this.rand.nextInt(10) == 0
                     && isSpawnChunk(this.world, this.posX, this.posZ)
-                    && this.posY < 40.0D)
+                    && this.posY < 40.0D
+                    && lightValue <= this.rand.nextInt(10))
                 return this.baseGetCanSpawnHere();
         }
         return false;

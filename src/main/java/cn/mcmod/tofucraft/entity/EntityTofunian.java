@@ -18,6 +18,7 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.Item;
@@ -87,6 +88,15 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
         this.tasks.addTask(5, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(6, new EntityAIMoveTowardsRestriction(this, 0.6D));
         this.tasks.addTask(7, new EntityAITofunianMate(this));
+        this.tasks.addTask(8, new EntityAIUseItemOnLeftHand(this, new ItemStack(ItemLoader.tofu_food, 1, 1), SoundEvents.ENTITY_GENERIC_EAT, (p_213736_1_) -> {
+            return this.getHealth() < this.getMaxHealth() && this.world.rand.nextInt(100) == 0;
+        }) {
+            @Override
+            public void resetTask() {
+                super.resetTask();
+                heal(2.0F);
+            }
+        });
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
         this.tasks.addTask(9, new EntityAITofunianInteract(this));
         this.tasks.addTask(9, new EntityAIWanderAvoidWater(this, 0.6D));
