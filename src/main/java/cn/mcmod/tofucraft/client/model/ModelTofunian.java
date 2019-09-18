@@ -97,9 +97,9 @@ public class ModelTofunian extends ModelBiped {
     }
 
     @Override
-    public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity par7Entity)
     {
-        super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
+        super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, par7Entity);
 
         float f6 = 12.0f;
 
@@ -117,7 +117,9 @@ public class ModelTofunian extends ModelBiped {
         this.bipedHeadwear.rotateAngleX = this.bipedHead.rotateAngleX;
         this.bipedHeadwear.rotateAngleY = this.bipedHead.rotateAngleY;
         this.bipedHeadwear.rotateAngleZ = this.bipedHead.rotateAngleZ;
+
     }
+
 
     public void postRenderArm(float scale, EnumHandSide side)
     {

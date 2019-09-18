@@ -5,6 +5,7 @@ import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.plants.BlockSoybeanNether;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.world.gen.future.WorldGenCrops;
+import cn.mcmod.tofucraft.world.village.TofuVillageCollection;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,8 +19,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.Random;
@@ -74,6 +77,31 @@ public class TofuEventLoader {
                     		.generate(worldObj, rand, mutable);           
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public void worldTick(WorldEvent.Load event) {
+        String s = TofuVillageCollection.fileNameForProvider(event.getWorld().provider);
+
+        TofuVillageCollection tofuVillageCollection = (TofuVillageCollection) event.getWorld().getPerWorldStorage().getOrLoadData(TofuVillageCollection.class, s);
+
+        if (tofuVillageCollection == null) {
+            tofuVillageCollection = new TofuVillageCollection(event.getWorld());
+            event.getWorld().getPerWorldStorage().setData(s, tofuVillageCollection);
+        } else {
+            tofuVillageCollection.setWorldsForAll(event.getWorld());
+        }
+    }
+
+    @SubscribeEvent
+    public void worldTick(TickEvent.WorldTickEvent event) {
+        String s = TofuVillageCollection.fileNameForProvider(event.world.provider);
+
+        TofuVillageCollection tofuVillageCollection = (TofuVillageCollection) event.world.getPerWorldStorage().getOrLoadData(TofuVillageCollection.class, s);
+
+        if (tofuVillageCollection != null) {
+            tofuVillageCollection.tick();
         }
     }
     
