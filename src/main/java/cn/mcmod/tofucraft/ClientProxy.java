@@ -4,6 +4,7 @@ import cn.mcmod.tofucraft.block.BlockBarrel;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TofuParticleType;
 import cn.mcmod.tofucraft.client.particle.ParticleTofuPortal;
+import cn.mcmod.tofucraft.client.particle.ParticleZundaPowder;
 import cn.mcmod.tofucraft.entity.TofuEntityRegister;
 import cn.mcmod.tofucraft.event.TofuClientEventLoader;
 import cn.mcmod.tofucraft.item.ItemLoader;
@@ -116,6 +117,9 @@ public class ClientProxy extends CommonProxy {
                 switch (particleType) {
                     case TOFUPORTAL:
                         particle = new ParticleTofuPortal(world, x, y, z, velX, velY, velZ);
+                        break;
+                    case ZUNDAPOWDER:
+                        particle = new ParticleZundaPowder(world, x, y, z, velX, velY, velZ);
                         break;
 
                 }

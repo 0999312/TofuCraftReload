@@ -79,6 +79,9 @@ public class BlockLoader {
     public static BlockCake tofu_Cake = new BlockTofuCake();
     public static BlockTofuPortal tofu_PORTAL = new BlockTofuPortal();
     public static Block TOFUISHI_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F).setCreativeTab(CommonProxy.tab);
+    public static Block TOFUZUNDA_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F).setCreativeTab(CommonProxy.tab);
+    public static Block TOFUZUNDA_SMOOTHBRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F).setCreativeTab(CommonProxy.tab);
+
 
     public static BlockTofuTorch TOFUKINU_TORCH = new BlockTofuTorch();
     public static BlockTofuTorch TOFUMOMEN_TORCH = new BlockTofuTorch();
@@ -187,6 +190,8 @@ public class BlockLoader {
         register(TOFUDRIED, new ItemBlock(TOFUDRIED), "blocktofudried");
         register(TOFUZUNDA, new ItemBlock(TOFUZUNDA), "blocktofuzunda");
         register(TOFUISHI_BRICK, new ItemBlock(TOFUISHI_BRICK), "tofuishi_brick");
+        register(TOFUZUNDA_BRICK, new ItemBlock(TOFUZUNDA_BRICK), "tofuzunda_brick");
+        register(TOFUZUNDA_SMOOTHBRICK, new ItemBlock(TOFUZUNDA_SMOOTHBRICK), "tofuzunda_smoothbrick");
 
         register(MISOBARREL, new ItemBlock(MISOBARREL), "barrelmiso");
         register(DOUBANJIANGBARREL, new ItemBlock(DOUBANJIANGBARREL), "barreldoubanjiang");
@@ -314,6 +319,8 @@ public class BlockLoader {
         registerRender(APRICOT_LEAVE);
         registerRender(tofu_PORTAL);
         registerRender(TOFUISHI_BRICK);
+        registerRender(TOFUZUNDA_BRICK);
+        registerRender(TOFUZUNDA_SMOOTHBRICK);
 
         registerRender(TOFUKINU_TORCH);
         registerRender(TOFUMOMEN_TORCH);

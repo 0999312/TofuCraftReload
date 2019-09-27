@@ -240,7 +240,7 @@ public class StructureTofuVillagePieces {
             this.setBlockState(worldIn, BlockLoader.ISHITOFU.getDefaultState(), 5, 5, 1, structureBoundingBoxIn);
             this.setBlockState(worldIn, BlockLoader.TOFU_LEAVE.getDefaultState(), 5, 6, 1, structureBoundingBoxIn);
 
-            IBlockState iblockstate5 = Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH);
+            IBlockState iblockstate5 = BlockLoader.TOFUISHI_BRICK_LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH);
             this.setBlockState(worldIn, iblockstate5, 5, 1, 5, structureBoundingBoxIn);
             this.setBlockState(worldIn, iblockstate5, 5, 2, 5, structureBoundingBoxIn);
             this.setBlockState(worldIn, iblockstate5, 5, 3, 5, structureBoundingBoxIn);
@@ -776,7 +776,7 @@ public class StructureTofuVillagePieces {
                 }
 
                 if (blockstateIn.getBlock() == BlockLoader.TOFUISHI_BRICK) {
-                    return BlockLoader.TOFUZUNDA.getDefaultState();
+                    return BlockLoader.TOFUZUNDA_BRICK.getDefaultState();
                 }
 
                 if (blockstateIn.getBlock() == BlockLoader.TOFUMOMEN_STAIRS) {
