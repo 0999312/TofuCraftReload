@@ -680,6 +680,7 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
             }
 
             if (tofunianCareerLevel > 3) {
+                addTradeForSingleRuby(list, new ItemStack(ItemLoader.tofuhoe, 1), 4);
                 addTradeForSingleRuby(list, new ItemStack(ItemLoader.zundaMochi, 4 + rand.nextInt(4)), 1);
 
                 addTradeForSingleRuby(list, new ItemStack(ItemLoader.material, 2 + rand.nextInt(2), 17), 4);
