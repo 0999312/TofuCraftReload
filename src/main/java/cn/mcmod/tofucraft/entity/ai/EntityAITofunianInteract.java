@@ -65,7 +65,7 @@ public class EntityAITofunianInteract extends EntityAIWatchClosest2
 
                         ItemStack ricestack = new ItemStack(ItemLoader.foodset, 2);
 
-                        if ((item == Items.BREAD || item == Items.POTATO || item == Items.CARROT || item == Items.BEETROOT|| item == ItemLoader.soybeans||itemstack == ricestack) && itemstack.getCount() > 3)
+                        if ((item == Items.BREAD || item == ItemLoader.tofu_food || item == Items.POTATO || item == Items.CARROT || item == Items.BEETROOT || item == ItemLoader.soybeans || itemstack == ricestack) && itemstack.getCount() > 3)
                         {
                             int l = itemstack.getCount() / 2;
                             itemstack.shrink(l);
