@@ -65,6 +65,7 @@ public class BlockLoader {
     public static Block TOFUDIAMOND = new BlockTofu(TofuType.diamond, Material.IRON);
 
     public static BlockLeek LEEK = new BlockLeek();
+    public static BlockLeekCrop LEEKCROP = new BlockLeekCrop();
     public static Block SOYBEAN = new BlockSoybean();
     public static Block SOYBEAN_NETHER = new BlockSoybeanNether();
     public static Block SPROUTS = new BlockSprouts();
@@ -198,6 +199,7 @@ public class BlockLoader {
         register(MISOTOFUBARREL, new ItemBlock(MISOTOFUBARREL), "barrelmisotofu");
 
         register(LEEK, new ItemBlock(LEEK), "blockleek");
+        registerNoItem(LEEKCROP, "blockleek_crop");
 //		SOYBEAN_NETHER
         registerNoItem(SOYBEAN, "soybean");
         registerNoItem(SOYBEAN_NETHER, "soybean_nether");
@@ -310,6 +312,7 @@ public class BlockLoader {
         registerRender(GRILD);
         registerRender(TOFUZUNDA);
         registerRender(LEEK);
+        registerRender(LEEKCROP);
         registerRender(TOFU_SAPLING);
         registerRender(yubaGrass);
         registerRender(tofuTerrain);
