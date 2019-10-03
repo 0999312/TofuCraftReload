@@ -315,7 +315,6 @@ public class ItemLoader {
     public static Item anninApple = new ItemAnninApple();
 
     public static Item tofuforce_core = new ItemTofuForceCore();
-    public static Item growing_tofu = new ItemGrowingTofu();
     public static Item tofuishi_shield = new ItemTofuShield(360);
     public static Item tofumetal_shield = new ItemTofuShield(560);
 //    WIP Remaking.
@@ -413,7 +412,6 @@ public class ItemLoader {
         register(diamondboots);
 
         register(tofuforce_core);
-        register(growing_tofu);
 
         register(tofuishi_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofuishi_shield"));
         register(tofumetal_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofumetal_shield"));
@@ -545,7 +543,6 @@ public class ItemLoader {
         registerRender(zundaArrow);
         registerRender(anninApple);
         registerRender(tofuforce_core);
-        registerRender(growing_tofu);
         registerRender(tofuishi_shield);
         registerRender(tofumetal_shield);
 //        registerRender(fulintlock);

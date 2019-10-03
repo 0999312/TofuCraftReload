@@ -1,31 +1,9 @@
 package cn.mcmod.tofucraft.item.fulintlock;
 
 import cn.mcmod.tofucraft.TofuMain;
-import cn.mcmod.tofucraft.api.recipes.FlintLockAmmoMap;
-import cn.mcmod.tofucraft.api.recipes.recipe.Propellant;
-import cn.mcmod.tofucraft.api.recipes.recipe.Warhead;
-import cn.mcmod.tofucraft.entity.projectile.ammo.EntityAmmoBase;
-import cn.mcmod.tofucraft.util.NBTUtil;
-import joptsimple.internal.Strings;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Map;
-
-import javax.annotation.Nullable;
 
 public class ItemFlintlock extends Item {
 

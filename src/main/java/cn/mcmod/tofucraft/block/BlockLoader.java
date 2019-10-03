@@ -137,7 +137,6 @@ public class BlockLoader {
     }).setDrain(3);
     public static Block TOFUSTORAGEMACHINE = new BlockTFStorage();
 
-    public static Block TEST = new BlockTFReceiver();
     public static Block ANTENNA_BASIC = new BlockAntennaBasic();
     public static Block RADIATOR = new BlockTFRadiator();
     public static Block BATTERY = new BlockTFBattery();
@@ -168,7 +167,6 @@ public class BlockLoader {
 
 
         register(TOFUSTORAGEMACHINE, new ItemBlock(TOFUSTORAGEMACHINE), "tfstorage");
-        register(TEST, new ItemBlock(TEST), "test");
         register(ANTENNA_BASIC, new ItemBlock(ANTENNA_BASIC), "antenna_basic");
         register(RADIATOR, new ItemBlock(RADIATOR), "radiator");
         register(BATTERY, new ItemBlock(BATTERY), "battery");
@@ -298,7 +296,6 @@ public class BlockLoader {
         registerRender(SALTFURNACE);
         registerRender(SALTFURNACE_LIT);
         registerRender(TOFUSTORAGEMACHINE);
-        registerRender(TEST);
         registerRender(ANTENNA_BASIC);
         registerRender(RADIATOR);
         registerRender(BATTERY);
