@@ -245,6 +245,7 @@ public class ItemLoader {
     public static Item nigari = new ItemNigari();
     public static Item tofustick = new ItemTofuStick();
     public static Item bugle = new ItemBugle();
+    public static Item tofuhoe = new ItemTofuHoe();
 
     public static Item zundaruby = new Item();
     public static Item rice = new Item();
@@ -355,6 +356,7 @@ public class ItemLoader {
 
         register(tofustick);
         register(bugle);
+        register(tofuhoe);
 
         MinecraftForge.addGrassSeed(new ItemStack(soybeans), 2);
         MinecraftForge.addGrassSeed(new ItemStack(riceseed), 3);
@@ -481,6 +483,7 @@ public class ItemLoader {
         registerRender(riceseed);
         registerRender(tofustick);
         registerRender(bugle);
+        registerRender(tofuhoe);
 
         registerRender(zundaruby);
 

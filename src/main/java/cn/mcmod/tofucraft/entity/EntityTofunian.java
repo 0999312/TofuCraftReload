@@ -88,9 +88,27 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
         this.tasks.addTask(5, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(6, new EntityAIMoveTowardsRestriction(this, 0.6D));
         this.tasks.addTask(7, new EntityAITofunianMate(this));
-        this.tasks.addTask(8, new EntityAIUseItemOnLeftHand(this, new ItemStack(ItemLoader.tofu_food, 1, 1), SoundEvents.ENTITY_GENERIC_EAT, (p_213736_1_) -> {
+        this.tasks.addTask(8, new EntityAIUseItemOnLeftHand(this, new ItemStack(ItemLoader.tofu_food, 1, 3), SoundEvents.ENTITY_GENERIC_EAT, (p_213736_1_) -> {
             return this.getHealth() < this.getMaxHealth() && this.world.rand.nextInt(100) == 0;
         }) {
+
+            @Override
+            public boolean shouldExecute() {
+                if (super.shouldExecute() && hasEnoughCraftedItem(0, 1)) {
+                    for (int i = 0; i < getVillagerInventory().getSizeInventory(); ++i) {
+                        ItemStack itemstack = getVillagerInventory().getStackInSlot(i);
+                        if (itemstack.getItem() == ItemLoader.tofu_food) {
+                            itemstack.shrink(1);
+                            return true;
+                        }
+                    }
+                    return false;
+
+                } else {
+                    return false;
+                }
+            }
+
             @Override
             public void resetTask() {
                 super.resetTask();
@@ -479,6 +497,10 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
         if (canFarm() && !this.isChild()) {
             this.tasks.addTask(8, new EntityAIHarvestTofuFarmland(this, 0.6D));
         }
+
+        if ((canFarm() || canFish()) && !this.isChild()) {
+            this.tasks.addTask(8, new EntityAIMakingFood(this, 0.6D));
+        }
     }
 
     protected void onGrowingAdult() {
@@ -487,7 +509,11 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
             this.tasks.addTask(8, new EntityAIHarvestTofuFarmland(this, 0.6D));
         }
 
-        if (canSmish() || canFarm() || canFish()) {
+        if (canFarm() || canFish()) {
+            this.tasks.addTask(8, new EntityAIMakingFood(this, 0.6D));
+        }
+
+        if (canGuard()) {
             if (!this.isChild()) {
                 this.tasks.addTask(6, new EntityAIUseItemOnLeftHand<>(this, new ItemStack(ItemLoader.bugle), TofuSounds.TOFUBUGLE, (p_213736_1_) -> {
                     return WorldUtils.isMorning(this.world) && this.world.rand.nextInt(260) == 0;
@@ -654,6 +680,7 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
             }
 
             if (tofunianCareerLevel > 3) {
+                addTradeForSingleRuby(list, new ItemStack(ItemLoader.tofuhoe, 1), 4);
                 addTradeForSingleRuby(list, new ItemStack(ItemLoader.zundaMochi, 4 + rand.nextInt(4)), 1);
 
                 addTradeForSingleRuby(list, new ItemStack(ItemLoader.material, 2 + rand.nextInt(2), 17), 4);
@@ -756,7 +783,7 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
                     if (itemstack.getItem() == Items.BREAD && itemstack.getCount() >= 3) {
                         flag = true;
                         this.getVillagerInventory().decrStackSize(i, 3);
-                    } else if ((itemstack.getItem() == ItemLoader.soybeans || itemstack.getItem() == ItemLoader.foodset || itemstack.getItem() == Items.POTATO || itemstack.getItem() == Items.CARROT) && itemstack.getCount() >= 12) {
+                    } else if ((itemstack.getItem() == ItemLoader.soybeans || itemstack.getItem() == ItemLoader.tofu_food || itemstack.getItem() == ItemLoader.foodset || itemstack.getItem() == Items.POTATO || itemstack.getItem() == Items.CARROT) && itemstack.getCount() >= 12) {
                         flag = true;
                         this.getVillagerInventory().decrStackSize(i, 12);
                     }
@@ -811,7 +838,25 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
                     return true;
                 }
 
+                if (itemstack.getItem() == ItemLoader.tofu_food && itemstack.getCount() >= 14 * multiplier) {
+                    return true;
+                }
+
                 if (flag && itemstack.getItem() == Items.WHEAT && itemstack.getCount() >= 9 * multiplier || flag && itemstack.getItem() == ItemLoader.rice && itemstack.getCount() >= 9 * multiplier) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public boolean hasEnoughCraftedItem(int multiplier, int needCost) {
+        for (int i = 0; i < this.getVillagerInventory().getSizeInventory(); ++i) {
+            ItemStack itemstack = this.getVillagerInventory().getStackInSlot(i);
+
+            if (!itemstack.isEmpty()) {
+                if (itemstack.getItem() == ItemLoader.tofu_food && itemstack.getCount() >= 12 * multiplier + needCost) {
                     return true;
                 }
             }
@@ -824,7 +869,7 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
         ItemStack itemstack = itemEntity.getItem();
         Item item = itemstack.getItem();
 
-        if (this.canTofunianPickupItem(item)) {
+        if (this.canTofunianPickupItem(itemstack)) {
             ItemStack itemstack1 = this.getVillagerInventory().addItem(itemstack);
 
             if (itemstack1.isEmpty()) {
@@ -839,8 +884,9 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
         return villagerInventory;
     }
 
-    private boolean canTofunianPickupItem(Item itemIn) {
-        return itemIn == ItemLoader.soybeans || itemIn == ItemLoader.rice;
+    private boolean canTofunianPickupItem(ItemStack itemStack) {
+        Item item = itemStack.getItem();
+        return item == ItemLoader.soybeans || item == ItemLoader.rice || item == ItemLoader.tofu_food && itemStack.getMetadata() == 3;
     }
 
     public boolean isFarmItemInInventory() {
