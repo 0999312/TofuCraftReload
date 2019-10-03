@@ -168,9 +168,9 @@ public class BlockLoader {
 
         register(TOFUSTORAGEMACHINE, new ItemBlock(TOFUSTORAGEMACHINE), "tfstorage");
         register(ANTENNA_BASIC, new ItemBlock(ANTENNA_BASIC), "antenna_basic");
-        register(RADIATOR, new ItemBlock(RADIATOR), "radiator");
-        register(BATTERY, new ItemBlock(BATTERY), "battery");
-        register(AGGREGATOR, new ItemBlock(AGGREGATOR), "aggregator");
+//        register(RADIATOR, new ItemBlock(RADIATOR), "radiator");
+//        register(BATTERY, new ItemBlock(BATTERY), "battery");
+//        register(AGGREGATOR, new ItemBlock(AGGREGATOR), "aggregator");
 
         register(TOFUSTATION, new ItemBlock(TOFUSTATION), "tofuworkstation");
 
@@ -297,9 +297,9 @@ public class BlockLoader {
         registerRender(SALTFURNACE_LIT);
         registerRender(TOFUSTORAGEMACHINE);
         registerRender(ANTENNA_BASIC);
-        registerRender(RADIATOR);
-        registerRender(BATTERY);
-        registerRender(AGGREGATOR);
+//        registerRender(RADIATOR);
+//        registerRender(BATTERY);
+//        registerRender(AGGREGATOR);
         registerRender(KINUTOFU);
         registerRender(MOMENTOFU);
         registerRender(ISHITOFU);

@@ -4,7 +4,6 @@ import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
-import cn.mcmod.tofucraft.item.tfitem.ItemGrowingTofu;
 import cn.mcmod.tofucraft.item.tfitem.ItemTofuForceCore;
 import cn.mcmod.tofucraft.material.TofuArmorMaterial;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;

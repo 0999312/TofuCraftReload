@@ -5,6 +5,7 @@ import cn.mcmod.tofucraft.api.tfenergy.TofuNetwork;
 import cn.mcmod.tofucraft.base.tileentity.TileEntitySenderBase;
 import cn.mcmod.tofucraft.util.NBTUtil;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -12,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -33,7 +33,7 @@ public abstract class ItemTofuEnergyContained extends Item implements IEnergyExt
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(String.format(I18n.translateToLocal("tooltip.tofucraft.energy"), getEnergy(stack), getEnergyMax(stack)));
+        tooltip.add(I18n.format("tooltip.tofucraft.energy", getEnergy(stack), getEnergyMax(stack)));
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
