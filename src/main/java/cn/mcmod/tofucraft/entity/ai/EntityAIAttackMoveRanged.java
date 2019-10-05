@@ -65,7 +65,7 @@ public class EntityAIAttackMoveRanged <T extends EntityMob & IRangedAttackMob> e
         super.resetTask();
         ((IRangedAttackMob)this.entity).setSwingingArms(false);
         this.seeTime = 0;
-        this.attackTime = -1;
+        this.setAttackTime(-1);
     }
 
     /**
@@ -142,11 +142,19 @@ public class EntityAIAttackMoveRanged <T extends EntityMob & IRangedAttackMob> e
                 if (flag && this.seeTime > 60)
                 {
                     ((IRangedAttackMob)this.entity).attackEntityWithRangedAttack(entitylivingbase,0.6F);
-                    this.attackTime = this.attackCooldown;
+                    this.setAttackTime(this.attackCooldown);
 
                     this.seeTime = 0;
                 }
 
         }
     }
+
+	public int getAttackTime() {
+		return attackTime;
+	}
+
+	public void setAttackTime(int attackTime) {
+		this.attackTime = attackTime;
+	}
 }

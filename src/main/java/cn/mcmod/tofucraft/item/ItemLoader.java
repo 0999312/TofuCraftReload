@@ -52,7 +52,8 @@ public class ItemLoader {
     public static ItemFood tofu_hell = (ItemFood) new ItemFood(2, 0.2f, false)
             .setPotionEffect(new PotionEffect(Potion.getPotionById(12), 30, 0), 1.0F)
             .setUnlocalizedName(TofuMain.MODID + "." + "tofuhell");
-    public static ItemBase tofu_material = new ItemBase("tofu_material", 64, TofuMain.MODID + "." + "tofumetal",
+    public static ItemBase tofu_material = new ItemBase("tofu_material", 64,
+    		TofuMain.MODID + "." + "tofumetal",
             TofuMain.MODID + "." + "tofudiamond",
             TofuMain.MODID + "." + "tofudried");
     public static ItemFoodBasic foodset = new ItemFoodBasic("foodset", 64,

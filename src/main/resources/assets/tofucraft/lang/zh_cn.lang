@@ -439,10 +439,16 @@ tooltip.tofucraft.tofuforce_core2=If it was broken, you can use it again by repa
 tooltip.tofucraft.tofuforce_core.broken=Broken
 
 #load
-tofucraft.terrain.wait=Generate TofuTerrain...
-tofucraft.terrain.load=Loading TofuWorld...
+tofucraft.terrain.wait=正在生成豆腐地形……
+tofucraft.terrain.load=正在载入豆腐世界……
 
 #TCon
+material.tofudiamond.name=钻石豆腐
 material.tofumetal.name=钢豆腐
 modifier.absorption.name=吸收
 modifier.absorption.desc=§o营养最重要§r\n使用带有这个强化的工具攻击会回复你的饱食度和饱腹度（攻击力越大，回复的越多）
+
+#SlashBlade
+item.slashblade.tofucraft.ishikatana.name=豆腐刀「须磨」
+item.slashblade.tofucraft.metalkatana.name=豆腐刀「朔风」
+item.slashblade.tofucraft.diamondkatana.name=豆腐刀「堇姬」

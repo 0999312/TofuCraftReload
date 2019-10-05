@@ -14,6 +14,7 @@ import slimeknights.tconstruct.tools.TinkerTraits;
 public class TConstructCompat {
 
     public static final Material tofumetal = new Material("tofumetal", 0xc6d7e1);
+    public static final Material tofudiamond = new Material("tofudiamond", 0xB7DDF1);
     public static final AbstractTrait absorption = new TraitAbsorption();
 
     public static void preInit() {
@@ -21,18 +22,31 @@ public class TConstructCompat {
                 new HeadMaterialStats(320, 6.0f, 4.0f, HarvestLevels.DIAMOND),
                 new BowMaterialStats(0.9f, 2f, 2f)
         );
+        TinkerRegistry.addMaterialStats(TConstructCompat.tofudiamond,
+                new HeadMaterialStats(1200, 7.5f, 6.0f, HarvestLevels.OBSIDIAN),
+                new BowMaterialStats(0.9f, 2.5f, 3.5f)
+        );
 
         TinkerRegistry.integrate(TConstructCompat.tofumetal).preInit();
+        TinkerRegistry.integrate(TConstructCompat.tofudiamond).preInit();
     }
 
     public static void init() {
         TConstructCompat.tofumetal.addItem(new ItemStack(ItemLoader.tofu_material, 1, 0), 1, Material.VALUE_Ingot);
         TConstructCompat.tofumetal.addItem(new ItemStack(BlockLoader.METALTOFU, 1, 0), 1, Material.VALUE_Ingot * 4);
 
+        TConstructCompat.tofudiamond.addItem(new ItemStack(ItemLoader.tofu_material, 1, 1), 1, Material.VALUE_Ingot);
+        TConstructCompat.tofudiamond.addItem(new ItemStack(BlockLoader.TOFUDIAMOND, 1, 0), 1, Material.VALUE_Ingot * 4);
+
+        TConstructCompat.tofudiamond
+	        .addTrait(TinkerTraits.holy)
+	        .addTrait(TConstructCompat.absorption)
+	        .setCraftable(true)
+	        .setRepresentativeItem(new ItemStack(ItemLoader.tofu_material, 1, 1));
         TConstructCompat.tofumetal
-                .addTrait(TinkerTraits.lightweight)
-                .addTrait(TConstructCompat.absorption)
-                .setCraftable(true)
-                .setRepresentativeItem(new ItemStack(ItemLoader.tofu_material, 1, 0));
+            .addTrait(TinkerTraits.lightweight)
+            .addTrait(TConstructCompat.absorption)
+            .setCraftable(true)
+            .setRepresentativeItem(new ItemStack(ItemLoader.tofu_material, 1, 0));
     }
 }

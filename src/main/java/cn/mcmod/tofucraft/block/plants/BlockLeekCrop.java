@@ -71,8 +71,7 @@ public class BlockLeekCrop extends BlockCrops {
 
         if (age >= getMaxAge()) {
             int k = 3 + fortune;
-
-            for (int i = 0; i < 3 + fortune; ++i) {
+            for (int i = 0; i < k; ++i) {
                 if (rand.nextInt(2 * getMaxAge()) <= age) {
                     drops.add(new ItemStack(this.getSeed(), 1, this.damageDropped(state)));
                 }

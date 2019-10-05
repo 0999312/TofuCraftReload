@@ -467,3 +467,8 @@ tofucraft.terrain.load=トーフワールドを読み込んでます・・・
 material.tofumetal.name=金剛豆腐
 modifier.absorption.name=吸収
 modifier.absorption.desc=§o栄養としても良い§r\nこれがついたツールは攻撃するとたまに腹とsaturationを満たす（攻撃が高いほど腹を満たしやすい！）
+
+#SlashBlade
+item.slashblade.tofucraft.ishikatana.name=豆腐刀「须磨」
+item.slashblade.tofucraft.metalkatana.name=豆腐刀「朔風」
+item.slashblade.tofucraft.diamondkatana.name=豆腐刀「菫姫」

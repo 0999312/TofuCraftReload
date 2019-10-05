@@ -94,7 +94,7 @@ public class EntityAITofunianInteract extends EntityAIWatchClosest2
                     {
                         double d0 = this.villager.posY - 0.30000001192092896D + (double)this.villager.getEyeHeight();
                         EntityItem entityitem = new EntityItem(this.villager.world, this.villager.posX, d0, this.villager.posZ, itemstack1);
-                        float f = 0.3F;
+
                         float f1 = this.villager.rotationYawHead;
                         float f2 = this.villager.rotationPitch;
                         entityitem.motionX = (double)(-MathHelper.sin(f1 * 0.017453292F) * MathHelper.cos(f2 * 0.017453292F) * 0.3F);

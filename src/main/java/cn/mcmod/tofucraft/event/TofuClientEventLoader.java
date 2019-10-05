@@ -5,9 +5,7 @@ import cn.mcmod.tofucraft.client.gui.GuiDownloadTofuTerrain;
 import cn.mcmod.tofucraft.client.gui.GuiLoadTofuTerrain;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiDownloadTerrain;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.client.event.GuiOpenEvent;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,15 +25,10 @@ public class TofuClientEventLoader {
 
     @SubscribeEvent
     public void onGuiOpen(GuiOpenEvent event) {
-        Minecraft mc = FMLClientHandler.instance().getClient();
-        GuiScreen gui = event.getGui();
 
         if (event.getGui() instanceof GuiDownloadTerrain && client.player != null) {
-
             int tofuDimension = TofuConfig.dimensionID;
-
             if (client.player.dimension == tofuDimension || lastDimension == tofuDimension) {
-
                 if (client.player.dimension == tofuDimension) {
                     event.setGui(new GuiLoadTofuTerrain());
                 } else {
