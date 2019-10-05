@@ -1,7 +1,6 @@
 package cn.mcmod.tofucraft.entity.ai;
 
 import cn.mcmod.tofucraft.entity.EntityTofunian;
-import cn.mcmod.tofucraft.entity.TofuVillages;
 import com.google.common.base.Predicates;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -16,10 +15,6 @@ public class EntityAITofunianAvoidEntity<T extends Entity> extends EntityAIAvoid
 
     public boolean shouldExecute()
     {
-        if(this.entity.getProfessionForge()== TofuVillages.ProfessionHunterTofunian){
-            return false;
-        }else {
-            return super.shouldExecute();
-        }
+        return super.shouldExecute();
     }
 }

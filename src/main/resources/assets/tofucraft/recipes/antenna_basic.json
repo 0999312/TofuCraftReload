@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " L ",
+    "C#T",
+    "#M#"
+  ],
+  "key": {
+    "L": {
+      "item": "tofucraft:material",
+      "data": 16
+    },
+    "C": {
+      "item": "tofucraft:material",
+      "data": 23
+    },
+    "M": {
+      "item": "tofucraft:material",
+      "data": 22
+    },
+    "#": {
+      "item": "tofucraft:tofu_material",
+      "data": 0
+    },
+    "T": {
+      "item": "tofucraft:material",
+      "data": 21
+    }
+  },
+  "result": {
+    "item": "tofucraft:antenna_basic"
+  }
+}

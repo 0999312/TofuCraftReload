@@ -55,7 +55,7 @@ public class GuiTFBattery extends GuiContainer {
         int var5 = (this.width - this.xSize) / 2;
         int var6 = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
-        int var7;
+//        int var7;
         if (this.tileBattery.inputTank.getFluid() != null) {
             FluidTank fluidTank = this.tileBattery.inputTank;
             int heightInd = (int) (72 * ((float) fluidTank.getFluidAmount() / (float) fluidTank.getCapacity()));

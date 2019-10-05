@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.item.tfitem;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.base.item.EnergyItem.ItemTofuEnergyContained;
 import cn.mcmod.tofucraft.block.BlockLoader;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -67,11 +67,11 @@ public class ItemTofuForceCore extends ItemTofuEnergyContained {
 
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(I18n.translateToLocal("tooltip.tofucraft.tofuforce_core1"));
+        tooltip.add(I18n.format("tooltip.tofucraft.tofuforce_core1"));
         //tooltip.add(I18n.translateToLocal("tooltip.tofucraft.tofuforce_core2"));
         tooltip.add("");
         if (!isUsable(stack)) {
-            tooltip.add(TextFormatting.ITALIC + I18n.translateToLocal("tooltip.tofucraft.tofuforce_core.broken"));
+            tooltip.add(TextFormatting.ITALIC + I18n.format("tooltip.tofucraft.tofuforce_core.broken"));
         }
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }

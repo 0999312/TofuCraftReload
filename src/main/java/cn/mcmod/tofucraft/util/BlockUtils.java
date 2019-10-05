@@ -6,10 +6,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.EnumHelper;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 

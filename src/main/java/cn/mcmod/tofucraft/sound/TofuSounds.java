@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public final class TofuSounds {
     public static final SoundEvent TOFUNIAN_YES = createEvent("mob.tofunian.yes");
     public static final SoundEvent TOFUNIAN_AMBIENT = createEvent("mob.tofunian.ambient");
+    public static final SoundEvent TOFUBUGLE = createEvent("tofubugle");
 
     private static SoundEvent createEvent(String name) {
 
@@ -26,6 +27,7 @@ public final class TofuSounds {
     public static void registerSounds(RegistryEvent.Register<SoundEvent> evt) {
         evt.getRegistry().register(TOFUNIAN_YES);
         evt.getRegistry().register(TOFUNIAN_AMBIENT);
+        evt.getRegistry().register(TOFUBUGLE);
     }
 
     private TofuSounds() {

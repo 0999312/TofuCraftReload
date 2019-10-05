@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    " S ",
+    "YYY"
+  ],
+  "key": {
+    "T": {
+      "item": "tofucraft:tofuchinger_tooth"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "Y": {
+      "item": "tofucraft:material",
+      "data": 32
+    }
+  },
+  "result": {
+    "item": "tofucraft:tofuchinger_tootharrow",
+    "count": 3
+  }
+}

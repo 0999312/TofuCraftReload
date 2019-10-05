@@ -19,6 +19,7 @@ import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
 import cn.mcmod.tofucraft.util.JSON_Creator;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -64,6 +65,7 @@ public class BlockLoader {
     public static Block TOFUDIAMOND = new BlockTofu(TofuType.diamond, Material.IRON);
 
     public static BlockLeek LEEK = new BlockLeek();
+    public static BlockLeekCrop LEEKCROP = new BlockLeekCrop();
     public static Block SOYBEAN = new BlockSoybean();
     public static Block SOYBEAN_NETHER = new BlockSoybeanNether();
     public static Block SPROUTS = new BlockSprouts();
@@ -78,6 +80,9 @@ public class BlockLoader {
     public static BlockCake tofu_Cake = new BlockTofuCake();
     public static BlockTofuPortal tofu_PORTAL = new BlockTofuPortal();
     public static Block TOFUISHI_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F).setCreativeTab(CommonProxy.tab);
+    public static Block TOFUZUNDA_BRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F).setCreativeTab(CommonProxy.tab);
+    public static Block TOFUZUNDA_SMOOTHBRICK = new Block(Material.ROCK).setHardness(1.82F).setResistance(9.5F).setCreativeTab(CommonProxy.tab);
+
 
     public static BlockTofuTorch TOFUKINU_TORCH = new BlockTofuTorch();
     public static BlockTofuTorch TOFUMOMEN_TORCH = new BlockTofuTorch();
@@ -116,6 +121,7 @@ public class BlockLoader {
 
     public static Block TOFUBEDROCK = new Block(Material.ROCK).setCreativeTab(CommonProxy.tab).setBlockUnbreakable().setResistance(1000000.0F);
     public static Block TOFUFARMLAND = new BlockTofuFarmLand();
+    public static BlockBush TOFUFLOWER = new BlockTofuFlower();
     public static Block TOFUORE_DIAMOND = new BlockTofuOreDiamond();
     public static Block TOFUGEM_ORE = new BlockTofuGemOre();
 
@@ -131,13 +137,13 @@ public class BlockLoader {
     }).setDrain(3);
     public static Block TOFUSTORAGEMACHINE = new BlockTFStorage();
 
-    public static Block TEST = new BlockTFReceiver();
     public static Block ANTENNA_BASIC = new BlockAntennaBasic();
     public static Block RADIATOR = new BlockTFRadiator();
     public static Block BATTERY = new BlockTFBattery();
     public static Block AGGREGATOR = new BlockAggregator();
 
     public static BlockYuba YUBA_FLOW = new BlockYuba();
+    public static BlockTofuStation TOFUSTATION = new BlockTofuStation();
 
     public BlockLoader(FMLPreInitializationEvent event) {
         SOYMILK_FLUID = SoyMilkFluid.instance;
@@ -161,11 +167,12 @@ public class BlockLoader {
 
 
         register(TOFUSTORAGEMACHINE, new ItemBlock(TOFUSTORAGEMACHINE), "tfstorage");
-        register(TEST, new ItemBlock(TEST), "test");
         register(ANTENNA_BASIC, new ItemBlock(ANTENNA_BASIC), "antenna_basic");
-        register(RADIATOR, new ItemBlock(RADIATOR), "radiator");
-        register(BATTERY, new ItemBlock(BATTERY), "battery");
-        register(AGGREGATOR, new ItemBlock(AGGREGATOR), "aggregator");
+//        register(RADIATOR, new ItemBlock(RADIATOR), "radiator");
+//        register(BATTERY, new ItemBlock(BATTERY), "battery");
+//        register(AGGREGATOR, new ItemBlock(AGGREGATOR), "aggregator");
+
+        register(TOFUSTATION, new ItemBlock(TOFUSTATION), "tofuworkstation");
 
         register(SALTFURNACE, new ItemBlock(SALTFURNACE), "saltfurnace");
         register(SALTFURNACE_LIT, new ItemBlock(SALTFURNACE_LIT), "saltfurnace_lit");
@@ -182,12 +189,15 @@ public class BlockLoader {
         register(TOFUDRIED, new ItemBlock(TOFUDRIED), "blocktofudried");
         register(TOFUZUNDA, new ItemBlock(TOFUZUNDA), "blocktofuzunda");
         register(TOFUISHI_BRICK, new ItemBlock(TOFUISHI_BRICK), "tofuishi_brick");
+        register(TOFUZUNDA_BRICK, new ItemBlock(TOFUZUNDA_BRICK), "tofuzunda_brick");
+        register(TOFUZUNDA_SMOOTHBRICK, new ItemBlock(TOFUZUNDA_SMOOTHBRICK), "tofuzunda_smoothbrick");
 
         register(MISOBARREL, new ItemBlock(MISOBARREL), "barrelmiso");
         register(DOUBANJIANGBARREL, new ItemBlock(DOUBANJIANGBARREL), "barreldoubanjiang");
         register(MISOTOFUBARREL, new ItemBlock(MISOTOFUBARREL), "barrelmisotofu");
 
         register(LEEK, new ItemBlock(LEEK), "blockleek");
+        registerNoItem(LEEKCROP, "blockleek_crop");
 //		SOYBEAN_NETHER
         registerNoItem(SOYBEAN, "soybean");
         registerNoItem(SOYBEAN_NETHER, "soybean_nether");
@@ -237,6 +247,7 @@ public class BlockLoader {
 
         register(TOFUBEDROCK, new ItemBlock(TOFUBEDROCK), "tofubedrock");
         register(TOFUFARMLAND, new ItemBlock(TOFUFARMLAND), "tofu_farmland");
+        register(TOFUFLOWER, new ItemBlock(TOFUFLOWER), "tofuflower");
         register(TOFUORE_DIAMOND, new ItemBlock(TOFUORE_DIAMOND), "ore_tofudiamond");
         register(TOFUGEM_ORE, new ItemBlock(TOFUGEM_ORE), "blockoretofu");
 
@@ -285,11 +296,10 @@ public class BlockLoader {
         registerRender(SALTFURNACE);
         registerRender(SALTFURNACE_LIT);
         registerRender(TOFUSTORAGEMACHINE);
-        registerRender(TEST);
         registerRender(ANTENNA_BASIC);
-        registerRender(RADIATOR);
-        registerRender(BATTERY);
-        registerRender(AGGREGATOR);
+//        registerRender(RADIATOR);
+//        registerRender(BATTERY);
+//        registerRender(AGGREGATOR);
         registerRender(KINUTOFU);
         registerRender(MOMENTOFU);
         registerRender(ISHITOFU);
@@ -299,6 +309,7 @@ public class BlockLoader {
         registerRender(GRILD);
         registerRender(TOFUZUNDA);
         registerRender(LEEK);
+        registerRender(LEEKCROP);
         registerRender(TOFU_SAPLING);
         registerRender(yubaGrass);
         registerRender(tofuTerrain);
@@ -308,6 +319,8 @@ public class BlockLoader {
         registerRender(APRICOT_LEAVE);
         registerRender(tofu_PORTAL);
         registerRender(TOFUISHI_BRICK);
+        registerRender(TOFUZUNDA_BRICK);
+        registerRender(TOFUZUNDA_SMOOTHBRICK);
 
         registerRender(TOFUKINU_TORCH);
         registerRender(TOFUMOMEN_TORCH);
@@ -346,8 +359,10 @@ public class BlockLoader {
         registerRender(TOFUGEM_ORE);
 
         registerRender(TOFUFARMLAND);
+        registerRender(TOFUFLOWER);
         registerRender(TOFUCHEST);
         registerRender(YUBA_NOREN);
+        registerRender(TOFUSTATION);
     }
 
     public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {

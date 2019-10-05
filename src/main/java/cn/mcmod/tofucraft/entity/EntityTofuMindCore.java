@@ -26,7 +26,6 @@ public class EntityTofuMindCore extends EntityMob {
     }
 
 	protected void initEntityAI() {
-        this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.15D, true));
         this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));

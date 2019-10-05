@@ -132,6 +132,8 @@ tile.tofucraft.tofutorch_zunda.name=TofuZunda Torch
 tile.tofucraft.tofuTrapdoor.name=%s Trapdoor
 tile.tofucraft.tofuWall.name=%s Wall
 tile.tofucraft.tofuishi_brick.name=TofuIshi Brick
+tile.tofucraft.tofuzunda_brick.name=TofuZunda Brick
+tile.tofucraft.tofuzunda_smoothbrick.name=TofuZunda SmoothBrick
 tile.tofucraft.tofu_terrain.name=NaturalTofu
 tile.tofucraft.zundatofu_terrain.name=ZundaGrass
 tile.tofucraft.ore_tofudiamond.name=Tofu Diamond Ore
@@ -140,11 +142,13 @@ tile.tofucraft.tofu_farmland.name=Tofu FarmLand
 tile.tofucraft.tofulog.name=Tofu Log
 tile.tofucraft.yubagrass.name=Yuba Grass
 tile.tofucraft.yuba_noren.name=Yuba Noren
+tile.tofucraft.tofuflower.name=TofuFlower
 
 tile.tofucraft.ricecrop.name=Rice Crop
 tile.tofucraft.saltfurnace_lit.name=Lit Saltfurnace
 tile.tofucraft.battery.name=TFBattery
 tile.tofucraft.antenna_basic.name=TFAntenna Basic
+tile.tofucraft.tofuworkstation.name=Tofu WorkStation
 
 item.tofucraft.seeds_soybeans.name=Soybeans
 item.tofucraft.seeds_soybeans_hell.name=Hell Soybeans
@@ -351,6 +355,8 @@ item.tofucraft.tofumetalforce_shield.name=TofuMetal ForceShield(Unused)
 item.tofucraft.tofuforce_core.name=TofuForce Core
 item.tofucraft.growing_tofu.name=Growing tofu
 item.tofucraft.fulintlock.name=Fulintlock
+item.tofucraft.tofuchinger_tooth.name=TofuChinger Tooth
+item.tofucraft.tofuchinger_tootharrow.name=TofuChinger ToothArrow
 
 advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
@@ -366,6 +372,8 @@ advancements.tofucraft.caringshooting.title=Caring Shooting
 advancements.tofucraft.caringshooting.description=Shoot ZundaArrow on mob and healing mob
 advancements.tofucraft.enter_tofuworld.title=Enter TofuWorld
 advancements.tofucraft.enter_tofuworld.description=Entered TofuWorld
+advancements.tofucraft.tofugandlem.title=Ancient Tofu Guardian
+advancements.tofucraft.tofugandlem.description=Defeat TofuGandlem and get Tofu Force Core
 
 container.tofucraft.SaltFurnace=Salt Furnace
 container.tofucraft.tfstorage=TF Storage
@@ -476,3 +484,12 @@ tofucraft.radar.result.failed=Can't find Tofu Slime in this chuck.
 
 #energy
 tooltip.tofucraft.energy=TofuForce Energy: %d/%d
+
+#load
+tofucraft.terrain.wait=Generate TofuTerrain...
+tofucraft.terrain.load=Loading TofuWorld...
+
+#TCon
+material.tofumetal.name=TofuMetal
+modifier.absorption.name=Absorption
+modifier.absorption.desc=§oGood as Nutrition well§r\nTools with this will occasionally fill the belly and saturation when attacked (the higher the attack, the easier it is to fill the belly!)

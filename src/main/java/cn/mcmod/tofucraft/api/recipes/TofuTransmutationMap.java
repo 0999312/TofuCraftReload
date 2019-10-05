@@ -5,7 +5,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class TofuTransmutationMap {
     private static HashMap<IBlockState, TofuTransmutation> recipes;

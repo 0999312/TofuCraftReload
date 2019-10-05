@@ -1,0 +1,32 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "age=0": {
+      "model": "crop",
+      "textures": {
+        "crop": "tofucraft:blocks/blockleek_stage1"
+      }
+    },
+    "age=1": {
+      "model": "crop",
+      "textures": {
+        "crop": "tofucraft:blocks/blockleek_stage2"
+      }
+    },
+    "age=2": {
+      "model": "crop",
+      "textures": {
+        "crop": "tofucraft:blocks/blockleek"
+      }
+    },
+    "inventory": {
+      "model": "builtin/generated",
+      "textures": {
+        "all": "tofucraft:blocks/blockleek"
+      }
+    }
+  }
+}

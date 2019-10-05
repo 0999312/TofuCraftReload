@@ -4,8 +4,6 @@ import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
-import cn.mcmod.tofucraft.item.fulintlock.ItemFlintlock;
-import cn.mcmod.tofucraft.item.tfitem.ItemGrowingTofu;
 import cn.mcmod.tofucraft.item.tfitem.ItemTofuForceCore;
 import cn.mcmod.tofucraft.material.TofuArmorMaterial;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
@@ -245,6 +243,8 @@ public class ItemLoader {
 
     public static Item nigari = new ItemNigari();
     public static Item tofustick = new ItemTofuStick();
+    public static Item bugle = new ItemBugle();
+    public static Item tofuhoe = new ItemTofuHoe();
 
     public static Item zundaruby = new Item();
     public static Item rice = new Item();
@@ -314,10 +314,13 @@ public class ItemLoader {
     public static Item anninApple = new ItemAnninApple();
 
     public static Item tofuforce_core = new ItemTofuForceCore();
-    public static Item growing_tofu = new ItemGrowingTofu();
     public static Item tofuishi_shield = new ItemTofuShield(360);
     public static Item tofumetal_shield = new ItemTofuShield(560);
-    public static Item fulintlock = new ItemFlintlock();
+//    WIP Remaking.
+//    public static Item fulintlock = new ItemFlintlock();
+
+    public static Item tofuchinger_tooth = new Item();
+    public static Item tofuchinger_tootharrow = new ItemChingerToothArrow();
 
     public ItemLoader(FMLPreInitializationEvent event) {
         register(material);
@@ -350,6 +353,8 @@ public class ItemLoader {
         register(soymilk_ramune);
 
         register(tofustick);
+        register(bugle);
+        register(tofuhoe);
 
         MinecraftForge.addGrassSeed(new ItemStack(soybeans), 2);
         MinecraftForge.addGrassSeed(new ItemStack(riceseed), 3);
@@ -406,11 +411,10 @@ public class ItemLoader {
         register(diamondboots);
 
         register(tofuforce_core);
-        register(growing_tofu);
 
         register(tofuishi_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofuishi_shield"));
         register(tofumetal_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofumetal_shield"));
-        register(fulintlock);
+//        register(fulintlock);
 
         register(zundaBow);
         register(zundaArrow.setUnlocalizedName(TofuMain.MODID + "." + "zundaarrow"));
@@ -419,6 +423,9 @@ public class ItemLoader {
         register(TOFUMOMEN_DOOR.setUnlocalizedName(TofuMain.MODID + "." + "tofudoor_momen"));
         register(TOFUISHI_DOOR.setUnlocalizedName(TofuMain.MODID + "." + "tofudoor_ishi"));
         register(TOFUMETAL_DOOR.setUnlocalizedName(TofuMain.MODID + "." + "tofudoor_metal"));
+
+        register(tofuchinger_tooth.setUnlocalizedName(TofuMain.MODID + "." + "tofuchinger_tooth"));
+        register(tofuchinger_tootharrow.setUnlocalizedName(TofuMain.MODID + "." + "tofuchinger_tootharrow"));
 
         tofuItemRegister(TofuType.kinu, new ItemStack(tofu_food));
         tofuItemRegister(TofuType.momen, new ItemStack(tofu_food, 1, 1));
@@ -436,14 +443,14 @@ public class ItemLoader {
         tofuItemRegister(TofuType.strawberry, new ItemStack(tofu_food, 1, 10));
         tofuItemRegister(TofuType.miso, new ItemStack(tofu_food, 1, 11));
         tofuItemRegister(TofuType.hell, new ItemStack(tofu_hell, 1));
-
-        TileEntityRenderHelper TESR = new TileEntityRenderHelper();
-        tofuishi_shield.setTileEntityItemStackRenderer(TESR);
-        tofumetal_shield.setTileEntityItemStackRenderer(TESR);
+// STOP USE CLIENT VOID IN COMMON VOID PLEASE!!!
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
+        TileEntityRenderHelper TESR = new TileEntityRenderHelper();
+        tofuishi_shield.setTileEntityItemStackRenderer(TESR);
+        tofumetal_shield.setTileEntityItemStackRenderer(TESR);
         registerRender(soybeansHell);
         registerRender(tofu_slime_radar);
         registerRender(soymilk_ramune);
@@ -472,6 +479,8 @@ public class ItemLoader {
         registerRender(rice);
         registerRender(riceseed);
         registerRender(tofustick);
+        registerRender(bugle);
+        registerRender(tofuhoe);
 
         registerRender(zundaruby);
 
@@ -533,11 +542,11 @@ public class ItemLoader {
         registerRender(zundaArrow);
         registerRender(anninApple);
         registerRender(tofuforce_core);
-        registerRender(growing_tofu);
         registerRender(tofuishi_shield);
         registerRender(tofumetal_shield);
-
-        registerRender(fulintlock);
+//        registerRender(fulintlock);
+        registerRender(tofuchinger_tooth);
+        registerRender(tofuchinger_tootharrow);
     }
 
     private static void register(Item item) {

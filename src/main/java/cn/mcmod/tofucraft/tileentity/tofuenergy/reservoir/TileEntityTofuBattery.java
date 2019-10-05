@@ -4,6 +4,7 @@ import cn.mcmod.tofucraft.api.recipes.TofuEnergyStoragedFluidMap;
 import cn.mcmod.tofucraft.api.recipes.recipe.TofuEnergyStoragedFluid;
 import cn.mcmod.tofucraft.base.item.EnergyItem.IEnergyInsertable;
 import cn.mcmod.tofucraft.base.tileentity.TileEntityReservoirBase;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
@@ -70,6 +71,15 @@ public class TileEntityTofuBattery extends TileEntityReservoirBase implements II
         }
         //Energy sender logic
         super.update();
+
+        this.refresh();
+    }
+
+    protected void refresh() {
+        if (hasWorld() && !world.isRemote) {
+            IBlockState state = world.getBlockState(pos);
+            world.markAndNotifyBlock(pos, world.getChunkFromBlockCoords(pos), state, state, 11);
+        }
     }
 
     @Override
