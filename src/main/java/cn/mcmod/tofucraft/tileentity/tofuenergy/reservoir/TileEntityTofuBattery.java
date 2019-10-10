@@ -39,16 +39,6 @@ public class TileEntityTofuBattery extends TileEntityReservoirBase implements II
     public void update() {
 
         if (!world.isRemote) {
-            ItemStack from = this.inventory.get(0);
-
-            if (getEnergyStored() >= 20) {
-                if (from.getItem() instanceof IEnergyInsertable) {
-                    IEnergyInsertable symbol = (IEnergyInsertable) from.getItem();
-                    symbol.fill(from, 1, false);
-                    drain(20, false);
-                }
-            }
-
 
             if (inputTank.getFluid() != null && TofuEnergyStoragedFluidMap.isEnergyStorageFluid(inputTank.getFluid())) {
                 Map.Entry<FluidStack, TofuEnergyStoragedFluid> result = TofuEnergyStoragedFluidMap.getSufficientRecipe(inputTank.getFluid());
