@@ -33,16 +33,23 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
 
     }
 
+    //A public interface to access how much energy does a tile have
     @Override
     public int getEnergyStored() {
         return energy;
     }
 
+    //Then how much it can store
     @Override
     public int getMaxEnergyStored() {
         return energyMax;
     }
 
+    /*
+    * It's used when you want to fill a certain amount of tf energy into the tile
+    * To receive means how much energy will be filled this time, and if simulate is set to true, the code will just
+    * simulate all the process.
+    * Returns how much energy is filled.*/
     @Override
     public int receive(int toReceive, boolean simulate) {
         if (energy > energyMax) return 0;
@@ -51,6 +58,9 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
         return calculated;
     }
 
+    /*
+    * Drains energy from the tile. Like what its counterpart above does.
+    * */
     @Override
     public int drain(int toDrain, boolean simulate) {
         int calculated = Math.min(toDrain, energy);
@@ -75,6 +85,9 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
         this.uuid = compound.getString(TAG_UUID);
     }
 
+    /*
+    * Check if the tile can receive/drain energy from the give tile
+    * */
     @Override
     public boolean canReceive(TileEntity from) {
         if (!(from instanceof ITofuEnergy)) throw new IllegalArgumentException("It must be a instance of ITofuEnergy!");

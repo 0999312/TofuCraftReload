@@ -1,6 +1,6 @@
 package cn.mcmod.tofucraft.item;
 
-import cn.mcmod.tofucraft.base.item.EnergyItem.IEnergyExtractable;
+import cn.mcmod.tofucraft.base.item.energyItem.IEnergyExtractable;
 import cn.mcmod.tofucraft.enchantments.EnchantmentLoader;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
 import cn.mcmod.tofucraft.util.ItemUtils;

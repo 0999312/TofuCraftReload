@@ -30,14 +30,29 @@ public abstract class TileEntityProcessorBase extends TileEntityWorkerBase imple
         super(energyMax);
     }
 
+    /*
+    * The working condition for a machine, e.g. a proper recipe
+    * */
     public abstract boolean canWork();
 
+    /*
+    * What will the machine do when working, like draining energy, or something else
+    * */
     public abstract void onWork();
 
+    /*
+    * What will the machine do if the working condition is not met, like resetting working status
+    * */
     public abstract void failed();
 
+    /*
+    * What will the machine do if a working cycle is finished, like output items.
+    * */
     public abstract void done();
 
+    /*
+    * A general function for the machine, if there's anything needed
+    * */
     public void general(){};
 
     @Override
