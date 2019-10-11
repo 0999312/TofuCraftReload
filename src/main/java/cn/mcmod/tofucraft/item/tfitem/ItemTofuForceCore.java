@@ -1,7 +1,7 @@
 package cn.mcmod.tofucraft.item.tfitem;
 
 import cn.mcmod.tofucraft.TofuMain;
-import cn.mcmod.tofucraft.base.item.EnergyItem.ItemTofuEnergyContained;
+import cn.mcmod.tofucraft.base.item.energyItem.ItemTofuEnergyContained;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;

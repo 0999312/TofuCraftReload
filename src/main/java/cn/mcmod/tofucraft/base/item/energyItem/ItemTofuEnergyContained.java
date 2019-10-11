@@ -1,4 +1,4 @@
-package cn.mcmod.tofucraft.base.item.EnergyItem;
+package cn.mcmod.tofucraft.base.item.energyItem;
 
 import cn.mcmod.tofucraft.api.tfenergy.ITofuEnergy;
 import cn.mcmod.tofucraft.api.tfenergy.TofuNetwork;

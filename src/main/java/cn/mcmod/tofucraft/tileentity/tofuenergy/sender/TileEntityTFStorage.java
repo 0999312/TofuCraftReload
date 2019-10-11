@@ -1,7 +1,7 @@
 package cn.mcmod.tofucraft.tileentity.tofuenergy.sender;
 
 import cn.mcmod.tofucraft.api.recipes.TofuEnergyMap;
-import cn.mcmod.tofucraft.base.item.EnergyItem.IEnergyExtractable;
+import cn.mcmod.tofucraft.base.item.energyItem.IEnergyExtractable;
 import cn.mcmod.tofucraft.base.tileentity.TileEntitySenderBase;
 import cn.mcmod.tofucraft.block.mecha.BlockTFStorage;
 import net.minecraft.block.state.IBlockState;
