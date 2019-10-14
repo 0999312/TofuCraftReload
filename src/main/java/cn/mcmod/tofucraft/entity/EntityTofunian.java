@@ -327,7 +327,6 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
     }
 
     @Override
-
     public void writeEntityToNBT(NBTTagCompound compound) {
 
         super.writeEntityToNBT(compound);
@@ -478,6 +477,7 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityZombie.class, false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, AbstractIllager.class, false));
             this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityVex.class, false));
+            this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityTofuGandlem.class, false));
 
             if (!this.isChild()) {
                 this.tasks.addTask(6, new EntityAIUseItemOnLeftHand<>(this, new ItemStack(ItemLoader.bugle), TofuSounds.TOFUBUGLE, (p_213736_1_) -> {
@@ -489,6 +489,7 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
             this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
             this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, AbstractIllager.class, 8.0F, 0.8D, 0.8D));
             this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityVex.class, 8.0F, 0.6D, 0.6D));
+            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityTofuGandlem.class, 8.0F, 0.8D, 0.8D));
 
             this.tasks.addTask(2, new EntityAIPanic(this, 0.75F));
         }
