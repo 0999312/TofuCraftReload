@@ -95,6 +95,10 @@ public class ModelTofuGandlem extends ModelBase {
 
         f2 = f2 * f2;
 
+        float f3 = ((EntityTofuGandlem) entityIn).getSoyShotAnimationScale(f);
+
+        f3 = f3 * f3;
+
         if (f2 > 0) {
             this.handR.rotateAngleX = (MathHelper.cos(ageInTicks * 0.6662F) * 0.2F) * f2;
             this.handL.rotateAngleX = (MathHelper.cos(ageInTicks * 0.6662F) * 0.2F) * f2;
@@ -104,6 +108,15 @@ public class ModelTofuGandlem extends ModelBase {
             this.handL.rotateAngleY = 0.0F;
             this.handR2.rotateAngleX = 0.0F;
             this.handL2.rotateAngleX = 0.0F;
+        } else if (f3 > 0) {
+
+            if (((EntityLivingBase) entityIn).getPrimaryHand() == EnumHandSide.RIGHT) {
+                this.handR2.rotateAngleX = -0.6F + MathHelper.cos(ageInTicks * 0.04F) * 0.15F;
+                this.handR.rotateAngleX = -1.2F + MathHelper.cos(ageInTicks * 0.04F) * 0.15F;
+            } else {
+                this.handL2.rotateAngleX = -0.6F + MathHelper.cos(ageInTicks * 0.04F) * 0.15F;
+                this.handL.rotateAngleX = -1.2F + MathHelper.cos(ageInTicks * 0.04F) * 0.15F;
+            }
         } else if (f1 > 0) {
             this.handR.rotateAngleZ = 0.0F;
             this.handL.rotateAngleZ = 0.0F;
@@ -127,8 +140,11 @@ public class ModelTofuGandlem extends ModelBase {
     public void setLivingAnimations(EntityLivingBase entity, float limbSwing, float limbSwingAmount, float partialTicks) {
         float tick = entity.ticksExisted + partialTicks;
 
+        float f = ((EntityTofuGandlem) entity).getDeadAnimationScale(tick);
+
+        f = f * f;
         if (entity.isEntityAlive()) {
-            GlStateManager.translate(0F, -0.2F - MathHelper.sin(tick * 0.12F) * 0.1F, 0F);
+            GlStateManager.translate(0F, (-0.2F - MathHelper.sin(tick * 0.12F) * 0.1F) * f, 0F);
         }
     }
 
