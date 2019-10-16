@@ -29,9 +29,11 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
 
     @Override
     public boolean canWork() {
-        if (energy >= POWER) {
+
+        if (energy >= POWER) { //If energy is suitable
             Map.Entry<Object, SoymilkAggregate> recipe = SoymilkAggregationMap.getPossibleRecipe(inventory.get(0), input.getFluid());
-            if (recipe != null) {
+
+            if (recipe != null) { //If recipe is valid
                 if (cached != null && !cached.getValue().getResult().isItemEqual(recipe.getValue().getResult()))
                     processTime = 0;
                 maxTime = recipe.getValue().getEnergy() / POWER;
@@ -45,6 +47,7 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
 
     @Override
     public void onWork() {
+        //Valid, drain power and increase process time.
         processTime++;
         drain(POWER, false);
         markDirty();
@@ -52,12 +55,14 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
 
     @Override
     public void failed() {
+        //Reset the process time.
         processTime = 0;
         markDirty();
     }
 
     @Override
     public void done() {
+        //Output outputs in the cached recipe, and do everything needed.
         inventory.set(0, SoymilkAggregationMap.castToSuitableItemstack(cached.getKey(), inventory.get(0)));
         if (inventory.get(1).isEmpty())
             inventory.set(1, cached.getValue().getResult());

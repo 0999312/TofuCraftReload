@@ -2,7 +2,7 @@ package cn.mcmod.tofucraft.tileentity.tofuenergy.reservoir;
 
 import cn.mcmod.tofucraft.api.recipes.TofuEnergyStoragedFluidMap;
 import cn.mcmod.tofucraft.api.recipes.recipe.TofuEnergyStoragedFluid;
-import cn.mcmod.tofucraft.base.item.EnergyItem.IEnergyInsertable;
+import cn.mcmod.tofucraft.base.item.energyItem.IEnergyInsertable;
 import cn.mcmod.tofucraft.base.tileentity.TileEntityReservoirBase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,16 +39,6 @@ public class TileEntityTofuBattery extends TileEntityReservoirBase implements II
     public void update() {
 
         if (!world.isRemote) {
-            ItemStack from = this.inventory.get(0);
-
-            if (getEnergyStored() >= 20) {
-                if (from.getItem() instanceof IEnergyInsertable) {
-                    IEnergyInsertable symbol = (IEnergyInsertable) from.getItem();
-                    symbol.fill(from, 1, false);
-                    drain(20, false);
-                }
-            }
-
 
             if (inputTank.getFluid() != null && TofuEnergyStoragedFluidMap.isEnergyStorageFluid(inputTank.getFluid())) {
                 Map.Entry<FluidStack, TofuEnergyStoragedFluid> result = TofuEnergyStoragedFluidMap.getSufficientRecipe(inputTank.getFluid());

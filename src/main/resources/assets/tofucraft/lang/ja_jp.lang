@@ -464,7 +464,8 @@ tofucraft.terrain.wait=トーフワールドを生成してます・・・
 tofucraft.terrain.load=トーフワールドを読み込んでます・・・
 
 #TCon
-material.tofumetal.name=金剛豆腐
+material.tofumetal.name=剛豆腐
+material.tofudiamond.name=金剛豆腐
 modifier.absorption.name=吸収
 modifier.absorption.desc=§o栄養としても良い§r\nこれがついたツールは攻撃するとたまに腹とsaturationを満たす（攻撃が高いほど腹を満たしやすい！）
 
