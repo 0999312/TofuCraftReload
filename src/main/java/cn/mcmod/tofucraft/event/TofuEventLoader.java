@@ -115,8 +115,8 @@ public class TofuEventLoader {
 
                 Class<? extends PotionEffect> effectClass = potionEffect.getClass();
                 try {
-					Field privateduration = effectClass.getDeclaredField("duration");
-					Field privateamplifier = effectClass.getDeclaredField("amplifier");
+					Field privateduration = effectClass.getDeclaredField("field_76460_b");
+					Field privateamplifier = effectClass.getDeclaredField("field_76461_c");
 					 if (privateduration != null){
 						privateduration.setAccessible(true);
 						privateduration.set(potionEffect, duration);
