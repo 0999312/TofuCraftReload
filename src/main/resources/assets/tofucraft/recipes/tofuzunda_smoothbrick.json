@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "tofucraft:tofuzunda_brick"
+    }
+  },
+  "result": {
+    "item": "tofucraft:tofuzunda_smoothbrick",
+    "count": 4
+  }
+}

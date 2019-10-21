@@ -4,8 +4,9 @@ import cn.mcmod.tofucraft.TofuMain;
 import net.minecraft.item.ItemSword;
 
 public class ItemSwordBasic extends ItemSword {
-    public ItemSwordBasic(ToolMaterial material,String name, String... subNames) {
+    public ItemSwordBasic(ToolMaterial material, String name) {
         super(material);
-        this.setUnlocalizedName(TofuMain.MODID+"."+name);
+        this.setUnlocalizedName(TofuMain.MODID + "." + name);
     }
+
 }

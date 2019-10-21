@@ -1,14 +1,15 @@
 package cn.mcmod.tofucraft.entity.ai;
 
 import cn.mcmod.tofucraft.entity.EntityTofunian;
-import cn.mcmod.tofucraft.entity.TofuVillages;
 import com.google.common.base.Predicates;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 
+@SuppressWarnings("rawtypes")
 public class EntityAITofunianAvoidEntity<T extends Entity> extends EntityAIAvoidEntity {
     protected EntityTofunian entity;
-    public EntityAITofunianAvoidEntity(EntityTofunian entityIn, Class<T> classToAvoidIn, float avoidDistanceIn, double farSpeedIn, double nearSpeedIn) {
+    @SuppressWarnings("unchecked")
+	public EntityAITofunianAvoidEntity(EntityTofunian entityIn, Class<T> classToAvoidIn, float avoidDistanceIn, double farSpeedIn, double nearSpeedIn) {
         super(entityIn, classToAvoidIn, Predicates.alwaysTrue(), avoidDistanceIn, farSpeedIn, nearSpeedIn);
 
         this.entity = entityIn;
@@ -16,10 +17,6 @@ public class EntityAITofunianAvoidEntity<T extends Entity> extends EntityAIAvoid
 
     public boolean shouldExecute()
     {
-        if(this.entity.getProfessionForge()== TofuVillages.ProfessionHunterTofunian){
-            return false;
-        }else {
-            return super.shouldExecute();
-        }
+        return super.shouldExecute();
     }
 }

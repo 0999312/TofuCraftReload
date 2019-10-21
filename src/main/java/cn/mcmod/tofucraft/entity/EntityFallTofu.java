@@ -25,7 +25,6 @@ public class EntityFallTofu extends Entity {
     private UUID ownerUniqueId;
     public int fallTime;
     public boolean shouldDropItem = true;
-    private boolean dontSetBlock;
     private boolean hurtEntities;
     private int fallHurtMax = 40;
     private float fallHurtAmount = 2.0F;

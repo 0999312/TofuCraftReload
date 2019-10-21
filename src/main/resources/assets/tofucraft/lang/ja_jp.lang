@@ -130,6 +130,8 @@ tile.tofucraft.tofutorch_zunda.name=ずんだ豆腐の松明
 tile.tofucraft.tofutrapdoor.name=%sのトラップドア
 tile.tofucraft.tofuwall.name=%sの壁
 tile.tofucraft.tofuishi_brick.name=豆腐石レンガ
+tile.tofucraft.tofuzunda_brick.name=豆腐ずんだレンガ
+tile.tofucraft.tofuzunda_smoothbrick.name=滑らかな豆腐ずんだレンガ
 tile.tofucraft.tofu_terrain.name=自然の豆腐
 tile.tofucraft.zundatofu_terrain.name=ずんだ草ブロック
 tile.tofucraft.tofuchest.name=豆腐チェスト
@@ -140,6 +142,10 @@ tile.tofucraft.tofulog.name=豆腐の原木
 tile.tofucraft.yubagrass.name=湯葉草
 tile.tofucraft.blocksaltpan.name=塩田
 tile.tofucraft.yuba_noren.name=湯葉ののれん
+tile.tofucraft.battery.name=TFバッテリー
+tile.tofucraft.antenna_basic.name=TFアンテナベーシック
+tile.tofucraft.tofuworkstation.name=トーフ加工台
+tile.tofucraft.tofuflower.name=トーフの花
 
 item.tofucraft.seeds_soybeans.name=大豆
 item.tofucraft.seeds_soybeansHell.name=地獄大豆
@@ -343,6 +349,12 @@ item.tofucraft.toolmetalaxe.name=鋼豆腐斧
 item.tofucraft.tooldiamondshovel.name=金剛豆腐シャベル
 item.tofucraft.tooldiamondpickaxe.name=金剛豆腐ツルハシ
 item.tofucraft.tooldiamondaxe.name=金剛豆腐斧
+item.tofucraft.tofuishi_shield.name=石豆腐レンガのシールド
+item.tofucraft.tofumetal_shield.name=鋼豆腐のシールド
+item.tofucraft.tofumetalforce_shield.name=鋼豆腐のフォースシールド(未使用)
+item.tofucraft.tofuforce_core.name=トーフフォースコア
+item.tofucraft.tofuchinger_tooth.name=豆腐の捕食獣の歯
+item.tofucraft.tofuchinger_tootharrow.name=豆腐の捕食獣の歯の矢
 
 advancements.tofucraft.root.title=豆腐クラフト
 advancements.tofucraft.root.description=豆腐の技術や豆腐の食材
@@ -359,6 +371,8 @@ advancements.tofucraft.enter_tofuworld.description=豆腐ワールドに入る
 
 advancements.tofucraft.caringshooting.title=愛の射撃
 advancements.tofucraft.caringshooting.description=ずんだアローを射てmobを回復させる
+advancements.tofucraft.tofugandlem.title=トーフのガーディアン
+advancements.tofucraft.tofugandlem.description=トーフガンドレムを倒し、トーフフォースコアを手に入れる
 
 container.tofucraft.SaltFurnace=製塩かまど
 container.tofucraft.TfAntenna=TFアンテナ
@@ -441,3 +455,21 @@ tofucraft.config.dimension_id=トーフワールドのDimensionID
 item.tofucraft.nanban.name=チキン南蛮
 item.tofucraft.nanbantofu.name=豆腐南蛮
 
+tooltip.tofucraft.tofuforce_core1=inventoryの中にあると耐久度を消費して自分のhealthを回復する
+tooltip.tofucraft.tofuforce_core2=破損した場合は、tofuforce（TF）で充電して再度使用できます
+tooltip.tofucraft.tofuforce_core.broken=破損
+
+#load
+tofucraft.terrain.wait=トーフワールドを生成してます・・・
+tofucraft.terrain.load=トーフワールドを読み込んでます・・・
+
+#TCon
+material.tofumetal.name=剛豆腐
+material.tofudiamond.name=金剛豆腐
+modifier.absorption.name=吸収
+modifier.absorption.desc=§o栄養としても良い§r\nこれがついたツールは攻撃するとたまに腹とsaturationを満たす（攻撃が高いほど腹を満たしやすい！）
+
+#SlashBlade
+item.slashblade.tofucraft.ishikatana.name=豆腐刀「须磨」
+item.slashblade.tofucraft.metalkatana.name=豆腐刀「朔風」
+item.slashblade.tofucraft.diamondkatana.name=豆腐刀「菫姫」

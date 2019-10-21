@@ -19,14 +19,10 @@ import java.util.List;
 import java.util.Random;
 
 public class MapGenTofuCastle extends MapGenStructure {
-    /**
-     * A list of all the biomes villages can spawn in.
-     */
     public static List<Biome> CASTLE_SPAWN_BIOMES = Arrays.<Biome>asList(TofuBiomes.TOFU_FOREST);
     /**
      * None
      */
-    private int size;
     private int distance;
     private final ChunkProviderTofu provider;
 

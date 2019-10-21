@@ -67,6 +67,12 @@ public class TofuBiomes {
             .setWaterColor(9286496)
             .setTemperature(0.317F)
             .setRainfall(0.759F));
+    public static BiomeTofu TOFU_MOUNTAIN = new BiomeTofuHills(new Biome.BiomeProperties("TofuMountain")
+            .setBaseHeight(0.3F)
+            .setHeightVariation(1.4F)
+            .setWaterColor(9286496)
+            .setTemperature(0.317F)
+            .setRainfall(0.759F));
 
     public static BiomeTofu[] decorationBiomes;
 
@@ -80,9 +86,10 @@ public class TofuBiomes {
         registry.register(TOFU_LEEK_PLAINS.setRegistryName("tofuleek_plain"));
         registry.register(TOFU_PLAIN_HILLS.setRegistryName("tofuplain_hills"));
         registry.register(TOFU_RIVER.setRegistryName("tofuriver"));
+        registry.register(TOFU_MOUNTAIN.setRegistryName("tofumountain"));
 
         decorationBiomes = new BiomeTofu[]{
-                TOFU_PLAINS, TOFU_LEEK_PLAINS, TOFU_PLAINS, TOFU_FOREST, TOFU_BUILDINGS, TOFU_EXTREME_HILLS,ZUNDATOFU_PLAINS};
+                TOFU_PLAINS, TOFU_LEEK_PLAINS, TOFU_PLAINS, TOFU_FOREST, TOFU_BUILDINGS, TOFU_EXTREME_HILLS, ZUNDATOFU_PLAINS, TOFU_MOUNTAIN};
     }
 
 

@@ -1,5 +1,9 @@
 package cn.mcmod.tofucraft;
 
+import cn.mcmod.tofucraft.api.recipes.FlintLockAmmoMap;
+import cn.mcmod.tofucraft.api.recipes.SoymilkAggregationMap;
+import cn.mcmod.tofucraft.api.recipes.TofuEnergyMap;
+import cn.mcmod.tofucraft.api.recipes.TofuEnergyStoragedFluidMap;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TofuParticleType;
 import cn.mcmod.tofucraft.entity.TofuEntityRegister;
@@ -38,9 +42,15 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
+        TofuEnergyMap.init();
+        TofuEnergyStoragedFluidMap.init();
+        SoymilkAggregationMap.init();
+        FlintLockAmmoMap.init();
+
         TileEntityRegistry.init();
         VillagerTofu1.registerVillager();
         NetworkRegistry.INSTANCE.registerGuiHandler(TofuMain.instance, new TofuGuiHandler());
+     
     }
 
     public void postInit(FMLPostInitializationEvent event) {
@@ -80,4 +90,5 @@ public class CommonProxy {
     }
     
 
+    
 }

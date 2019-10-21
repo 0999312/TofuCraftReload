@@ -10,10 +10,13 @@ import cn.mcmod.tofucraft.util.TofuLootTables;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.monster.AbstractIllager;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,6 +27,7 @@ import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -32,6 +36,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -40,7 +45,9 @@ import javax.annotation.Nullable;
 public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     protected static final DataParameter<Byte> AGGRESSIVE = EntityDataManager.<Byte>createKey(EntityTofuGandlem.class, DataSerializers.BYTE);
     private static final DataParameter<Boolean> SPELL_CASTING = EntityDataManager.<Boolean>createKey(EntityTofuGandlem.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> SOYSHOT = EntityDataManager.<Boolean>createKey(EntityTofuGandlem.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> SLEEP = EntityDataManager.<Boolean>createKey(EntityTofuGandlem.class, DataSerializers.BOOLEAN);
+
 
     private float heightOffset = 0.5f;
     private int heightOffsetUpdateTime;
@@ -49,28 +56,38 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     private float clientSideSpellCastingAnimation;
     private float prevClientSideAttackingAnimation;
     private float clientSideAttackingAnimation;
+    private float prevClientSideSoyShotAnimation;
+    private float clientSideSoyShotAnimation;
+    private float prevClientSideDeadAnimation;
+    private float clientSideDeadAnimation;
+    public int deathTicks;
 
-    private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.WHITE, BossInfo.Overlay.PROGRESS));
+    public final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.WHITE, BossInfo.Overlay.PROGRESS));
 
     public EntityTofuGandlem(World worldIn) {
         super(worldIn);
         this.setSize(0.7F, 2.05F);
         this.isImmuneToFire = true;
         this.moveHelper = new EntityTofuFlyHelper(this);
-        this.experienceValue = 60;
+        this.experienceValue = 80;
     }
 
     @Override
+    public boolean isNonBoss() {
+    	return false;
+    }
+    
+    @Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new AIDoNothing());
-        this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(3, new AIHealSpell());
-        this.tasks.addTask(4, new AITofuShoot());
-        this.tasks.addTask(5, new AISummonSpell());
-        this.tasks.addTask(6, new EntityAIAttackMoveRanged(this, 1.0D, 60, 16.0F) {
+        this.tasks.addTask(4, new AISoyShot());
+        this.tasks.addTask(5, new AITofuShoot());
+        this.tasks.addTask(6, new AISummonSpell());
+        this.tasks.addTask(7, new EntityAIAttackMoveRanged(this, 1.0D, 60, 16.0F) {
             @Override
             public boolean shouldExecute() {
-                return super.shouldExecute() && !isSpellcasting();
+                return super.shouldExecute() && !isSpellcasting() && !isSoyShot();
             }
 
             @Override
@@ -78,12 +95,15 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
                 return super.shouldContinueExecuting() && !isSpellcasting();
             }
         });
-        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.1D));
-        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(8, new EntityAILookIdle(this));
+        this.tasks.addTask(8, new EntityAIWanderAvoidWater(this, 1.1D));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
+        this.tasks.addTask(9, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityIronGolem.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityTofunian.class, true));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, AbstractIllager.class, true));
+        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityIronGolem.class, true));
     }
 
     @Override
@@ -103,6 +123,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         super.entityInit();
         this.dataManager.register(AGGRESSIVE, Byte.valueOf((byte) 0));
         this.dataManager.register(SPELL_CASTING, Boolean.FALSE);
+        this.dataManager.register(SOYSHOT, Boolean.FALSE);
         this.dataManager.register(SLEEP, Boolean.FALSE);
     }
 
@@ -219,6 +240,14 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         this.dataManager.set(SPELL_CASTING, Boolean.valueOf(casting));
     }
 
+    public boolean isSoyShot() {
+        return ((Boolean) this.dataManager.get(SOYSHOT)).booleanValue();
+    }
+
+    protected void setSoyShot(boolean shot) {
+        this.dataManager.set(SOYSHOT, Boolean.valueOf(shot));
+    }
+
     public boolean isSleep() {
         return ((Boolean) this.dataManager.get(SLEEP)).booleanValue();
     }
@@ -244,6 +273,48 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
             } else {
                 this.clientSideAttackingAnimation = MathHelper.clamp(this.clientSideAttackingAnimation - 1.0F, 0.0F, 6.0F);
             }
+
+            this.prevClientSideSoyShotAnimation = this.clientSideSoyShotAnimation;
+            if (this.isSoyShot()) {
+                this.clientSideSoyShotAnimation = MathHelper.clamp(this.clientSideSoyShotAnimation + 1.0F, 0.0F, 6.0F);
+            } else {
+                this.clientSideSoyShotAnimation = MathHelper.clamp(this.clientSideSoyShotAnimation - 1.0F, 0.0F, 6.0F);
+            }
+
+            this.prevClientSideDeadAnimation = this.clientSideDeadAnimation;
+            if (!this.isEntityAlive()) {
+                this.clientSideDeadAnimation = MathHelper.clamp(this.clientSideDeadAnimation + 0.1F, 0.0F, 1.0F);
+            } else {
+                this.clientSideDeadAnimation = 0.0F;
+            }
+        }
+    }
+
+    @Override
+    protected void onDeathUpdate() {
+        this.renderYawOffset = this.rotationYaw;
+
+        ++this.deathTicks;
+
+        if (this.deathTicks >= 60 && this.deathTicks <= 80) {
+            float f = (this.rand.nextFloat() - 0.5F) * 4.0F;
+            float f1 = (this.rand.nextFloat() - 0.5F) * 2.0F;
+            float f2 = (this.rand.nextFloat() - 0.5F) * 4.0F;
+            this.world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.posX + (double) f, this.posY + 2.0D + (double) f1, this.posZ + (double) f2, 0.0D, 0.0D, 0.0D);
+        }
+
+        if (this.deathTicks == 80) {
+            if (!this.world.isRemote && (this.isPlayer() || this.recentlyHit > 0 && this.canDropLoot() && this.world.getGameRules().getBoolean("doMobLoot"))) {
+                int i = this.getExperiencePoints(this.attackingPlayer);
+                i = net.minecraftforge.event.ForgeEventFactory.getExperienceDrop(this, this.attackingPlayer, i);
+                while (i > 0) {
+                    int j = EntityXPOrb.getXPSplit(i);
+                    i -= j;
+                    this.world.spawnEntity(new EntityXPOrb(this.world, this.posX, this.posY, this.posZ, j));
+                }
+            }
+
+            this.setDead();
         }
     }
 
@@ -255,6 +326,16 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     @SideOnly(Side.CLIENT)
     public float getAttackingAnimationScale(float p_189795_1_) {
         return (this.prevClientSideAttackingAnimation + (this.clientSideAttackingAnimation - this.prevClientSideAttackingAnimation) * p_189795_1_) / 6.0F;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public float getSoyShotAnimationScale(float p_189795_1_) {
+        return (this.prevClientSideSoyShotAnimation + (this.clientSideSoyShotAnimation - this.prevClientSideSoyShotAnimation) * p_189795_1_) / 6.0F;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public float getDeadAnimationScale(float p_189795_1_) {
+        return (this.prevClientSideDeadAnimation + (this.clientSideDeadAnimation - this.prevClientSideDeadAnimation) * p_189795_1_) / 1.0F;
     }
 
 
@@ -277,7 +358,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
 
         projectile.setLocationAndAngles(this.posX + vec3d.x * 1.3D, this.posY + this.getEyeHeight(), this.posZ + vec3d.z * 1.3D, this.rotationYaw, this.rotationPitch);
 
-        float d0 = (this.rand.nextFloat() * 16.0F) - 8.0F;
+//        float d0 = (this.rand.nextFloat() * 16.0F) - 8.0F;
 
         projectile.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
         this.world.spawnEntity(projectile);
@@ -347,6 +428,81 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         this.setAggressive(1, swingingArms);
     }
 
+    class AISoyShot extends EntityAIBase {
+        protected int shottick;
+        protected int soyshotCooldown;
+
+
+        private AISoyShot() {
+            super();
+        }
+
+        /**
+         * Returns whether the EntityAIBase should begin execution.
+         */
+        public boolean shouldExecute() {
+            if (EntityTofuGandlem.this.getAttackTarget() == null) {
+                return false;
+            } else if (EntityTofuGandlem.this.isSpellcasting()) {
+                return false;
+            } else if (EntityTofuGandlem.this.isSoyShot()) {
+                return false;
+            } else {
+                return EntityTofuGandlem.this.ticksExisted >= this.soyshotCooldown && EntityTofuGandlem.this.getHealth() < EntityTofuGandlem.this.getMaxHealth() / 2;
+            }
+        }
+
+        /**
+         * Returns whether an in-progress EntityAIBase should continue executing
+         */
+        public boolean shouldContinueExecuting() {
+            return EntityTofuGandlem.this.getAttackTarget() != null && this.shottick > 0;
+        }
+
+        @Override
+        public void startExecuting() {
+            this.soyshotCooldown = EntityTofuGandlem.this.ticksExisted + 1200;
+            this.shottick = 100;
+            EntityTofuGandlem.this.setSoyShot(true);
+        }
+
+        @Override
+        public void resetTask() {
+            super.resetTask();
+            EntityTofuGandlem.this.setSoyShot(false);
+        }
+
+        @Override
+        public void updateTask() {
+            super.updateTask();
+            --this.shottick;
+
+            if (this.shottick == 60 || this.shottick == 80) {
+                EntityTofuGandlem.this.playSound(SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, 2.0F, 1.4F);
+                ((WorldServer) EntityTofuGandlem.this.world).spawnParticle(EnumParticleTypes.CRIT, EntityTofuGandlem.this.posX, EntityTofuGandlem.this.posY, EntityTofuGandlem.this.posZ, 15, 0.2D, 0.2D, 0.2D, 0.0D);
+            }
+
+            if (this.shottick <= 20) {
+                if (EntityTofuGandlem.this.ticksExisted % 5 == 0) {
+                    for (int i = 0; i < 6; i++) {
+                        EntityThrowable projectile = new EntityFukumame(EntityTofuGandlem.this.world, EntityTofuGandlem.this);
+
+                        Vec3d vec3d = EntityTofuGandlem.this.getLook(1.0F);
+
+                        playSound(SoundEvents.ENTITY_SNOWBALL_THROW, 3.0F, 1.0F / (EntityTofuGandlem.this.getRNG().nextFloat() * 0.4F + 0.8F));
+
+                        projectile.setLocationAndAngles(EntityTofuGandlem.this.posX + vec3d.x * 1.3D, EntityTofuGandlem.this.posY + (EntityTofuGandlem.this.getEyeHeight() / 2), EntityTofuGandlem.this.posZ + vec3d.z * 1.2D, EntityTofuGandlem.this.rotationYaw, EntityTofuGandlem.this.rotationPitch);
+
+                        float d0 = (EntityTofuGandlem.this.rand.nextFloat() * 12.0F) - 6.0F;
+
+                        projectile.shoot(EntityTofuGandlem.this, EntityTofuGandlem.this.rotationPitch, EntityTofuGandlem.this.rotationYaw + d0, 0.0F, 1.5f, 0.8F);
+                        EntityTofuGandlem.this.world.spawnEntity(projectile);
+                    }
+                }
+            }
+        }
+    }
+
     class AIHealSpell extends AIUseSpell {
         private AIHealSpell() {
             super();
@@ -395,7 +551,7 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
         }
 
         protected int getCastingInterval() {
-            return 800;
+            return 1200;
         }
 
         protected int getCastWarmupTime() {
@@ -436,6 +592,8 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
             if (EntityTofuGandlem.this.getAttackTarget() == null) {
                 return false;
             } else if (EntityTofuGandlem.this.isSpellcasting()) {
+                return false;
+            } else if (EntityTofuGandlem.this.isSoyShot()) {
                 return false;
             } else {
                 return EntityTofuGandlem.this.ticksExisted >= this.spellCooldown;
@@ -522,8 +680,8 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
 
         protected void castSpell() {
             EntityLivingBase entitylivingbase = EntityTofuGandlem.this.getAttackTarget();
-            double d0 = Math.min(entitylivingbase.posY, EntityTofuGandlem.this.posY);
-            double d1 = Math.max(entitylivingbase.posY, EntityTofuGandlem.this.posY) + 1.0D;
+//            double d0 = Math.min(entitylivingbase.posY, EntityTofuGandlem.this.posY);
+//            double d1 = Math.max(entitylivingbase.posY, EntityTofuGandlem.this.posY) + 1.0D;
             float f = (float) MathHelper.atan2(entitylivingbase.posZ - EntityTofuGandlem.this.posZ, entitylivingbase.posX - EntityTofuGandlem.this.posX);
 
 

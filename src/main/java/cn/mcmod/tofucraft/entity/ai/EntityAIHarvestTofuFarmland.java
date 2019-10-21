@@ -1,12 +1,12 @@
 package cn.mcmod.tofucraft.entity.ai;
 
 import cn.mcmod.tofucraft.block.BlockLoader;
+import cn.mcmod.tofucraft.entity.EntityTofunian;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.ai.EntityAIMoveToBlock;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryBasic;
@@ -17,13 +17,13 @@ import net.minecraft.world.World;
 public class EntityAIHarvestTofuFarmland extends EntityAIMoveToBlock
 {
     /** Villager that is harvesting */
-    private final EntityVillager villager;
+    private final EntityTofunian villager;
     private boolean hasFarmItem;
     private boolean wantsToReapStuff;
     /** 0 => harvest, 1 => replant, -1 => none */
     private int currentTask;
 
-    public EntityAIHarvestTofuFarmland(EntityVillager villagerIn, double speedIn)
+    public EntityAIHarvestTofuFarmland(EntityTofunian villagerIn, double speedIn)
     {
         super(villagerIn, speedIn, 16);
         this.villager = villagerIn;

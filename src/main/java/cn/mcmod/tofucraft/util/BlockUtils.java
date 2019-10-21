@@ -2,9 +2,13 @@ package cn.mcmod.tofucraft.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import java.util.ArrayList;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class BlockUtils {
 
@@ -34,7 +38,24 @@ public class BlockUtils {
             }
     }
 
+    /*
+    * Function: to give access to all sides of a blockpos in one statement
+    * */
+    public static void forEachSide(BlockPos pos, Consumer<BlockPos> consumer){
+        for (EnumFacing facing : EnumFacing.VALUES)
+            consumer.accept(pos.add(facing.getDirectionVec()));
+    }
 
+    /*
+    * Function: to return a list of sides that meets the need of the Predicate
+    * */
+    public static ArrayList<BlockPos> observeSides(BlockPos pos, Predicate<BlockPos> predicate){
+        ArrayList<BlockPos> bps = new ArrayList<>();
+        for (EnumFacing facing : EnumFacing.VALUES)
+            if (predicate.test(pos.add(facing.getDirectionVec())))
+                bps.add(pos.add(facing.getDirectionVec()));
+        return bps;
+    }
 
     public interface IEntityWeightingBlockHandler
     {

@@ -3,7 +3,7 @@ package cn.mcmod.tofucraft.block.mecha;
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
-import cn.mcmod.tofucraft.tileentity.TileEntityTFStorage;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -40,7 +40,8 @@ public class BlockTFStorage extends BlockContainer {
         super(Material.IRON);
         this.setDefaultState(this.getBlockState().getBaseState().withProperty(LIT, Boolean.FALSE).withProperty(FACING, EnumFacing.NORTH));
         this.setCreativeTab(CommonProxy.tab);
-        this.setHardness(0.3F);
+        this.setHardness(5.0F);
+        this.setResistance(12.0F);
         this.setSoundType(SoundType.METAL);
         this.setHarvestLevel("pickaxe", 1);
     }
