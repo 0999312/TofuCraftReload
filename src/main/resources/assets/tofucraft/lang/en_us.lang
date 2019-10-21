@@ -132,6 +132,8 @@ tile.tofucraft.tofutorch_zunda.name=TofuZunda Torch
 tile.tofucraft.tofuTrapdoor.name=%s Trapdoor
 tile.tofucraft.tofuWall.name=%s Wall
 tile.tofucraft.tofuishi_brick.name=TofuIshi Brick
+tile.tofucraft.tofuzunda_brick.name=TofuZunda Brick
+tile.tofucraft.tofuzunda_smoothbrick.name=TofuZunda SmoothBrick
 tile.tofucraft.tofu_terrain.name=NaturalTofu
 tile.tofucraft.zundatofu_terrain.name=ZundaGrass
 tile.tofucraft.ore_tofudiamond.name=Tofu Diamond Ore
@@ -140,9 +142,17 @@ tile.tofucraft.tofu_farmland.name=Tofu FarmLand
 tile.tofucraft.tofulog.name=Tofu Log
 tile.tofucraft.yubagrass.name=Yuba Grass
 tile.tofucraft.yuba_noren.name=Yuba Noren
+tile.tofucraft.tofuflower.name=TofuFlower
+tile.tofucraft.barreldoubanjiang.name=Doubanjiang Barrel
+
+tile.tofucraft.ricecrop.name=Rice Crop
+tile.tofucraft.saltfurnace_lit.name=Lit Saltfurnace
+tile.tofucraft.battery.name=TFBattery
+tile.tofucraft.antenna_basic.name=TFAntenna Basic
+tile.tofucraft.tofuworkstation.name=Tofu WorkStation
 
 item.tofucraft.seeds_soybeans.name=Soybeans
-item.tofucraft.seeds_soybeansHell.name=Hell Soybeans
+item.tofucraft.seeds_soybeans_hell.name=Hell Soybeans
 item.tofucraft.tofukinu.name=Kinugoshi Tofu
 item.tofucraft.tofumomen.name=Momen Tofu
 item.tofucraft.tofuishi.name=Solid Tofu
@@ -245,14 +255,14 @@ item.tofucraft.oage.name=Fried Tofu Slice
 item.tofucraft.mabodofu.name=Mapo Tofu
 item.tofucraft.onigiri.name=Riceball
 item.tofucraft.onigirisalt.name=Salty Riceball
-item.tofucraft.yakionigiriMiso.name=Roasted Miso Riceball
-item.tofucraft.yakionigiriShoyu.name=Roasted Soy Riceball
+item.tofucraft.yakionigirimiso.name=Roasted Miso Riceball
+item.tofucraft.yakionigirishoyu.name=Roasted Soy Riceball
 item.tofucraft.moyashiitame.name=Sprout Saute
 item.tofucraft.moyashiohitashi.name=Boiled Sprouts
 item.tofucraft.sprouts.name=Sprouts
 item.tofucraft.hiyayakko.name=Hiyayakko
 item.tofucraft.ricetofu.name=Tofu on Rice
-item.tofucraft.tofuHamburg.name=Tofu Hamburg
+item.tofucraft.tofuhamburg.name=Tofu Hamburg
 item.tofucraft.tofucookie.name=Tofu Cookie
 item.tofucraft.inari.name=Oinari
 item.tofucraft.tofufishraw.name=Tofufish
@@ -269,7 +279,7 @@ item.tofucraft.tfcircuit.name=TF Circuit Board
 item.tofucraft.tfcoil.name=TF Coil
 item.tofucraft.tfoscillator.name=TF Oscillator
 item.tofucraft.advtofugem.name=High-Powered Tofu Gem
-item.tofucraft.activatedtofuGem.name=Activated Tofu Gem
+item.tofucraft.activatedtofugem.name=Activated Tofu Gem
 item.tofucraft.activatedhelltofu.name=Activated Hell Tofu
 item.tofucraft.mineralsoymilk.name=Mineral Soy Milk
 item.tofucraft.tofusomen.name=Tofu Noodle
@@ -340,6 +350,20 @@ item.tofucraft.toolmetalaxe.name=Metal Tofu Axe
 item.tofucraft.tooldiamondshovel.name=Diamond Tofu Shovel
 item.tofucraft.tooldiamondpickaxe.name=Diamond Tofu Pickaxe
 item.tofucraft.tooldiamondaxe.name=Diamond Tofu Axe
+item.tofucraft.tofuishi_shield.name=TofuIshi Shield
+item.tofucraft.tofumetal_shield.name=TofuMetal Shield
+item.tofucraft.tofumetalforce_shield.name=TofuMetal ForceShield(Unused)
+item.tofucraft.tofuforce_core.name=TofuForce Core
+item.tofucraft.growing_tofu.name=Growing tofu
+item.tofucraft.fulintlock.name=Fulintlock
+item.tofucraft.tofuchinger_tooth.name=TofuChinger Tooth
+item.tofucraft.tofuchinger_tootharrow.name=TofuChinger ToothArrow
+item.tofucraft.lemon.name=Lemon
+item.tofucraft.mayonnaise.name=Mayonnaise
+item.tofucraft.chillstick.name=Chill Okara Stick
+item.tofucraft.nanban.name=Chicken Nanban
+item.tofucraft.nanbantofu.name=Tofu Nanban
+item.tofucraft.chill.name=Chill Pepper
 
 advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
@@ -355,6 +379,8 @@ advancements.tofucraft.caringshooting.title=Caring Shooting
 advancements.tofucraft.caringshooting.description=Shoot ZundaArrow on mob and healing mob
 advancements.tofucraft.enter_tofuworld.title=Enter TofuWorld
 advancements.tofucraft.enter_tofuworld.description=Entered TofuWorld
+advancements.tofucraft.tofugandlem.title=Ancient Tofu Guardian
+advancements.tofucraft.tofugandlem.description=Defeat TofuGandlem and get Tofu Force Core
 
 container.tofucraft.SaltFurnace=Salt Furnace
 container.tofucraft.tfstorage=TF Storage
@@ -368,7 +394,7 @@ container.tofucraft.tofuchest=Tofu Chest
 
 fluid.soymilk=Soy Milk
 fluid.zunda_soymilk=Zunda SoyMilk
-fluid.soymilkHell=Hell Soy Milk
+fluid.soymilk_hell=Hell Soy Milk
 fluid.soysauce=Soy Sauce
 fluid.nigari=Bittern
 fluid.tofucraft.mineralSoymilk=Mineral Soy Milk
@@ -434,24 +460,37 @@ entity.Tofunian.fisherman=Fisher Tofunian
 entity.Tofunian.guard=Guard Tofunian
 entity.Tofunian.tofusmith=Tofu Smith
 
-tile.tofucraft.barreldoubanjiang.name=Doubanjiang Barrel
-
-item.tofucraft.chill.name=Chill Pepper
-
 tofucraft.config.dimension_id=TofuWorld's DimensionID
 
-item.tofucraft.lemon.name=Lemon
-
-item.tofucraft.mayonnaise.name=Mayonnaise
-
-item.tofucraft.chillstick.name=Chill Okara Stick
-
 entity.Villager.tofu_trader=Trader
-item.tofucraft.nanban.name=Chicken Nanban
-item.tofucraft.nanbantofu.name=Tofu Nanban
 
 subtitles.entity.tofunian.idle=Tofunian mutters
 subtitles.entity.tofunian.yes=Tofunian agrees
 
+tooltip.tofucraft.tofuforce_core1=If it is in the inventory, it will consume durability or energy to restore your health.
+tooltip.tofucraft.tofuforce_core2=If it was broken, you can use it again by repairing it and charging it with TF.
+tooltip.tofucraft.tofuforce_core.broken=Broken
+
+tooltip.tofucraft.growing_tofu1=A clump of tofu that will grow overtime in the cost of TF.
+tooltip.tofucraft.growing_tofu2=At least it was not infected by some strange bacteria...
+
 tofucraft.radar.result.success=Found Tofu Slime's existence in this chuck.
 tofucraft.radar.result.failed=Can't find Tofu Slime in this chuck.
+
+#energy
+tooltip.tofucraft.energy=TofuForce Energy: %d/%d
+
+#load
+tofucraft.terrain.wait=Generate TofuTerrain...
+tofucraft.terrain.load=Loading TofuWorld...
+
+#TCon
+material.tofumetal.name=TofuMetal
+material.tofudiamond.name=TofuDiamond
+modifier.absorption.name=Absorption
+modifier.absorption.desc=§oGood as Nutrition well§r\nTools with this will occasionally fill the belly and saturation when attacked (the higher the attack, the easier it is to fill the belly!)
+
+#SlashBlade
+item.slashblade.tofucraft.ishikatana.name=Tofu -Ishi-
+item.slashblade.tofucraft.metalkatana.name=Tofu -Metal-
+item.slashblade.tofucraft.diamondkatana.name=Tofu -Diamond-
