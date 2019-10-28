@@ -143,6 +143,7 @@ tile.tofucraft.tofulog.name=Tofu Log
 tile.tofucraft.yubagrass.name=Yuba Grass
 tile.tofucraft.yuba_noren.name=Yuba Noren
 tile.tofucraft.tofuflower.name=TofuFlower
+tile.tofucraft.barreldoubanjiang.name=Doubanjiang Barrel
 
 tile.tofucraft.ricecrop.name=Rice Crop
 tile.tofucraft.saltfurnace_lit.name=Lit Saltfurnace
@@ -254,14 +255,14 @@ item.tofucraft.oage.name=Fried Tofu Slice
 item.tofucraft.mabodofu.name=Mapo Tofu
 item.tofucraft.onigiri.name=Riceball
 item.tofucraft.onigirisalt.name=Salty Riceball
-item.tofucraft.yakionigiriMiso.name=Roasted Miso Riceball
-item.tofucraft.yakionigiriShoyu.name=Roasted Soy Riceball
+item.tofucraft.yakionigirimiso.name=Roasted Miso Riceball
+item.tofucraft.yakionigirishoyu.name=Roasted Soy Riceball
 item.tofucraft.moyashiitame.name=Sprout Saute
 item.tofucraft.moyashiohitashi.name=Boiled Sprouts
 item.tofucraft.sprouts.name=Sprouts
 item.tofucraft.hiyayakko.name=Hiyayakko
 item.tofucraft.ricetofu.name=Tofu on Rice
-item.tofucraft.tofuHamburg.name=Tofu Hamburg
+item.tofucraft.tofuhamburg.name=Tofu Hamburg
 item.tofucraft.tofucookie.name=Tofu Cookie
 item.tofucraft.inari.name=Oinari
 item.tofucraft.tofufishraw.name=Tofufish
@@ -278,7 +279,7 @@ item.tofucraft.tfcircuit.name=TF Circuit Board
 item.tofucraft.tfcoil.name=TF Coil
 item.tofucraft.tfoscillator.name=TF Oscillator
 item.tofucraft.advtofugem.name=High-Powered Tofu Gem
-item.tofucraft.activatedtofuGem.name=Activated Tofu Gem
+item.tofucraft.activatedtofugem.name=Activated Tofu Gem
 item.tofucraft.activatedhelltofu.name=Activated Hell Tofu
 item.tofucraft.mineralsoymilk.name=Mineral Soy Milk
 item.tofucraft.tofusomen.name=Tofu Noodle
@@ -357,6 +358,12 @@ item.tofucraft.growing_tofu.name=Growing tofu
 item.tofucraft.fulintlock.name=Fulintlock
 item.tofucraft.tofuchinger_tooth.name=TofuChinger Tooth
 item.tofucraft.tofuchinger_tootharrow.name=TofuChinger ToothArrow
+item.tofucraft.lemon.name=Lemon
+item.tofucraft.mayonnaise.name=Mayonnaise
+item.tofucraft.chillstick.name=Chill Okara Stick
+item.tofucraft.nanban.name=Chicken Nanban
+item.tofucraft.nanbantofu.name=Tofu Nanban
+item.tofucraft.chill.name=Chill Pepper
 
 advancements.tofucraft.root.title=TofuCraft
 advancements.tofucraft.root.description=Tofu technology and tofu food
@@ -453,21 +460,9 @@ entity.Tofunian.fisherman=Fisher Tofunian
 entity.Tofunian.guard=Guard Tofunian
 entity.Tofunian.tofusmith=Tofu Smith
 
-tile.tofucraft.barreldoubanjiang.name=Doubanjiang Barrel
-
-item.tofucraft.chill.name=Chill Pepper
-
 tofucraft.config.dimension_id=TofuWorld's DimensionID
 
-item.tofucraft.lemon.name=Lemon
-
-item.tofucraft.mayonnaise.name=Mayonnaise
-
-item.tofucraft.chillstick.name=Chill Okara Stick
-
 entity.Villager.tofu_trader=Trader
-item.tofucraft.nanban.name=Chicken Nanban
-item.tofucraft.nanbantofu.name=Tofu Nanban
 
 subtitles.entity.tofunian.idle=Tofunian mutters
 subtitles.entity.tofunian.yes=Tofunian agrees
