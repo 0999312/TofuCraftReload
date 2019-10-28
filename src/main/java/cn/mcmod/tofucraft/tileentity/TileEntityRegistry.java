@@ -10,6 +10,9 @@ import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityRadiator;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityReceiver;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntitySoymilkAggregator;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityTFCompressor;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityTFCrasher;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityTFOven;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -29,6 +32,9 @@ public class TileEntityRegistry {
         registerTileEntity(TileEntityReceiver.class, "test");
         registerTileEntity(TileEntityTofuBattery.class, "battery");
         registerTileEntity(TileEntitySoymilkAggregator.class, "aggregator");
+        registerTileEntity(TileEntityTFOven.class, "tfoven");
+        registerTileEntity(TileEntityTFCrasher.class, "tfcrasher");
+        registerTileEntity(TileEntityTFCompressor.class, "tfcompressor");
     }
     @SideOnly(Side.CLIENT)
     public static void render() {

@@ -10,13 +10,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerTFStorage extends Container {
-    private final IInventory tileStorageMachine;
+public class ContainerTFAggregator extends Container {
+    private final IInventory tileMachine;
 
-    public ContainerTFStorage(InventoryPlayer playerInventory, IInventory machineInventory) {
-        this.tileStorageMachine = machineInventory;
+    public ContainerTFAggregator(InventoryPlayer playerInventory, IInventory machineInventory) {
+        this.tileMachine = machineInventory;
 
-        this.addSlotToContainer(new Slot(machineInventory, 0, 28, 29));
+        this.addSlotToContainer(new Slot(machineInventory, 0, 23, 35));
+        this.addSlotToContainer(new Slot(machineInventory, 1, 68, 35));
+
 
         for (int var3 = 0; var3 < 3; var3++) {
             for (int var4 = 0; var4 < 9; var4++) {
@@ -32,7 +34,7 @@ public class ContainerTFStorage extends Container {
     @Override
     public void addListener(IContainerListener listener) {
         super.addListener(listener);
-        listener.sendAllWindowProperties(this, this.tileStorageMachine);
+        listener.sendAllWindowProperties(this, this.tileMachine);
     }
 
 
@@ -45,16 +47,16 @@ public class ContainerTFStorage extends Container {
 
         for (int i = 0; i < this.listeners.size(); ++i) {
             IContainerListener icontainerlistener = this.listeners.get(i);
-                icontainerlistener.sendWindowProperty(this, 0, this.tileStorageMachine.getField(0));
-                icontainerlistener.sendWindowProperty(this, 2, this.tileStorageMachine.getField(2));
-                icontainerlistener.sendWindowProperty(this, 1, this.tileStorageMachine.getField(1));
+                icontainerlistener.sendWindowProperty(this, 0, this.tileMachine.getField(0));
+                icontainerlistener.sendWindowProperty(this, 2, this.tileMachine.getField(2));
+                icontainerlistener.sendWindowProperty(this, 1, this.tileMachine.getField(1));
         }
 
     }
 
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data) {
-        this.tileStorageMachine.setField(id, data);
+        this.tileMachine.setField(id, data);
     }
 
     /**
@@ -62,7 +64,7 @@ public class ContainerTFStorage extends Container {
      */
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
-        return this.tileStorageMachine.isUsableByPlayer(playerIn);
+        return this.tileMachine.isUsableByPlayer(playerIn);
     }
 
     /**

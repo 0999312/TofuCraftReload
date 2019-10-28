@@ -1,0 +1,40 @@
+{
+   "forge_marker" : 1,
+   "defaults" : {
+      "model" : "cube_all",
+      "textures" : {
+         "particle" : "tofucraft:blocks/tfmachine_side",
+         "up" : "tofucraft:blocks/tfmachinecase_front",
+         "down" : "tofucraft:blocks/tfmachinecase_front",
+         "west" : "tofucraft:blocks/tfmachine_side",
+         "north" : "tofucraft:blocks/tfcrasher_front_lit",
+         "east" : "tofucraft:blocks/tfmachine_side",
+         "south" : "tofucraft:blocks/tfmachine_side"
+      }
+   },
+   "variants" : {
+      "normal" : {
+         "model" : "cube_all"
+      },
+      "facing" : {
+         "north" : {
+            "model" : "cube_all"
+         },
+         "south" : {
+            "model" : "cube_all",
+            "y" : 180
+         },
+         "west" : {
+            "model" : "cube_all",
+            "y" : 270
+         },
+         "east" : {
+            "model" : "cube_all",
+            "y" : 90
+         }
+      },
+      "inventory" : {
+         "model" : "cube_all"
+      }
+   }
+}

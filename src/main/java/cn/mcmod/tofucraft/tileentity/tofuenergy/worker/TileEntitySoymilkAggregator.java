@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.tileentity.tofuenergy.worker;
 import cn.mcmod.tofucraft.api.recipes.SoymilkAggregationMap;
 import cn.mcmod.tofucraft.api.recipes.recipe.SoymilkAggregate;
 import cn.mcmod.tofucraft.base.tileentity.TileEntityProcessorBaseInventoried;
+import cn.mcmod.tofucraft.block.BlockLoader;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -18,7 +19,7 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
 
     public static final String TAG_TANK = "tf_tank";
     private static final int POWER = 10;
-    public FluidTank input = new SoyTank(1000);
+    public FluidTank input = new SoyTank(5000);
     private Map.Entry<Object, SoymilkAggregate> cached;
 
     public TileEntitySoymilkAggregator() {
@@ -29,18 +30,8 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
 
     @Override
     public boolean canWork() {
-
         if (energy >= POWER) { //If energy is suitable
-            Map.Entry<Object, SoymilkAggregate> recipe = SoymilkAggregationMap.getPossibleRecipe(inventory.get(0), input.getFluid());
-
-            if (recipe != null) { //If recipe is valid
-                if (cached != null && !cached.getValue().getResult().isItemEqual(recipe.getValue().getResult()))
-                    processTime = 0;
-                maxTime = recipe.getValue().getEnergy() / POWER;
-                cached = recipe;
-                markDirty();
-                return true;
-            }
+        if(input.canFill()) return true;
         }
         return false;
     }
@@ -62,6 +53,19 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
 
     @Override
     public void done() {
+    	input.fill(new FluidStack(BlockLoader.SOYMILK_FLUID, 50), true);
+        markDirty();
+    }
+
+    @Override
+    public void general() {
+    	DrainInput();
+    	markDirty();
+    }
+    private void DrainInput() {
+    	Map.Entry<Object, SoymilkAggregate> recipe = SoymilkAggregationMap.getPossibleRecipe(inventory.get(0), input.getFluid());
+    	 if (recipe != null) { //If recipe is valid
+             if (cached != null && !cached.getValue().getResult().isItemEqual(recipe.getValue().getResult())){
         //Output outputs in the cached recipe, and do everything needed.
         inventory.set(0, SoymilkAggregationMap.castToSuitableItemstack(cached.getKey(), inventory.get(0)));
         if (inventory.get(1).isEmpty())
@@ -69,9 +73,11 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
         else
             inventory.get(1).setCount(inventory.get(1).getCount() + cached.getValue().getResult().getCount());
         input.drain(cached.getValue().getInput(), true);
-        markDirty();
-    }
-
+             }
+        }
+    	 
+	}
+    
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
         return super.hasCapability(capability, facing) || capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
@@ -110,7 +116,6 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
     }
 
     private static final class SoyTank extends FluidTank {
-
         SoyTank(int capacity) {
             super(capacity);
         }

@@ -23,4 +23,6 @@ public abstract class TileEntityWorkerBase extends TileEntityEnergyBase {
     public boolean canDrain(TileEntity to) {
         return false;
     }
+    
+    
 }

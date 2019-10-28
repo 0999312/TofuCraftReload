@@ -27,7 +27,8 @@ public class TofuVillages {
     public static VillagerRegistry.VillagerProfession ProfessionHunterTofunian;
     public static VillagerRegistry.VillagerCareer CareerHunter;
 
-    public static void register() {
+    @SuppressWarnings("deprecation")
+	public static void register() {
         // Register the profession of Tofu Cook
         TofuVillages.ProfessionTofuCook = new VillagerRegistry.VillagerProfession("tofucraft:tofuCook",
                 new ResourceLocation("tofucraft", "textures/mob/tofucook.png").toString(),//new ResourceLocation("tofucraft", "textures/mob/tofucook.png").toString(),

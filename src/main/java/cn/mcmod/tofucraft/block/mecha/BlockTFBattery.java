@@ -32,7 +32,6 @@ public class BlockTFBattery extends Block {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-
         if (!worldIn.isRemote) {
             ItemStack stack = playerIn.getHeldItem(hand);
             TileEntity tileentity = worldIn.getTileEntity(pos);
@@ -51,14 +50,11 @@ public class BlockTFBattery extends Block {
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-
         TileEntity tileentity = worldIn.getTileEntity(pos);
         if (tileentity instanceof TileEntityTofuBattery) {
             InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityTofuBattery) tileentity);
             worldIn.updateComparatorOutputLevel(pos, this);
         }
-
-
         super.breakBlock(worldIn, pos, state);
     }
 

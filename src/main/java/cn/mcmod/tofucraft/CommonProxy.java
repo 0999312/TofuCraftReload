@@ -46,11 +46,10 @@ public class CommonProxy {
         TofuEnergyStoragedFluidMap.init();
         SoymilkAggregationMap.init();
         FlintLockAmmoMap.init();
-
+        RecipeLoader.Init();
         TileEntityRegistry.init();
         VillagerTofu1.registerVillager();
         NetworkRegistry.INSTANCE.registerGuiHandler(TofuMain.instance, new TofuGuiHandler());
-     
     }
 
     public void postInit(FMLPostInitializationEvent event) {
@@ -60,6 +59,7 @@ public class CommonProxy {
     public void registerFluidBlockRendering(Block block, String name) {
 
     }
+    
 	@SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 		//boildEdamame
@@ -77,18 +77,13 @@ public class CommonProxy {
 		
 		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
 		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
-		
 	}
+	
     public World getClientWorld() {
         return null;
     }
-
-
     
     public void spawnParticle(World world, TofuParticleType particleType, double x, double y, double z, double velX, double velY, double velZ) {
-
     }
-    
-
     
 }

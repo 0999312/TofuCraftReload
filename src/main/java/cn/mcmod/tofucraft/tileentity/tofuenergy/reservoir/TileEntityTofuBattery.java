@@ -2,7 +2,6 @@ package cn.mcmod.tofucraft.tileentity.tofuenergy.reservoir;
 
 import cn.mcmod.tofucraft.api.recipes.TofuEnergyStoragedFluidMap;
 import cn.mcmod.tofucraft.api.recipes.recipe.TofuEnergyStoragedFluid;
-import cn.mcmod.tofucraft.base.item.energyItem.IEnergyInsertable;
 import cn.mcmod.tofucraft.base.tileentity.TileEntityReservoirBase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;

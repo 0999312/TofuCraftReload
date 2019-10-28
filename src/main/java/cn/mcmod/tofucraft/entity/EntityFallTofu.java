@@ -131,11 +131,8 @@ public class EntityFallTofu extends Entity {
             if (result.entityHit != null) {
                 if (this.owner == null) {
                     DamageSource damagesource = DamageSource.FALLING_BLOCK;
-
                     result.entityHit.attackEntityFrom(damagesource, 5);
                 } else {
-                    DamageSource damagesource = DamageSource.FALLING_BLOCK;
-
                     result.entityHit.attackEntityFrom(new EntityDamageSource("fallingBlock", this.owner), 5);
                 }
             }
@@ -182,8 +179,6 @@ public class EntityFallTofu extends Entity {
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
     protected void readEntityFromNBT(NBTTagCompound compound) {
-        int i = compound.getByte("Data") & 255;
-
 
         this.fallTime = compound.getInteger("Time");
 

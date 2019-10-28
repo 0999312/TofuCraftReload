@@ -138,10 +138,14 @@ public class BlockLoader {
     public static Block TOFUSTORAGEMACHINE = new BlockTFStorage();
 
     public static Block ANTENNA_BASIC = new BlockAntennaBasic();
-    public static Block RADIATOR = new BlockTFRadiator();
-    public static Block BATTERY = new BlockTFBattery();
-    public static Block AGGREGATOR = new BlockAggregator();
 
+    public static Block TFOVEN = new BlockTFOven();
+    public static Block TFOVEN_LIT = new BlockTFOven();
+    public static Block TFCRASHER = new BlockTFCrasher();
+    public static Block TFCRASHER_LIT = new BlockTFCrasher();
+    public static Block TFCOMPRESSOR = new BlockTFCompressor();
+    public static Block TFCOMPRESSOR_LIT = new BlockTFCompressor();
+    
     public static BlockYuba YUBA_FLOW = new BlockYuba();
     public static BlockTofuStation TOFUSTATION = new BlockTofuStation();
 
@@ -168,9 +172,12 @@ public class BlockLoader {
 
         register(TOFUSTORAGEMACHINE, new ItemBlock(TOFUSTORAGEMACHINE), "tfstorage");
         register(ANTENNA_BASIC, new ItemBlock(ANTENNA_BASIC), "antenna_basic");
-//        register(RADIATOR, new ItemBlock(RADIATOR), "radiator");
-//        register(BATTERY, new ItemBlock(BATTERY), "battery");
-//        register(AGGREGATOR, new ItemBlock(AGGREGATOR), "aggregator");
+        register(TFOVEN, new ItemBlock(TFOVEN), "tfoven");
+        registerNoItem(TFOVEN_LIT, "tfoven_lit");
+        register(TFCRASHER, new ItemBlock(TFCRASHER), "tfcrasher");
+        registerNoItem(TFCRASHER_LIT, "tfcrasher_lit");
+        register(TFCOMPRESSOR, new ItemBlock(TFCOMPRESSOR), "tfcompressor");
+        registerNoItem(TFCOMPRESSOR_LIT, "tfcompressor_lit");
 
         register(TOFUSTATION, new ItemBlock(TOFUSTATION), "tofuworkstation");
 
@@ -198,7 +205,7 @@ public class BlockLoader {
 
         register(LEEK, new ItemBlock(LEEK), "blockleek");
         registerNoItem(LEEKCROP, "blockleek_crop");
-//		SOYBEAN_NETHER
+
         registerNoItem(SOYBEAN, "soybean");
         registerNoItem(SOYBEAN_NETHER, "soybean_nether");
         registerNoItem(SPROUTS, "blocksprouts");
@@ -283,6 +290,12 @@ public class BlockLoader {
 
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
+    	registerRender(TFCOMPRESSOR);
+    	registerRender(TFCOMPRESSOR_LIT);
+    	registerRender(TFOVEN);
+    	registerRender(TFOVEN_LIT);
+    	registerRender(TFCRASHER);
+    	registerRender(TFCRASHER_LIT);
         registerRender(TOFUHELL);
         registerRender(TOFUDIAMOND);
         registerRender(YUBA_FLOW);
@@ -297,9 +310,6 @@ public class BlockLoader {
         registerRender(SALTFURNACE_LIT);
         registerRender(TOFUSTORAGEMACHINE);
         registerRender(ANTENNA_BASIC);
-//        registerRender(RADIATOR);
-//        registerRender(BATTERY);
-//        registerRender(AGGREGATOR);
         registerRender(KINUTOFU);
         registerRender(MOMENTOFU);
         registerRender(ISHITOFU);
@@ -366,17 +376,11 @@ public class BlockLoader {
     }
 
     public static Block registerFluidBlock(Fluid fluid, Block fluidBlock, String name) {
-
         fluidBlock.setRegistryName(new ResourceLocation(TofuMain.MODID, name));
-
         ForgeRegistries.BLOCKS.register(fluidBlock);
-
         TofuMain.proxy.registerFluidBlockRendering(fluidBlock, name);
-
         fluid.setBlock(fluidBlock);
-
         return fluidBlock;
-
     }
 
     @SideOnly(Side.CLIENT)

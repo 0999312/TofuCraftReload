@@ -36,11 +36,9 @@ public abstract class TileEntityProcessorBaseInventoried extends TileEntityProce
     @Override
     public ItemStack decrStackSize(int i, int i1) {
         ItemStack itemstack = ItemStackHelper.getAndSplit(inventory, i, i1);
-
         if (!itemstack.isEmpty()) {
             this.markDirty();
         }
-
         return itemstack;
     }
 
@@ -66,13 +64,9 @@ public abstract class TileEntityProcessorBaseInventoried extends TileEntityProce
     @Override
     public boolean isUsableByPlayer(EntityPlayer entityPlayer) {
         if (this.world.getTileEntity(this.pos) != this) {
-
             return false;
-
         } else {
-
             return entityPlayer.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
-
         }
     }
 
@@ -105,7 +99,7 @@ public abstract class TileEntityProcessorBaseInventoried extends TileEntityProce
                 this.processTime = i1;
                 break;
             case 1:
-                this.processTime = i1;
+                this.maxTime = i1;
                 break;
         }
     }

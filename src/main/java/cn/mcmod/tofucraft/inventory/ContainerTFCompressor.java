@@ -10,13 +10,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerTFStorage extends Container {
+public class ContainerTFCompressor extends Container {
     private final IInventory tileStorageMachine;
 
-    public ContainerTFStorage(InventoryPlayer playerInventory, IInventory machineInventory) {
+    public ContainerTFCompressor(InventoryPlayer playerInventory, IInventory machineInventory) {
         this.tileStorageMachine = machineInventory;
 
-        this.addSlotToContainer(new Slot(machineInventory, 0, 28, 29));
+        this.addSlotToContainer(new Slot(machineInventory, 0, 39, 15));
+        this.addSlotToContainer(new Slot(machineInventory, 1, 109, 15) {
+            @Override
+            public boolean isItemValid(ItemStack stack) {
+                return false;
+            }
+        });
+
 
         for (int var3 = 0; var3 < 3; var3++) {
             for (int var4 = 0; var4 < 9; var4++) {
@@ -35,7 +42,6 @@ public class ContainerTFStorage extends Container {
         listener.sendAllWindowProperties(this, this.tileStorageMachine);
     }
 
-
     /**
      * Looks for changes made in the container, sends them to every listener.
      */
@@ -45,9 +51,8 @@ public class ContainerTFStorage extends Container {
 
         for (int i = 0; i < this.listeners.size(); ++i) {
             IContainerListener icontainerlistener = this.listeners.get(i);
-                icontainerlistener.sendWindowProperty(this, 0, this.tileStorageMachine.getField(0));
-                icontainerlistener.sendWindowProperty(this, 2, this.tileStorageMachine.getField(2));
-                icontainerlistener.sendWindowProperty(this, 1, this.tileStorageMachine.getField(1));
+            icontainerlistener.sendWindowProperty(this, 0, this.tileStorageMachine.getField(0));
+            icontainerlistener.sendWindowProperty(this, 1, this.tileStorageMachine.getField(1));
         }
 
     }

@@ -1,25 +1,21 @@
 package cn.mcmod.tofucraft.gui;
 
-import cn.mcmod.tofucraft.inventory.ContainerTFStorage;
-import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidTank;
 import org.lwjgl.opengl.GL11;
 
-public class GuiTFStorage extends GuiContainer {
-    private static final ResourceLocation TXTURE = new ResourceLocation("tofucraft", "textures/gui/storage_machine.png");
-    /**
-     * The player inventory bound to this GUI.
-     */
-    private final InventoryPlayer playerInventory;
-    private final TileEntityTFStorage tileFurnace;
+import cn.mcmod.tofucraft.inventory.ContainerTFCompressor;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityTFCompressor;
 
-    public GuiTFStorage(InventoryPlayer inventory, TileEntityTFStorage storageMachine) {
-        super(new ContainerTFStorage(inventory, storageMachine));
-        this.playerInventory = inventory;
+
+public class GuiTFCompressor extends GuiContainer {
+    private static final ResourceLocation TXTURE = new ResourceLocation("tofucraft", "textures/gui/tf_compressor.png");
+    private final TileEntityTFCompressor tileFurnace;
+
+    public GuiTFCompressor(InventoryPlayer inventory, TileEntityTFCompressor storageMachine) {
+        super(new ContainerTFCompressor(inventory, storageMachine));
         this.tileFurnace = storageMachine;
     }
 
@@ -29,10 +25,8 @@ public class GuiTFStorage extends GuiContainer {
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
         String s = this.tileFurnace.getDisplayName().getUnformattedText();
-        this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 4, 4210752);
-        this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 3, 4210752);
-
-        this.fontRenderer.drawString(this.tileFurnace.getEnergyStored() + "tf", 107, 51, 0X000000);
+        this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
+        this.fontRenderer.drawString(this.tileFurnace.getEnergyStored() + "tf", 125, 55, 0x000000);
     }
 
     @Override
@@ -56,21 +50,16 @@ public class GuiTFStorage extends GuiContainer {
         this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
         int var7,var8;
         var8 = this.getEnergyScaled(55);
-        this.drawTexturedModalRect(var5 + 87, var6 + 34, 176, 31, var8 , 8);
-
+        this.drawTexturedModalRect(var5 + 56, var6 + 55, 176, 31, var8 , 8);
+        
         // Progress arrow
-        var7 = this.tileFurnace.getProgressScaled(24);
-        this.drawTexturedModalRect(var5 + 53, var6 + 30, 176, 15, var7 + 1, 16);
-
-        if (this.tileFurnace.getTank().getFluid() != null) {
-            FluidTank fluidTank = this.tileFurnace.getTank();
-            int heightInd = (int) (41 * ((float) fluidTank.getFluidAmount() / (float) fluidTank.getCapacity()));
-            if (heightInd > 0) {
-            	this.drawTexturedModalRect(var5 + 9, var6 + 52 - heightInd, 176, 40, 9, heightInd);
-            }
-
-        }
+        var7 = this.getProgressScaled(28);
+        this.drawTexturedModalRect(var5 + 68, var6 + 15, 176, 14, var7 + 1, 17);
+        
+        if(this.tileFurnace.getField(0)>0)
+          this.drawTexturedModalRect(var5 + 72, var6 + 35, 176, 39, 24, 16);
     }
+    
     private int getEnergyScaled(int pixels)
     {
         int i = this.tileFurnace.getEnergyStored();
@@ -78,4 +67,10 @@ public class GuiTFStorage extends GuiContainer {
         return j != 0 && i != 0 ? i * pixels / j : 0;
     }
     
+    private int getProgressScaled(int pixels)
+    {
+        int i = this.tileFurnace.getField(0);
+        int j = this.tileFurnace.getField(1);
+        return j != 0 && i != 0 ? i * pixels / j : 0;
+    }
 }

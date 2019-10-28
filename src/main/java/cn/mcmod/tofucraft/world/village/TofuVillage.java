@@ -114,7 +114,7 @@ public class TofuVillage {
      * Checks to see if the volume around blockLocation is clear and able to fit blockSize
      */
     private boolean isAreaClearAround(BlockPos blockSize, BlockPos blockLocation) {
-        if (!this.world.getBlockState(blockLocation.down()).isTopSolid()) {
+        if (!this.world.getBlockState(blockLocation.down()).isSideSolid(world, blockLocation, EnumFacing.UP)) {
             return false;
         } else {
             int i = blockLocation.getX() - blockSize.getX() / 2;

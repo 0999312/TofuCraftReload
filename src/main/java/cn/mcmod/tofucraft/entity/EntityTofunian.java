@@ -78,7 +78,8 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
         this.setCanPickUpLoot(true);
     }
 
-    @Override
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAITofunianTradePlayer(this));
@@ -828,7 +829,6 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
     }
 
     private boolean hasEnoughItems(int multiplier) {
-        @SuppressWarnings("deprecation")
         boolean flag = this.getTofuProfession() == TofuProfession.TOFUCOOK;
 
         for (int i = 0; i < this.getVillagerInventory().getSizeInventory(); ++i) {
@@ -868,7 +868,6 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
 
     protected void updateEquipmentIfNeeded(EntityItem itemEntity) {
         ItemStack itemstack = itemEntity.getItem();
-        Item item = itemstack.getItem();
 
         if (this.canTofunianPickupItem(itemstack)) {
             ItemStack itemstack1 = this.getVillagerInventory().addItem(itemstack);

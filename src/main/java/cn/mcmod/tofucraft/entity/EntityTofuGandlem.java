@@ -77,7 +77,8 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     	return false;
     }
     
-    @Override
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new AIDoNothing());
         this.tasks.addTask(3, new AIHealSpell());

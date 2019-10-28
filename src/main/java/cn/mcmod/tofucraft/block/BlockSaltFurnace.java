@@ -4,7 +4,6 @@ import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.tileentity.TileEntitySaltFurnace;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
@@ -14,14 +13,12 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -183,9 +180,9 @@ public class BlockSaltFurnace extends BlockContainer {
         if (stack.hasDisplayName())
         {
             TileEntity tileentity = worldIn.getTileEntity(pos);
-            if (tileentity instanceof TileEntityFurnace)
+            if (tileentity instanceof TileEntitySaltFurnace)
             {
-                ((TileEntityFurnace)tileentity).setCustomInventoryName(stack.getDisplayName());
+                ((TileEntitySaltFurnace)tileentity).setCustomInventoryName(stack.getDisplayName());
 
             }
         }
@@ -274,34 +271,4 @@ public class BlockSaltFurnace extends BlockContainer {
         return new BlockStateContainer(this, new IProperty[] {FACING});
     }
 
-    public static void updateFurnaceBlockState(boolean b, World worldObj, BlockPos pos) {
-        IBlockState blockstate = worldObj.getBlockState(pos);
-        TileEntity var6 = worldObj.getTileEntity(pos);
-
-        keepInventory = true;
-
-        if (b)
-        {
-            worldObj.setBlockState(pos, BlockLoader.SALTFURNACE_LIT.getDefaultState().withProperty(BlockSaltFurnace.FACING, blockstate.getValue(BlockSaltFurnace.FACING)));
-        }
-        else
-        {
-            worldObj.setBlockState(pos, BlockLoader.SALTFURNACE.getDefaultState().withProperty(BlockSaltFurnace.FACING, blockstate.getValue(BlockSaltFurnace.FACING)));
-
-            Block blockAbove = worldObj.getBlockState(pos.up()).getBlock();
-            if (blockAbove == Blocks.FIRE)
-            {
-                worldObj.setBlockToAir(pos.up());
-            }
-        }
-
-        keepInventory = false;
-        //worldObj.setBlockState(pos, var5, 2);
-
-        if (var6 != null)
-        {
-            var6.validate();
-            worldObj.setTileEntity(pos, var6);
-        }
-    }
 }

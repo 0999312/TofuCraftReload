@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
-version = "0.1.0.1"
+version = "0.1.0.2"
 group = "cn.mcmod.tofucraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "TofuCraftReload"
 
@@ -33,8 +33,9 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 repositories {
-    maven {
-    url 'https://maven.blamejared.com' 
+	maven {
+        // CraftTweaker2
+        url = "http://maven.blamejared.com"
     }
     maven {
         name = "CoFH Maven"
@@ -80,6 +81,15 @@ configurations.all {
     deobfCompile "slimeknights.mantle:Mantle:1.12-1.3.3.55"
 
     deobfCompile "slimeknights:TConstruct:1.12.2-2.12.0.157"
+	
+	deobfCompile("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.19.547") {
+        exclude group: 'org.ow2.asm'
+    }
+    deobfCompile "CraftTweaker2:CraftTweaker2-API:4.1.19.547"
+    deobfCompile "CraftTweaker2:ZenScript:4.1.19.547"
+    compile files(
+        'libs/SlashBlade-mc1.12-r28-deobf.jar'
+    )
 }
 
 processResources {

@@ -40,7 +40,8 @@ public class WorldProviderTofu extends WorldProvider {
         return new ChunkProviderTofu(this.world, this.world.getSeed());
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void resetRainAndThunder() {
 
         super.resetRainAndThunder();
