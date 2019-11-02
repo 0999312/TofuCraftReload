@@ -31,7 +31,7 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
     @Override
     public boolean canWork() {
         if (energy >= POWER) { //If energy is suitable
-        if(input.canFill()) return true;
+        	if(input.canFill()) return true;
         }
         return false;
     }
