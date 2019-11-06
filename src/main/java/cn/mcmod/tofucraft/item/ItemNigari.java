@@ -20,6 +20,7 @@ public class ItemNigari extends Item {
     {
         super();
         this.setUnlocalizedName(TofuMain.MODID+"."+"nigari");
+        this.setContainerItem(Items.GLASS_BOTTLE);
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
@@ -78,5 +79,5 @@ public class ItemNigari extends Item {
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
         }
     }
-
+    
 }

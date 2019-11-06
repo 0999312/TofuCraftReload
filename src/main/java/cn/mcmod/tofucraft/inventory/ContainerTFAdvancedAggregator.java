@@ -10,14 +10,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerTFAggregator extends Container {
+public class ContainerTFAdvancedAggregator extends Container {
     private final IInventory tileMachine;
 
-    public ContainerTFAggregator(InventoryPlayer playerInventory, IInventory machineInventory) {
+    public ContainerTFAdvancedAggregator(InventoryPlayer playerInventory, IInventory machineInventory) {
         this.tileMachine = machineInventory;
 
-        this.addSlotToContainer(new Slot(machineInventory, 0, 45, 32));
-        this.addSlotToContainer(new Slot(machineInventory, 1, 115, 32){
+        this.addSlotToContainer(new Slot(machineInventory, 0, 41, 27));
+        this.addSlotToContainer(new Slot(machineInventory, 1, 61, 27));
+        this.addSlotToContainer(new Slot(machineInventory, 2, 41, 47));
+        this.addSlotToContainer(new Slot(machineInventory, 3, 61, 47));
+        this.addSlotToContainer(new Slot(machineInventory, 4, 114, 29){
             @Override
             public boolean isItemValid(ItemStack stack) {
                 return false;
@@ -85,18 +88,31 @@ public class ContainerTFAggregator extends Container {
             itemstack = itemstack1.copy();
 
             switch (slotIndex) {
-                case 0:
-                    if (!this.mergeItemStack(itemstack1, 1, 37, true))
-                        return ItemStack.EMPTY;
-                default:
-                    if (!this.mergeItemStack(itemstack1, 0, 0, false)) {
-                        return ItemStack.EMPTY;
-                    }
+				case 0:
+		              if (!this.mergeItemStack(itemstack1, 5, 41, true)) 
+		              return ItemStack.EMPTY;
+				case 1:
+		              if (!this.mergeItemStack(itemstack1, 5, 41, true)) 
+		              return ItemStack.EMPTY;
+				case 2:
+		              if (!this.mergeItemStack(itemstack1, 5, 41, true)) 
+		              return ItemStack.EMPTY;
+				case 3:
+		              if (!this.mergeItemStack(itemstack1, 5, 41, true)) 
+		              return ItemStack.EMPTY;
+				case 4:
+		              if (!this.mergeItemStack(itemstack1, 5, 41, true)) 
+		              return ItemStack.EMPTY;
+				case 5:
+		              if (!this.mergeItemStack(itemstack1, 5, 41, true)) 
+		              return ItemStack.EMPTY;
+				default:
+		              if (!this.mergeItemStack(itemstack1, 0, 4, false)) {
+		                  return ItemStack.EMPTY;
+				}
 
-                    slot.onSlotChange(itemstack1, itemstack);
+                slot.onSlotChange(itemstack1, itemstack);
             }
-
-
             if (itemstack1.getCount() == 0)
                 slot.putStack(ItemStack.EMPTY);
             else

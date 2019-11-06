@@ -6,9 +6,9 @@ import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
 import cn.mcmod.tofucraft.client.render.tileentity.RenderSaltPan;
 import cn.mcmod.tofucraft.client.render.tileentity.RenderTofuChest;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.reservoir.TileEntityTofuBattery;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFCollector;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
-import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityRadiator;
-import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityReceiver;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntitySoymilkAdvancedAggregator;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntitySoymilkAggregator;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityTFCompressor;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityTFCrasher;
@@ -28,13 +28,13 @@ public class TileEntityRegistry {
         registerTileEntity(TileEntityTofuChest.class, "tofuchest");
         registerTileEntity(TileEntitySaltPan.class, "saltpan");
         registerTileEntity(TileEntityTFStorage.class, "storagemachine");
-        registerTileEntity(TileEntityRadiator.class, "radiator");
-        registerTileEntity(TileEntityReceiver.class, "test");
+        registerTileEntity(TileEntityTFCollector.class, "tfcollector");
         registerTileEntity(TileEntityTofuBattery.class, "battery");
         registerTileEntity(TileEntitySoymilkAggregator.class, "aggregator");
         registerTileEntity(TileEntityTFOven.class, "tfoven");
         registerTileEntity(TileEntityTFCrasher.class, "tfcrasher");
         registerTileEntity(TileEntityTFCompressor.class, "tfcompressor");
+        registerTileEntity(TileEntitySoymilkAdvancedAggregator.class, "advanced_aggregator");
     }
     @SideOnly(Side.CLIENT)
     public static void render() {

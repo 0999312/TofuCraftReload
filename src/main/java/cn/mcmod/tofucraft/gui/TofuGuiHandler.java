@@ -1,6 +1,8 @@
 package cn.mcmod.tofucraft.gui;
 
 import cn.mcmod.tofucraft.inventory.ContainerSaltFurnace;
+import cn.mcmod.tofucraft.inventory.ContainerTFAdvancedAggregator;
+import cn.mcmod.tofucraft.inventory.ContainerTFAggregator;
 import cn.mcmod.tofucraft.inventory.ContainerTFBattery;
 import cn.mcmod.tofucraft.inventory.ContainerTFCompressor;
 import cn.mcmod.tofucraft.inventory.ContainerTFCrasher;
@@ -9,6 +11,8 @@ import cn.mcmod.tofucraft.inventory.ContainerTFStorage;
 import cn.mcmod.tofucraft.tileentity.TileEntitySaltFurnace;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.reservoir.TileEntityTofuBattery;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFStorage;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntitySoymilkAdvancedAggregator;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntitySoymilkAggregator;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityTFCompressor;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityTFCrasher;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityTFOven;
@@ -25,6 +29,8 @@ public class TofuGuiHandler implements IGuiHandler {
     public static final int ID_TFOVEN_GUI = 3;
     public static final int ID_TFCRASHER_GUI = 4;
     public static final int ID_TFCOMPRESSOR_GUI = 5;
+    public static final int ID_AGGREGATOR_GUI = 6;
+    public static final int ID_ADVANCED_AGGREGATOR_GUI = 7;
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
@@ -57,6 +63,16 @@ public class TofuGuiHandler implements IGuiHandler {
 			case ID_TFCOMPRESSOR_GUI:
 	            if (entity instanceof TileEntityTFCompressor) {
 	                return new ContainerTFCompressor(player.inventory, (TileEntityTFCompressor) entity);
+	            }
+				break;
+			case ID_AGGREGATOR_GUI:
+	            if (entity instanceof TileEntitySoymilkAggregator) {
+	                return new ContainerTFAggregator(player.inventory, (TileEntitySoymilkAggregator) entity);
+	            }
+				break;
+			case ID_ADVANCED_AGGREGATOR_GUI:
+	            if (entity instanceof TileEntitySoymilkAdvancedAggregator) {
+	                return new ContainerTFAdvancedAggregator(player.inventory, (TileEntitySoymilkAdvancedAggregator) entity);
 	            }
 				break;
 			default:
@@ -97,6 +113,16 @@ public class TofuGuiHandler implements IGuiHandler {
 			case ID_TFCOMPRESSOR_GUI:
 	            if (entity instanceof TileEntityTFCompressor) {
 	                return new GuiTFCompressor(player.inventory, (TileEntityTFCompressor) entity);
+	            }
+				break;
+			case ID_AGGREGATOR_GUI:
+	            if (entity instanceof TileEntitySoymilkAggregator) {
+	                return new GuiTFAggreagator(player.inventory, (TileEntitySoymilkAggregator) entity);
+	            }
+				break;
+			case ID_ADVANCED_AGGREGATOR_GUI:
+	            if (entity instanceof TileEntitySoymilkAdvancedAggregator) {
+	                return new GuiTFAdvancedAggreagator(player.inventory, (TileEntitySoymilkAdvancedAggregator) entity);
 	            }
 				break;
 			default:

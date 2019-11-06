@@ -145,6 +145,11 @@ public class BlockLoader {
     public static Block TFCRASHER_LIT = new BlockTFCrasher();
     public static Block TFCOMPRESSOR = new BlockTFCompressor();
     public static Block TFCOMPRESSOR_LIT = new BlockTFCompressor();
+    public static Block TFCOLLECTOR = new BlockTFCollector();
+    public static Block TFAGGREGATOR = new BlockAggregator();
+    public static Block TFAGGREGATOR_LIT = new BlockAggregator();
+    public static Block TFAdvancedAGGREGATOR = new BlockAdvancedAggregator();
+    public static Block TFAdvancedAGGREGATOR_LIT = new BlockAdvancedAggregator();
     
     public static BlockYuba YUBA_FLOW = new BlockYuba();
     public static BlockTofuStation TOFUSTATION = new BlockTofuStation();
@@ -171,6 +176,7 @@ public class BlockLoader {
 
 
         register(TOFUSTORAGEMACHINE, new ItemBlock(TOFUSTORAGEMACHINE), "tfstorage");
+        register(TFCOLLECTOR, new ItemBlock(TFCOLLECTOR), "tfcollector");
         register(ANTENNA_BASIC, new ItemBlock(ANTENNA_BASIC), "antenna_basic");
         register(TFOVEN, new ItemBlock(TFOVEN), "tfoven");
         registerNoItem(TFOVEN_LIT, "tfoven_lit");
@@ -178,6 +184,10 @@ public class BlockLoader {
         registerNoItem(TFCRASHER_LIT, "tfcrasher_lit");
         register(TFCOMPRESSOR, new ItemBlock(TFCOMPRESSOR), "tfcompressor");
         registerNoItem(TFCOMPRESSOR_LIT, "tfcompressor_lit");
+        register(TFAGGREGATOR, new ItemBlock(TFAGGREGATOR), "tfaggregator");
+        registerNoItem(TFAGGREGATOR_LIT, "tfaggregator_lit");
+        register(TFAdvancedAGGREGATOR, new ItemBlock(TFAdvancedAGGREGATOR), "tfadvanced_aggregator");
+        registerNoItem(TFAdvancedAGGREGATOR_LIT, "tfadvanced_aggregator_lit");
 
         register(TOFUSTATION, new ItemBlock(TOFUSTATION), "tofuworkstation");
 
@@ -290,6 +300,11 @@ public class BlockLoader {
 
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
+    	registerRender(TFCOLLECTOR);
+    	registerRender(TFAGGREGATOR);
+    	registerRender(TFAGGREGATOR_LIT);
+    	registerRender(TFAdvancedAGGREGATOR);
+    	registerRender(TFAdvancedAGGREGATOR_LIT);
     	registerRender(TFCOMPRESSOR);
     	registerRender(TFCOMPRESSOR_LIT);
     	registerRender(TFOVEN);

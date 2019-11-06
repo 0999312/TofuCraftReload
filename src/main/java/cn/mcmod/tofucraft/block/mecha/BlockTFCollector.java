@@ -1,7 +1,7 @@
 package cn.mcmod.tofucraft.block.mecha;
 
 import cn.mcmod.tofucraft.CommonProxy;
-import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntityRadiator;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.sender.TileEntityTFCollector;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -10,8 +10,8 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BlockTFRadiator extends Block {
-    public BlockTFRadiator() {
+public class BlockTFCollector extends Block {
+    public BlockTFCollector() {
         super(Material.IRON);
         setCreativeTab(CommonProxy.tab);
     }
@@ -24,6 +24,6 @@ public class BlockTFRadiator extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileEntityRadiator();
+        return new TileEntityTFCollector();
     }
 }

@@ -4,7 +4,7 @@ import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.gui.TofuGuiHandler;
-import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntitySoymilkAggregator;
+import cn.mcmod.tofucraft.tileentity.tofuenergy.worker.TileEntitySoymilkAdvancedAggregator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
@@ -30,10 +30,10 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-public class BlockAggregator extends Block {
+public class BlockAdvancedAggregator extends Block {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	private static boolean keepInventory;
-    public BlockAggregator() {
+    public BlockAdvancedAggregator() {
         super(Material.IRON);
         setCreativeTab(CommonProxy.tab);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
@@ -90,13 +90,13 @@ public class BlockAggregator extends Block {
 
         if (active)
         {
-            worldIn.setBlockState(pos, BlockLoader.TFAGGREGATOR_LIT.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-            worldIn.setBlockState(pos, BlockLoader.TFAGGREGATOR_LIT.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, BlockLoader.TFAdvancedAGGREGATOR_LIT.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, BlockLoader.TFAdvancedAGGREGATOR_LIT.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
         }
         else
         {
-            worldIn.setBlockState(pos, BlockLoader.TFAGGREGATOR.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-            worldIn.setBlockState(pos, BlockLoader.TFAGGREGATOR.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, BlockLoader.TFAdvancedAGGREGATOR.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, BlockLoader.TFAdvancedAGGREGATOR.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
         }
 
         keepInventory = false;
@@ -112,8 +112,8 @@ public class BlockAggregator extends Block {
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!worldIn.isRemote) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
-            if (tileentity instanceof TileEntitySoymilkAggregator) {
-                    playerIn.openGui(TofuMain.instance, TofuGuiHandler.ID_AGGREGATOR_GUI, worldIn, pos.getX(), pos.getY(), pos.getZ());
+            if (tileentity instanceof TileEntitySoymilkAdvancedAggregator) {
+                    playerIn.openGui(TofuMain.instance, TofuGuiHandler.ID_ADVANCED_AGGREGATOR_GUI, worldIn, pos.getX(), pos.getY(), pos.getZ());
             }
         }
         return true;
@@ -126,9 +126,9 @@ public class BlockAggregator extends Block {
         {
             TileEntity tileentity = worldIn.getTileEntity(pos);
 
-            if (tileentity instanceof TileEntitySoymilkAggregator)
+            if (tileentity instanceof TileEntitySoymilkAdvancedAggregator)
             {
-                InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntitySoymilkAggregator)tileentity);
+                InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntitySoymilkAdvancedAggregator)tileentity);
                 worldIn.updateComparatorOutputLevel(pos, this);
             }
         }
@@ -144,7 +144,7 @@ public class BlockAggregator extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileEntitySoymilkAggregator();
+        return new TileEntitySoymilkAdvancedAggregator();
     }
     
     public EnumBlockRenderType getRenderType(IBlockState state)

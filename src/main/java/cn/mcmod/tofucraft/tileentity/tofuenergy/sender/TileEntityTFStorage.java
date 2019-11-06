@@ -95,12 +95,7 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
         }
         this.markDirty();
     }
-
-    @SideOnly(Side.CLIENT)
-    public FluidTank getClientTank() {
-        return this.tank;
-    }
-
+    
     public FluidTank getTank() {
         return this.tank;
     }

@@ -134,4 +134,9 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
         if (!world.isRemote)
             TofuNetwork.Instance.unload(uuid, false);
     }
+    
+    public boolean isRedstonePowered()
+    {
+        return this.world.isBlockPowered(this.pos);
+    }
 }
