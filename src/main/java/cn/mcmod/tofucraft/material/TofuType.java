@@ -33,8 +33,7 @@ public enum TofuType {
         return TcBlocks.tofuInfoMap.get(this);
     }*/
 
-    public ItemStack getItemStack()
-    {
+    public ItemStack getItemStack() {
         return ItemLoader.tofuItems.get(this);
     }
 

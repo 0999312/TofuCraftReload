@@ -16,13 +16,13 @@ public abstract class TileEntityWorkerBase extends TileEntityEnergyBase {
 
     @Override
     public boolean canReceive(TileEntity from) {
-        return true;
+        return this.energy < this.energyMax;
     }
 
     @Override
     public boolean canDrain(TileEntity to) {
         return false;
     }
-    
-    
+
+
 }
