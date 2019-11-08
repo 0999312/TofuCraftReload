@@ -63,8 +63,12 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
                 if (!isCached) onCache();
                 if (cache.size() > 0) {
                     int packSize = Math.max(Math.min(getTransferPower(), this.energy) / cache.size(), 1);
-                    cache.forEach(te -> this.drain(((ITofuEnergy) te).receive(Math.min(packSize, this.energy), false), false));
-                isCached = true;
+                    isCached = true;
+                    for (TileEntity te : cache){
+                        this.drain(((ITofuEnergy) te).receive(Math.min(packSize, this.energy), false), false);
+                        isCached = ((ITofuEnergy) te).getMaxEnergyStored() != ((ITofuEnergy) te).getEnergyStored();
+                    }
+
                 }
             } else {
                 cache.clear();
