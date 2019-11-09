@@ -57,15 +57,15 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
 
     @Override
     public void update() {
-        if (!world.isRemote && this.energy > 0) {
+        if (!world.isRemote && this.getEnergyStored() > 0) {
             antenna = world.getBlockState(pos.up()).getBlock();
             if (isValid()) {
                 if (!isCached) onCache();
                 if (cache.size() > 0) {
-                    int packSize = Math.max(Math.min(getTransferPower(), this.energy) / cache.size(), 1);
+                    int packSize = Math.max(Math.min(getTransferPower(), this.getEnergyStored()) / cache.size(), 1);
                     isCached = true;
                     for (TileEntity te : cache){
-                        this.drain(((ITofuEnergy) te).receive(Math.min(packSize, this.energy), false), false);
+                        this.drain(((ITofuEnergy) te).receive(Math.min(packSize, this.getEnergyStored()), false), false);
                         isCached = ((ITofuEnergy) te).getMaxEnergyStored() != ((ITofuEnergy) te).getEnergyStored();
                     }
 
