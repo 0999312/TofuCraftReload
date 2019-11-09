@@ -16,7 +16,7 @@ public abstract class TileEntityWorkerBase extends TileEntityEnergyBase {
 
     @Override
     public boolean canReceive(TileEntity from) {
-        return this.getEnergyStored() < this.getMaxEnergyStored();
+        return true;
     }
 
     @Override

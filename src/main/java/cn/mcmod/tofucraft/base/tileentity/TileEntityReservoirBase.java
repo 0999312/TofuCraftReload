@@ -49,6 +49,6 @@ public abstract class TileEntityReservoirBase extends TileEntitySenderBase {
 
     @Override
     public boolean canReceive(TileEntity from) {
-        return getEnergyStored() < getMaxEnergyStored() && !(from instanceof TileEntityReservoirBase) || ((TileEntityReservoirBase) from).getPriority() < this.getPriority();
+        return !(from instanceof TileEntityReservoirBase) || ((TileEntityReservoirBase) from).getPriority() < this.getPriority();
     }
 }

@@ -7,6 +7,7 @@ import cn.mcmod.tofucraft.base.block.IAnntena;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -58,15 +59,21 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
     @Override
     public void update() {
         if (!world.isRemote && this.getEnergyStored() > 0) {
-            antenna = world.getBlockState(pos.up()).getBlock();
             if (isValid()) {
                 if (!isCached) onCache();
                 if (cache.size() > 0) {
-                    int packSize = Math.max(Math.min(getTransferPower(), this.getEnergyStored()) / cache.size(), 1);
-                    isCached = true;
-                    for (TileEntity te : cache){
-                        this.drain(((ITofuEnergy) te).receive(Math.min(packSize, this.getEnergyStored()), false), false);
-                        isCached = ((ITofuEnergy) te).getMaxEnergyStored() != ((ITofuEnergy) te).getEnergyStored();
+                    List<TileEntity> toSend = new ArrayList<>();
+
+                    cache.forEach(tileEntity -> {
+                        if (((TileEntityEnergyBase) tileEntity).getEnergyStored() < ((TileEntityEnergyBase) tileEntity).getMaxEnergyStored())
+                            toSend.add(tileEntity);
+                    });
+                    if (toSend.size() > 0) {
+                        int packSize = Math.max(Math.min(getTransferPower(),
+                                this.getEnergyStored()) / toSend.size(), 1);
+                        for (TileEntity te : toSend) {
+                            this.drain(((ITofuEnergy) te).receive(Math.min(packSize, this.getEnergyStored()), false), false);
+                        }
                     }
 
                 }
@@ -78,19 +85,22 @@ public abstract class TileEntitySenderBase extends TileEntityEnergyBase implemen
     }
 
     public boolean isValid() {
+        if (world.isBlockLoaded(pos.up()))
+            antenna = world.getBlockState(pos.up()).getBlock();
         return antenna instanceof IAnntena;
     }
 
     //The onCache decides what TileEntities will be cached into the function and be send energy to.
     public void onCache() {
         cache = TofuNetwork.toTiles(TofuNetwork.Instance.getInsertableWithinRadius(this, ((IAnntena) antenna).getRadius(pos.up(), world)));
+        isCached = true;
     }
 
     public int getTransferPower() {
         return isValid() ? ((IAnntena) world.getBlockState(pos.up()).getBlock()).getPower(pos.up(), world) : 0;
     }
 
-    public double getRadius(){
+    public double getRadius() {
         return ((IAnntena) antenna).getRadius(pos, world);
     }
 
