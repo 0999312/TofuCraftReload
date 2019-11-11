@@ -44,11 +44,11 @@ public abstract class TileEntityReservoirBase extends TileEntitySenderBase {
 
     @Override
     public boolean canDrain(TileEntity to) {
-        return !(to instanceof TileEntityReservoirBase) || ((TileEntityReservoirBase) to).getPriority() > this.priority;
+        return !(to instanceof TileEntityReservoirBase) || ((TileEntityReservoirBase) to).getPriority() > this.getPriority();
     }
 
     @Override
     public boolean canReceive(TileEntity from) {
-        return !(from instanceof TileEntityReservoirBase) || ((TileEntityReservoirBase) from).getPriority() < this.priority;
+        return !(from instanceof TileEntityReservoirBase) || ((TileEntityReservoirBase) from).getPriority() < this.getPriority();
     }
 }

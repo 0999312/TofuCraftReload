@@ -52,8 +52,8 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
     * Returns how much energy is filled.*/
     @Override
     public int receive(int toReceive, boolean simulate) {
-        if (energy > energyMax) return 0;
-        int calculated = Math.min(toReceive, energyMax - energy);
+        if (getEnergyStored() > getMaxEnergyStored()) return 0;
+        int calculated = Math.min(toReceive, getMaxEnergyStored() - getEnergyStored());
         if (!simulate) energy += calculated;
         return calculated;
     }
@@ -63,7 +63,7 @@ public abstract class TileEntityEnergyBase extends TileEntity implements ITofuEn
     * */
     @Override
     public int drain(int toDrain, boolean simulate) {
-        int calculated = Math.min(toDrain, energy);
+        int calculated = Math.min(toDrain, getEnergyStored());
         if (!simulate) energy -= calculated;
         return calculated;
     }
