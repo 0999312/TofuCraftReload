@@ -13,9 +13,9 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 
-@ZenRegister
 @ZenClass("mods.tofucraft.tofuCrusher")
-public class CTTFCrasher {
+@ZenRegister
+public class CTTFCrusher {
 	@ZenMethod
 	public static void RemoveRecipe(IIngredient input) {
 		Object itemInput=null;

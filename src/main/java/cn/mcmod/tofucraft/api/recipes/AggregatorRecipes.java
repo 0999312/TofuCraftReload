@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 public class AggregatorRecipes
 {
     /** The list of smelting results. */
-    private final static Map<Object, ItemStack> recipesList = Maps.<Object, ItemStack>newHashMap();
+    public final static Map<Object, ItemStack> recipesList = Maps.<Object, ItemStack>newHashMap();
     private AggregatorRecipes()
     {
 //      addRecipe("gravel", new ItemStack(Items.FLINT));

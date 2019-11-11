@@ -1,7 +1,5 @@
 package cn.mcmod.tofucraft.compat.ct;
 
-import java.util.List;
-
 import cn.mcmod.tofucraft.RecipeLoader;
 import cn.mcmod.tofucraft.api.recipes.AdvancedAggregatorRecipes;
 import crafttweaker.IAction;
@@ -11,7 +9,6 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.oredict.IOreDictEntry;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -30,32 +27,22 @@ public class CTTFAdvancedAggregator {
 		if(itemInput!=null)
 			RecipeLoader.actions.add(new Removal(itemInput));
 	}
-	
-	private final static NonNullList<ItemStack> getItemStacks(IIngredient input) {
-		if (input == null)
-        {
-            return NonNullList.create();
-        }
-        else
-        {
-            List<IItemStack> list = input.getItems();
-            NonNullList<ItemStack> result = NonNullList.create();
-            for (IItemStack in : list)
-            {
-                result.add(CraftTweakerMC.getItemStack(in));
-            }
-            return result;
-        }
-	}
+
 	
 	@ZenMethod
-	public static void AddRecipe(IIngredient input,IItemStack output) {
-		NonNullList<ItemStack> itemInput = getItemStacks(input);
-		ItemStack[] array = new ItemStack[itemInput.size()];
-	    for(int i = 0; i < itemInput.size();i++){
-	        array[i] = itemInput.get(i);
-	    }
+	public static void AddRecipe(IIngredient[] input,IItemStack output) {
+		if(input.length>0){
+			Object[] array = new Object[input.length];
+		    for(int i = 0; i < input.length;i++){
+		    	if (input[i] instanceof IItemStack) {
+		    		array[i]=CraftTweakerMC.getItemStack(input[i]);
+				} 
+				else if(input[i] instanceof IOreDictEntry) {
+					array[i]=((IOreDictEntry)input[i]).getName();
+				}
+		    }
 		RecipeLoader.actions.add(new Addition(array,CraftTweakerMC.getItemStack(output)));
+		}
 	}
 	
 	@ZenMethod

@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 public class CompressorRecipes
 {
     /** The list of smelting results. */
-    private final static Map<Object, ItemStack> recipesList = Maps.<Object, ItemStack>newHashMap();
+    public final static Map<Object, ItemStack> recipesList = Maps.<Object, ItemStack>newHashMap();
 
     private CompressorRecipes()
     {

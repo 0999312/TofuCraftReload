@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TileEntityTFCollector extends TileEntitySenderBase {
 
-    private static final int POWER = 5;
+    private static final int POWER = 10;
     private static final int INTERFERE_RADIUS = 5;
 
     private static final double midpoint = 6;
