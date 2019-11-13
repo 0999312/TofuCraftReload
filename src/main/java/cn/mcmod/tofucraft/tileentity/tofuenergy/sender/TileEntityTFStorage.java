@@ -16,7 +16,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
@@ -235,9 +235,9 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
         return "container.tofucraft.tfstorage";
     }
 
-    @Nullable
+    @Override
     public ITextComponent getDisplayName() {
-        return new TextComponentString(this.getName());
+    	return new TextComponentTranslation(getName()+".name", new Object());
     }
 
     @Override

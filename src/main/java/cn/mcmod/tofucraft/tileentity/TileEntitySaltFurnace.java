@@ -277,7 +277,7 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
 
     @Override
     public String getName() {
-        return this.hasCustomName() ? this.customName : "container.tofucraft.SaltFurnace";
+        return this.hasCustomName() ? this.customName : "container.tofucraft.salt_furnace.name";
     }
 
     /**

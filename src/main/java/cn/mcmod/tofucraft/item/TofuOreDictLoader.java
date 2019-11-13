@@ -6,6 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Set;
@@ -90,7 +91,8 @@ public class TofuOreDictLoader {
 		  registerOre("listAllsugar", Items.SUGAR);
 		  registerOre("cropBeet", Items.BEETROOT);
 		  registerOre("seedBeet", Items.BEETROOT_SEEDS);
-		  
+		  if(!Loader.isModLoaded("sakura"))
+			  registerOre("sakuraLeaves", new ItemStack(Items.DYE,1,9));
 		  registerOre("listAllwater", Items.WATER_BUCKET);
 		  registerOre("listAllmilk", Items.MILK_BUCKET);
 	}

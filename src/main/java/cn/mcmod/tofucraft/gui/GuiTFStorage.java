@@ -28,7 +28,7 @@ public class GuiTFStorage extends GuiContainer {
      */
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        String s = this.tileFurnace.getDisplayName().getUnformattedText();
+        String s = this.tileFurnace.getDisplayName().getFormattedText();
         this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 4, 4210752);
         this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 3, 4210752);
 

@@ -110,6 +110,10 @@ public class RecipesUtil {
 		}
 	}
 	
+	public static void addShapelessRecipe(Object[] components, ItemStack result) {
+		addShapelessRecipe(result, components);
+	}
+	
 	public static void addShapelessRecipe(ItemStack result, Object... components)
 	{
 		setupDir();

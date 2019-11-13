@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "tofucraft:soymilk_ramune"
+  },
+  "ingredients": [
+    {
+      "nbt": "{FluidName:\"soymilk\",Amount:1000}",
+      "item": "forge:bucketfilled",
+      "type": "minecraft:item_nbt"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "#DYELIGHTBLUE"
+    },
+    {
+      "item": "#LISTALLSUGAR"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

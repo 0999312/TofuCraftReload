@@ -24,7 +24,7 @@ public class GuiTFCompressor extends GuiContainer {
      */
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        String s = this.tileFurnace.getDisplayName().getUnformattedText();
+        String s = this.tileFurnace.getDisplayName().getFormattedText();
         this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
         this.fontRenderer.drawString(this.tileFurnace.getEnergyStored() + "tf", 125, 55, 0x000000);
     }

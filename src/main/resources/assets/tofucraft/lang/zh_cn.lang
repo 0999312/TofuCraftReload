@@ -373,14 +373,8 @@ advancements.tofucraft.caringshooting.description=用毛豆泥箭射中友军给
 advancements.tofucraft.tofugandlem.title=远古的豆腐守护者
 advancements.tofucraft.tofugandlem.description=击败豆腐战神并得到豆腐能核心
 
-container.tofucraft.SaltFurnace=盐炉
-container.tofucraft.TfAntenna=豆腐能天线
-container.tofucraft.tfstorage=豆腐能存储器
-container.tofucraft.TfSaturator=豆腐能饱和器
-container.tofucraft.TfCondenser=豆腐能凝缩器
-container.tofucraft.TfOven=豆腐能炉
-container.tofucraft.TfReformer.simple=豆腐能还原器
-container.tofucraft.TfReformer.mix=豆腐能混合还原器
+container.tofucraft.salt_furnace.name=盐炉
+container.tofucraft.tfstorage.name=豆腐能存储器
 container.tofucraft.tofuchest=豆腐箱子
 container.tofucraft.tfcompressor.name=豆腐压缩机
 container.tofucraft.aggregator.name=豆腐聚合器

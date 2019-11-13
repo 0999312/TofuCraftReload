@@ -6,48 +6,48 @@
       },
       "name" : "BREAD"
    },
-  {
-    "ingredient": {
-      "type": "forge:ore_dict",
-      "ore": "cropStrawberry"
-    },
-    "name": "CROPSTRAWBERRY"
-  },
-  {
-    "ingredient": {
-      "type": "forge:ore_dict",
-      "ore": "cropTea"
-    },
-    "name": "CROPTEA"
-  },
-  {
-    "ingredient": {
-      "type": "forge:ore_dict",
-      "ore": "dyeLightBlue"
-    },
-    "name": "DYELIGHTBLUE"
-  },
-  {
-    "ingredient": {
-      "type": "forge:ore_dict",
-      "ore": "fullSakura"
-    },
-    "name": "FULLSAKURA"
-  },
-  {
-    "ingredient": {
-      "type": "forge:ore_dict",
-      "ore": "listAllsugar"
-    },
-    "name": "LISTALLSUGAR"
-  },
-  {
-    "ingredient": {
-      "type": "forge:ore_dict",
-      "ore": "sugarcane"
-    },
-    "name": "SUGARCANE"
-  },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
+         "ore" : "cropStrawberry"
+      },
+      "name" : "CROPSTRAWBERRY"
+   },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
+         "ore" : "cropTea"
+      },
+      "name" : "CROPTEA"
+   },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
+         "ore" : "dyeLightBlue"
+      },
+      "name" : "DYELIGHTBLUE"
+   },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
+         "ore" : "fullSakura"
+      },
+      "name" : "FULLSAKURA"
+   },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
+         "ore" : "listAllsugar"
+      },
+      "name" : "LISTALLSUGAR"
+   },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
+         "ore" : "sugarcane"
+      },
+      "name" : "SUGARCANE"
+   },
    {
       "ingredient" : {
          "type" : "forge:ore_dict",
@@ -156,17 +156,17 @@
    {
       "ingredient" : {
          "type" : "forge:ore_dict",
-        "ore": "foodApricotjelly"
+         "ore" : "foodApricotjelly"
       },
-     "name": "FOODAPRICOTJERRY"
+      "name" : "FOODAPRICOTJERRY"
    },
-  {
-    "ingredient": {
-      "type": "forge:ore_dict",
-      "ore": "foodSoysauce"
-    },
-    "name": "FOODSOYSAUCE"
-  },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
+         "ore" : "foodSoysauce"
+      },
+      "name" : "FOODSOYSAUCE"
+   },
    {
       "ingredient" : {
          "type" : "forge:ore_dict",
@@ -369,5 +369,12 @@
          "ore" : "paneGlassColorless"
       },
       "name" : "PANEGLASSCOLORLESS"
+   },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
+         "ore" : "sakuraLeaves"
+      },
+      "name" : "SAKURALEAVES"
    }
 ]

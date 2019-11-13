@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "tofucraft:soymilk_drink",
+    "data": 10
+  },
+  "ingredients": [
+    {
+      "nbt": "{FluidName:\"soymilk\",Amount:1000}",
+      "item": "forge:bucketfilled",
+      "type": "minecraft:item_nbt"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "#FOODZUNDA"
+    },
+    {
+      "item": "#LISTALLSUGAR"
+    }
+  ],
+  "type": "forge:ore_shapeless"
+}

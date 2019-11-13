@@ -94,7 +94,7 @@ public class RecipeLoader {
 		}, new ItemStack(ItemLoader.soymilk_drink,1,2));
 		AdvancedAggregatorRecipes.addRecipe(new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
-				"cropApple",
+				new ItemStack(Items.DYE,1,3),
 				"listAllsugar"
 		}, new ItemStack(ItemLoader.soymilk_drink,1,3));
 		AdvancedAggregatorRecipes.addRecipe(new Object[]{

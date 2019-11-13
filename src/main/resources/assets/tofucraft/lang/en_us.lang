@@ -388,15 +388,8 @@ advancements.tofucraft.enter_tofuworld.description=Entered TofuWorld
 advancements.tofucraft.tofugandlem.title=Ancient Tofu Guardian
 advancements.tofucraft.tofugandlem.description=Defeat TofuGandlem and get Tofu Force Core
 
-container.tofucraft.SaltFurnace=Salt Furnace
-container.tofucraft.tfstorage=TF Storage
-container.tofucraft.TfAntenna=TF Antenna
-container.tofucraft.TfSaturator=TF Saturator
-container.tofucraft.TfCondenser=TF Condenser
-container.tofucraft.TfOven=TF Oven
-container.tofucraft.TfReformer.simple=TF Reformer
-container.tofucraft.TfReformer.mix=TF Mix Reformer
-container.tofucraft.tofuchest=Tofu Chest
+container.tofucraft.salt_furnace.name=Salt Furnace
+container.tofucraft.tfstorage.name=Tofu Force Storage
 container.tofucraft.tfcompressor.name=Tofu Compressor
 container.tofucraft.aggregator.name=Tofu Aggregator
 container.tofucraft.tfoven.name=Tofu Force Oven
