@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TRT",
+    "#M#"
+  ],
+  "key": {
+    "M": {
+      "item": "tofucraft:tf_machine_case"
+    },
+    "#": {
+      "item": "tofucraft:blocktofumetal"
+    },
+    "T": {
+      "item": "tofucraft:material",
+      "data": 21
+    },
+    "R":{
+      "item": "tofucraft:material",
+      "data": 22
+    }
+  },
+  "result": {
+    "item": "tofucraft:tfcrasher"
+  }
+}

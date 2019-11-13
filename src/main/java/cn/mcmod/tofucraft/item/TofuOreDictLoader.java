@@ -24,6 +24,8 @@ public class TofuOreDictLoader {
 	    registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,0));
 	    registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,1));
 	    
+	    registerOre("foodZunda", new ItemStack(ItemLoader.material,1,4));
+	    
 	    registerOre("listAlltofuBlock", new ItemStack(BlockLoader.MOMENTOFU));
 	    registerOre("listAlltofuBlock", new ItemStack(BlockLoader.KINUTOFU));
 	    
@@ -31,11 +33,13 @@ public class TofuOreDictLoader {
 	    registerOre("cropLemon", new ItemStack(ItemLoader.material,1,30));
 	    
 	    registerOre("cropSoybean", new ItemStack(ItemLoader.soybeans));
+	    registerOre("cropAlmond", new ItemStack(ItemLoader.material,1,9));
 	    
 	    registerOre("foodSoysauce", Soysauce);
 	    registerOre("foodOliveoil", Soyoil);
 	    registerOre("foodMayo", Mayonnaise);
         registerOre("foodApricotjelly", ApricotJerry);
+        registerOre("foodStrawberryjelly", StrawberryJam);
 	    
 	    registerVanillaFoods();
 	}
@@ -111,4 +115,5 @@ public class TofuOreDictLoader {
 	public static final ItemStack Mayonnaise = new ItemStack(ItemLoader.mayonnaise_bottle, 1, OreDictionary.WILDCARD_VALUE);
 	public static final ItemStack RollingPin = new ItemStack(ItemLoader.RollingPin, 1, OreDictionary.WILDCARD_VALUE);
     public static final ItemStack ApricotJerry = new ItemStack(ItemLoader.apricotjerry_bottle, 1, OreDictionary.WILDCARD_VALUE);
+    public static final ItemStack StrawberryJam = new ItemStack(ItemLoader.strawberryjam_bottle, 1, OreDictionary.WILDCARD_VALUE);
 }

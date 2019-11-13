@@ -75,6 +75,8 @@ public class CommonProxy {
 		
 		GameRegistry.addSmelting(BlockLoader.KINUTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
 		GameRegistry.addSmelting(BlockLoader.MOMENTOFU, new ItemStack(BlockLoader.GRILD), 0.6f);
+		
+		
 	}
 	
     public World getClientWorld() {

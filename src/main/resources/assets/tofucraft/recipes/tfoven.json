@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TRT",
+    "#M#",
+    "T#T"
+  ],
+  "key": {
+    "M": {
+      "item": "tofucraft:tf_machine_case"
+    },
+    "#": {
+      "item": "tofucraft:blocktofumetal"
+    },
+    "T": {
+      "item": "tofucraft:material",
+      "data": 23
+    },
+    "R":{
+      "item": "tofucraft:material",
+      "data": 27
+    }
+  },
+  "result": {
+    "item": "tofucraft:tfoven"
+  }
+}

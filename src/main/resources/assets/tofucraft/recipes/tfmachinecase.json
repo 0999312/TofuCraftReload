@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TTT",
+    "T T",
+    "TTT"
+  ],
+  "key": {
+    "T": {
+      "item": "tofucraft:blocktofumetal"
+    }
+  },
+  "result": {
+    "item": "tofucraft:tf_machine_case"
+  }
+}

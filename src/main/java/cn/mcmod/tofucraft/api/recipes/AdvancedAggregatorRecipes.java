@@ -88,6 +88,10 @@ public class AdvancedAggregatorRecipes {
         mortarRecipesList.add(new AdvancedAggregatorRecipes(result, main));
     }
     
+    public static void addRecipe(Object main,ItemStack result) {
+        mortarRecipesList.add(new AdvancedAggregatorRecipes(result, new Object[]{main}));
+    }
+    
     public static void ClearRecipe(Object input) {
     	if(input instanceof ItemStack||input instanceof String){
     		for (AdvancedAggregatorRecipes recipes : mortarRecipesList) {

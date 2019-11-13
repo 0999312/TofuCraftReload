@@ -6,7 +6,7 @@
   },
   "ingredients": [
     {
-      "item": "tofucraft:tofulog"
+      "item": "tofucraft:blocktofuishi"
     }
   ],
   "type": "forge:ore_shapeless"

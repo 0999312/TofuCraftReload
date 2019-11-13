@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#T#",
+    "R R"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:tofu_material",
+      "data": 0
+    },
+    "#": {
+      "item": "tofucraft:tofu_food",
+      "data": 0
+    },
+    "T": {
+      "type": "forge:ore_dict",
+      "ore": "gemQuartz"
+    }
+  },
+  "result": {
+    "item": "tofucraft:material",
+    "data": 24
+  }
+}

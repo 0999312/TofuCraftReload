@@ -2,22 +2,26 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "T#T",
-    "#M#"
+    "#M#",
+    "TRT"
   ],
   "key": {
     "M": {
-      "item": "tofucraft:material",
-      "data": 22
+      "item": "tofucraft:tf_machine_case"
     },
     "#": {
       "item": "tofucraft:blocktofumetal"
     },
     "T": {
       "item": "tofucraft:material",
-      "data": 21
+      "data": 26
+    },
+    "R":{
+      "item": "tofucraft:material",
+      "data": 27
     }
   },
   "result": {
-    "item": "tofucraft:battery"
+    "item": "tofucraft:tfcollector"
   }
 }

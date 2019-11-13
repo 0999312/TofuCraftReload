@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CBC",
+    "#T#",
+    " M "
+  ],
+  "key": {
+    "M": {
+      "item": "tofucraft:tf_machine_case"
+    },
+    "#": {
+      "item": "tofucraft:blocktofumetal"
+    },
+    "B": {
+      "item": "tofucraft:blocktofudiamond"
+    },
+    "C": {
+      "item": "tofucraft:advtofugem_block"
+    },
+    "T": {
+      "item": "tofucraft:material",
+      "data": 26
+    }
+  },
+  "result": {
+    "item": "tofucraft:tfadvanced_aggregator"
+  }
+}

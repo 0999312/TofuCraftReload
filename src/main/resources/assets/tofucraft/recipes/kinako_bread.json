@@ -2,14 +2,15 @@
   "result": {
     "item": "tofucraft:foodset",
     "count": 1,
-    "data": 28
+    "data": 9
   },
   "ingredients": [
     {
       "item": "minecraft:bread"
     },
     {
-      "item": "#FOODAPRICOTJERRY"
+      "item": "tofucraft:material",
+      "data": 7
     }
   ],
   "type": "forge:ore_shapeless"

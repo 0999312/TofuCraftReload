@@ -62,7 +62,9 @@ public class BlockLoader {
     public static Block TOFUDRIED = new BlockTofu(TofuType.dried);
     public static Block TOFUZUNDA = new BlockTofu(TofuType.zunda);
     public static Block TOFUHELL = new BlockTofu(TofuType.hell);
-    public static Block TOFUDIAMOND = new BlockTofu(TofuType.diamond, Material.IRON);
+    public static Block TOFUDIAMOND = new BlockTofu(TofuType.diamond, Material.IRON).setHardness(3.5F).setResistance(9.5F);
+    public static Block TF_MACHINE_CASE= new Block(Material.IRON).setCreativeTab(CommonProxy.tab).setHardness(5.5F).setResistance(11.5F);
+    public static Block ADVTOFUGEM_BLOCK= new Block(Material.IRON).setCreativeTab(CommonProxy.tab).setHardness(3.5F).setResistance(9.5F);
 
     public static BlockLeek LEEK = new BlockLeek();
     public static BlockLeekCrop LEEKCROP = new BlockLeekCrop();
@@ -174,7 +176,7 @@ public class BlockLoader {
         FluidRegistry.addBucketForFluid(SOYSAUCE_FLUID);
         SOYSAUCE = registerFluidBlock(SOYSAUCE_FLUID, new BlockSoySauce(SOYSAUCE_FLUID), "soysauce");
 
-
+        register(TF_MACHINE_CASE, new ItemBlock(TF_MACHINE_CASE), "tf_machine_case");
         register(TOFUSTORAGEMACHINE, new ItemBlock(TOFUSTORAGEMACHINE), "tfstorage");
         register(TFCOLLECTOR, new ItemBlock(TFCOLLECTOR), "tfcollector");
         register(ANTENNA_BASIC, new ItemBlock(ANTENNA_BASIC), "antenna_basic");
@@ -212,14 +214,13 @@ public class BlockLoader {
         register(MISOBARREL, new ItemBlock(MISOBARREL), "barrelmiso");
         register(DOUBANJIANGBARREL, new ItemBlock(DOUBANJIANGBARREL), "barreldoubanjiang");
         register(MISOTOFUBARREL, new ItemBlock(MISOTOFUBARREL), "barrelmisotofu");
-
+        register(ADVTOFUGEM_BLOCK, new ItemBlock(ADVTOFUGEM_BLOCK), "advtofugem_block");
         register(LEEK, new ItemBlock(LEEK), "blockleek");
         registerNoItem(LEEKCROP, "blockleek_crop");
-
         registerNoItem(SOYBEAN, "soybean");
         registerNoItem(SOYBEAN_NETHER, "soybean_nether");
         registerNoItem(SPROUTS, "blocksprouts");
-        register(RICECROP, new ItemBlock(RICECROP), "ricecrop");
+        registerNoItem(RICECROP, "ricecrop");
         register(yubaGrass, new ItemBlock(yubaGrass), "yubagrass");
         register(tofuTerrain, new ItemBlock(tofuTerrain), "tofu_terrain");
         register(zundatofuTerrain, new ItemBlock(zundatofuTerrain), "zundatofu_terrain");
@@ -300,6 +301,8 @@ public class BlockLoader {
 
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
+    	registerRender(ADVTOFUGEM_BLOCK);
+    	registerRender(TF_MACHINE_CASE);
     	registerRender(TFCOLLECTOR);
     	registerRender(TFAGGREGATOR);
     	registerRender(TFAGGREGATOR_LIT);

@@ -57,8 +57,8 @@ public class ItemLoader {
             TofuMain.MODID + "." + "tofudiamond",
             TofuMain.MODID + "." + "tofudried");
     public static ItemFoodBasic foodset = new ItemFoodBasic("foodset", 64,
-            new int[]{6, 5, 4, 5, 6, 6, 2, 10, 12, 2, 5, 4, 6, 5, 4, 4, 6, 16, 20, 2, 8, 4, 1, 3, 6, 8, 3, 4},
-            new float[]{0.4f, 0.3f, 0.4f, 0.6f, 0.8f, 0.8f, 0.5f, 0.2f, 0.8f, 0.15f, 0.6f, 0.4f, 0.6f, 0.8f, 0.6f, 0.6f, 0.6f, 0.6f, 1f, 0.2f, 0.6f, 0.4f, 0.1f, 0.3f, 0.5f, 0.4f, 1f, 0.3f},
+            new int[]{6, 5, 4, 5, 6, 6, 2, 10, 12, 2, 5, 4, 6, 5, 4, 4, 6, 16, 20, 2, 8, 4, 1, 3, 6, 8, 3, 4,5,5},
+            new float[]{0.4f, 0.3f, 0.4f, 0.6f, 0.8f, 0.8f, 0.5f, 0.2f, 0.8f, 0.15f, 0.6f, 0.4f, 0.6f, 0.8f, 0.6f, 0.6f, 0.6f, 0.6f, 1f, 0.2f, 0.6f, 0.4f, 0.1f, 0.3f, 0.5f, 0.4f, 1f, 0.3f,0.7f,0.7f},
             TofuMain.MODID + "." + "tofuchikuwa",//0
             TofuMain.MODID + "." + "oage",//1
             TofuMain.MODID + "." + "onigiri",//2
@@ -86,7 +86,10 @@ public class ItemLoader {
             TofuMain.MODID + "." + "chillstick",
             TofuMain.MODID + "." + "tttburger",
             TofuMain.MODID + "." + "fukumeni",
-            TofuMain.MODID + "." + "meatwrapped_yuba");
+            TofuMain.MODID + "." + "meatwrapped_yuba",
+            TofuMain.MODID + "." + "apricotjerry_bread",
+            TofuMain.MODID + "." + "kinako_bread"
+    );
     public static ItemBase material = new ItemBase("material", 64,
             TofuMain.MODID + "." + "salt",
             TofuMain.MODID + "." + "kouji",//1
@@ -249,6 +252,7 @@ public class ItemLoader {
 
     public static Item zundaruby = new Item();
     public static Item rice = new Item();
+    public static Item mineral_soymilk = new Item().setContainerItem(Items.GLASS_BOTTLE);
     public static Item riceseed = new ItemRiceSeed();
 
     public static ItemDoor TOFUKINU_DOOR = new ItemDoor(BlockLoader.TOFUKINU_DOOR);
@@ -262,10 +266,9 @@ public class ItemLoader {
     public static Item doubanjiang_bottle = new ItemSeasoning(TofuMain.MODID + "." + "doubanjiang", 58);
     public static Item mayonnaise_bottle = new ItemSeasoning(TofuMain.MODID + "." + "mayonnaise", 20);
     public static Item apricotjerry_bottle = new ItemSeasoning(TofuMain.MODID + "." + "apricotjerry", 20);
+    public static Item strawberryjam_bottle = new ItemSeasoning(TofuMain.MODID + "." + "strawberryjam", 20);
 
     public static Item defatting_potion = new ItemDefattingPotion();
-
-    public static Item apricotjerry_bread = new ItemFood(5, 0.7f, false);
 
     public static Item wrench = new ItemWrench();
 
@@ -348,11 +351,12 @@ public class ItemLoader {
         register(doubanjiang_bottle);
         register(mayonnaise_bottle);
         register(apricotjerry_bottle);
-        register(apricotjerry_bread.setUnlocalizedName(TofuMain.MODID + "." + "apricotjerry_bread"));
+        register(strawberryjam_bottle);
         register(anninApple);
+
         register(soymilk_drink);
         register(soymilk_ramune);
-
+        register(mineral_soymilk.setUnlocalizedName(TofuMain.MODID + "." + "mineral_soymilk"));
         register(tofustick);
         register(bugle);
         register(tofuhoe);
@@ -452,13 +456,14 @@ public class ItemLoader {
         TileEntityRenderHelper TESR = new TileEntityRenderHelper();
         tofuishi_shield.setTileEntityItemStackRenderer(TESR);
         tofumetal_shield.setTileEntityItemStackRenderer(TESR);
+        registerRender(mineral_soymilk);
+        registerRender(strawberryjam_bottle);
         registerRender(soybeansHell);
         registerRender(tofu_slime_radar);
         registerRender(soymilk_ramune);
         registerRender(soymilk_drink);
         registerRender(mayonnaise_bottle);
         registerRender(apricotjerry_bottle);
-        registerRender(apricotjerry_bread);
         registerRender(RollingPin);
         registerRender(koujiBase);
         registerRender(doubanjiang_bottle);

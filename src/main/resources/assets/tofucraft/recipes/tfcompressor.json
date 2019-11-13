@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BRC",
+    "AMA",
+    "###"
+  ],
+  "key": {
+    "M": {
+      "item": "tofucraft:tf_machine_case"
+    },
+    "#": {
+      "item": "tofucraft:blocktofumetal"
+    },
+    "A": {
+      "item": "tofucraft:material",
+      "data": 22
+    },
+    "B": {
+      "item": "tofucraft:material",
+      "data": 21
+    },
+    "C": {
+      "item": "tofucraft:material",
+      "data": 24
+    },
+    "R":{
+      "item": "tofucraft:material",
+      "data": 25
+    }
+  },
+  "result": {
+    "item": "tofucraft:tfcompressor"
+  }
+}
