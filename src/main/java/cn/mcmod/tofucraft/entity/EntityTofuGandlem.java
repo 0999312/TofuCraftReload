@@ -77,6 +77,10 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     	return false;
     }
     
+    public BossInfoServer getBossInfo() {
+		return bossInfo;
+	}
+    
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
     protected void initEntityAI() {
@@ -111,8 +115,8 @@ public class EntityTofuGandlem extends EntityMob implements IRangedAttackMob {
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
 
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(260.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(300.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(15.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.262896D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(40D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);

@@ -146,8 +146,8 @@ public class RecipeLoader {
 		CrasherRecipes.addRecipe("cropPotato", new ItemStack(ItemLoader.material,2,12));
 		CrasherRecipes.addRecipe(new ItemStack(ItemLoader.material,1,12), new ItemStack(ItemLoader.material,2,13));
 		CrasherRecipes.addRecipe(new ItemStack(ItemLoader.material,1,6), new ItemStack(ItemLoader.material,2,7));
-		CrasherRecipes.addRecipe("listAlltofu", new ItemStack(ItemLoader.material,2,19));
-		CrasherRecipes.addRecipe("listAlltofuBlock", new ItemStack(ItemLoader.material,8,19));
+		CrasherRecipes.addRecipe("listAlltofu", new ItemStack(ItemLoader.foodset,2,19));
+		CrasherRecipes.addRecipe("listAlltofuBlock", new ItemStack(ItemLoader.foodset,8,19));
 	}
 	
 	private static void registerCompressorRecipes() {

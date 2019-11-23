@@ -366,6 +366,13 @@
    {
       "ingredient" : {
          "type" : "forge:ore_dict",
+         "ore" : "foodZunda"
+      },
+      "name" : "FOODZUNDA"
+   },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
          "ore" : "paneGlassColorless"
       },
       "name" : "PANEGLASSCOLORLESS"
@@ -376,5 +383,12 @@
          "ore" : "sakuraLeaves"
       },
       "name" : "SAKURALEAVES"
+   },
+   {
+      "ingredient" : {
+         "type" : "forge:ore_dict",
+         "ore" : "foodStrawberryjelly"
+      },
+      "name" : "FOODSTRAWBERRYJELLY"
    }
 ]

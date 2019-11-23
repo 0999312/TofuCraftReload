@@ -4,7 +4,7 @@ import cn.mcmod.tofucraft.base.tileentity.TileEntitySenderBase;
 
 public class TileEntityTFCollector extends TileEntitySenderBase {
 
-    private static final int POWER = 3;
+    private static final int POWER = 6;
     public TileEntityTFCollector() {
         super(5000);
     }

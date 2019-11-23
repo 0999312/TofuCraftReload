@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import cn.mcmod.tofucraft.block.BlockLoader;
 
 public class BiomeTofuHills extends BiomeTofu {
 	
@@ -27,20 +26,21 @@ public class BiomeTofuHills extends BiomeTofu {
             int y = worldIn.getHeight(x, z) - 1;
             
             mutable.setPos(x, y, z);
-            if (y > 80 && worldIn.getBlockState(mutable).getBlock() == BlockLoader.tofuTerrain)
-            {
-                if (worldIn.getBlockState(mutable.east()).getBlock() == BlockLoader.tofuTerrain
-                        && worldIn.getBlockState(mutable.south()).getBlock() == BlockLoader.tofuTerrain
-                        && worldIn.getBlockState(mutable.west()).getBlock() == BlockLoader.tofuTerrain
-                        && worldIn.getBlockState(mutable.north()).getBlock() == BlockLoader.tofuTerrain)
-                {
-                    int h = randomIn.nextInt(3) + 3;
-                    for (int i = 0; i < h; i++)
-                    {
-                        worldIn.setBlockState(new BlockPos(mutable.setPos(x, y + i, z)), BlockLoader.SOYMILK.getDefaultState(), 2);
-                    }
-                }
-            }
+//            TOO LAG
+//            if (y > 80 && worldIn.getBlockState(mutable).getBlock() == BlockLoader.tofuTerrain)
+//            {
+//                if (worldIn.getBlockState(mutable.east()).getBlock() == BlockLoader.tofuTerrain
+//                        && worldIn.getBlockState(mutable.south()).getBlock() == BlockLoader.tofuTerrain
+//                        && worldIn.getBlockState(mutable.west()).getBlock() == BlockLoader.tofuTerrain
+//                        && worldIn.getBlockState(mutable.north()).getBlock() == BlockLoader.tofuTerrain)
+//                {
+//                    int h = randomIn.nextInt(3) + 3;
+//                    for (int i = 0; i < h; i++)
+//                    {
+//                        worldIn.setBlockState(new BlockPos(mutable.setPos(x, y + i, z)), BlockLoader.SOYMILK.getDefaultState(), 2);
+//                    }
+//                }
+//            }
         }
 
     }

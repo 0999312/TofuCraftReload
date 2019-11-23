@@ -18,9 +18,9 @@
     "C": {
       "item": "tofucraft:advtofugem_block"
     },
-    "T": {
-      "item": "tofucraft:material",
-      "data": 26
+    "T":{
+      "item": "tofucraft:tofuforce_core",
+      "data": 32767
     }
   },
   "result": {

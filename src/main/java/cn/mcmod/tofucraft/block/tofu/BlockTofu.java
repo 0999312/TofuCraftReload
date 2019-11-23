@@ -1,6 +1,8 @@
-package cn.mcmod.tofucraft.block;
+package cn.mcmod.tofucraft.block.tofu;
 
 import cn.mcmod.tofucraft.CommonProxy;
+import cn.mcmod.tofucraft.block.BlockLoader;
+import cn.mcmod.tofucraft.block.BlockTofuBase;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.material.TofuMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
@@ -113,7 +115,6 @@ public class BlockTofu extends BlockTofuBase{
         }
     }
 
-
     public int getMaxDry() {
         return 7;
     }
@@ -222,17 +223,13 @@ public class BlockTofu extends BlockTofuBase{
             } else {
                 newBlock = this.getDefaultState();
             }
-
             par1World.setBlockState(pos, newBlock);
         }
-
     }
 
     @Override
     public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-
         return new ItemStack(this);
-
     }
 
 //    @SideOnly(Side.CLIENT)
@@ -272,16 +269,4 @@ public class BlockTofu extends BlockTofuBase{
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, DRY);
     }
-
-//    @Override
-//    public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos)
-//    {
-//        if(this == BlockLoader.ISHITOFU) {
-//            return true;
-//        }else {
-//            return false;
-//        }
-//    }
-    
-
 }

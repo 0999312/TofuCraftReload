@@ -28,7 +28,6 @@ public class BlockLeek extends BlockBush {
 
     @Override
     protected boolean canSustainBush(IBlockState state) {
-
         Block block = state.getBlock();
         return block == BlockLoader.MOMENTOFU || block == BlockLoader.KINUTOFU|| block == BlockLoader.tofuTerrain|| block == BlockLoader.zundatofuTerrain;
     }
@@ -36,11 +35,8 @@ public class BlockLeek extends BlockBush {
     @Override
     public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
         BlockPos down = pos.down();
-
         IBlockState soil = world.getBlockState(down);
-
         return soil.getBlock().canSustainPlant(soil, world, down, EnumFacing.UP, this);
-
     }
 
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)

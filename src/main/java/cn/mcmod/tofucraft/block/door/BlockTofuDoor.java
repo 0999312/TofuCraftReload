@@ -23,8 +23,7 @@ public class BlockTofuDoor extends BlockDoor {
 
     private TofuType tofuType;
 
-    public BlockTofuDoor(Material material,TofuType tofuType)
-    {
+    public BlockTofuDoor(Material material,TofuType tofuType){
         super(material);
         this.tofuType = tofuType;
         this.setCreativeTab(CommonProxy.tab);
@@ -68,13 +67,11 @@ public class BlockTofuDoor extends BlockDoor {
 
     @Override
     public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-
         return new ItemStack(this.getItem());
-
     }
 
-    private Item getItem()
-    {
+    private Item getItem(){
+    	
         if (this == BlockLoader.TOFUKINU_DOOR)
         {
             return ItemLoader.TOFUKINU_DOOR;

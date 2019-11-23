@@ -1,4 +1,4 @@
-package cn.mcmod.tofucraft.block;
+package cn.mcmod.tofucraft.block.tofu;
 
 import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.util.TofuBlockUtils;

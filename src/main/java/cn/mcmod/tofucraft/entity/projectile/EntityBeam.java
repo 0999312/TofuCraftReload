@@ -7,6 +7,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class EntityBeam extends EntityFireball {
+	
     public EntityBeam(World worldIn) {
         super(worldIn);
         this.setSize(0.3125F, 0.3125F);
@@ -22,11 +23,11 @@ public class EntityBeam extends EntityFireball {
         if (!this.world.isRemote) {
             if (result.entityHit != null) {
                 if (this.shootingEntity != null) {
-                    if (result.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 4.0F)) {
+                    if (result.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 6.0F)) {
                         this.applyEnchantments(this.shootingEntity, result.entityHit);
                     }
                 } else {
-                    result.entityHit.attackEntityFrom(DamageSource.MAGIC, 4.0F);
+                    result.entityHit.attackEntityFrom(DamageSource.MAGIC, 6.0F);
                 }
             }
 

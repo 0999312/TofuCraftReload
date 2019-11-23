@@ -17,8 +17,8 @@
       "data": 26
     },
     "R":{
-      "item": "tofucraft:material",
-      "data": 27
+      "item": "tofucraft:tofuforce_core",
+      "data": 32767
     }
   },
   "result": {
