@@ -1,10 +1,5 @@
 package cn.mcmod.tofucraft;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.logging.log4j.Level;
-
 import cn.mcmod.tofucraft.api.recipes.AdvancedAggregatorRecipes;
 import cn.mcmod.tofucraft.api.recipes.AggregatorRecipes;
 import cn.mcmod.tofucraft.api.recipes.CompressorRecipes;
@@ -20,6 +15,10 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Optional.Method;
+import org.apache.logging.log4j.Level;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeLoader {
 	public static List<IAction> actions = new ArrayList<IAction>();
@@ -76,6 +75,15 @@ public class RecipeLoader {
 				FluidUtil.getFilledBucket(new FluidStack(BlockLoader.SOYMILKHELL_FLUID, 1000)),
 				new ItemStack(ItemLoader.nigari)
 		}, new ItemStack(ItemLoader.material,1,27));
+
+        AdvancedAggregatorRecipes.addRecipe(new Object[]{
+                new ItemStack(ItemLoader.material, 1, 26),
+                new ItemStack(ItemLoader.tofu_material, 1, 0)
+        }, new ItemStack(ItemLoader.tofucore, 1));
+        AdvancedAggregatorRecipes.addRecipe(new Object[]{
+                new ItemStack(ItemLoader.tofucore, 1),
+                new ItemStack(ItemLoader.tofu_material, 1, 0)
+        }, new ItemStack(ItemLoader.tofuforce_sword, 1));
 		
 		AdvancedAggregatorRecipes.addRecipe(new Object[]{
 				new ItemStack(Items.BUCKET),

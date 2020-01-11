@@ -353,6 +353,8 @@ item.tofucraft.tofuishi_shield.name=石豆腐レンガのシールド
 item.tofucraft.tofumetal_shield.name=鋼豆腐のシールド
 item.tofucraft.tofumetalforce_shield.name=鋼豆腐のフォースシールド(未使用)
 item.tofucraft.tofuforce_core.name=トーフフォースコア
+item.tofucraft.tofucore.name=トーフコア
+item.tofucraft.tofuforce_sword.name=トーフフォースソード
 item.tofucraft.tofuchinger_tooth.name=豆腐の捕食獣の歯
 item.tofucraft.tofuchinger_tootharrow.name=豆腐の捕食獣の歯の矢
 

@@ -4,6 +4,7 @@ import cn.mcmod.tofucraft.CommonProxy;
 import cn.mcmod.tofucraft.TofuMain;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
+import cn.mcmod.tofucraft.item.tfitem.ItemTofuCore;
 import cn.mcmod.tofucraft.item.tfitem.ItemTofuForceCore;
 import cn.mcmod.tofucraft.material.TofuArmorMaterial;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
@@ -318,6 +319,8 @@ public class ItemLoader {
     public static Item anninApple = new ItemAnninApple();
 
     public static ItemTofuForceCore tofuforce_core = new ItemTofuForceCore();
+    public static ItemTofuCore tofucore = new ItemTofuCore();
+    public static ItemTofuForceSword tofuforce_sword = new ItemTofuForceSword();
     public static Item tofuishi_shield = new ItemTofuShield(360);
     public static Item tofumetal_shield = new ItemTofuShield(560);
 //    WIP Remaking.
@@ -416,6 +419,8 @@ public class ItemLoader {
         register(diamondboots);
 
         register(tofuforce_core);
+        register(tofucore);
+        register(tofuforce_sword);
 
         register(tofuishi_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofuishi_shield"));
         register(tofumetal_shield.setUnlocalizedName(TofuMain.MODID + "." + "tofumetal_shield"));
@@ -548,6 +553,8 @@ public class ItemLoader {
         registerRender(zundaArrow);
         registerRender(anninApple);
         registerRender(tofuforce_core);
+        registerRender(tofucore);
+        registerRender(tofuforce_sword);
         registerRender(tofuishi_shield);
         registerRender(tofumetal_shield);
 //        registerRender(fulintlock);
