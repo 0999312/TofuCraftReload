@@ -1,11 +1,12 @@
 package cn.mcmod.tofucraft.api.recipes;
 
-import java.util.ArrayList;
 import cn.mcmod.tofucraft.util.RecipesUtil;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.ArrayList;
 
 public class AdvancedAggregatorRecipes {
     public ItemStack resultItem = ItemStack.EMPTY;
@@ -24,9 +25,6 @@ public class AdvancedAggregatorRecipes {
         resultItem = result.copy();
     }
 
-    /**
-     * 初期化
-     */
     public void clear() {
         resultItem = ItemStack.EMPTY;
         inputItems = new ArrayList<Object>();
