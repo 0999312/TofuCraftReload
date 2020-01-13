@@ -21,11 +21,6 @@ public class TofuVillages {
     public static VillagerRegistry.VillagerProfession ProfessionTofuCook;
     public static VillagerRegistry.VillagerCareer CareerTofuCook;
 
-    public static VillagerRegistry.VillagerProfession ProfessionTofunian;
-    public static VillagerRegistry.VillagerCareer CareerTofunianTofuCrafter;
-    public static VillagerRegistry.VillagerCareer CareerTofunian;
-    public static VillagerRegistry.VillagerProfession ProfessionHunterTofunian;
-    public static VillagerRegistry.VillagerCareer CareerHunter;
 
     @SuppressWarnings("deprecation")
 	public static void register() {
