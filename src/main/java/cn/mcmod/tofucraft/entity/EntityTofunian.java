@@ -69,6 +69,7 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
     private MerchantRecipeList buyingList;
     private boolean isLookingForHome;
     private final InventoryBasic villagerInventory;
+    private boolean isAleadyUpdate;
 
     public EntityTofunian(World worldIn) {
         super(worldIn);
@@ -472,36 +473,39 @@ public class EntityTofunian extends EntityAgeable implements INpc, IMerchant {
 
     public void updateEntityAI() {
 
-        if (canGuard()) {
-            this.tasks.addTask(1, new EntityAIAttackMelee(this, 0.65F, true));
-            this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityTofuChinger.class, false));
-            this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityZombie.class, false));
-            this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, AbstractIllager.class, false));
-            this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityVex.class, false));
-            this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityTofuGandlem.class, false));
+        if (!this.isAleadyUpdate) {
+            if (canGuard()) {
+                this.tasks.addTask(1, new EntityAIAttackMelee(this, 0.65F, true));
+                this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityTofuChinger.class, false));
+                this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityZombie.class, false));
+                this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, AbstractIllager.class, false));
+                this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityVex.class, false));
+                this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityTofuGandlem.class, false));
 
-            if (!this.isChild()) {
-                this.tasks.addTask(6, new EntityAIUseItemOnLeftHand<>(this, new ItemStack(ItemLoader.bugle), TofuSounds.TOFUBUGLE, (p_213736_1_) -> {
-                    return WorldUtils.isMorning(this.world) && this.world.rand.nextInt(350) == 0;
-                }));
+                if (!this.isChild()) {
+                    this.tasks.addTask(6, new EntityAIUseItemOnLeftHand<>(this, new ItemStack(ItemLoader.bugle), TofuSounds.TOFUBUGLE, (p_213736_1_) -> {
+                        return WorldUtils.isMorning(this.world) && this.world.rand.nextInt(350) == 0;
+                    }));
+                }
+            } else {
+                this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityTofuChinger.class, 8.0F, 0.6D, 0.6D));
+                this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
+                this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, AbstractIllager.class, 8.0F, 0.8D, 0.8D));
+                this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityVex.class, 8.0F, 0.6D, 0.6D));
+                this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityTofuGandlem.class, 8.0F, 0.8D, 0.8D));
+
+                this.tasks.addTask(2, new EntityAIPanic(this, 0.75F));
             }
-        } else {
-            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityTofuChinger.class, 8.0F, 0.6D, 0.6D));
-            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
-            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, AbstractIllager.class, 8.0F, 0.8D, 0.8D));
-            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityVex.class, 8.0F, 0.6D, 0.6D));
-            this.tasks.addTask(1, new EntityAITofunianAvoidEntity<>(this, EntityTofuGandlem.class, 8.0F, 0.8D, 0.8D));
-
-            this.tasks.addTask(2, new EntityAIPanic(this, 0.75F));
-        }
 
 
-        if (canFarm() && !this.isChild()) {
-            this.tasks.addTask(8, new EntityAIHarvestTofuFarmland(this, 0.6D));
-        }
+            if (canFarm() && !this.isChild()) {
+                this.tasks.addTask(8, new EntityAIHarvestTofuFarmland(this, 0.6D));
+            }
 
-        if ((canFarm() || canFish()) && !this.isChild()) {
-            this.tasks.addTask(8, new EntityAIMakingFood(this, 0.6D));
+            if ((canFarm() || canFish()) && !this.isChild()) {
+                this.tasks.addTask(8, new EntityAIMakingFood(this, 0.6D));
+            }
+            this.isAleadyUpdate = true;
         }
     }
 

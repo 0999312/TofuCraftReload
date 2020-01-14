@@ -12,6 +12,7 @@ import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.item.TofuOreDictLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntityRegistry;
 import cn.mcmod.tofucraft.util.RecipesUtil;
+import cn.mcmod.tofucraft.world.village.VillagerCreationTofu;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -26,6 +27,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 @EventBusSubscriber
 public class CommonProxy {
@@ -37,6 +39,11 @@ public class CommonProxy {
         new ItemLoader(event);
         TofuEntityRegister.entityRegister();
         MinecraftForge.EVENT_BUS.register(new TofuEventLoader());
+
+        VillagerCreationTofu.registerComponents();
+        VillagerCreationTofu villageHandler = new VillagerCreationTofu();
+        VillagerRegistry.instance().registerVillageCreationHandler(villageHandler);
+
         new TofuOreDictLoader();
     }
 
