@@ -27,8 +27,8 @@ public class RenderSaltPan extends TileEntitySpecialRenderer<TileEntitySaltPan> 
 	}
 	
 @Override
-public void render(TileEntitySaltPan te, double x, double y, double z, float partialTicks, int destroyStage,
-		float alpha) {
+public void render(TileEntitySaltPan te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+	if(!(te.getBlockType() instanceof BlockSaltPan)) return;
 	BlockSaltPan panframe = (BlockSaltPan)te.getBlockType();
 	World worldIn = te.getWorld();
 	BlockPos framePos = te.getPos();

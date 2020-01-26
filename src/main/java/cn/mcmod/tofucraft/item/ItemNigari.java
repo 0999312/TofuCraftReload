@@ -23,16 +23,17 @@ public class ItemNigari extends Item {
         this.setContainerItem(Items.GLASS_BOTTLE);
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
+    	if(worldIn.isRemote)
+    		return new ActionResult<ItemStack>(EnumActionResult.PASS,ItemStack.EMPTY);
         RayTraceResult var4 = this.rayTrace(worldIn, playerIn, true);
         ItemStack itemStackIn = playerIn.getHeldItem(handIn);
 
         if (var4 == null)
         {
-            return new ActionResult(EnumActionResult.PASS,itemStackIn);
+            return new ActionResult<ItemStack>(EnumActionResult.PASS,itemStackIn);
         }
         else
         {
@@ -54,7 +55,7 @@ public class ItemNigari extends Item {
                 if (var13 != null)
                 {
                     playerIn.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE,1));
-                    worldIn.playSound(playerIn, targetPos.add(0.5, 0.5, 0.5), var13.getSoundType().getBreakSound(), SoundCategory.BLOCKS, (var13.getSoundType().getVolume() + 1.0F) / 2.0F, var13.getSoundType().getPitch() * 0.8F);
+                    worldIn.playSound(playerIn, targetPos.add(0.5, 0.5, 0.5), var13.getSoundType(var13.getDefaultState(), worldIn, targetPos, playerIn).getBreakSound(), SoundCategory.BLOCKS, (var13.getSoundType(var13.getDefaultState(), worldIn, targetPos, playerIn).getVolume() + 1.0F) / 2.0F, var13.getSoundType(var13.getDefaultState(), worldIn, targetPos, playerIn).getPitch() * 0.8F);
 
                     worldIn.setBlockState(targetPos, var13.getDefaultState());
 

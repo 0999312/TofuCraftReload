@@ -38,7 +38,7 @@ public class BlockTFStorage extends BlockContainer {
 
     public BlockTFStorage() {
         super(Material.IRON);
-        this.setDefaultState(this.getBlockState().getBaseState().withProperty(LIT, Boolean.FALSE).withProperty(FACING, EnumFacing.NORTH));
+        this.setDefaultState(this.getBlockState().getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(LIT, Boolean.FALSE));
         this.setCreativeTab(CommonProxy.tab);
         this.setHardness(5.0F);
         this.setResistance(12.0F);
@@ -141,7 +141,7 @@ public class BlockTFStorage extends BlockContainer {
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        int meta = state.getValue(FACING).getIndex();
+        int meta = state.getValue(FACING).getHorizontalIndex();
 
         if (state.getValue(LIT)) {
             meta |= 8;
@@ -152,7 +152,7 @@ public class BlockTFStorage extends BlockContainer {
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        EnumFacing facing = EnumFacing.getFront(meta & 7);
+        EnumFacing facing = EnumFacing.getHorizontal(meta & 7);
 
         boolean isLit = (meta & 8) == 8;
 
@@ -161,7 +161,7 @@ public class BlockTFStorage extends BlockContainer {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, LIT, FACING);
+        return new BlockStateContainer(this, FACING, LIT);
     }
 
     public IBlockState withRotation(IBlockState state, Rotation rot) {
@@ -179,13 +179,11 @@ public class BlockTFStorage extends BlockContainer {
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-
         TileEntity tileentity = worldIn.getTileEntity(pos);
         if (tileentity instanceof TileEntityTFStorage) {
             InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityTFStorage) tileentity);
             worldIn.updateComparatorOutputLevel(pos, this);
         }
-
 
         super.breakBlock(worldIn, pos, state);
     }
