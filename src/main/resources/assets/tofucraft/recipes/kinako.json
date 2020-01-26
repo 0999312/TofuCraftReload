@@ -1,14 +1,14 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#"
-  ],
-  "key": {
-    "#": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
       "item": "tofucraft:material",
       "data": 6
     }
-  },
+  ],
   "result": {
     "item": "tofucraft:material",
     "data": 7

@@ -18,17 +18,13 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import java.util.Random;
-
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class BlockTFOven extends Block {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
@@ -207,7 +203,7 @@ public class BlockTFOven extends Block {
 	 {
 	     return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	 }
-	
+
 	 /**
 	  * Called by ItemBlocks after a block is set in the world, to allow post-place logic
 	  */
@@ -215,6 +211,10 @@ public class BlockTFOven extends Block {
 	 {
 	     worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 	 }
- 
+
+    @Override
+    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return state.getBlock() == BlockLoader.TFOVEN_LIT ? 13 : 0;
+    }
 
 }

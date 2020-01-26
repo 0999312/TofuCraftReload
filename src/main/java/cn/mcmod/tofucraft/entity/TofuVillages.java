@@ -21,11 +21,6 @@ public class TofuVillages {
     public static VillagerRegistry.VillagerProfession ProfessionTofuCook;
     public static VillagerRegistry.VillagerCareer CareerTofuCook;
 
-    public static VillagerRegistry.VillagerProfession ProfessionTofunian;
-    public static VillagerRegistry.VillagerCareer CareerTofunianTofuCrafter;
-    public static VillagerRegistry.VillagerCareer CareerTofunian;
-    public static VillagerRegistry.VillagerProfession ProfessionHunterTofunian;
-    public static VillagerRegistry.VillagerCareer CareerHunter;
 
     @SuppressWarnings("deprecation")
 	public static void register() {
@@ -80,6 +75,7 @@ public class TofuVillages {
             //Sell
             recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(ItemLoader.tofu_material, 2 + random.nextInt(2))));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(ItemLoader.tofu_material, 8 + random.nextInt(4),2)));
+            recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(ItemLoader.tofustick, 10 + random.nextInt(4))));
         }
     }
 }
