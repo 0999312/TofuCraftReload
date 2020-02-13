@@ -62,6 +62,11 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
 
         if (this.world.isRemote) return;
 
+        //Transform workload to power
+        if (workload > 0 && getEnergyStored() < getMaxEnergyStored()) {
+            workload -= receive(Math.min(workload, POWER), false);
+        }
+
         //Consume beans inside machine
         ItemStack from = this.inventory.get(0);
         FluidStack milk = getTank().getFluid();
@@ -84,18 +89,13 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
             current_workload = workload;
         }
 
-        //Transform workload to power
-        if (workload > 0 && getEnergyStored() < getMaxEnergyStored()) {
-            workload -= receive(Math.min(workload, POWER), false);
-        }
-
         if (wasWorking != (workload > 0 && getEnergyStored() < getMaxEnergyStored())) {
             final IBlockState state = world.getBlockState(pos);
             world.setBlockState(pos, state.withProperty(BlockTFStorage.LIT, !wasWorking));
         }
         this.markDirty();
     }
-    
+
     public FluidTank getTank() {
         return this.tank;
     }
@@ -237,7 +237,7 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
 
     @Override
     public ITextComponent getDisplayName() {
-    	return new TextComponentTranslation(getName()+".name", new Object());
+        return new TextComponentTranslation(getName() + ".name", new Object());
     }
 
     @Override

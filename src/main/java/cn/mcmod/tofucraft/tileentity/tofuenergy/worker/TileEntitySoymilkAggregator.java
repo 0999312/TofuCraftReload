@@ -53,6 +53,10 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
         	BlockAggregator.setState(false, this.getWorld(), pos);
         processTime = 0;
         markDirty();
+
+        if (getEnergyStored() <= POWER){
+            fuseTime = 100;
+        }
     }
 
     @Override
