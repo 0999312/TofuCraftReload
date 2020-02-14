@@ -24,4 +24,13 @@ public class ItemUtils {
             stack.grow(toSet.getCount());
         }
     }
+
+    public static int getSomeAmount(Object i) {
+        if (i instanceof ItemStack) {
+            return ((ItemStack) i).getCount();
+        } else if (i instanceof OredictItemStack) {
+            return ((OredictItemStack) i).getCount();
+        }
+        return 0;
+    }
 }

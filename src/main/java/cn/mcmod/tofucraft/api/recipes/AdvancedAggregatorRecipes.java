@@ -2,7 +2,6 @@ package cn.mcmod.tofucraft.api.recipes;
 
 import cn.mcmod.tofucraft.util.OredictItemStack;
 import cn.mcmod.tofucraft.util.RecipesUtil;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
@@ -14,7 +13,7 @@ public class AdvancedAggregatorRecipes {
     public ArrayList<Object> inputItems = new ArrayList<>();
     public int processTime;
     public boolean enchantment = false;
-    public static ArrayList<AdvancedAggregatorRecipes> mortarRecipesList = new ArrayList<>();
+    public static ArrayList<AdvancedAggregatorRecipes> aggregatorRecipesList = new ArrayList<>();
 
     public AdvancedAggregatorRecipes(ItemStack result, Object[] main, int processTime) {
         for (Object o : main) {
@@ -30,7 +29,7 @@ public class AdvancedAggregatorRecipes {
 
     public static AdvancedAggregatorRecipes getBestRecipe(NonNullList<ItemStack> inventory) {
         AdvancedAggregatorRecipes bestRecipe = null;
-        for (AdvancedAggregatorRecipes recipe : mortarRecipesList) {
+        for (AdvancedAggregatorRecipes recipe : aggregatorRecipesList) {
             boolean match = true;
             for (Object i : recipe.inputItems) {
                 boolean found = false;
@@ -71,37 +70,66 @@ public class AdvancedAggregatorRecipes {
     }
 
 
-    public static void addRecipe(Object[] main, ItemStack result) {
-        addRecipe(main, result, 100);
+    public static void addRecipe(Object[] inputs, ItemStack result) {
+        addRecipe(inputs, result, 100);
     }
 
-    public static void addRecipe(Object main, ItemStack result) {
-        addRecipe(main, result, 100);
+    public static void addRecipe(Object input, ItemStack result) {
+        addRecipe(input, result, 100);
     }
 
-    public static void addRecipe(Object[] main, ItemStack result, int processTime) {
-        mortarRecipesList.add(new AdvancedAggregatorRecipes(result, main, processTime));
+    public static void addRecipe(Object[] inputs, ItemStack result, int processTime) {
+        aggregatorRecipesList.add(new AdvancedAggregatorRecipes(result, inputs, processTime));
     }
 
-    public static void addRecipe(Object main, ItemStack result, int processTime) {
-        mortarRecipesList.add(new AdvancedAggregatorRecipes(result, new Object[]{main}, processTime));
+    public static void addRecipe(Object input, ItemStack result, int processTime) {
+        aggregatorRecipesList.add(new AdvancedAggregatorRecipes(result, new Object[]{input}, processTime));
     }
 
-    public static void ClearRecipe(Object input) {
-        if (input instanceof ItemStack || input instanceof String) {
-            for (AdvancedAggregatorRecipes recipes : mortarRecipesList) {
-                if (input instanceof ItemStack && ItemStack.areItemStacksEqual((ItemStack) input, recipes.resultItem))
-                    mortarRecipesList.remove(recipes);
-                if (input instanceof String) {
-                    NonNullList<ItemStack> ore = OreDictionary.getOres((String) input);
-                    if (RecipesUtil.containsMatch(false, ore, recipes.resultItem))
-                        mortarRecipesList.remove(recipes);
+    public static void removeRecipe(Object[] inputs) {
+        AdvancedAggregatorRecipes find = null;
+        for (AdvancedAggregatorRecipes agg : aggregatorRecipesList) {
+            boolean unmatched = false;
+            for (Object i : agg.inputItems) {
+                boolean found = false;
+                if (i instanceof ItemStack) {
+                    for (Object l : inputs) {
+                        if (l instanceof ItemStack) {
+                            if (ItemStack.areItemsEqual((ItemStack) i, (ItemStack) l)) {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+                } else if (i instanceof OredictItemStack) {
+                    for (Object l : inputs) {
+                        if (l instanceof OredictItemStack) {
+                            if (((OredictItemStack) i).getOre().equals(((OredictItemStack) l).getOre())) {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (!found) {
+                    unmatched = true;
+                    break;
                 }
             }
-        } else throw new IllegalArgumentException("Not a itemStack or Ore Dictionary");
+            if (!unmatched) {
+                if (inputs.length == agg.inputItems.size()) {
+                    find = agg;
+                    break;
+                }
+            }
+        }
+
+        if (find != null) {
+            aggregatorRecipesList.remove(find);
+        }
     }
 
-    public static void ClearAllRecipe() {
-        mortarRecipesList.clear();
+    public static void clearRecipes() {
+        aggregatorRecipesList.clear();
     }
 }

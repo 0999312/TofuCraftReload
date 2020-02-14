@@ -6,6 +6,7 @@ import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.mecha.BlockAdvancedAggregator;
 import cn.mcmod.tofucraft.util.ItemUtils;
 import cn.mcmod.tofucraft.util.OredictItemStack;
+import cn.mcmod.tofucraft.util.RecipesUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -37,28 +38,20 @@ public class TileEntitySoymilkAdvancedAggregator extends TileEntityProcessorBase
     @Override
     public boolean canWork() {
         if (energy >= POWER) { //If energy is suitable
-            FluidStack drained = this.input.drain(10, false);
-
-            cachedRecipe = AdvancedAggregatorRecipes.getBestRecipe(this.inventory);
-            if (cachedRecipe == null) {
-                return false;
-            }
-
-            this.maxTime = cachedRecipe.processTime;
-            ItemStack output = inventory.get(4);
-
-            if (output != ItemStack.EMPTY) {
-                if (!ItemStack.areItemsEqual(output, cachedRecipe.resultItem)) {
-                    return false;
+            if (cachedRecipe != null) {
+                if (!RecipesUtil.compareMulti(cachedRecipe.inputItems.toArray(), inventory.toArray())) {
+                    cachedRecipe = AdvancedAggregatorRecipes.getBestRecipe(inventory);
                 }
-                if (output.getCount() + cachedRecipe.resultItem.getCount() >= output.getMaxStackSize()) {
-                    return false;
-                }
+            } else {
+                cachedRecipe = AdvancedAggregatorRecipes.getBestRecipe(inventory);
             }
-
-            return drained != null && drained.amount == 10;
         }
-        return false;
+        return energy >= POWER &&
+                input.getFluidAmount() >= 10 &&
+                cachedRecipe != null &&
+                (inventory.get(4).isEmpty() ||
+                        (ItemStack.areItemsEqual(inventory.get(4), cachedRecipe.resultItem) &&
+                                inventory.get(4).getCount() < inventory.get(4).getMaxStackSize()));
     }
 
     @Override
@@ -88,7 +81,7 @@ public class TileEntitySoymilkAdvancedAggregator extends TileEntityProcessorBase
 
     @Override
     public void done() {
-        ItemUtils.growOrSetInventoryItem(this.inventory, cachedRecipe.resultItem, 4);
+        ItemUtils.growOrSetInventoryItem(this.inventory, cachedRecipe.getResultItemStack(), 4);
 
         for (Object consume : cachedRecipe.inputItems) {
             for (int i = 0; i < 4; i++) {

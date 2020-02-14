@@ -3,6 +3,7 @@ package cn.mcmod.tofucraft.util;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
+import slimeknights.mantle.configurate.objectmapping.InvalidTypeException;
 
 public class OredictItemStack {
     private String ore;
@@ -24,6 +25,16 @@ public class OredictItemStack {
     public boolean isMatchingItemStack(ItemStack stack) {
         NonNullList<ItemStack> oreStacks = OreDictionary.getOres(this.ore);
         return !ore.isEmpty() && OreDictionary.containsMatch(false, oreStacks, stack);
+    }
+
+    public boolean isMatchingSomething(Object i) {
+        if (i instanceof OredictItemStack) {
+            return this.getOre().equals(((OredictItemStack) i).getOre());
+        } else if (i instanceof ItemStack) {
+            return isMatchingItemStack((ItemStack) i);
+        }
+
+        return false;
     }
 
     public ItemStack getSomeItemStackForOutput() {
