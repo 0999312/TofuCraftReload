@@ -1,4 +1,4 @@
-package cn.mcmod.tofucraft.item;
+package cn.mcmod.tofucraft.item.tfitem;
 
 import cn.mcmod.tofucraft.api.tfenergy.ITofuEnergy;
 import cn.mcmod.tofucraft.api.tfenergy.TofuNetwork;
@@ -6,6 +6,7 @@ import cn.mcmod.tofucraft.base.item.energyItem.IEnergyContained;
 import cn.mcmod.tofucraft.base.item.energyItem.IEnergyExtractable;
 import cn.mcmod.tofucraft.base.item.energyItem.IEnergyInsertable;
 import cn.mcmod.tofucraft.base.tileentity.TileEntitySenderBase;
+import cn.mcmod.tofucraft.item.ItemSwordBasic;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
 import cn.mcmod.tofucraft.util.NBTUtil;
 import net.minecraft.block.state.IBlockState;

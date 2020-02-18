@@ -44,8 +44,8 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
      * */
 
     private static final int POWER = 10;
-    public FluidTank tank = new TFStorageTank(2000);
-    protected NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+    private FluidTank tank = new TFStorageTank(2000);
+    protected NonNullList<ItemStack> inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
     private int workload = 0;
     private int current_workload = 0;
 
@@ -55,12 +55,18 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
 
     @Override
     public void update() {
-        boolean wasWorking = workload > 0 && getEnergyStored() < getMaxEnergyStored();
+        boolean worked = false;
 
         //Update energy sender logic
         super.update();
 
         if (this.world.isRemote) return;
+
+        //Transform workload to power
+        if (workload > 0 && getEnergyStored() < getMaxEnergyStored()) {
+            workload -= receive(Math.min(workload, POWER), false);
+            worked = true;
+        }
 
         //Consume beans inside machine
         ItemStack from = this.inventory.get(0);
@@ -84,18 +90,11 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
             current_workload = workload;
         }
 
-        //Transform workload to power
-        if (workload > 0 && getEnergyStored() < getMaxEnergyStored()) {
-            workload -= receive(Math.min(workload, POWER), false);
-        }
-
-        if (wasWorking != (workload > 0 && getEnergyStored() < getMaxEnergyStored())) {
-            final IBlockState state = world.getBlockState(pos);
-            world.setBlockState(pos, state.withProperty(BlockTFStorage.LIT, !wasWorking));
-        }
+        final IBlockState state = world.getBlockState(pos);
+        world.setBlockState(pos, state.withProperty(BlockTFStorage.LIT, worked));
         this.markDirty();
     }
-    
+
     public FluidTank getTank() {
         return this.tank;
     }
@@ -237,7 +236,7 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
 
     @Override
     public ITextComponent getDisplayName() {
-    	return new TextComponentTranslation(getName()+".name", new Object());
+        return new TextComponentTranslation(getName() + ".name", new Object());
     }
 
     @Override
@@ -302,7 +301,7 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
 
     public void readPacketNBT(NBTTagCompound cmp) {
         this.inventory =
-                NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+                NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(cmp, this.inventory);
 
         this.workload = cmp.getInteger("workload");

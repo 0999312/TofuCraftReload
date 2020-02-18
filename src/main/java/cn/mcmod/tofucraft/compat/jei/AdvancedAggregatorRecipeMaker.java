@@ -11,10 +11,10 @@ public final class AdvancedAggregatorRecipeMaker {
 	  public static List<SimpleRecipe> getRecipes(IJeiHelpers helpers)
 	  {
 	    IStackHelper stackHelper = helpers.getStackHelper(); 
-	    List<SimpleRecipe> recipes = new ArrayList<SimpleRecipe>();
+	    List<SimpleRecipe> recipes = new ArrayList<>();
 	    
-	    for (AdvancedAggregatorRecipes recipe : AdvancedAggregatorRecipes.mortarRecipesList) {
-	    	List<List<ItemStack>> inputs = new ArrayList<List<ItemStack>>();
+	    for (AdvancedAggregatorRecipes recipe : AdvancedAggregatorRecipes.aggregatorRecipesList) {
+	    	List<List<ItemStack>> inputs = new ArrayList<>();
 	    	for (Object obj : recipe.inputItems) {
 	    		List<ItemStack> subinputs = stackHelper.toItemStackList(obj);
 		    	inputs.add(subinputs);

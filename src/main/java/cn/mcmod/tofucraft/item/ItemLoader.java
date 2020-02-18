@@ -6,6 +6,7 @@ import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.client.TileEntityRenderHelper;
 import cn.mcmod.tofucraft.item.tfitem.ItemTofuCore;
 import cn.mcmod.tofucraft.item.tfitem.ItemTofuForceCore;
+import cn.mcmod.tofucraft.item.tfitem.ItemTofuForceSword;
 import cn.mcmod.tofucraft.material.TofuArmorMaterial;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
