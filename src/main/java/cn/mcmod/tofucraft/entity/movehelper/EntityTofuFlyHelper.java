@@ -15,6 +15,7 @@ public class EntityTofuFlyHelper extends EntityMoveHelper {
 
     public void onUpdateMoveHelper() {
         if (this.action == EntityMoveHelper.Action.STRAFE) {
+            this.entity.setNoGravity(false);
             float f1;
             float f2 = this.moveForward;
             float f3 = this.moveStrafe;
