@@ -58,7 +58,7 @@ public class CTTFAggregator {
         @Override
         public void apply()
         {
-        	AggregatorRecipes.ClearRecipe(itemInput);
+        	AggregatorRecipes.removeRecipe(itemInput);
         }
 
         @Override
@@ -98,7 +98,7 @@ public class CTTFAggregator {
         @Override
         public void apply()
         {
-        	AggregatorRecipes.ClearAllRecipe();
+        	AggregatorRecipes.clearAllRecipes();
         }
 
         @Override

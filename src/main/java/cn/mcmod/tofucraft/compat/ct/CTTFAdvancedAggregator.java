@@ -2,6 +2,7 @@ package cn.mcmod.tofucraft.compat.ct;
 
 import cn.mcmod.tofucraft.RecipeLoader;
 import cn.mcmod.tofucraft.api.recipes.AdvancedAggregatorRecipes;
+import cn.mcmod.tofucraft.util.OredictItemStack;
 import crafttweaker.IAction;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
@@ -12,102 +13,92 @@ import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.ArrayList;
+
 @ZenClass("mods.tofucraft.tofuAdvancedAggregator")
 @ZenRegister
 public class CTTFAdvancedAggregator {
-	@ZenMethod
-	public static void RemoveRecipe(IIngredient input) {
-		Object itemInput=null;
-		if (input instanceof IItemStack) {
-			itemInput=CraftTweakerMC.getItemStack(input);
-		} 
-		else if(input instanceof IOreDictEntry) {
-			itemInput=((IOreDictEntry)input).getName();
-		}
-		if(itemInput!=null)
-			RecipeLoader.actions.add(new Removal(itemInput));
-	}
+    @ZenMethod
+    public static void removeRecipe(IIngredient[] input) {
+        ArrayList<Object> converted = new ArrayList<>();
+        for (IIngredient i : input) {
+            if (i instanceof IItemStack) {
+                converted.add(CraftTweakerMC.getItemStack(i));
+            } else if (i instanceof IOreDictEntry) {
+                converted.add(new OredictItemStack(((IOreDictEntry) i).getName(), 1));
+            }
+        }
+        RecipeLoader.actions.add(new Removal(converted));
+    }
 
-	
-	@ZenMethod
-	public static void AddRecipe(IIngredient[] input,IItemStack output) {
-		if(input.length>0){
-			Object[] array = new Object[input.length];
-		    for(int i = 0; i < input.length;i++){
-		    	if (input[i] instanceof IItemStack) {
-		    		array[i]=CraftTweakerMC.getItemStack(input[i]);
-				} 
-				else if(input[i] instanceof IOreDictEntry) {
-					array[i]=((IOreDictEntry)input[i]).getName();
-				}
-		    }
-		RecipeLoader.actions.add(new Addition(array,CraftTweakerMC.getItemStack(output)));
-		}
-	}
-	
-	@ZenMethod
-	public static void ClearAllRecipe() {
-		RecipeLoader.actions.add(new ClearAllRecipe());
-	}
-	
-    private static final class Removal implements IAction
-    {
-        private final Object itemInput;
 
-        private Removal(Object itemInput)
-        {
+    @ZenMethod
+    public static void addRecipe(IIngredient[] input, IItemStack output) {
+        if (input.length > 0) {
+            ArrayList<Object> converted = new ArrayList<>();
+            for (IIngredient i : input) {
+                if (i instanceof IItemStack) {
+                    converted.add(CraftTweakerMC.getItemStack(i));
+                } else if (i instanceof IOreDictEntry) {
+                    converted.add(new OredictItemStack(((IOreDictEntry) i).getName(), i.getAmount()));
+                }
+            }
+            RecipeLoader.actions.add(new Addition(converted.toArray(), CraftTweakerMC.getItemStack(output)));
+        }
+    }
+
+    @ZenMethod
+    public static void clearAllRecipe() {
+        RecipeLoader.actions.add(new ClearAllRecipe());
+    }
+
+    private static final class Removal implements IAction {
+        private final ArrayList<Object> itemInput;
+
+        private Removal(ArrayList<Object> itemInput) {
             this.itemInput = itemInput;
         }
 
         @Override
-        public void apply()
-        {
-        	AdvancedAggregatorRecipes.ClearRecipe(itemInput);
+        public void apply() {
+            AdvancedAggregatorRecipes.removeRecipe(itemInput.toArray());
         }
 
         @Override
-        public String describe()
-        {
+        public String describe() {
             return "Removing a recipe for ToFu Aggregator";
         }
     }
-	
-    private static final class Addition implements IAction
-    {
+
+    private static final class Addition implements IAction {
         private final Object[] itemInput;
         private final ItemStack itemOutput;
 
-        private Addition(Object[] itemInput, ItemStack itemOutput)
-        {
+        private Addition(Object[] itemInput, ItemStack itemOutput) {
             this.itemInput = itemInput;
             this.itemOutput = itemOutput;
         }
 
         @Override
-        public void apply()
-        {
-        	AdvancedAggregatorRecipes.addRecipe(itemInput, itemOutput);
+        public void apply() {
+            AdvancedAggregatorRecipes.addRecipe(itemInput, itemOutput);
         }
 
         @Override
-        public String describe()
-        {
+        public String describe() {
             return "Adding a recipe for ToFu Aggregator";
         }
     }
 
-	
-	private static final class ClearAllRecipe implements IAction
-    {
+
+    private static final class ClearAllRecipe implements IAction {
         @Override
-        public void apply()
-        {
-        	AdvancedAggregatorRecipes.ClearAllRecipe();
+        public void apply() {
+            AdvancedAggregatorRecipes.clearRecipes();
         }
 
         @Override
-        public String describe()
-        {
+        public String describe() {
             return "Removing all recipes from ToFu Aggregator";
         }
     }
