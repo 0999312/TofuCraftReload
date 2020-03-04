@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.structure.MapGenStructure;
+import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureStart;
 
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class MapGenTofuVillage extends MapGenStructure
+public class MapGenTofuVillage extends MapGenVillage
 {
     /** A list of all the biomes villages can spawn in. */
     public static List<Biome> VILLAGE_SPAWN_BIOMES = Arrays.<Biome>asList(TofuBiomes.TOFU_PLAINS, TofuBiomes.ZUNDATOFU_PLAINS, TofuBiomes.TOFU_LEEK_PLAINS);

@@ -55,7 +55,6 @@ public class TofuVillagerHouse extends StructureVillagePieces.Village {
             this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 9 - 1, 0);
         }
 
-        IBlockState iblockstate = this.getBiomeSpecificBlockState(BlockLoader.tofuTerrain.getDefaultState());
         IBlockState iblockstate1 = this.getBiomeSpecificBlockState(BlockLoader.TOFUISHI_BRICK.getDefaultState());
         IBlockState iblockstate2 = this.getBiomeSpecificBlockState(BlockLoader.TOFUISHI_BRICK_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH));
         IBlockState air = Blocks.AIR.getDefaultState();

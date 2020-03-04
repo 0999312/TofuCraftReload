@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SSS",
+    "TTT",
+    "B  "
+  ],
+  "key": {
+    "S": {
+      "item": "tofucraft:material",
+      "data": 18
+    },
+    "T": {
+     "type" : "forge:ore_dict",
+     "ore" : "dustRedstone"
+    },
+    "B": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "result": {
+    "item": "tofucraft:mineral_soymilk"
+  }
+}
