@@ -4,7 +4,7 @@ import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.BlockSaltFurnace;
 import cn.mcmod.tofucraft.inventory.ContainerSaltFurnace;
 import cn.mcmod.tofucraft.item.ItemLoader;
-import com.sun.istack.internal.Nullable;
+import javax.annotation.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.block.BlockFire;
