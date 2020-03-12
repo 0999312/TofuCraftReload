@@ -39,7 +39,6 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class TileEntitySaltFurnace extends TileEntityLockable implements ITickable, ISidedInventory, IFluidHandler {
@@ -364,7 +363,6 @@ public class TileEntitySaltFurnace extends TileEntityLockable implements ITickab
     }
 
     @Override
-    @Nullable
     public SPacketUpdateTileEntity getUpdatePacket() {
         NBTTagCompound nbtTagCompound = new NBTTagCompound();
         this.writeToNBT(nbtTagCompound);

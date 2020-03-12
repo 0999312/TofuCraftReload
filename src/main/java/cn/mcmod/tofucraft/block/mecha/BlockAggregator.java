@@ -99,7 +99,7 @@ public class BlockAggregator extends Block {
             worldIn.setTileEntity(pos, tileentity);
         }
     }
-    
+
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!worldIn.isRemote) {
@@ -138,7 +138,7 @@ public class BlockAggregator extends Block {
     public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileEntitySoymilkAggregator();
     }
-    
+
     public EnumBlockRenderType getRenderType(IBlockState state)
     {
         return EnumBlockRenderType.MODEL;
@@ -189,8 +189,8 @@ public class BlockAggregator extends Block {
     {
         return new BlockStateContainer(this, new IProperty[] {FACING});
     }
-    
- 
+
+
 	 /**
 	  * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
 	  * IBlockstate
@@ -199,7 +199,7 @@ public class BlockAggregator extends Block {
 	 {
 	     return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	 }
-	
+
 	 /**
 	  * Called by ItemBlocks after a block is set in the world, to allow post-place logic
 	  */
@@ -207,6 +207,6 @@ public class BlockAggregator extends Block {
 	 {
 	     worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 	 }
- 
+
 
 }

@@ -22,50 +22,57 @@ public abstract class TileEntityProcessorBase extends TileEntityWorkerBase imple
 
     public static final String TAG_TIME = "tf_processtime";
     public static final String TAG_TOTAL = "tf_totaltime";
+    public static final String TAG_FUSE = "tf_fusetime";
+
     protected int processTime;
     protected int maxTime;
-
+    protected int fuseTime = 0;
 
     public TileEntityProcessorBase(int energyMax) {
         super(energyMax);
     }
 
     /*
-    * The working condition for a machine, e.g. a proper recipe
-    * */
+     * The working condition for a machine, e.g. a proper recipe
+     * */
     public abstract boolean canWork();
 
     /*
-    * What will the machine do when working, like draining energy, or something else
-    * */
+     * What will the machine do when working, like draining energy, or something else
+     * */
     public abstract void onWork();
 
     /*
-    * What will the machine do if the working condition is not met, like resetting working status
-    * */
+     * What will the machine do if the working condition is not met, like resetting working status
+     * */
     public abstract void failed();
 
     /*
-    * What will the machine do if a working cycle is finished, like output items.
-    * */
+     * What will the machine do if a working cycle is finished, like output items.
+     * */
     public abstract void done();
 
     /*
-    * A general function for the machine, if there's anything needed
-    * */
-    public void general(){};
+     * A general function for the machine, if there's anything needed
+     * */
+    public void general() {
+    }
+
 
     @Override
     public void update() {
-        if (canWork()) {
-            onWork();
-            if (processTime >= maxTime) {
-                processTime = 0;
-                done();
-            }
-        } else
-            failed();
-
+        if (fuseTime > 0) {
+            fuseTime--;
+        } else {
+            if (canWork()) {
+                onWork();
+                if (processTime >= maxTime) {
+                    processTime = 0;
+                    done();
+                }
+            } else
+                failed();
+        }
         general();
     }
 
@@ -74,6 +81,7 @@ public abstract class TileEntityProcessorBase extends TileEntityWorkerBase imple
         super.writeToNBT(compound);
         compound.setInteger(TAG_TIME, processTime);
         compound.setInteger(TAG_TOTAL, maxTime);
+        compound.setInteger(TAG_FUSE, fuseTime);
         return compound;
     }
 
@@ -82,5 +90,6 @@ public abstract class TileEntityProcessorBase extends TileEntityWorkerBase imple
         super.readFromNBT(compound);
         processTime = compound.getInteger(TAG_TIME);
         maxTime = compound.getInteger(TAG_TOTAL);
+        fuseTime = compound.getInteger(TAG_FUSE);
     }
 }

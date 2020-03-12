@@ -75,7 +75,7 @@ public class TofuVillages {
             //Sell
             recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(ItemLoader.tofu_material, 2 + random.nextInt(2))));
             recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(ItemLoader.tofu_material, 8 + random.nextInt(4),2)));
-            recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(ItemLoader.tofustick, 10 + random.nextInt(4))));
+            recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, 6 + random.nextInt(4)), new ItemStack(ItemLoader.tofustick)));
         }
     }
 }

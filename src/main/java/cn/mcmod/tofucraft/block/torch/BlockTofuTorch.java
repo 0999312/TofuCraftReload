@@ -18,4 +18,5 @@ public class BlockTofuTorch extends BlockTorch {
     public BlockTofuTorch(){
         this(SoundType.CLOTH);
     }
+    
 }
