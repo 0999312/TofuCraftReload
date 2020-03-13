@@ -313,7 +313,7 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
     @Override
     public final SPacketUpdateTileEntity getUpdatePacket() {
         NBTTagCompound tag = new NBTTagCompound();
-        writePacketNBT(tag);
+        writeToNBT(tag);
         return new SPacketUpdateTileEntity(pos, -999, tag);
     }
 

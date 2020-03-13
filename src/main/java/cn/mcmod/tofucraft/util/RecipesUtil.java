@@ -254,6 +254,12 @@ public class RecipesUtil {
         if (output instanceof OredictItemStack) {
             return ((OredictItemStack) output).isMatchingSomething(input);
         }
+        if (input instanceof String) {
+            return new OredictItemStack((String) input, 1).isMatchingSomething(output);
+        }
+        if (output instanceof String) {
+            return new OredictItemStack((String) output, 1).isMatchingSomething(input);
+        }
 
         return false;
     }
