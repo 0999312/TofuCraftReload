@@ -1,5 +1,6 @@
 package cn.mcmod.tofucraft.util;
 
+import cn.mcmod_mmf.mmlib.util.OredictItemStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 

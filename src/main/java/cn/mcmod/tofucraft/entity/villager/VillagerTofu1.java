@@ -24,8 +24,8 @@ public class VillagerTofu1 {
 		career.addTrade(1, new SimpleBuy(new ItemStack(ItemLoader.material,4,30),new PriceInfo(3, 7)));
 		career.addTrade(1, new SimpleBuy(new ItemStack(ItemLoader.material,4,31),new PriceInfo(3, 7)));
 		career.addTrade(2, new SimpleBuy(new ItemStack(ItemLoader.material,4,8),new PriceInfo(4, 9)));
-		career.addTrade(2, new SimpleBuy(new ItemStack(ItemLoader.mayonnaise_bottle,1),new PriceInfo(2, 6)));
-		career.addTrade(2, new SimpleBuy(new ItemStack(ItemLoader.soysauce_bottle,1),new PriceInfo(2, 6)));
+		career.addTrade(2, new SimpleBuy(new ItemStack(ItemLoader.sauce_bottle,1,4),new PriceInfo(2, 6)));
+		career.addTrade(2, new SimpleBuy(new ItemStack(ItemLoader.sauce_bottle,1,0),new PriceInfo(2, 6)));
 		career.addTrade(2, new SimpleBuy(new ItemStack(ItemLoader.defatting_potion,1),new PriceInfo(4, 6)));
 		career.addTrade(3, new SimpleSell(new ItemStack(ItemLoader.material,8,4),new PriceInfo(2, 6)));
 	}

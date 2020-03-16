@@ -2,7 +2,7 @@ package cn.mcmod.tofucraft.gui;
 
 import cn.mcmod.tofucraft.inventory.ContainerTFBattery;
 import cn.mcmod.tofucraft.tileentity.tofuenergy.reservoir.TileEntityTofuBattery;
-import cn.mcmod.tofucraft.util.ClientUtils;
+import cn.mcmod_mmf.mmlib.util.ClientUtils;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.InventoryPlayer;

@@ -2,7 +2,7 @@ package cn.mcmod.tofucraft.compat.ct;
 
 import cn.mcmod.tofucraft.RecipeLoader;
 import cn.mcmod.tofucraft.api.recipes.AdvancedAggregatorRecipes;
-import cn.mcmod.tofucraft.util.OredictItemStack;
+import cn.mcmod_mmf.mmlib.util.OredictItemStack;
 import crafttweaker.IAction;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;

@@ -5,7 +5,7 @@ import cn.mcmod.tofucraft.base.tileentity.TileEntityProcessorBaseInventoried;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.mecha.BlockAggregator;
 import cn.mcmod.tofucraft.util.ItemUtils;
-import cn.mcmod.tofucraft.util.RecipesUtil;
+import cn.mcmod_mmf.mmlib.util.RecipesUtil;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

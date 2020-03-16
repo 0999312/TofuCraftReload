@@ -1,9 +1,10 @@
 package cn.mcmod.tofucraft.api.recipes;
 
-import cn.mcmod.tofucraft.util.OredictItemStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import java.util.ArrayList;
+
+import cn.mcmod_mmf.mmlib.util.OredictItemStack;
 
 public class AdvancedAggregatorRecipes {
     public ItemStack resultItem;

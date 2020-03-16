@@ -3,7 +3,7 @@ package cn.mcmod.tofucraft.item;
 import java.util.List;
 
 import cn.mcmod.tofucraft.TofuMain;
-import cn.mcmod.tofucraft.util.RecipesUtil;
+import cn.mcmod_mmf.mmlib.util.RecipesUtil;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

@@ -14,11 +14,8 @@ public final class TofuSounds {
     public static final SoundEvent TOFUBUGLE = createEvent("tofubugle");
 
     private static SoundEvent createEvent(String name) {
-
         SoundEvent sound = new SoundEvent(new ResourceLocation(TofuMain.MODID, name));
-
         sound.setRegistryName(new ResourceLocation(TofuMain.MODID, name));
-
         return sound;
     }
 

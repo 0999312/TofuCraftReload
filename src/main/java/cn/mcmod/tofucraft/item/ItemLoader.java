@@ -10,9 +10,15 @@ import cn.mcmod.tofucraft.item.tfitem.ItemTofuForceSword;
 import cn.mcmod.tofucraft.material.TofuArmorMaterial;
 import cn.mcmod.tofucraft.material.TofuToolMaterial;
 import cn.mcmod.tofucraft.material.TofuType;
-import cn.mcmod.tofucraft.util.JSON_Creator;
+import cn.mcmod_mmf.mmlib.item.ItemBase;
+import cn.mcmod_mmf.mmlib.item.ItemMetaDurability;
+import cn.mcmod_mmf.mmlib.item.food.FoodInfo;
+import cn.mcmod_mmf.mmlib.item.food.ItemDrinkBase;
+import cn.mcmod_mmf.mmlib.item.food.ItemFoodBase;
+import cn.mcmod_mmf.mmlib.item.food.ItemFoodContain;
+import cn.mcmod_mmf.mmlib.register.ItemRegister;
+
 import com.google.common.collect.Maps;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -23,7 +29,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -35,64 +40,65 @@ import java.util.EnumMap;
 public class ItemLoader {
     public static EnumMap<TofuType, ItemStack> tofuItems = Maps.newEnumMap(TofuType.class);
 
-    public static ItemFoodBasic tofu_food = new ItemFoodBasic("tofu_food", 64,
-            new int[]{2, 2, 3, 3, 4, 4, 4, 4, 4, 4, 3, 5},
-            new float[]{0.1F, 0.1F, 0.4F, 0.2F, 0.2F, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.8F},
-            TofuMain.MODID + "." + "tofukinu",//0
-            TofuMain.MODID + "." + "tofumomen",//1
-            TofuMain.MODID + "." + "tofuishi",//2
-            TofuMain.MODID + "." + "tofugrilled",//3
-            TofuMain.MODID + "." + "tofufriedpouch",//4
-            TofuMain.MODID + "." + "tofufried",//5
-            TofuMain.MODID + "." + "tofuegg",//6
-            TofuMain.MODID + "." + "tofuannin",//7
-            TofuMain.MODID + "." + "tofusesame",//8
-            TofuMain.MODID + "." + "tofuzunda",//9
-            TofuMain.MODID + "." + "tofustrawberry",//10
-            TofuMain.MODID + "." + "tofumiso"//11
+    public static ItemFoodBase tofu_food = new ItemFoodBase(TofuMain.MODID,"tofu_food", 64,
+    		new FoodInfo[]{
+    			new FoodInfo(TofuMain.MODID + "." + "tofukinu", 2, 0.1f, false, 2F, 0F, 0F, 4F, 0F, 1F, 3F, 1F, 200F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofumomen", 2, 0.1f, false, 1F, 0F, 0F, 4F, 0F, 1F, 2.5F, 1F, 200F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofuishi", 3, 0.4f, false, 1F, 0F, 0F, 4F, 0F, 1F, 1F, 1F, 200F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofugrilled", 3, 0.2f, false, 2F, 0F, 0F, 4F, 0F, 1F, 2F, 1F, 480F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofufriedpouch", 4, 0.2f, false, 1F, 0F, 1F, 4F, 0F, 1F, 2F, 1F, 200F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofufried", 4, 0.2f, false, 1F, 0F, 1F, 4F, 0F, 1F, 2F, 1F, 200F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofuegg", 4, 0.2f, false, 2F, 0F, 0F, 5F, 0F, 1F, 1F, 2F, 200F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofuannin", 4, 0.2f, false, 2F, 1F, 0F, 4F, 0F, 1F, 2F, 2F, 480F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofusesame", 4, 0.2f, false, 2F, 1F, 1F, 4F, 0F, 1F, 2F, 1F, 200F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofuzunda", 4, 0.2f, false, 2F, 1F, 1F, 4F, 1F, 1F, 2F, 1F, 200F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofustrawberry", 4, 0.2f, false, 2F, 2F, 0F, 5F, 2F, 1F, 1F, 2F, 200F),
+    			new FoodInfo(TofuMain.MODID + "." + "tofumiso", 5, 0.8f, false, 2F, 1F, 1F, 4F, 0F, 2F, 2F, 2F, 480F),
+    			
+    		}
     ).setFastEat();
     public static ItemFood tofu_hell = (ItemFood) new ItemFood(2, 0.2f, false)
             .setPotionEffect(new PotionEffect(Potion.getPotionById(12), 30, 0), 1.0F)
             .setUnlocalizedName(TofuMain.MODID + "." + "tofuhell");
-    public static ItemBase tofu_material = new ItemBase("tofu_material", 64,
+    public static ItemBase tofu_material = new ItemBase(TofuMain.MODID,"tofu_material", 64,
     		TofuMain.MODID + "." + "tofumetal",
             TofuMain.MODID + "." + "tofudiamond",
             TofuMain.MODID + "." + "tofudried");
-    public static ItemFoodBasic foodset = new ItemFoodBasic("foodset", 64,
-            new int[]{6, 5, 4, 5, 6, 6, 2, 10, 12, 2, 5, 4, 6, 5, 4, 4, 6, 16, 20, 2, 8, 4, 1, 3, 6, 8, 3, 4,5,5},
-            new float[]{0.4f, 0.3f, 0.4f, 0.6f, 0.8f, 0.8f, 0.5f, 0.2f, 0.8f, 0.15f, 0.6f, 0.4f, 0.6f, 0.8f, 0.6f, 0.6f, 0.6f, 0.6f, 1f, 0.2f, 0.6f, 0.4f, 0.1f, 0.3f, 0.5f, 0.4f, 1f, 0.3f,0.7f,0.7f},
-            TofuMain.MODID + "." + "tofuchikuwa",//0
-            TofuMain.MODID + "." + "oage",//1
-            TofuMain.MODID + "." + "onigiri",//2
-            TofuMain.MODID + "." + "onigirisalt",//3
-            TofuMain.MODID + "." + "yakionigirimiso",//4
-            TofuMain.MODID + "." + "yakionigirishoyu",//5
-            TofuMain.MODID + "." + "sprouts",//6
-            TofuMain.MODID + "." + "ricetofu",
-            TofuMain.MODID + "." + "tofuhamburg",
-            TofuMain.MODID + "." + "tofucookie",
-            TofuMain.MODID + "." + "inari",//10
-            TofuMain.MODID + "." + "tofufishraw",
-            TofuMain.MODID + "." + "tofufishcooked",
-            TofuMain.MODID + "." + "kinakomochi",
-            TofuMain.MODID + "." + "kinakomanju",
-            TofuMain.MODID + "." + "chikuwa",
-            TofuMain.MODID + "." + "tofusteak",
-            TofuMain.MODID + "." + "tofuhamburgt",
-            TofuMain.MODID + "." + "tofuhamburgta",
-            TofuMain.MODID + "." + "tofuminced",
-            TofuMain.MODID + "." + "ricesoborotofu",//20
-            TofuMain.MODID + "." + "okarastick",
-            TofuMain.MODID + "." + "edamameboiled",
-            TofuMain.MODID + "." + "saltymelon",
-            TofuMain.MODID + "." + "chillstick",
-            TofuMain.MODID + "." + "tttburger",
-            TofuMain.MODID + "." + "fukumeni",
-            TofuMain.MODID + "." + "meatwrapped_yuba",
-            TofuMain.MODID + "." + "apricotjerry_bread",
-            TofuMain.MODID + "." + "kinako_bread"
+    public static ItemFoodBase foodset = new ItemFoodBase(TofuMain.MODID,"foodset", 64,
+    		new FoodInfo[]{
+    				new FoodInfo(TofuMain.MODID + "." + "tofuchikuwa", 6, 0.4f, false, 1f, 2F, 0F, 4F, 0F, 2F, 2F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "oage", 5, 0.3f, false, 1f, 0F, 1F, 4F, 0F, 2F, 1F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "onigiri", 4, 0.4f, false, 1f, 4F, 0F, 0F, 0F, 0F, 2F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "onigirisalt", 5, 0.6f, false, 1f, 4F, 0F, 0F, 0F, 0F, 2F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "yakionigirimiso", 6, 0.8f, false, 1f, 4F, 0F, 1F, 0F, 0F, 1F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "yakionigirishoyu", 6, 0.8f, false, 1f, 4F, 0F, 1F, 0F, 0F, 1F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "sprouts", 2, 0.2f, false, 2f, 0F, 0F, 2F, 2F, 0F, 3F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "ricetofu", 8, 0.8f, false, 1F, 4F, 2F, 2.5F, 0F, 1.5F, 2.25f, 1f, 480f),	
+    				new FoodInfo(TofuMain.MODID + "." + "tofuhamburg", 10, 0.8f, false, 1f, 0F, 1F, 4F, 0F, 1F, 2F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "tofucookie", 2, 0.2f, false, 1f, 2F, 0F, 2F, 0F, 1F, 1F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "inari", 5, 0.4f, false, 1f, 2F, 2F, 3F, 0F, 1F, 1F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "tofufishraw", 3, 0.25f, false, 1f, 0F, 0F, 2F, 0F, 1F, 3F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "tofufishcooked", 6, 0.4f, false, 1f, 0F, 1F, 6F, 0F, 1F, 2F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "kinakomochi", 5, 0.4f, false, 1f, 4F, 0F, 2F, 0F, 1F, 1F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "kinakomanju", 4, 0.4f, false, 1f, 4F, 0F, 2F, 0F, 1F, 1F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "chikuwa", 4, 0.5f, false, 1f, 0F, 1F, 4F, 0F, 1F, 2F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "tofusteak", 6, 0.6f, false, 1f, 0F, 1F, 4F, 0F, 0F, 2F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "tofuhamburgt", 16, 0.5f, false, 1f, 2F, 2F, 5F, 0F, 1F, 2.5F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "tofuhamburgta", 20, 0.5f, false, 1f, 2F, 2F, 5F, 0F, 2F, 2.5F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "tofuminced", 2, 0.2f, false, 2f, 0F, 0F, 2F, 2F, 0F, 3F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "ricesoborotofu", 8, 0.8f, false, 1F, 4F, 2F, 2.5F, 0F, 1.5F, 2.25f, 1f, 480f),	
+    				new FoodInfo(TofuMain.MODID + "." + "okarastick", 4, 0.5f, false, 1f, 0F, 1F, 4F, 0F, 1F, 1F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "edamameboiled", 2, 0.2f, false, 2f, 2F, 0F, 2F, 0F, 1F, 4F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "saltymelon", 3, 0.2f, false, 4f, 5F, 0F, 0F, 2F, 1F, 3F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "chillstick", 6, 0.5f,false, 1f, 0F, 1F, 4F, 1F, 1F, 1F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "tttburger", 8, 0.4f, false, 1f, 3F, 1F, 6F, 0F, 1F, 2F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "fukumeni", 3, 0.4f, false, 3f, 0F, 0F, 4F, 0F, 1F, 3F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "meatwrapped_yuba", 4, 0.4f, false, 2f, 0F, 1F, 6F, 0F, 1F, 3F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "apricotjerry_bread", 6, 0.5f, false, 1f, 3F, 0F, 2F, 1F, 1F, 2F, 1F, 480F),
+    				new FoodInfo(TofuMain.MODID + "." + "kinako_bread", 6, 0.5f, false, 1f, 3F, 1F, 2F, 0F, 1F, 2F, 1F, 480F),
+    		}
     );
-    public static ItemBase material = new ItemBase("material", 64,
+    public static ItemBase material = new ItemBase(TofuMain.MODID,"material", 64,
             TofuMain.MODID + "." + "salt",
             TofuMain.MODID + "." + "kouji",//1
             TofuMain.MODID + "." + "miso",//2
@@ -132,42 +138,38 @@ public class ItemLoader {
     public static ItemFood zundaMochi = (ItemFood) new ItemFood(3, 0.8f, false)
             .setPotionEffect(new PotionEffect(MobEffects.REGENERATION, 20, 2), 1.0F)
             .setUnlocalizedName(TofuMain.MODID + "." + "zundamochi");
-    public static ItemFoodBasic tsuyuBowl = new ItemFoodContain("tsuyuBowl_glass", 1,
-            new int[]{2},
-            new float[]{0.1f},
-            new String[]{
-                    TofuMain.MODID + "." + "tsuyubowl_glass"},
+    public static ItemFoodBase tsuyuBowl = new ItemFoodContain(TofuMain.MODID,"tsuyuBowl_glass", 64,
+    		new FoodInfo[]{
+    				new FoodInfo(TofuMain.MODID + "." + "tsuyubowl_glass", 2, 0.1F, false, 4F, 0, 1f, 2f, 0, 1f, 0, 0, -1)
+    		},
             new ItemStack[]{
                     new ItemStack(material, 1, 29),
             }
     );
-    public static ItemFoodBasic foodsetContain = new ItemFoodContain("foodsetcontain", 1,
-            new int[]{16, 8, 5, 6, 8, 3, 20, 20, 3, 5, 10, 6, 8, 3, 7, 6, 5, 8, 9},
-            new float[]{0.5f, 0.4f, 0.3f, 0.5f, 0.8f, 0.3f, 1F, 1f, 0.3f, 0.6f, 0.7f, 0.6f, 0.8f, 0.3f, 0.6f, 0.5f, 0.4f, 0.5f, 0.5f},
-            new String[]{
-                    TofuMain.MODID + "." + "mabodofu",
-                    TofuMain.MODID + "." + "moyashiitame",
-                    TofuMain.MODID + "." + "moyashiohitashi",
-                    TofuMain.MODID + "." + "hiyayakko_glass",
-                    TofuMain.MODID + "." + "nattohiyayakko_glass",
-                    TofuMain.MODID + "." + "tofusomenbowl_glass",
-                    TofuMain.MODID + "." + "tastystew",
-                    TofuMain.MODID + "." + "tastybeefstew",
-                    TofuMain.MODID + "." + "yudofu",
-                    TofuMain.MODID + "." + "misosoup",
-                    TofuMain.MODID + "." + "misodengaku",
-                    TofuMain.MODID + "." + "nikujaga",
-                    TofuMain.MODID + "." + "agedashitofu",
-                    TofuMain.MODID + "." + "koyadofustew",
-                    TofuMain.MODID + "." + "apricot",
-                    TofuMain.MODID + "." + "soborotofusaute",
-                    TofuMain.MODID + "." + "hiyayakko",
-                    TofuMain.MODID + "." + "goheimochi",
-                    TofuMain.MODID + "." + "nanbantofu",
-                    TofuMain.MODID + "." + "nanban"
-            },
+    public static ItemFoodBase foodsetContain = new ItemFoodContain(TofuMain.MODID,"foodsetcontain", 64,
+    		new FoodInfo[]{
+    				new FoodInfo(TofuMain.MODID + "." + "mabodofu", 16, 0.6f, false, 2F, 1F, 2f, 3f, 1f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "moyashiitame", 8, 0.4f, false, 2F, 0F, 0f, 4f, 1f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "moyashiohitashi", 5, 0.4f, false, 2F, 0F, 0f, 4f, 1f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "hiyayakko_glass", 6, 0.5f, false, 2F, 0F, 0f, 4f, 1f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "nattohiyayakko_glass", 8, 0.8f, false, 2F, 1F, 1f, 4f, 1f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "tofusomenbowl_glass", 3, 0.4f, false, 2F, 3F, 0f, 1f, 0f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "tastystew", 20, 1f, false, 3F, 4F, 4f, 4f, 4f, 4f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "tastybeefstew", 20, 1f, false, 3F, 4F, 4f, 4f, 4f, 4f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "yudofu", 5, 0.4f, false, 2F, 0F, 0f, 4f, 1f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "misosoup", 3, 0.2f, false, 5F, 1F, 0f, 2f, 0f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "misodengaku", 5, 0.4f, false, 2F, 3F, 1f, 4f, 0f, 1f, 2f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "nikujaga", 10, 0.8f, false, 2F, 3F, 2f, 4f, 3f, 2f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "agedashitofu", 6, 0.6f, false, 5F, 0F, 1f, 4f, 0f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "koyadofustew", 8, 0.8f, false, 3F, 2F, 1f, 3f, 1f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "apricot", 2, 0.2f, false, 4F, 1F, 0f, 0f, 1f, 0f, 3f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "soborotofusaute", 7, 0.6f, false, 2F, 1F, 1f, 4f, 0f, 1f, 3f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "hiyayakko", 6, 0.5f, false, 2F, 0F, 0f, 4f, 1f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "goheimochi", 5, 0.5f, false, 1F, 4F, 0f, 2f, 0f, 1f, 3f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "nanbantofu", 8, 0.5f, false, 2F, 2F, 2f, 4f, 1f, 1f, 4f, 1f, 480f),
+    				new FoodInfo(TofuMain.MODID + "." + "nanban", 10, 0.5f, false, 2F, 2F, 2f, 4f, 1f, 1f, 4f, 1f, 480f),
+    		},
             new ItemStack[]{
-
                     new ItemStack(Items.BOWL),
                     new ItemStack(Items.BOWL),
                     new ItemStack(Items.BOWL),
@@ -262,47 +264,55 @@ public class ItemLoader {
     public static ItemDoor TOFUISHI_DOOR = new ItemDoor(BlockLoader.TOFUISHI_DOOR);
     public static ItemDoor TOFUMETAL_DOOR = new ItemDoor(BlockLoader.TOFUMETAL_DOOR);
 
-    public static Item soysauce_bottle = new ItemSeasoning(TofuMain.MODID + "." + "bottlesoysause", 20);
-    public static Item dashi_bottle = new ItemSeasoning(TofuMain.MODID + "." + "dashi", 10);
-    public static Item soyoil_bottle = new ItemSeasoning(TofuMain.MODID + "." + "soyoil", 20);
-    public static Item doubanjiang_bottle = new ItemSeasoning(TofuMain.MODID + "." + "doubanjiang", 58);
-    public static Item mayonnaise_bottle = new ItemSeasoning(TofuMain.MODID + "." + "mayonnaise", 20);
-    public static Item apricotjerry_bottle = new ItemSeasoning(TofuMain.MODID + "." + "apricotjerry", 20);
-    public static Item strawberryjam_bottle = new ItemSeasoning(TofuMain.MODID + "." + "strawberryjam", 20);
+//    public static Item soysauce_bottle = new ItemSeasoning(TofuMain.MODID + "." + "bottlesoysause", 20);
+//    public static Item dashi_bottle = new ItemSeasoning(TofuMain.MODID + "." + "dashi", 10);
+//    public static Item soyoil_bottle = new ItemSeasoning(TofuMain.MODID + "." + "soyoil", 20);
+//    public static Item doubanjiang_bottle = new ItemSeasoning(TofuMain.MODID + "." + "doubanjiang", 58);
+//    public static Item mayonnaise_bottle = new ItemSeasoning(TofuMain.MODID + "." + "mayonnaise", 20);
+//    public static Item apricotjerry_bottle = new ItemSeasoning(TofuMain.MODID + "." + "apricotjerry", 20);
+//    public static Item strawberryjam_bottle = new ItemSeasoning(TofuMain.MODID + "." + "strawberryjam", 20);
+    public static ItemBase sauce_bottle = new ItemMetaDurability(TofuMain.MODID,"sauce_bottle", 25, new ItemStack(Items.GLASS_BOTTLE),
+    		new String[]{
+    				TofuMain.MODID + "." + "bottlesoysause",
+    				TofuMain.MODID + "." + "dashi",
+    				TofuMain.MODID + "." + "soyoil",
+    				TofuMain.MODID + "." + "doubanjiang",
+    				TofuMain.MODID + "." + "mayonnaise",
+    				TofuMain.MODID + "." + "apricotjerry",
+    				TofuMain.MODID + "." + "strawberryjam",
+    		});
 
     public static Item defatting_potion = new ItemDefattingPotion();
 
     public static Item wrench = new ItemWrench();
 
-    public static DrinkSoymilk soymilk_drink = new DrinkSoymilk("soymilk_drink",
-            new int[]{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-            new float[]{0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f},
-            new String[]{
-                    TofuMain.MODID + "." + "soymilk",
-                    TofuMain.MODID + "." + "soymilk_annin",
-                    TofuMain.MODID + "." + "soymilk_apple",
-                    TofuMain.MODID + "." + "soymilk_cocoa",
-                    TofuMain.MODID + "." + "soymilk_kinako",
-                    TofuMain.MODID + "." + "soymilk_pudding",
-                    TofuMain.MODID + "." + "soymilk_pumpkin",
-                    TofuMain.MODID + "." + "soymilk_sakura",
-                    TofuMain.MODID + "." + "soymilk_strawberry",
-                    TofuMain.MODID + "." + "soymilk_tea",
-                    TofuMain.MODID + "." + "soymilk_zunda",
-            },
-            new PotionEffect[]{
+    public static ItemDrinkBase soymilk_drink = new ItemDrinkBase(TofuMain.MODID,"soymilk_drink",
+    		new FoodInfo[]{
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk", 2, 0.2F, false, 50F, 0F, 0F, 4F, 0F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_annin", 2, 0.2F, false, 50F, 1F, 0F, 4F, 0F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_apple", 2, 0.2F, false, 50F, 0F, 0F, 4F, 2F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_cocoa", 2, 0.2F, false, 50F, 1F, 0F, 4F, 1F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_kinako", 2, 0.2F, false, 50F, 1F, 0F, 5F, 0F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_pudding", 2, 0.2F, false, 50F, 1F, 1F, 4F, 0F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_pumpkin", 2, 0.2F, false, 50F, 2F, 0F, 4F, 1F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_sakura", 2, 0.2F, false, 50F, 0F, 0F, 4F, 1F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_strawberry", 2, 0.2F, false, 50F, 0F, 0F, 4F, 2F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_tea", 2, 0.2F, false, 50F, 0F, 0F, 4F, 2F, 1F, 5F, 0F, -1F),
+    			new FoodInfo(TofuMain.MODID + "." + "soymilk_zunda", 2, 0.2F, false, 50F, 1F, 1F, 4F, 2F, 1F, 5F, 0F, -1F),
+    		},
+            new PotionEffect[][]{
                     null,
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "absorption")), 900, 0),
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "fire_resistance")), 900, 0),
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "jump_boost")), 900, 0),
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "haste")), 900, 0),
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "regeneration")), 1200, 0),
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "resistance")), 900, 0),
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "speed")), 900, 0),
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "water_breathing")), 600, 0),
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "night_vision")), 600, 0),
-                    new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "regeneration")), 1200, 1),
-            });
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "absorption")), 900, 0)},
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "fire_resistance")), 900, 0)},
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "jump_boost")), 900, 0)},
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "haste")), 900, 0)},
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "regeneration")), 1200, 0)},
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "resistance")), 900, 0)},
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "speed")), 900, 0)},
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "water_breathing")), 600, 0)},
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "night_vision")), 600, 0)},
+                    new PotionEffect[]{new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "regeneration")), 1200, 1)},
+            },new ItemStack(Items.GLASS_BOTTLE));
     public static Item soymilk_ramune = new DrinkSoymilkRamune("soymilk_ramune", 2, 0.2f,
             new PotionEffect[]{
                     new PotionEffect(ForgeRegistries.POTIONS.getValue(new ResourceLocation("minecraft", "absorption")), 900, 0),
@@ -349,13 +359,7 @@ public class ItemLoader {
         register(rice.setUnlocalizedName(TofuMain.MODID + "." + "rice"));
         register(riceseed);
         register(defatting_potion);
-        register(soysauce_bottle);
-        register(dashi_bottle);
-        register(soyoil_bottle);
-        register(doubanjiang_bottle);
-        register(mayonnaise_bottle);
-        register(apricotjerry_bottle);
-        register(strawberryjam_bottle);
+        register(sauce_bottle);
         register(anninApple);
 
         register(soymilk_drink);
@@ -462,188 +466,107 @@ public class ItemLoader {
         TileEntityRenderHelper TESR = new TileEntityRenderHelper();
         tofuishi_shield.setTileEntityItemStackRenderer(TESR);
         tofumetal_shield.setTileEntityItemStackRenderer(TESR);
-        registerRender(mineral_soymilk);
-        registerRender(strawberryjam_bottle);
-        registerRender(soybeansHell);
-        registerRender(tofu_slime_radar);
-        registerRender(soymilk_ramune);
-        registerRender(soymilk_drink);
-        registerRender(mayonnaise_bottle);
-        registerRender(apricotjerry_bottle);
-        registerRender(RollingPin);
-        registerRender(koujiBase);
-        registerRender(doubanjiang_bottle);
-        registerRender(defatting_potion);
-        registerRender(soyoil_bottle);
-        registerRender(dashi_bottle);
-        registerRender(soysauce_bottle);
-        registerRender(material);
-        registerRender(tofu_food);
-        registerRender(tofu_hell);
-        registerRender(zundaMochi);
-        registerRender(tofu_material);
-        registerRender(foodset);
-        registerRender(tsuyuBowl);
-        registerRender(foodsetContain);
-        registerRender(nigari);
-        registerRender(soybeans);
-        registerRender(fukumame);
-        registerRender(rice);
-        registerRender(riceseed);
-        registerRender(tofustick);
-        registerRender(bugle);
-        registerRender(tofuhoe);
+        ItemRegister.registerRender(mineral_soymilk);
+        ItemRegister.registerRender(soybeansHell);
+        ItemRegister.registerRender(tofu_slime_radar);
+        ItemRegister.registerRender(soymilk_ramune);
+        ItemRegister.registerRender(soymilk_drink);
+        ItemRegister.registerRender(RollingPin);
+        ItemRegister.registerRender(koujiBase);
+        ItemRegister.registerRender(defatting_potion);
+        ItemRegister.registerRender(sauce_bottle);
+        ItemRegister.registerRender(material);
+        ItemRegister.registerRender(tofu_food);
+        ItemRegister.registerRender(tofu_hell);
+        ItemRegister.registerRender(zundaMochi);
+        ItemRegister.registerRender(tofu_material);
+        ItemRegister.registerRender(foodset);
+        ItemRegister.registerRender(tsuyuBowl);
+        ItemRegister.registerRender(foodsetContain);
+        ItemRegister.registerRender(nigari);
+        ItemRegister.registerRender(soybeans);
+        ItemRegister.registerRender(fukumame);
+        ItemRegister.registerRender(rice);
+        ItemRegister.registerRender(riceseed);
+        ItemRegister.registerRender(tofustick);
+        ItemRegister.registerRender(bugle);
+        ItemRegister.registerRender(tofuhoe);
 
-        registerRender(zundaruby);
+        ItemRegister.registerRender(zundaruby);
 
-        registerRender(kinuTofuSword);
-        registerRender(momenTofuSword);
-        registerRender(ishiTofuSword);
-        registerRender(metalTofuSword);
-        registerRender(diamondTofuSword);
+        ItemRegister.registerRender(kinuTofuSword);
+        ItemRegister.registerRender(momenTofuSword);
+        ItemRegister.registerRender(ishiTofuSword);
+        ItemRegister.registerRender(metalTofuSword);
+        ItemRegister.registerRender(diamondTofuSword);
 
-        registerRender(kinuTofuPickaxe);
-        registerRender(momenTofuPickaxe);
-        registerRender(ishiTofuPickaxe);
-        registerRender(metalTofuPickaxe);
-        registerRender(diamondTofuPickaxe);
+        ItemRegister.registerRender(kinuTofuPickaxe);
+        ItemRegister.registerRender(momenTofuPickaxe);
+        ItemRegister.registerRender(ishiTofuPickaxe);
+        ItemRegister.registerRender(metalTofuPickaxe);
+        ItemRegister.registerRender(diamondTofuPickaxe);
 
-        registerRender(kinuTofuShovel);
-        registerRender(momenTofuShovel);
-        registerRender(ishiTofuShovel);
-        registerRender(metalTofuShovel);
-        registerRender(diamondTofuShovel);
+        ItemRegister.registerRender(kinuTofuShovel);
+        ItemRegister.registerRender(momenTofuShovel);
+        ItemRegister.registerRender(ishiTofuShovel);
+        ItemRegister.registerRender(metalTofuShovel);
+        ItemRegister.registerRender(diamondTofuShovel);
 
-        registerRender(kinuTofuAxe);
-        registerRender(momenTofuAxe);
-        registerRender(ishiTofuAxe);
-        registerRender(metalTofuAxe);
-        registerRender(diamondTofuAxe);
+        ItemRegister.registerRender(kinuTofuAxe);
+        ItemRegister.registerRender(momenTofuAxe);
+        ItemRegister.registerRender(ishiTofuAxe);
+        ItemRegister.registerRender(metalTofuAxe);
+        ItemRegister.registerRender(diamondTofuAxe);
 
-        registerRender(TOFUKINU_DOOR);
-        registerRender(TOFUMOMEN_DOOR);
-        registerRender(TOFUISHI_DOOR);
-        registerRender(TOFUMETAL_DOOR);
+        ItemRegister.registerRender(TOFUKINU_DOOR);
+        ItemRegister.registerRender(TOFUMOMEN_DOOR);
+        ItemRegister.registerRender(TOFUISHI_DOOR);
+        ItemRegister.registerRender(TOFUMETAL_DOOR);
 
-        registerRender(kinuhelmet);
-        registerRender(kinuchestplate);
-        registerRender(kinuleggins);
-        registerRender(kinuboots);
+        ItemRegister.registerRender(kinuhelmet);
+        ItemRegister.registerRender(kinuchestplate);
+        ItemRegister.registerRender(kinuleggins);
+        ItemRegister.registerRender(kinuboots);
 
-        registerRender(momenhelmet);
-        registerRender(momenchestplate);
-        registerRender(momenleggins);
-        registerRender(momenboots);
+        ItemRegister.registerRender(momenhelmet);
+        ItemRegister.registerRender(momenchestplate);
+        ItemRegister.registerRender(momenleggins);
+        ItemRegister.registerRender(momenboots);
 
-        registerRender(solidhelmet);
-        registerRender(solidchestplate);
-        registerRender(solidleggins);
-        registerRender(solidboots);
+        ItemRegister.registerRender(solidhelmet);
+        ItemRegister.registerRender(solidchestplate);
+        ItemRegister.registerRender(solidleggins);
+        ItemRegister.registerRender(solidboots);
 
-        registerRender(metalhelmet);
-        registerRender(metalchestplate);
-        registerRender(metalleggins);
-        registerRender(metalboots);
+        ItemRegister.registerRender(metalhelmet);
+        ItemRegister.registerRender(metalchestplate);
+        ItemRegister.registerRender(metalleggins);
+        ItemRegister.registerRender(metalboots);
 
-        registerRender(diamondhelmet);
-        registerRender(diamondchestplate);
-        registerRender(diamondleggins);
-        registerRender(diamondboots);
+        ItemRegister.registerRender(diamondhelmet);
+        ItemRegister.registerRender(diamondchestplate);
+        ItemRegister.registerRender(diamondleggins);
+        ItemRegister.registerRender(diamondboots);
 
-        registerRender(zundaBow);
-        registerRender(zundaArrow);
-        registerRender(anninApple);
-        registerRender(tofuforce_core);
-        registerRender(tofucore);
-        registerRender(tofuforce_sword);
-        registerRender(tofuishi_shield);
-        registerRender(tofumetal_shield);
+        ItemRegister.registerRender(zundaBow);
+        ItemRegister.registerRender(zundaArrow);
+        ItemRegister.registerRender(anninApple);
+        ItemRegister.registerRender(tofuforce_core);
+        ItemRegister.registerRender(tofucore);
+        ItemRegister.registerRender(tofuforce_sword);
+        ItemRegister.registerRender(tofuishi_shield);
+        ItemRegister.registerRender(tofumetal_shield);
 //        registerRender(fulintlock);
-        registerRender(tofuchinger_tooth);
-        registerRender(tofuchinger_tootharrow);
+        ItemRegister.registerRender(tofuchinger_tooth);
+        ItemRegister.registerRender(tofuchinger_tootharrow);
     }
 
     private static void register(Item item) {
         item.setCreativeTab(CommonProxy.tab);
-
-        ForgeRegistries.ITEMS.register(item.setRegistryName(item.getUnlocalizedName().substring(5 + TofuMain.MODID.length() + 1)));
+       	ItemRegister.register(TofuMain.MODID, item);
     }
 
     private static void tofuItemRegister(TofuType type, ItemStack item) {
         ItemLoader.tofuItems.put(type, item);
-
     }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(ItemBase item) {
-        registerRender(item, false);
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(ItemFoodBasic item) {
-        registerRender(item, false);
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(ItemBase item, boolean json_create) {
-        for (int i = 0; i < item.getSubNames().length; i++) {
-            String name = item.getSubNames()[i].substring(TofuMain.MODID.length() + 1);
-            if (json_create) JSON_Creator.genItem(name, name, "json_create");
-            ModelResourceLocation model = new ModelResourceLocation(new ResourceLocation(TofuMain.MODID, name), "inventory");
-            ModelLoader.setCustomModelResourceLocation(item, i, model);
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(DrinkSoymilk item) {
-        registerRender(item, false);
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(DrinkSoymilk item, boolean json_create) {
-        for (int i = 0; i < item.getSubNames().length; i++) {
-            String name = item.getSubNames()[i].substring(TofuMain.MODID.length() + 1);
-            if (json_create) JSON_Creator.genItem(name, name, "json_create");
-            ModelResourceLocation model = new ModelResourceLocation(new ResourceLocation(TofuMain.MODID, name), "inventory");
-            ModelLoader.setCustomModelResourceLocation(item, i, model);
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(ItemFoodBasic item, boolean json_create) {
-
-        for (int i = 0; i < item.getSubNames().length; i++) {
-            String name = item.getSubNames()[i].substring(TofuMain.MODID.length() + 1);
-            if (json_create) JSON_Creator.genItem(name, name, "json_create");
-            ModelResourceLocation model = new ModelResourceLocation(new ResourceLocation(TofuMain.MODID, name), "inventory");
-            ModelLoader.setCustomModelResourceLocation(item, i, model);
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(Item item, int meta, String name) {
-        ModelResourceLocation model = new ModelResourceLocation(name, "inventory");
-        ModelLoader.setCustomModelResourceLocation(item, meta, model);
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(Item item, int meta, String name, String textureName) {
-        JSON_Creator.genItem(name, textureName, "json_create");
-        ModelResourceLocation model = new ModelResourceLocation(name, "inventory");
-        ModelLoader.setCustomModelResourceLocation(item, meta, model);
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(Item item, String textureName) {
-        JSON_Creator.genItem(item.getRegistryName().toString().substring(TofuMain.MODID.length() + 1), textureName, "json_create");
-        ModelResourceLocation model = new ModelResourceLocation(item.getRegistryName(), "inventory");
-        ModelLoader.setCustomModelResourceLocation(item, 0, model);
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(Item item) {
-        ModelResourceLocation model = new ModelResourceLocation(item.getRegistryName(), "inventory");
-        ModelLoader.setCustomModelResourceLocation(item, 0, model);
-    }
-
 }

@@ -11,9 +11,8 @@ import cn.mcmod.tofucraft.gui.TofuGuiHandler;
 import cn.mcmod.tofucraft.item.ItemLoader;
 import cn.mcmod.tofucraft.item.TofuOreDictLoader;
 import cn.mcmod.tofucraft.tileentity.TileEntityRegistry;
-import cn.mcmod.tofucraft.util.RecipesUtil;
 import cn.mcmod.tofucraft.world.village.VillagerCreationTofu;
-import net.minecraft.block.Block;
+import cn.mcmod_mmf.mmlib.util.RecipesUtil;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -57,10 +56,6 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent event) {
-
-    }
-
-    public void registerFluidBlockRendering(Block block, String name) {
 
     }
     

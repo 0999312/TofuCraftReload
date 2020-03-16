@@ -39,7 +39,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION, dependencies = "before:tconstruct;required-after:forge@[14.23.5.2838,);")
+@Mod(modid = TofuMain.MODID, name = TofuMain.NAME, version = TofuMain.VERSION, dependencies = "before:tconstruct;required-after:mm_lib;")
 public class TofuMain {
     public static final String MODID = "tofucraft";
     public static final String NAME = "TofuCraftReload";

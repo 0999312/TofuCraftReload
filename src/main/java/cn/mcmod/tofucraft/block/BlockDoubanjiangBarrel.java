@@ -39,13 +39,13 @@ public class BlockDoubanjiangBarrel extends BlockBarrel {
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
     		EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
     	if(playerIn.getHeldItem(hand).getItem() ==Items.GLASS_BOTTLE && hasSoy(state)){
-
+    		ItemStack doubanjiang = new ItemStack(ItemLoader.sauce_bottle,1,3);
     		if(playerIn.getHeldItem(hand).getCount()>1){
     			playerIn.getHeldItem(hand).shrink(1);
-    			playerIn.inventory.addItemStackToInventory(new ItemStack(ItemLoader.doubanjiang_bottle));
+    			playerIn.inventory.addItemStackToInventory(doubanjiang);
     		}
     		else{
-    		playerIn.setHeldItem(hand, new ItemStack(ItemLoader.doubanjiang_bottle));
+    		playerIn.setHeldItem(hand, doubanjiang);
     		}
     		worldIn.setBlockState(pos, this.withFerm(8), 2);
     	}

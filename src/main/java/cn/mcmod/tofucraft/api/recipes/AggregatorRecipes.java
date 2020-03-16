@@ -1,10 +1,10 @@
 package cn.mcmod.tofucraft.api.recipes;
 
 import cn.mcmod.tofucraft.util.ItemUtils;
-import cn.mcmod.tofucraft.util.OredictItemStack;
-import com.google.common.collect.Maps;
+import cn.mcmod_mmf.mmlib.util.OredictItemStack;
+import cn.mcmod_mmf.mmlib.util.RecipesUtil;
 
-import cn.mcmod.tofucraft.util.RecipesUtil;
+import com.google.common.collect.Maps;
 
 import java.util.Map;
 import java.util.Map.Entry;

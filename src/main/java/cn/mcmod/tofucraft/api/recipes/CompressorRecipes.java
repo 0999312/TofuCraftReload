@@ -2,7 +2,7 @@ package cn.mcmod.tofucraft.api.recipes;
 
 import com.google.common.collect.Maps;
 
-import cn.mcmod.tofucraft.util.RecipesUtil;
+import cn.mcmod_mmf.mmlib.util.RecipesUtil;
 
 import java.util.Map;
 import java.util.Map.Entry;

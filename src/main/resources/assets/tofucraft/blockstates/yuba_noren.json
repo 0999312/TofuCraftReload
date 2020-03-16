@@ -1,10 +1,22 @@
 {
-  "variants": {
-    "axis=z": {
-      "model": "tofucraft:yuba_noren"
-    },
-    "axis=x": {
-      "model": "tofucraft:yuba_noren"
-    }
-  }
+   "variants" : {
+      "inventory" : {
+         "model" : "tofucraft:yuba_noren"
+      },
+      "facing=north" : {
+         "model" : "tofucraft:yuba_noren"
+      },
+      "facing=south" : {
+         "model" : "tofucraft:yuba_noren",
+         "y" : 180
+      },
+      "facing=west" : {
+         "model" : "tofucraft:yuba_noren",
+         "y" : 270
+      },
+      "facing=east" : {
+         "model" : "tofucraft:yuba_noren",
+         "y" : 90
+      }
+   }
 }

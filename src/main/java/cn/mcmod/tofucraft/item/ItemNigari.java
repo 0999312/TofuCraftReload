@@ -16,69 +16,63 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class ItemNigari extends Item {
-    public ItemNigari()
-    {
-        super();
-        this.setUnlocalizedName(TofuMain.MODID+"."+"nigari");
-        this.setContainerItem(Items.GLASS_BOTTLE);
-    }
+	public ItemNigari() {
+		super();
+		this.setUnlocalizedName(TofuMain.MODID + "." + "nigari");
+		this.setContainerItem(Items.GLASS_BOTTLE);
+	}
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
-    {
-    	if(worldIn.isRemote)
-    		return new ActionResult<ItemStack>(EnumActionResult.PASS,ItemStack.EMPTY);
-        RayTraceResult var4 = this.rayTrace(worldIn, playerIn, true);
-        ItemStack itemStackIn = playerIn.getHeldItem(handIn);
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+		if (worldIn.isRemote)
+			return new ActionResult<ItemStack>(EnumActionResult.PASS, ItemStack.EMPTY);
+		RayTraceResult var4 = this.rayTrace(worldIn, playerIn, true);
+		ItemStack itemStackIn = playerIn.getHeldItem(handIn);
 
-        if (var4 == null)
-        {
-            return new ActionResult<ItemStack>(EnumActionResult.PASS,itemStackIn);
-        }
-        else
-        {
-            if (var4.typeOfHit == RayTraceResult.Type.BLOCK)
-            {
-                BlockPos targetPos = var4.getBlockPos();
-                Block var11 = worldIn.getBlockState(targetPos).getBlock();
-                Block var13 = null;
+		if (var4 == null) {
+			return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
+		} else {
+			if (var4.typeOfHit == RayTraceResult.Type.BLOCK) {
+				BlockPos targetPos = var4.getBlockPos();
+				Block var11 = worldIn.getBlockState(targetPos).getBlock();
+				Block var13 = null;
 
-                if (var11 == BlockLoader.SOYMILK)
-                {
-                    var13 = BlockLoader.KINUTOFU;
-                }
-                else if (var11 == BlockLoader.SOYMILKHELL)
-                {
-                    var13 = BlockLoader.TOFUHELL;
-                }
+				if (var11 == BlockLoader.SOYMILK) {
+					var13 = BlockLoader.KINUTOFU;
+				} else if (var11 == BlockLoader.SOYMILKHELL) {
+					var13 = BlockLoader.TOFUHELL;
+				} else if (var11 == BlockLoader.ZUNDASOYMILK) {
+					var13 = BlockLoader.TOFUZUNDA;
+				}
 
-                if (var13 != null)
-                {
-                    playerIn.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE,1));
-                    worldIn.playSound(playerIn, targetPos.add(0.5, 0.5, 0.5), var13.getSoundType(var13.getDefaultState(), worldIn, targetPos, playerIn).getBreakSound(), SoundCategory.BLOCKS, (var13.getSoundType(var13.getDefaultState(), worldIn, targetPos, playerIn).getVolume() + 1.0F) / 2.0F, var13.getSoundType(var13.getDefaultState(), worldIn, targetPos, playerIn).getPitch() * 0.8F);
+				if (var13 != null) {
+					worldIn.playSound(playerIn, targetPos.add(0.5, 0.5, 0.5),
+							var13.getSoundType(var13.getDefaultState(), worldIn, targetPos, playerIn).getBreakSound(),
+							SoundCategory.BLOCKS,
+							(var13.getSoundType(var13.getDefaultState(), worldIn, targetPos, playerIn).getVolume()
+									+ 1.0F) / 2.0F,
+							var13.getSoundType(var13.getDefaultState(), worldIn, targetPos, playerIn).getPitch()
+									* 0.8F);
 
-                    worldIn.setBlockState(targetPos, var13.getDefaultState());
+					worldIn.setBlockState(targetPos, var13.getDefaultState());
 
-                    if (!playerIn.capabilities.isCreativeMode)
-                    {
-                        itemStackIn.shrink(1);
+					if (!playerIn.capabilities.isCreativeMode) {
+						itemStackIn.shrink(1);
 
-                        ItemStack container = new ItemStack(this.getContainerItem());
+						ItemStack container = new ItemStack(this.getContainerItem());
 
-                        if (itemStackIn.getCount() <= 0)
-                        {
-                            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, container);
-                        }
+						if (itemStackIn.getCount() <= 0) {
+							return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, container);
+						}
 
-                        if (!playerIn.inventory.addItemStackToInventory(container))
-                        {
-                            playerIn.dropItem(container, false);
-                        }
-                    }
-                }
-            }
-            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
-        }
-    }
-    
+						if (!playerIn.inventory.addItemStackToInventory(container)) {
+							playerIn.dropItem(container, false);
+						}
+					}
+				}
+			}
+			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+		}
+	}
+
 }
