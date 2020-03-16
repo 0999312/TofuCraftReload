@@ -1,7 +1,13 @@
 package cn.mcmod.tofucraft.base.tileentity;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+import javax.annotation.Nonnull;
 
 public abstract class TileEntityProcessorBase extends TileEntityWorkerBase implements ITickable {
 
@@ -91,5 +97,16 @@ public abstract class TileEntityProcessorBase extends TileEntityWorkerBase imple
         processTime = compound.getInteger(TAG_TIME);
         maxTime = compound.getInteger(TAG_TOTAL);
         fuseTime = compound.getInteger(TAG_FUSE);
+    }
+
+    @Override
+    public boolean shouldRefresh(World world, BlockPos pos, @Nonnull IBlockState oldState, @Nonnull IBlockState newState) {
+        if (oldState.getBlock() == newState.getBlock()) {
+            return false;
+        }
+        if (oldState.getBlock().getClass() == Block.class) {
+            return true;
+        }
+        return oldState.getBlock().getClass() != newState.getBlock().getClass();
     }
 }
