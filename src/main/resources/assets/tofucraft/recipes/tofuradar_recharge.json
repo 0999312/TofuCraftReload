@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tofucraft:tofurader",
+      "data": 32767
+    },
+    {
+      "item": "tofucraft:material",
+      "data": 18
+    }
+  ],
+  "result": {
+    "item": "tofucraft:tofuradar"
+  }
+}

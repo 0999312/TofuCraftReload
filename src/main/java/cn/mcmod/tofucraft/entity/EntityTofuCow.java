@@ -31,6 +31,9 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nullable;
 
@@ -63,37 +66,44 @@ public class EntityTofuCow extends EntityCow {
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
         ItemStack itemstack = player.getHeldItem(hand);
 
-        if (itemstack.getItem() == Items.BUCKET && !player.capabilities.isCreativeMode && !this.isChild()) {
-            if (this.getVariant() == 1) {
-                FluidStack fluidStack = FluidRegistry.getFluidStack(ZundaSoyMilkFluid.name, Fluid.BUCKET_VOLUME);
+        IFluidHandlerItem handler = FluidUtil.getFluidHandler(ItemHandlerHelper.copyStackWithSize(itemstack, 1));
 
-                player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
-                itemstack.shrink(1);
+        if (handler instanceof FluidBucketWrapper && !player.capabilities.isCreativeMode && !this.isChild()) {
+            FluidBucketWrapper fluidBucketWrapper = ((FluidBucketWrapper) handler);
+            if (fluidBucketWrapper.getFluid() == null) {
+                if (this.getVariant() == 1) {
+                    FluidStack fluidStack = FluidRegistry.getFluidStack(ZundaSoyMilkFluid.name, Fluid.BUCKET_VOLUME);
 
-                TofuAdvancements.grantAdvancement(player, "flesh_soymilk");
-                if (itemstack.isEmpty()) {
+                    player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
+                    itemstack.shrink(1);
 
-                    player.setHeldItem(hand, FluidUtil.getFilledBucket(fluidStack));
-                } else if (!player.inventory.addItemStackToInventory(FluidUtil.getFilledBucket(fluidStack))) {
-                    player.dropItem(FluidUtil.getFilledBucket(fluidStack), false);
+                    TofuAdvancements.grantAdvancement(player, "flesh_soymilk");
+                    fluidBucketWrapper.fill(fluidStack, true);
+                    if (itemstack.isEmpty()) {
+
+                        player.setHeldItem(hand, fluidBucketWrapper.getContainer());
+                    } else if (!player.inventory.addItemStackToInventory(fluidBucketWrapper.getContainer())) {
+                        player.dropItem(fluidBucketWrapper.getContainer(), false);
+                    }
+                    return true;
+                } else {
+                    FluidStack fluidStack = FluidRegistry.getFluidStack(SoyMilkFluid.name, Fluid.BUCKET_VOLUME);
+
+                    player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
+                    itemstack.shrink(1);
+
+                    TofuAdvancements.grantAdvancement(player, "flesh_soymilk");
+                    fluidBucketWrapper.fill(fluidStack, true);
+                    if (itemstack.isEmpty()) {
+                        player.setHeldItem(hand, fluidBucketWrapper.getContainer());
+                    } else if (!player.inventory.addItemStackToInventory(fluidBucketWrapper.getContainer())) {
+                        player.dropItem(fluidBucketWrapper.getContainer(), false);
+                    }
+                    return true;
                 }
-
             } else {
-                FluidStack fluidStack = FluidRegistry.getFluidStack(SoyMilkFluid.name, Fluid.BUCKET_VOLUME);
-
-                player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
-                itemstack.shrink(1);
-
-                TofuAdvancements.grantAdvancement(player, "flesh_soymilk");
-                if (itemstack.isEmpty()) {
-
-                    player.setHeldItem(hand, FluidUtil.getFilledBucket(fluidStack));
-                } else if (!player.inventory.addItemStackToInventory(FluidUtil.getFilledBucket(fluidStack))) {
-                    player.dropItem(FluidUtil.getFilledBucket(fluidStack), false);
-                }
+                return false;
             }
-
-            return true;
         } else {
             return super.processInteract(player, hand);
         }

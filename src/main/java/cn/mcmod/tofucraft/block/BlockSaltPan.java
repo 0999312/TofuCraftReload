@@ -15,6 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
@@ -23,8 +24,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.Random;
 
@@ -144,29 +151,30 @@ public class BlockSaltPan extends BlockContainer {
 	        {
 	            ItemStack itemHeld = playerIn.getHeldItem(hand);
 	            Stat stat = this.getStat(worldIn, pos);
-	            if (stat == Stat.EMPTY && itemHeld != null && itemHeld.getItem() == Items.WATER_BUCKET)
+                IFluidHandlerItem handler = FluidUtil.getFluidHandler(ItemHandlerHelper.copyStackWithSize(itemHeld, 1));
+                if (stat == Stat.EMPTY && itemHeld != null && handler instanceof FluidBucketWrapper)
 	            {
-	                if (!playerIn.capabilities.isCreativeMode)
-	                {
-	            	  playerIn.setHeldItem(hand, new ItemStack(Items.BUCKET));
-	                }
+                    FluidBucketWrapper fluidBucketWrapper = ((FluidBucketWrapper) handler);
+                    if (fluidBucketWrapper.getFluid() != null && fluidBucketWrapper.getFluid().containsFluid(new FluidStack(FluidRegistry.WATER, 1000))) {
+                        if (!playerIn.capabilities.isCreativeMode) {
+                            playerIn.setHeldItem(hand, handler.getContainer());
+                        }
 
-	                TileScanner tileScanner = new TileScanner(worldIn, pos);
-	                tileScanner.scan(1, TileScanner.Method.fullSimply, new TileScanner.Impl<Object>()
-	                {
-	                    @Override
-	                    public void apply(World world, BlockPos pos)
-	                    {
-	                        if (BlockSaltPan.this.getStat(world, pos) == Stat.EMPTY)
-	                        {
-	                            world.setBlockState(pos, BlockLoader.SALTPAN.getDefaultState().withProperty(STATUS, Stat.WATER), 3);
-	                        }
-	                    }
-	                });
+                        TileScanner tileScanner = new TileScanner(worldIn, pos);
+                        tileScanner.scan(1, TileScanner.Method.fullSimply, new TileScanner.Impl<Object>() {
+                            @Override
+                            public void apply(World world, BlockPos pos) {
+                                if (BlockSaltPan.this.getStat(world, pos) == Stat.EMPTY) {
+                                    world.setBlockState(pos, BlockLoader.SALTPAN.getDefaultState().withProperty(STATUS, Stat.WATER), 3);
+                                }
+                            }
+                        });
 
-	                worldIn.setBlockState(pos, BlockLoader.SALTPAN.getDefaultState().withProperty(STATUS, Stat.WATER), 3);
+                        worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                        worldIn.setBlockState(pos, BlockLoader.SALTPAN.getDefaultState().withProperty(STATUS, Stat.WATER), 3);
 
-	                return true;
+                        return true;
+                    }
 	            }
 	            else if (stat == Stat.BITTERN && itemHeld != null && itemHeld.getItem() == Items.GLASS_BOTTLE)
 	            {
