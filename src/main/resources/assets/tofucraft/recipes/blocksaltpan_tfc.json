@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "S S",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "slabCobblestone"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "tofucraft:blocksaltpan"
+  }
+}

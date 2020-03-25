@@ -11,6 +11,10 @@ public class TofuCompat {
         if (Loader.isModLoaded("flammpfeil.slashblade")){
         	SlashBlade.InitEventBus.register(new SlashBladeCompat());
         }
+
+        if (Loader.isModLoaded("tfc")) {
+            TFCCompat.preInit();
+        }
     }
 
     public static void init() {
