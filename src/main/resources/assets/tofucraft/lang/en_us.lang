@@ -427,6 +427,7 @@ entity.tofucraft.TofuFish.name=TofuFish
 entity.tofucraft.TofuTurret.name=TofuTurret
 entity.tofucraft.TofuMindCore.name=TofuMindCore
 entity.tofucraft.TofuGandlem.name=TofuGandlem
+entity.Villager.tofuCook=Tofu Cook
 
 commands.tofuslimecheck.usage=/tofuslimecheck
 commands.tofuslimecheck.found=Tofu Slimes habit in this chunk
