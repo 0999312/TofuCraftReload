@@ -27,10 +27,12 @@ tile.tofucraft.blocktofudiamond.name=金剛豆腐ブロック
 tile.tofucraft.blocktofuminced.name=そぼろ豆腐ブロック
 tile.tofucraft.blockleek.name=ネギ
 tile.tofucraft.saltfurnace.name=製塩かまど
+tile.tofucraft.saltfurnace_lit.name=光っている製塩かまど
 tile.tofucraft.tofucake.name=豆腐ケーキ
 tile.tofucraft.tofuportal.name=トーフポータルブロック
 tile.tofucraft.morijio.name=盛り塩
 tile.tofucraft.barrelmiso.name=味噌樽
+tile.tofucraft.barreldoubanjiang.name=豆板醤の樽
 tile.tofucraft.nattobed.name=納豆床
 tile.tofucraft.blocksesame.name=胡麻
 tile.tofucraft.blocknatto.name=納豆ブロック
@@ -50,7 +52,10 @@ tile.tofucraft.tfoven.name=TFオーブン
 tile.tofucraft.tfcollector.name=TFコレクター
 tile.tofucraft.tfReformer.simple.name=TFリフォーマー
 tile.tofucraft.tfReformer.mix.name=TFミックスリフォーマー
-tile.tofucraft.blockOreTofu.name=豆腐鉱石
+tile.tofucraft.tfaggregator.name=TFアグリゲーター
+tile.tofucraft.tfadvanced_aggregator.name=発展TFアグリゲーター
+tile.tofucraft.tfcompressor.name=TFコンプレッサー
+tile.tofucraft.tfcrasher.name=TFクラッシャー
 tile.tofucraft.blockoretofu.name=豆腐鉱石
 tile.tofucraft.blockOreTofuDiamond.name=金剛豆腐鉱石
 tile.tofucraft.barrelAdvTofuGem.name=豆腐石樽
@@ -96,7 +101,7 @@ tile.tofucraft.tofuslab_name=豆腐ハーフブロック
 tile.tofucraft.tofuslab_kinu.name=絹ごし豆腐ハーフブロック
 tile.tofucraft.tofuslab_momen.name=木綿豆腐ハーフブロック
 tile.tofucraft.tofuslab_ishi.name=石豆腐ハーフブロック
-tile.tofucraft.tofuSlab.metal.name=鋼豆腐ハーフブロック
+tile.tofucraft.tofuslab_ishibrick.name=豆腐石レンガハーフブロック
 tile.tofucraft.tofuslab_metal.name=鋼豆腐ハーフブロック
 tile.tofucraft.tofuslab_grilled_old.name=焼き豆腐ハーフブロック(旧)
 tile.tofucraft.tofuslab_dried.name=高野豆腐ハーフブロック
@@ -231,6 +236,7 @@ item.tofucraft.kyoninso.name=杏仁霜
 item.tofucraft.leek.name=葱
 item.tofucraft.sesame.name=胡麻
 item.tofucraft.okarastick.name=おからスティック
+item.tofucraft.chillstick.name=辛いおからスティック
 item.tofucraft.ricenatto.name=納豆ご飯
 item.tofucraft.ricenattoleek.name=葱納豆ご飯
 item.tofucraft.zundama.name=ずんだま
@@ -300,12 +306,14 @@ item.tofucraft.zundaruby.name=ずんだルビー
 item.tofucraft.rice.name=お米
 item.tofucraft.seeds_rice.name=お米の種
 item.tofucraft.lemon.name=レモン
+item.tofucraft.mayonnaise.name=マヨネーズ
 item.tofucraft.chill.name=唐辛子
 item.tofucraft.bottlesoysause.name=醬油
 item.tofucraft.meatwrapped_yuba.name=肉巻き湯葉
 item.tofucraft.apricotjerry.name=杏のゼリー入りボトル
 item.tofucraft.apricotjerry_bread.name=杏のゼリーを付けたパン
 item.tofucraft.annin_apple.name=杏仁アップル
+item.tofucraft.kinako_bread.name=きなこパン
 
 item.tofucraft.armorkinuhelmet.name=絹豆腐ヘルメット
 item.tofucraft.armorkinuchestplate.name=絹豆腐チェストプレート
@@ -384,9 +392,12 @@ container.tofucraft.tfstorage.name=TFストレージマシン
 container.tofucraft.TfSaturator=TFサチュレーター
 container.tofucraft.TfCondenser=TFコンデンスマシン
 container.tofucraft.tfoven.name=TFオーブン
+container.tofucraft.tfcrasher.name=TFクラッシャー
 container.tofucraft.TfReformer.simple=TFリフォーマー
 container.tofucraft.TfReformer.mix=TFミックスリフォーマー
 container.tofucraft.tofuchest=豆腐チェスト
+container.tofucraft.aggregator.name=豆腐アグリゲーター
+container.tofucraft.tfcompressor.name=TFコンプレッサー
 
 fluid.soymilk=豆乳
 fluid.zunda_soymilk=ずんだの豆乳
@@ -415,6 +426,8 @@ entity.tofucraft.TofuFish.name=トーフウオ
 entity.tofucraft.TofuTurret.name=トーフタレット
 entity.tofucraft.TofuMindCore.name=トーフマインドコア
 entity.tofucraft.TofuGandlem.name=トーフガンドレム
+entity.tofucraft.TofuSpider.name=豆腐蜘蛛
+entity.Villager.tofuCook=豆腐職人
 
 commands.tofuslimecheck.found=このチャンクには豆腐スライムが生息しています
 commands.tofuslimecheck.notFound=このチャンクには豆腐スライムはいないようだ
@@ -429,6 +442,7 @@ tofucraft.tfPowered=トーフフォース
 tofucraft.tfPowered.true=入力あり
 tofucraft.tfPowered.false=入力なし
 tofucraft.tfProduced=TF供給
+tofucraft.tfInput=TF入力
 tofucraft.seconds=%.1f秒
 
 tofucraft.soymilkTaken.greetings=豆乳一日目です。毎日飲んで健康になろう!
@@ -463,6 +477,8 @@ tooltip.tofucraft.tofuforce_core1=inventoryの中にあると耐久度を消費�
 tooltip.tofucraft.tofuforce_core2=破損した場合は、tofuforce（TF）で充電して再度使用できます
 tooltip.tofucraft.tofuforce_core.broken=破損
 
+tooltip.tofucraft.energy=TFエネルギー: %d/%d
+
 #load
 tofucraft.terrain.wait=トーフワールドを生成しています・・・
 tofucraft.terrain.load=トーフワールドを読み込んでます・・・
@@ -477,3 +493,9 @@ modifier.absorption.desc=§o栄養としても良い§r\nこれがついたツ�
 item.slashblade.tofucraft.ishikatana.name=豆腐刀「须磨」
 item.slashblade.tofucraft.metalkatana.name=豆腐刀「朔風」
 item.slashblade.tofucraft.diamondkatana.name=豆腐刀「菫姫」
+
+#radar
+tofucraft.radar.result.success=豆腐スライムをこのチャンクで発見しました
+tofucraft.radar.result.failed=豆腐スライムはこのチャンクにいないようです
+
+
