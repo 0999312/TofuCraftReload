@@ -1,6 +1,7 @@
 {
   "result": {
-    "item": "tofucraft:apricotjerry",
+    "item": "tofucraft:sauce_bottle",
+	"data": 5,
     "count": 1
   },
   "ingredients": [

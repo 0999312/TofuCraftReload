@@ -1,6 +1,8 @@
 {
   "result": {
-    "item": "tofucraft:dashi"
+    "item": "tofucraft:sauce_bottle",
+	"data": 1,
+    "count": 1
   },
   "ingredients": [
     {

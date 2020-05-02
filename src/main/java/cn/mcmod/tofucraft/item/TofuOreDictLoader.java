@@ -16,6 +16,8 @@ public class TofuOreDictLoader {
 	    
 	    OreDictionary.registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,0));
 	    OreDictionary.registerOre("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,1));
+	    OreDictionary.registerOre("listAlltofuFried", new ItemStack(ItemLoader.tofu_food,1,4));
+	    OreDictionary.registerOre("listAlltofuFried", new ItemStack(ItemLoader.tofu_food,1,5));
 	    
 	    OreDictionary.registerOre("foodZunda", new ItemStack(ItemLoader.material,1,4));
 	    
@@ -29,6 +31,7 @@ public class TofuOreDictLoader {
 	    OreDictionary.registerOre("cropAlmond", new ItemStack(ItemLoader.material,1,9));
 	    
 	    OreDictionary.registerOre("foodSoysauce", Soysauce);
+	    OreDictionary.registerOre("foodDashi", Dashi);
 	    OreDictionary.registerOre("foodOliveoil", Soyoil);
 	    OreDictionary.registerOre("foodMayo", Mayonnaise);
         OreDictionary.registerOre("foodApricotjelly", ApricotJerry);
