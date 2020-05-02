@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tfc"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "#CROPSOYBEAN"
+    },
+    {
+      "item": "tfc:wooden_bucket"
+    }
+  ],
+  "result": {
+    "item": "tfc:wooden_bucket",
+    "nbt": {
+      "FluidName": "soymilk",
+      "Amount": 1000
+    }
+  }
+}
