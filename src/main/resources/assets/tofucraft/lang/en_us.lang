@@ -398,6 +398,7 @@ container.tofucraft.tfcompressor.name=Tofu Compressor
 container.tofucraft.aggregator.name=Tofu Aggregator
 container.tofucraft.tfoven.name=Tofu Force Oven
 container.tofucraft.tfcrasher.name=Tofu Force Crasher
+container.tofucraft.tofuchest=Tofu Chest
 
 fluid.soymilk=Soy Milk
 fluid.zunda_soymilk=Zunda SoyMilk
