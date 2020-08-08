@@ -33,7 +33,7 @@ public class CompressorRecipes
         for (Entry<Object, ItemStack> entry : recipesList.entrySet())
         {
             if(input instanceof ItemStack){
-                if (RecipesUtil.compareItems(entry.getKey(), (ItemStack) input))
+                if (RecipesUtil.getInstance().compareItems(entry.getKey(), (ItemStack) input))
                 {
                     return true;
                 }
@@ -53,7 +53,7 @@ public class CompressorRecipes
     {
         for (Entry<Object, ItemStack> entry : recipesList.entrySet())
         {
-            if (RecipesUtil.compareItems(entry.getKey(), stack))
+            if (RecipesUtil.getInstance().compareItems(entry.getKey(), stack))
             {
                 return entry.getValue();
             }
@@ -66,7 +66,7 @@ public class CompressorRecipes
     {
         for (Entry<Object, ItemStack> entry : recipesList.entrySet())
         {
-            if (RecipesUtil.compareItems(entry.getKey(), stack))
+            if (RecipesUtil.getInstance().compareItems(entry.getKey(), stack))
             {
                 if(entry.getKey() instanceof String) 
                 	return 1;

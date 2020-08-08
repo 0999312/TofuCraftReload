@@ -60,7 +60,7 @@ public class GuiTFBattery extends GuiContainer {
             FluidTank fluidTank = this.tileBattery.inputTank;
             int heightInd = (int) (72 * ((float) fluidTank.getFluidAmount() / (float) fluidTank.getCapacity()));
             if (heightInd > 0) {
-                ClientUtils.drawRepeatedFluidSprite(fluidTank.getFluid(), var5 + 167 - 47 - heightInd, var6 + 54, heightInd, 16f);
+                ClientUtils.getInstance().drawRepeatedFluidSprite(fluidTank.getFluid(), var5 + 167 - 47 - heightInd, var6 + 54, heightInd, 16f);
             }
 
         }

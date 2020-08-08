@@ -8,8 +8,8 @@
       "item" : "#LISTALLEGG"
     },
     {
-      "item" : "tofucraft:dashi",
-      "data" : 32767
+         "item" : "tofucraft:sauce_bottle",
+         "data" : 1
     }
   ],
   "type" : "forge:ore_shapeless"

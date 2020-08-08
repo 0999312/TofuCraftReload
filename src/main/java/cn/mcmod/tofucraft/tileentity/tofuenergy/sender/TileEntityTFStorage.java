@@ -43,14 +43,14 @@ public class TileEntityTFStorage extends TileEntitySenderBase implements IInvent
      *
      * */
 
-    private static final int POWER = 10;
+    private static final int POWER = 20;
     private FluidTank tank = new TFStorageTank(2000);
     protected NonNullList<ItemStack> inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
     private int workload = 0;
     private int current_workload = 0;
 
     public TileEntityTFStorage() {
-        super(5000);
+        super(10000);
     }
 
     @Override

@@ -58,92 +58,91 @@ public class RecipeLoader {
 		AggregatorRecipes.addRecipe(new ItemStack(Items.GLASS_BOTTLE), new ItemStack(ItemLoader.soymilk_drink,1,0));
 		AggregatorRecipes.addRecipe(new ItemStack(ItemLoader.material,1,18), new ItemStack(ItemLoader.material,1,25));
 		
-		AdvancedAggregatorRecipes.addRecipe(new ItemStack(Items.BUCKET), FluidUtil.getFilledBucket(new FluidStack(BlockLoader.SOYMILK_FLUID, 1000)));
-		AdvancedAggregatorRecipes.addRecipe(new ItemStack(ItemLoader.nigari), new ItemStack(BlockLoader.KINUTOFU));
-		AdvancedAggregatorRecipes.addRecipe(new ItemStack(Items.GLASS_BOTTLE), new ItemStack(ItemLoader.soymilk_drink,1,0));
-		AdvancedAggregatorRecipes.addRecipe(new ItemStack(ItemLoader.material,1,18), new ItemStack(ItemLoader.material,1,25));
+		AdvancedAggregatorRecipes.instance().addRecipes(FluidUtil.getFilledBucket(new FluidStack(BlockLoader.SOYMILK_FLUID, 1000)), new Object[]{new ItemStack(Items.BUCKET)});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(BlockLoader.KINUTOFU), new Object[]{new ItemStack(ItemLoader.nigari)});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,0), new Object[]{new ItemStack(Items.GLASS_BOTTLE)});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.material,1,25), new Object[]{new ItemStack(ItemLoader.material,1,18)} );
 		
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.material,1,26), new Object[]{
 				new ItemStack(ItemLoader.mineral_soymilk),
 				new ItemStack(ItemLoader.mineral_soymilk),
-				FluidUtil.getFilledBucket(new FluidStack(BlockLoader.SOYMILK_FLUID, 1000)),
 				new ItemStack(ItemLoader.nigari)
-		}, new ItemStack(ItemLoader.material,1,26));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.material,1,27), new Object[]{
 				new ItemStack(ItemLoader.mineral_soymilk),
 				new ItemStack(ItemLoader.mineral_soymilk),
 				FluidUtil.getFilledBucket(new FluidStack(BlockLoader.SOYMILKHELL_FLUID, 1000)),
 				new ItemStack(ItemLoader.nigari)
-		}, new ItemStack(ItemLoader.material,1,27));
+		});
 
-        AdvancedAggregatorRecipes.addRecipe(new Object[]{
+        AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.tofucore, 1), new Object[]{
                 new ItemStack(ItemLoader.material, 1, 26),
                 new ItemStack(ItemLoader.tofu_material, 1, 0)
-        }, new ItemStack(ItemLoader.tofucore, 1));
-        AdvancedAggregatorRecipes.addRecipe(new Object[]{
+        });
+        AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.tofuforce_sword, 1), new Object[]{
                 new ItemStack(ItemLoader.tofucore, 1),
                 new ItemStack(ItemLoader.tofu_material, 1, 0)
-        }, new ItemStack(ItemLoader.tofuforce_sword, 1));
+        });
 		
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		AdvancedAggregatorRecipes.instance().addRecipes(FluidUtil.getFilledBucket(new FluidStack(BlockLoader.ZUNDASOYMILK_FLUID, 1000)), new Object[]{
 				new ItemStack(Items.BUCKET),
 				"foodZunda"
-		}, FluidUtil.getFilledBucket(new FluidStack(BlockLoader.ZUNDASOYMILK_FLUID, 1000)));
+		});
 		
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,1), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				new ItemStack(ItemLoader.material,1,15),
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_drink,1,1));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,2), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				"cropApple",
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_drink,1,2));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,3), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				new ItemStack(Items.DYE,1,3),
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_drink,1,3));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,4), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				new ItemStack(ItemLoader.material,1,7)
-		}, new ItemStack(ItemLoader.soymilk_drink,1,4));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,5), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				"listAllegg",
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_drink,1,5));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,6), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				"cropPumpkin",
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_drink,1,6));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,7), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				"sakuraLeaves",
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_drink,1,7));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,8), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				"foodStrawberryjelly",
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_drink,1,8));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,9), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				"cropTea",
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_drink,1,9));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_drink,1,10), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				"foodZunda",
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_drink,1,10));
-		AdvancedAggregatorRecipes.addRecipe(new Object[]{
+		});
+		AdvancedAggregatorRecipes.instance().addRecipes(new ItemStack(ItemLoader.soymilk_ramune,1), new Object[]{
 				new ItemStack(Items.GLASS_BOTTLE),
 				"dyeLightBlue",
 				"listAllsugar"
-		}, new ItemStack(ItemLoader.soymilk_ramune,1));
+		});
     }
     
 	private static void registerCrasherRecipes() {

@@ -28,7 +28,7 @@ public class SoyGenerator implements IWorldGenerator {
         if (random.nextFloat() < 70 / 4000.0F) {
             int posX = x + world.rand.nextInt(16) + 8;
             int posZ = z + world.rand.nextInt(16) + 8;
-            BlockPos newPos = WorldUtil.findGround(world, new BlockPos(posX, 0, posZ), true, true, true);
+            BlockPos newPos = WorldUtil.getInstance().findGround(world, new BlockPos(posX, 0, posZ), true, true, true);
             if ((newPos != null) && (BlockLoader.SOYBEAN.canPlaceBlockAt(world, newPos))) {
                 world.setBlockState(newPos, BlockLoader.SOYBEAN.getDefaultState().withProperty(BlockSoybean.AGE, random.nextInt(4)), 2);
             }

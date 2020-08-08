@@ -5,8 +5,7 @@ import cn.mcmod.tofucraft.base.tileentity.TileEntityProcessorBaseInventoried;
 import cn.mcmod.tofucraft.block.BlockLoader;
 import cn.mcmod.tofucraft.block.mecha.BlockAdvancedAggregator;
 import cn.mcmod.tofucraft.util.ItemUtils;
-import cn.mcmod_mmf.mmlib.util.OredictItemStack;
-import cn.mcmod_mmf.mmlib.util.RecipesUtil;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -17,7 +16,11 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
+import java.util.ArrayList;
+
 import javax.annotation.Nullable;
+
+import com.google.common.collect.Lists;
 
 public class TileEntitySoymilkAdvancedAggregator extends TileEntityProcessorBaseInventoried {
 
@@ -27,30 +30,29 @@ public class TileEntitySoymilkAdvancedAggregator extends TileEntityProcessorBase
 
     public FluidTank input = new FluidTank(1000);
 
-    private AdvancedAggregatorRecipes cachedRecipe = null;
-
     public TileEntitySoymilkAdvancedAggregator() {
         //slot 0 1 2 3 -> input, 4 -> output
         super(10000, 5);
         this.maxTime = 100;
     }
 
+    private ItemStack getResult() {
+        ArrayList<ItemStack> inventoryList = Lists.newArrayList();
+        for (int i = 0; i < 4; i++) {
+          if (!this.inventory.get(i).isEmpty()) {
+            inventoryList.add(this.inventory.get(i).copy());
+          }
+        }
+    	return AdvancedAggregatorRecipes.instance().getResult(inventoryList);
+	}
+    
     @Override
     public boolean canWork() {
-        if (energy >= POWER) { //If energy is suitable
-            if (cachedRecipe != null) {
-                if (!RecipesUtil.compareMulti(cachedRecipe.inputItems.toArray(), inventory.toArray())) {
-                    cachedRecipe = AdvancedAggregatorRecipes.getBestRecipe(inventory);
-                }
-            } else {
-                cachedRecipe = AdvancedAggregatorRecipes.getBestRecipe(inventory);
-            }
-        }
         return energy >= POWER &&
                 input.getFluidAmount() >= 10 &&
-                cachedRecipe != null &&
+                !getResult().isEmpty() &&
                 (inventory.get(4).isEmpty() ||
-                        (ItemStack.areItemsEqual(inventory.get(4), cachedRecipe.resultItem) &&
+                        (ItemStack.areItemsEqual(inventory.get(4), getResult()) &&
                                 inventory.get(4).getCount() < inventory.get(4).getMaxStackSize()));
     }
 
@@ -81,26 +83,16 @@ public class TileEntitySoymilkAdvancedAggregator extends TileEntityProcessorBase
 
     @Override
     public void done() {
-        ItemUtils.growOrSetInventoryItem(this.inventory, cachedRecipe.getResultItemStack(), 4);
-
-        for (Object consume : cachedRecipe.inputItems) {
-            for (int i = 0; i < 4; i++) {
-                if (consume instanceof ItemStack) {
-                    ItemStack is = (ItemStack) consume;
-                    if (ItemStack.areItemsEqual(is, this.inventory.get(i))) {
-                        this.inventory.get(i).shrink(is.getCount());
-                        break;
-                    }
-                } else if (consume instanceof OredictItemStack) {
-                    OredictItemStack odis = (OredictItemStack) consume;
-                    if (odis.isMatchingItemStack(this.inventory.get(i)) && odis.getCount() <= this.inventory.get(i).getCount()) {
-                        this.inventory.get(i).shrink(odis.getCount());
-                        break;
-                    }
-                }
-            }
-        }
-
+        ItemUtils.growOrSetInventoryItem(this.inventory, getResult(), 4);
+	    for(int i=0;i<4;i++){
+	    	if(!(this.inventory.get(i).getItem().getContainerItem(this.inventory.get(i)).isEmpty())){
+	    		if(this.inventory.get(i).getCount()==1){
+	    		this.inventory.set(i, this.inventory.get(i).getItem().getContainerItem(this.inventory.get(i)).copy());
+	    		}
+	    		else this.decrStackSize(i, 1);
+	    		Block.spawnAsEntity(getWorld(), getPos(), this.inventory.get(i).getItem().getContainerItem(this.inventory.get(i).copy()));
+	    	}else this.decrStackSize(i, 1);
+	    }
         markDirty();
     }
 

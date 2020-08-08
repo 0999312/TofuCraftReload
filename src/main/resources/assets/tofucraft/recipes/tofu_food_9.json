@@ -1,24 +1,24 @@
 {
-  "result" : {
-    "item" : "tofucraft:tofu_food",
-    "data" : 9
-  },
-  "ingredients" : [
-    {
-      "item" : "#DUSTSALT"
-    },
-    {
-      "item" : "tofucraft:material",
-      "data" : 4
-    },
-    {
-      "item" : "tofucraft:material",
-      "data" : 14
-    },
-    {
-      "item" : "tofucraft:dashi",
-      "data" : 32767
-    }
-  ],
-  "type" : "forge:ore_shapeless"
+   "result" : {
+      "item" : "tofucraft:tofu_food",
+      "data" : 9
+   },
+   "ingredients" : [
+      {
+         "item" : "#DUSTSALT"
+      },
+      {
+         "item" : "tofucraft:material",
+         "data" : 4
+      },
+      {
+         "item" : "tofucraft:material",
+         "data" : 14
+      },
+      {
+         "item" : "tofucraft:sauce_bottle",
+         "data" : 1
+      }
+   ],
+   "type" : "forge:ore_shapeless"
 }

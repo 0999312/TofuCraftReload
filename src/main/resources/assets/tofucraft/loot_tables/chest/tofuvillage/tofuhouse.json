@@ -89,11 +89,20 @@
       },
       "name": "rare",
       "entries": [
-        {
-          "type": "item",
-          "name": "tofucraft:bottlesoysause",
-          "weight": 2
-        }
+            {
+               "type" : "item",
+               "name" : "tofucraft:sauce_bottle",
+               "weight" : 2,
+               "functions" : [
+                  {
+                     "function" : "minecraft:set_data",
+                     "data" : {
+                        "min" : 0,
+                        "max" : 6
+                     }
+                  }
+               ]
+            }
       ]
     }
   ]

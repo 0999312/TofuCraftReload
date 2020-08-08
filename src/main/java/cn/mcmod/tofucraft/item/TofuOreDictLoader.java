@@ -20,6 +20,7 @@ public class TofuOreDictLoader {
 	    OreDictionary.registerOre("listAlltofuFried", new ItemStack(ItemLoader.tofu_food,1,5));
 	    
 	    OreDictionary.registerOre("foodZunda", new ItemStack(ItemLoader.material,1,4));
+	    OreDictionary.registerOre("foodMiso", new ItemStack(ItemLoader.material,1,2));
 	    
 	    OreDictionary.registerOre("listAlltofuBlock", new ItemStack(BlockLoader.MOMENTOFU));
 	    OreDictionary.registerOre("listAlltofuBlock", new ItemStack(BlockLoader.KINUTOFU));

@@ -61,7 +61,7 @@ public class CTTFAdvancedAggregator {
 
         @Override
         public void apply() {
-            AdvancedAggregatorRecipes.removeRecipe(itemInput.toArray());
+            AdvancedAggregatorRecipes.instance().ClearRecipe(itemInput.toArray());
         }
 
         @Override
@@ -81,7 +81,7 @@ public class CTTFAdvancedAggregator {
 
         @Override
         public void apply() {
-            AdvancedAggregatorRecipes.addRecipe(itemInput, itemOutput);
+            AdvancedAggregatorRecipes.instance().addRecipes(itemOutput, itemInput);
         }
 
         @Override
@@ -94,7 +94,7 @@ public class CTTFAdvancedAggregator {
     private static final class ClearAllRecipe implements IAction {
         @Override
         public void apply() {
-            AdvancedAggregatorRecipes.clearRecipes();
+            AdvancedAggregatorRecipes.instance().ClearAllRecipe();
         }
 
         @Override

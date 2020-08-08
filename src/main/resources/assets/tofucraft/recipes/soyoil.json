@@ -1,7 +1,8 @@
 {
   "result": {
-    "item": "tofucraft:soyoil"
-  },
+    "item": "tofucraft:sauce_bottle",
+	"data": 2
+  }, 
   "ingredients": [
     {
       "item":  "#CROPSOYBEAN"

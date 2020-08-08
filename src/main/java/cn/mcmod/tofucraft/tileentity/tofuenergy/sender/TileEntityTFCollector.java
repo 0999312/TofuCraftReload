@@ -6,10 +6,10 @@ import net.minecraft.item.ItemStack;
 
 public class TileEntityTFCollector extends TileEntitySenderBaseInvenotried {
 
-    private static final int POWER = 6;
+    private static final int POWER = 20;
 
     public TileEntityTFCollector() {
-        super(5000, 1);
+        super(10000, 1);
     }
 
     @Override

@@ -1,20 +1,20 @@
 {
-  "result": {
-    "item": "tofucraft:tsuyubowl_glass",
-    "data": 0
-  },
-  "ingredients": [
-    {
-      "item": "tofucraft:dashi",
-      "data": 32767
-    },
-    {
-      "item": "#FOODSOYSAUCE"
-    },
-    {
-      "item": "tofucraft:material",
-      "data": 29
-    }
-  ],
-  "type": "forge:ore_shapeless"
+   "result" : {
+      "item" : "tofucraft:tsuyubowl_glass",
+      "data" : 0
+   },
+   "ingredients" : [
+      {
+         "item" : "tofucraft:sauce_bottle",
+         "data" : 1
+      },
+      {
+         "item" : "#FOODSOYSAUCE"
+      },
+      {
+         "item" : "tofucraft:material",
+         "data" : 29
+      }
+   ],
+   "type" : "forge:ore_shapeless"
 }

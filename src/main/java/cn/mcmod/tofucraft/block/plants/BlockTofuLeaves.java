@@ -33,7 +33,7 @@ public class BlockTofuLeaves extends BlockLeaves {
         this.setHardness(0.2F);
         this.setLightOpacity(1);
         setCreativeTab(CommonProxy.tab);
-        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true));
+        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, false).withProperty(DECAYABLE, false));
     }
 
 
@@ -42,17 +42,17 @@ public class BlockTofuLeaves extends BlockLeaves {
         return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE);
     }
 
+
     @Override
-    @Deprecated
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(DECAYABLE, (meta & 4) == 0).withProperty(CHECK_DECAY, (meta & 8) > 0);
+        return this.getDefaultState().withProperty(DECAYABLE, (meta & 4) > 0).withProperty(CHECK_DECAY, (meta & 8) > 0);
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
         int i = 0;
 
-        if (!state.getValue(DECAYABLE)) {
+        if (state.getValue(DECAYABLE)) {
             i |= 4;
         }
 
@@ -70,7 +70,6 @@ public class BlockTofuLeaves extends BlockLeaves {
 
     @Override
     public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos) {
-    	// TODO Auto-generated method stub
     	return super.canSustainLeaves(state, world, pos);
     }
     

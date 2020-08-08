@@ -1,6 +1,7 @@
 {
   "result": {
-    "item": "tofucraft:bottlesoysause"
+    "item": "tofucraft:sauce_bottle",
+	"data": 0
   },
   "ingredients": [
     {

@@ -46,7 +46,7 @@ public class TileEntitySoymilkAggregator extends TileEntityProcessorBaseInventor
         if (energy >= POWER) { //If energy is suitable
             if (cachedRecipe != null) {
                 //Check if current recipe is the same as cached, prevent force refreshing.
-                if (!RecipesUtil.compareItems(cachedRecipe.getKey(), this.inventory.get(0))) {
+                if (!RecipesUtil.getInstance().compareItems(cachedRecipe.getKey(), this.inventory.get(0))) {
                     cachedRecipe = AggregatorRecipes.getResult(this.inventory.get(0));
                     processTime = 0;
                 }

@@ -68,13 +68,13 @@ public class CommonProxy {
 
 		GameRegistry.addSmelting( new ItemStack(ItemLoader.material,1,13), new ItemStack(ItemLoader.material,1,14), 0.2f);
 		
-		RecipesUtil.addOreDictionarySmelting("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,3), 0.2f);
+		RecipesUtil.getInstance().addOreDictionarySmelting("listAlltofu", new ItemStack(ItemLoader.tofu_food,1,3), 0.2f);
 		
 		GameRegistry.addSmelting(new ItemStack(ItemLoader.tofu_food,1,2), new ItemStack(ItemLoader.foodset,1,16), 0.2f);
 		GameRegistry.addSmelting(new ItemStack(ItemLoader.material,1,20), new ItemStack(ItemLoader.foodset,1,8), 0.2f);
 		GameRegistry.addSmelting(new ItemStack(ItemLoader.foodset,1,11), new ItemStack(ItemLoader.foodset,1,12), 0.2f);
 		
-		RecipesUtil.addOreDictionarySmelting("listAlltofuBlock", new ItemStack(BlockLoader.GRILD), 0.6f);
+		RecipesUtil.getInstance().addOreDictionarySmelting("listAlltofuBlock", new ItemStack(BlockLoader.GRILD), 0.6f);
 	}
 	
     public World getClientWorld() {

@@ -6,14 +6,14 @@
       "entries": [
         {
           "type": "item",
-          "name": "tofucraft:material",
+          "name": "tofucraft:foodset",
           "weight": 1,
           "functions": [
             {
               "function": "set_count",
               "count": {
                 "min": 1,
-                "max": 3
+                "max": 2
               }
             },
             {

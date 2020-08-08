@@ -159,22 +159,22 @@ public class BlockLoader {
     public BlockLoader(FMLPreInitializationEvent event) {
         SOYMILK_FLUID = SoyMilkFluid.instance;
         FluidRegistry.addBucketForFluid(SOYMILK_FLUID);
-        SOYMILK = BlockRegister.registerFluidBlock(TofuMain.MODID,SOYMILK_FLUID, new BlockSoyMilk(SOYMILK_FLUID), "soymilk");
+        SOYMILK = BlockRegister.getInstance().registerFluidBlock(TofuMain.MODID,SOYMILK_FLUID, new BlockSoyMilk(SOYMILK_FLUID), "soymilk");
         SOYMILKHELL_FLUID = SoyMilkHellFluid.instance;
         FluidRegistry.addBucketForFluid(SOYMILKHELL_FLUID);
-        SOYMILKHELL = BlockRegister.registerFluidBlock(TofuMain.MODID,SOYMILKHELL_FLUID, new BlockSoyMilk(SOYMILKHELL_FLUID), "soymilk_hell");
+        SOYMILKHELL = BlockRegister.getInstance().registerFluidBlock(TofuMain.MODID,SOYMILKHELL_FLUID, new BlockSoyMilk(SOYMILKHELL_FLUID), "soymilk_hell");
 
         ZUNDASOYMILK_FLUID = ZundaSoyMilkFluid.instance;
         FluidRegistry.addBucketForFluid(ZUNDASOYMILK_FLUID);
-        ZUNDASOYMILK = BlockRegister.registerFluidBlock(TofuMain.MODID,ZUNDASOYMILK_FLUID, new BlockSoyMilk(ZUNDASOYMILK_FLUID), "zunda_soymilk");
+        ZUNDASOYMILK = BlockRegister.getInstance().registerFluidBlock(TofuMain.MODID,ZUNDASOYMILK_FLUID, new BlockSoyMilk(ZUNDASOYMILK_FLUID), "zunda_soymilk");
 
         NIGARI_FLUID = NigariFluid.instance;
         FluidRegistry.addBucketForFluid(NIGARI_FLUID);
-        NIGARI = BlockRegister.registerFluidBlock(TofuMain.MODID,NIGARI_FLUID, new BlockNigari(NIGARI_FLUID), "nigari");
+        NIGARI = BlockRegister.getInstance().registerFluidBlock(TofuMain.MODID,NIGARI_FLUID, new BlockNigari(NIGARI_FLUID), "nigari");
 
         SOYSAUCE_FLUID = SoySauceFluid.instance;
         FluidRegistry.addBucketForFluid(SOYSAUCE_FLUID);
-        SOYSAUCE = BlockRegister.registerFluidBlock(TofuMain.MODID,SOYSAUCE_FLUID, new BlockSoySauce(SOYSAUCE_FLUID), "soysauce");
+        SOYSAUCE = BlockRegister.getInstance().registerFluidBlock(TofuMain.MODID,SOYSAUCE_FLUID, new BlockSoySauce(SOYSAUCE_FLUID), "soysauce");
 
         register(TF_MACHINE_CASE, new ItemBlock(TF_MACHINE_CASE), "tf_machine_case");
         register(TOFUSTORAGEMACHINE, new ItemBlock(TOFUSTORAGEMACHINE), "tfstorage");
@@ -281,109 +281,109 @@ public class BlockLoader {
 
     private static void register(Block block, Item itemBlock, String string) {
         block.setCreativeTab(CommonProxy.tab);
-        BlockRegister.register(TofuMain.MODID, block, itemBlock, string);
+        BlockRegister.getInstance().register(TofuMain.MODID, block, itemBlock, string);
     }
     private static void registerNoItem(Block block, String string) {
-        BlockRegister.registerNoItem(TofuMain.MODID, block, string);
+        BlockRegister.getInstance().registerNoItem(TofuMain.MODID, block, string);
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
-    	BlockRegister.registerFluidBlockRendering(TofuMain.MODID, SOYMILK, "soymilk");
-    	BlockRegister.registerFluidBlockRendering(TofuMain.MODID, SOYMILKHELL, "soymilk_hell");
-    	BlockRegister.registerFluidBlockRendering(TofuMain.MODID, ZUNDASOYMILK, "zunda_soymilk");
-    	BlockRegister.registerFluidBlockRendering(TofuMain.MODID, NIGARI, "nigari");
-    	BlockRegister.registerFluidBlockRendering(TofuMain.MODID, SOYSAUCE, "soysauce");
-    	BlockRegister.registerRender(ADVTOFUGEM_BLOCK);
-    	BlockRegister.registerRender(TF_MACHINE_CASE);
-    	BlockRegister.registerRender(TFCOLLECTOR);
-    	BlockRegister.registerRender(TFAGGREGATOR);
-    	BlockRegister.registerRender(TFAGGREGATOR_LIT);
-    	BlockRegister.registerRender(TFAdvancedAGGREGATOR);
-    	BlockRegister.registerRender(TFAdvancedAGGREGATOR_LIT);
-    	BlockRegister.registerRender(TFCOMPRESSOR);
-    	BlockRegister.registerRender(TFCOMPRESSOR_LIT);
-    	BlockRegister.registerRender(TFOVEN);
-    	BlockRegister.registerRender(TFOVEN_LIT);
-    	BlockRegister.registerRender(TFCRASHER);
-    	BlockRegister.registerRender(TFCRASHER_LIT);
-    	BlockRegister.registerRender(TOFUHELL);
-    	BlockRegister.registerRender(TOFUDIAMOND);
-    	BlockRegister.registerRender(YUBA_FLOW);
-    	BlockRegister.registerRender(MISOBARREL);
-    	BlockRegister.registerRender(DOUBANJIANGBARREL);
-    	BlockRegister.registerRender(MISOTOFUBARREL);
-    	BlockRegister.registerRender(NATTO);
-    	BlockRegister.registerRender(SPROUTS);
-    	BlockRegister.registerRender(tofu_Cake);
-    	BlockRegister.registerRender(TOFUDRIED);
-    	BlockRegister.registerRender(SALTFURNACE);
-    	BlockRegister.registerRender(SALTFURNACE_LIT);
-    	BlockRegister.registerRender(TOFUSTORAGEMACHINE);
-    	BlockRegister.registerRender(ANTENNA_BASIC);
-    	BlockRegister.registerRender(KINUTOFU);
-    	BlockRegister.registerRender(MOMENTOFU);
-    	BlockRegister.registerRender(ISHITOFU);
-    	BlockRegister.registerRender(METALTOFU);
-    	BlockRegister.registerRender(ANNINTOFU);
-    	BlockRegister.registerRender(EGGTOFU);
-    	BlockRegister.registerRender(GRILD);
-    	BlockRegister.registerRender(TOFUZUNDA);
-    	BlockRegister.registerRender(LEEK);
-    	BlockRegister.registerRender(LEEKCROP);
-    	BlockRegister.registerRender(TOFU_SAPLING);
-    	BlockRegister.registerRender(yubaGrass);
-    	BlockRegister.registerRender(tofuTerrain);
-    	BlockRegister.registerRender(zundatofuTerrain);
-    	BlockRegister.registerRender(TOFU_LEAVE);
-    	BlockRegister.registerRender(APRICOT_SAPLING);
-    	BlockRegister.registerRender(APRICOT_LEAVE);
-    	BlockRegister.registerRender(tofu_PORTAL);
-    	BlockRegister.registerRender(TOFUISHI_BRICK);
-    	BlockRegister.registerRender(TOFUZUNDA_BRICK);
-    	BlockRegister.registerRender(TOFUZUNDA_SMOOTHBRICK);
+    	BlockRegister.getInstance().registerFluidBlockRendering(TofuMain.MODID, SOYMILK, "soymilk");
+    	BlockRegister.getInstance().registerFluidBlockRendering(TofuMain.MODID, SOYMILKHELL, "soymilk_hell");
+    	BlockRegister.getInstance().registerFluidBlockRendering(TofuMain.MODID, ZUNDASOYMILK, "zunda_soymilk");
+    	BlockRegister.getInstance().registerFluidBlockRendering(TofuMain.MODID, NIGARI, "nigari");
+    	BlockRegister.getInstance().registerFluidBlockRendering(TofuMain.MODID, SOYSAUCE, "soysauce");
+    	BlockRegister.getInstance().registerRender(ADVTOFUGEM_BLOCK);
+    	BlockRegister.getInstance().registerRender(TF_MACHINE_CASE);
+    	BlockRegister.getInstance().registerRender(TFCOLLECTOR);
+    	BlockRegister.getInstance().registerRender(TFAGGREGATOR);
+    	BlockRegister.getInstance().registerRender(TFAGGREGATOR_LIT);
+    	BlockRegister.getInstance().registerRender(TFAdvancedAGGREGATOR);
+    	BlockRegister.getInstance().registerRender(TFAdvancedAGGREGATOR_LIT);
+    	BlockRegister.getInstance().registerRender(TFCOMPRESSOR);
+    	BlockRegister.getInstance().registerRender(TFCOMPRESSOR_LIT);
+    	BlockRegister.getInstance().registerRender(TFOVEN);
+    	BlockRegister.getInstance().registerRender(TFOVEN_LIT);
+    	BlockRegister.getInstance().registerRender(TFCRASHER);
+    	BlockRegister.getInstance().registerRender(TFCRASHER_LIT);
+    	BlockRegister.getInstance().registerRender(TOFUHELL);
+    	BlockRegister.getInstance().registerRender(TOFUDIAMOND);
+    	BlockRegister.getInstance().registerRender(YUBA_FLOW);
+    	BlockRegister.getInstance().registerRender(MISOBARREL);
+    	BlockRegister.getInstance().registerRender(DOUBANJIANGBARREL);
+    	BlockRegister.getInstance().registerRender(MISOTOFUBARREL);
+    	BlockRegister.getInstance().registerRender(NATTO);
+    	BlockRegister.getInstance().registerRender(SPROUTS);
+    	BlockRegister.getInstance().registerRender(tofu_Cake);
+    	BlockRegister.getInstance().registerRender(TOFUDRIED);
+    	BlockRegister.getInstance().registerRender(SALTFURNACE);
+    	BlockRegister.getInstance().registerRender(SALTFURNACE_LIT);
+    	BlockRegister.getInstance().registerRender(TOFUSTORAGEMACHINE);
+    	BlockRegister.getInstance().registerRender(ANTENNA_BASIC);
+    	BlockRegister.getInstance().registerRender(KINUTOFU);
+    	BlockRegister.getInstance().registerRender(MOMENTOFU);
+    	BlockRegister.getInstance().registerRender(ISHITOFU);
+    	BlockRegister.getInstance().registerRender(METALTOFU);
+    	BlockRegister.getInstance().registerRender(ANNINTOFU);
+    	BlockRegister.getInstance().registerRender(EGGTOFU);
+    	BlockRegister.getInstance().registerRender(GRILD);
+    	BlockRegister.getInstance().registerRender(TOFUZUNDA);
+    	BlockRegister.getInstance().registerRender(LEEK);
+    	BlockRegister.getInstance().registerRender(LEEKCROP);
+    	BlockRegister.getInstance().registerRender(TOFU_SAPLING);
+    	BlockRegister.getInstance().registerRender(yubaGrass);
+    	BlockRegister.getInstance().registerRender(tofuTerrain);
+    	BlockRegister.getInstance().registerRender(zundatofuTerrain);
+    	BlockRegister.getInstance().registerRender(TOFU_LEAVE);
+    	BlockRegister.getInstance().registerRender(APRICOT_SAPLING);
+    	BlockRegister.getInstance().registerRender(APRICOT_LEAVE);
+    	BlockRegister.getInstance().registerRender(tofu_PORTAL);
+    	BlockRegister.getInstance().registerRender(TOFUISHI_BRICK);
+    	BlockRegister.getInstance().registerRender(TOFUZUNDA_BRICK);
+    	BlockRegister.getInstance().registerRender(TOFUZUNDA_SMOOTHBRICK);
 
-    	BlockRegister.registerRender(TOFUKINU_TORCH);
-    	BlockRegister.registerRender(TOFUMOMEN_TORCH);
-    	BlockRegister.registerRender(TOFUISHI_TORCH);
-    	BlockRegister.registerRender(TOFUMETAL_TORCH);
-    	BlockRegister.registerRender(TOFUZUNDA_TORCH);
+    	BlockRegister.getInstance().registerRender(TOFUKINU_TORCH);
+    	BlockRegister.getInstance().registerRender(TOFUMOMEN_TORCH);
+    	BlockRegister.getInstance().registerRender(TOFUISHI_TORCH);
+    	BlockRegister.getInstance().registerRender(TOFUMETAL_TORCH);
+    	BlockRegister.getInstance().registerRender(TOFUZUNDA_TORCH);
 
-    	BlockRegister.registerRender(TOFUKINU_DOOR);
-    	BlockRegister.registerRender(TOFUMOMEN_DOOR);
-    	BlockRegister.registerRender(TOFUISHI_DOOR);
-    	BlockRegister.registerRender(TOFUMETAL_DOOR);
-    	BlockRegister.registerRender(SALTPAN);
-    	BlockRegister.registerRender(TOFUKINU_STAIRS);
-    	BlockRegister.registerRender(TOFUISHI_BRICK_STAIRS);
-    	BlockRegister.registerRender(TOFUMOMEN_STAIRS);
-    	BlockRegister.registerRender(TOFUISHI_STAIRS);
-    	BlockRegister.registerRender(TOFUMETAL_STAIRS);
-    	BlockRegister.registerRender(TOFUZUNDA_STAIRS);
+    	BlockRegister.getInstance().registerRender(TOFUKINU_DOOR);
+    	BlockRegister.getInstance().registerRender(TOFUMOMEN_DOOR);
+    	BlockRegister.getInstance().registerRender(TOFUISHI_DOOR);
+    	BlockRegister.getInstance().registerRender(TOFUMETAL_DOOR);
+    	BlockRegister.getInstance().registerRender(SALTPAN);
+    	BlockRegister.getInstance().registerRender(TOFUKINU_STAIRS);
+    	BlockRegister.getInstance().registerRender(TOFUISHI_BRICK_STAIRS);
+    	BlockRegister.getInstance().registerRender(TOFUMOMEN_STAIRS);
+    	BlockRegister.getInstance().registerRender(TOFUISHI_STAIRS);
+    	BlockRegister.getInstance().registerRender(TOFUMETAL_STAIRS);
+    	BlockRegister.getInstance().registerRender(TOFUZUNDA_STAIRS);
 
-    	BlockRegister.registerRender(TOFUKINU_SLAB);
-    	BlockRegister.registerRender(TOFUISHI_BRICK_SLAB);
-    	BlockRegister.registerRender(TOFUMOMEN_SLAB);
-    	BlockRegister.registerRender(TOFUISHI_SLAB);
-    	BlockRegister.registerRender(TOFUMETAL_SLAB);
-    	BlockRegister.registerRender(TOFUZUNDA_SLAB);
+    	BlockRegister.getInstance().registerRender(TOFUKINU_SLAB);
+    	BlockRegister.getInstance().registerRender(TOFUISHI_BRICK_SLAB);
+    	BlockRegister.getInstance().registerRender(TOFUMOMEN_SLAB);
+    	BlockRegister.getInstance().registerRender(TOFUISHI_SLAB);
+    	BlockRegister.getInstance().registerRender(TOFUMETAL_SLAB);
+    	BlockRegister.getInstance().registerRender(TOFUZUNDA_SLAB);
 
-    	BlockRegister.registerRender(TOFUKINU_LADDER);
-    	BlockRegister.registerRender(TOFUISHI_BRICK_LADDER);
-    	BlockRegister.registerRender(TOFUMOMEN_LADDER);
-    	BlockRegister.registerRender(TOFUISHI_LADDER);
-    	BlockRegister.registerRender(TOFUMETAL_LADDER);
-    	BlockRegister.registerRender(TOFUZUNDA_LADDER);
+    	BlockRegister.getInstance().registerRender(TOFUKINU_LADDER);
+    	BlockRegister.getInstance().registerRender(TOFUISHI_BRICK_LADDER);
+    	BlockRegister.getInstance().registerRender(TOFUMOMEN_LADDER);
+    	BlockRegister.getInstance().registerRender(TOFUISHI_LADDER);
+    	BlockRegister.getInstance().registerRender(TOFUMETAL_LADDER);
+    	BlockRegister.getInstance().registerRender(TOFUZUNDA_LADDER);
 
-    	BlockRegister.registerRender(TOFUBEDROCK);
-    	BlockRegister.registerRender(TOFUORE_DIAMOND);
-    	BlockRegister.registerRender(TOFUGEM_ORE);
+    	BlockRegister.getInstance().registerRender(TOFUBEDROCK);
+    	BlockRegister.getInstance().registerRender(TOFUORE_DIAMOND);
+    	BlockRegister.getInstance().registerRender(TOFUGEM_ORE);
 
-    	BlockRegister.registerRender(TOFUFARMLAND);
-    	BlockRegister.registerRender(TOFUFLOWER);
-    	BlockRegister.registerRender(TOFUCHEST);
-    	BlockRegister.registerRender(YUBA_NOREN);
-    	BlockRegister.registerRender(TOFUSTATION);
+    	BlockRegister.getInstance().registerRender(TOFUFARMLAND);
+    	BlockRegister.getInstance().registerRender(TOFUFLOWER);
+    	BlockRegister.getInstance().registerRender(TOFUCHEST);
+    	BlockRegister.getInstance().registerRender(YUBA_NOREN);
+    	BlockRegister.getInstance().registerRender(TOFUSTATION);
     }
 
 }

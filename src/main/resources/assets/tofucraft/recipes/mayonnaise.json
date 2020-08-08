@@ -1,6 +1,7 @@
 {
   "result": {
-    "item": "tofucraft:mayonnaise"
+    "item": "tofucraft:sauce_bottle",
+	"data": 4
   },
   "ingredients": [
     {

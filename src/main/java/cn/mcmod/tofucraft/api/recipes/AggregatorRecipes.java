@@ -35,7 +35,7 @@ public class AggregatorRecipes {
 
     public static boolean findResult(Object input) {
         for (Object key : recipesList.keySet()) {
-            if (RecipesUtil.compareItems(key, input))
+            if (RecipesUtil.getInstance().compareItems(key, input))
                 return true;
         }
         return false;
@@ -43,7 +43,7 @@ public class AggregatorRecipes {
 
     public static Entry<Object, ItemStack> getResult(ItemStack stack) {
         for (Entry<Object, ItemStack> entry : recipesList.entrySet()) {
-            if (RecipesUtil.compareItems(entry.getKey(), stack) &&
+            if (RecipesUtil.getInstance().compareItems(entry.getKey(), stack) &&
                     ItemUtils.getSomeAmount(entry.getKey()) <= stack.getCount()) {
                 return entry;
             }

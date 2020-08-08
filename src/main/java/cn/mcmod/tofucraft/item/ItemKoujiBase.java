@@ -29,7 +29,7 @@ public class ItemKoujiBase extends Item {
 		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 		if(entityIn instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) entityIn;
-		NBTTagCompound nbt = RecipesUtil.getItemTagCompound(stack);
+		NBTTagCompound nbt = RecipesUtil.getInstance().getItemTagCompound(stack);
 		if(!nbt.hasKey("timer")){nbt.setInteger("timer", 0);}else 
 			if(nbt.hasKey("timer")&&nbt.getInteger("timer")>=18000){
 			ItemStack newstack = new ItemStack(ItemLoader.material,1,1);

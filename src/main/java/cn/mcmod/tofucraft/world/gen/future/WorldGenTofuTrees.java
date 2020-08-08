@@ -1,6 +1,7 @@
 package cn.mcmod.tofucraft.world.gen.future;
 
 import cn.mcmod.tofucraft.block.BlockLoader;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
@@ -83,7 +84,7 @@ public class WorldGenTofuTrees extends WorldGenTrees {
 
                                 if (state.getBlock().isAir(state, worldIn, blockpos) || state.getBlock().isLeaves(state, worldIn, blockpos) || state.getMaterial() == Material.VINE)
                                 {
-                                    this.setBlockAndNotifyAdequately(worldIn, blockpos, BlockLoader.TOFU_LEAVE.getDefaultState());
+                                    this.setBlockAndNotifyAdequately(worldIn, blockpos, BlockLoader.TOFU_LEAVE.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, false).withProperty(BlockLeaves.DECAYABLE, true));
                                 }
                             }
                         }
